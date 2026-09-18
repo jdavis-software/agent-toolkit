@@ -9,6 +9,7 @@ from sourcekit_lib.common import SourceError, envelope, fail, json_input, public
 from sourcekit_lib.formats import document, feed, compare_feeds, transcript
 from sourcekit_lib.routing import route, doctor
 from sourcekit_lib.transport import fetch_public
+from sourcekit_lib.assessment import assess, extract_links, validate_expectations
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
@@ -24,10 +25,25 @@ def main(argv=None):
     p.add_argument('--language', default='und'); p.add_argument('--origin', choices=['unknown', 'captions', 'automatic-captions', 'human-transcript'], default='unknown')
     p = commands.add_parser('diff', help='Compare local Sourcekit feed packets')
     p.add_argument('before'); p.add_argument('after')
+    p = commands.add_parser('assess', help='Assess a local HTML/text capture without treating HTTP success as content success')
+    p.add_argument('file'); p.add_argument('--format', choices=['html','text'], required=True)
+    for command in ['read','parse','assess']:
+        p=commands.choices[command]
+        p.add_argument('--expect-text',action='append',default=[])
+        p.add_argument('--expect-title')
+        p.add_argument('--require-content',action='store_true',help='Exit 3 unless declared expectations match and no gate is recognized')
+        if command != 'assess': p.add_argument('--include-links',action='store_true',help='Extract bounded HTML links as references; never follow them')
     args = parser.parse_args(argv)
     try:
+        if args.command in {'read','parse','assess'}:
+            validate_expectations(args.expect_text,args.expect_title)
+            if args.require_content and not (args.expect_text or args.expect_title):
+                fail('missing-expectation','--require-content needs explicit content expectations.')
+            if args.format in {'feed','transcript'} and (args.expect_text or args.expect_title or args.require_content or args.include_links):
+                fail('unsupported-assessment','Content assessment and links require HTML/text, not feeds or captions.')
         if args.command == 'route': result = route(args.url, args.intent)
         elif args.command == 'doctor': result = doctor()
+        elif args.command == 'assess': result=assess(read_local(args.file),args.format,args.expect_text,args.expect_title)
         elif args.command == 'diff': result = compare_feeds(json_input(read_local(args.before)), json_input(read_local(args.after)))
         else:
             live = args.command == 'read'; url = public_url(args.url if live else args.source_url)
@@ -41,12 +57,21 @@ def main(argv=None):
                     format = 'html' if mime == 'text/html' else 'feed' if mime in ('application/rss+xml', 'application/atom+xml', 'application/feed+json') else 'text'
             else: raw = read_local(args.file)
             base = observation['finalUrl'] if live else url
+            if format not in {'html','text'} and (args.expect_text or args.expect_title or args.require_content or args.include_links):
+                fail('unsupported-assessment','Selected representation cannot be content-assessed.')
+            if args.include_links and format != 'html': fail('unsupported-links','Link extraction requires an HTML representation.')
             if format == 'feed': kind, content = 'feed', feed(raw, base)
             elif format == 'transcript': kind, content = 'transcript', transcript(raw, args.language, args.origin)
             else: kind, content = 'document', document(raw, format)
+            if args.include_links: content['links']=extract_links(raw,base)
             result = envelope(kind, raw, content, url, mode='live' if live else 'local', final_url=base,
                               observations=[observation] if observation else ['Local capture only; no network was used.'])
+            if kind=='document':
+                result['contentAssessment']=assess(raw,format,args.expect_text,args.expect_title)
         print(json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False))
+        if getattr(args,'require_content',False):
+            assessment=result if args.command=='assess' else result.get('contentAssessment',{})
+            if assessment.get('state')!='expected-content': return 3
         return 0
     except SourceError as error:
         print(json.dumps({'schemaVersion': 1, 'status': 'blocked', 'code': error.code, 'message': str(error)}))
