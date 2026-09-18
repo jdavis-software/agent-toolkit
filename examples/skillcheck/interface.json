@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "journey": "Enter a search, select a category, reset, and verify results and focus",
+  "environment": {"browser": "not available; template only", "width": 1440, "height": 1000},
+  "checks": [
+    {"id": "primary", "status": "not-tested", "expected": "Search and reset update visible results", "observed": "Example template: no browser run has been performed", "evidence": []},
+    {"id": "keyboard", "status": "not-tested", "expected": "All controls operate by keyboard with visible focus", "observed": "Example template: no browser run has been performed", "evidence": []},
+    {"id": "layout", "status": "not-tested", "expected": "Heading and controls remain visible without overflow", "observed": "Example template: no browser run has been performed", "evidence": []},
+    {"id": "console", "status": "not-tested", "expected": "No relevant runtime errors occur", "observed": "Example template: no browser run has been performed", "evidence": []}
+  ],
+  "conclusion": "partial"
+}

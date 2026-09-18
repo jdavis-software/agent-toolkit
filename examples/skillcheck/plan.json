@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "tasks": [
+    {
+      "id": "search",
+      "goal": "Protect the search observable contract",
+      "owns": ["src/search/", "tests/search.test.mjs"],
+      "dependsOn": [],
+      "checks": [{"id": "search-test", "argv": ["node", "--test", "tests/search.test.mjs"]}],
+      "acceptance": [{"id": "search-behavior", "expect": "The documented behavior is observed and unwanted writes are absent.", "checkIds": ["search-test"]}]
+    },
+    {
+      "id": "filters",
+      "goal": "Protect the filters observable contract",
+      "owns": ["src/filters/", "tests/filters.test.mjs"],
+      "dependsOn": [],
+      "checks": [{"id": "filters-test", "argv": ["node", "--test", "tests/filters.test.mjs"]}],
+      "acceptance": [{"id": "filters-behavior", "expect": "The documented behavior is observed and unwanted writes are absent.", "checkIds": ["filters-test"]}]
+    },
+    {
+      "id": "integrate",
+      "goal": "Protect the integrate observable contract",
+      "owns": ["tests/catalog.test.mjs"],
+      "dependsOn": ["search", "filters"],
+      "checks": [{"id": "integrate-test", "argv": ["node", "--test", "tests/integrate.test.mjs"]}],
+      "acceptance": [{"id": "integrate-behavior", "expect": "The documented behavior is observed and unwanted writes are absent.", "checkIds": ["integrate-test"]}]
+    }
+  ]
+}

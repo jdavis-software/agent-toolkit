@@ -4,40 +4,43 @@ description: Turn an engineering request into a bounded work packet with owned p
 ---
 # Work Packet Planner
 
-New experimental starter instructions. Host behavior has not yet been evaluated.
+Original AI-assisted instructions for Jordan's collection. Companion helpers have automated fixture tests; agent-host effectiveness remains experimental.
 
 ## When to use
-Use before a change spans multiple files, crosses a contract boundary, or will be delegated to another agent. The output is a plan, not permission to start implementation.
+Use for delegated work, parallel implementation, or a change with shared contracts. The purpose is to remove decisions that would otherwise stop an implementer—not to produce a large planning document.
 
 ## When not to use
-Do not expand a trivial, clearly specified edit into a project. Do not override the repository's own instructions or change accepted contracts to make a task easier.
+For one obvious edit, state the outcome, owned file, and check in three lines. Do not force every task through JSON, a new branch, a committee, or this entire collection. Follow the consuming repository's actual instructions.
 
 ## Procedure
-1. Read the request, repository instructions, and relevant source. Identify the accepted base revision. Record missing access instead of inventing context.
-2. State one observable outcome. Separate required behavior from suggested implementation details.
-3. Define owned paths and explicit exclusions. Treat lockfiles, schemas, shared configuration, and generated outputs as separately owned unless the task says otherwise.
-4. Identify upstream dependencies, shared files, migration requirements, and integration order. Overlapping ownership is a coordination issue, not a reason to race.
-5. Find actual project-owned checks in manifests and documentation. Do not invent commands or assume a framework. Map each acceptance criterion to evidence.
-6. Estimate the smallest useful work packet. Split independently verifiable work only when its inputs are stable; expose unresolved decisions as blockers.
-7. Return the packet and wait for implementation authorization where required by the host or request.
+### Define what must change
+Read the request, relevant source, and canonical repository instructions. Identify one observable outcome and the accepted baseline. Separate the behavior from one possible implementation. Mark missing decisions as blockers only when they change the result.
 
-## Output
-Return these fields: task ID, goal, accepted base, inputs, owned paths, excluded paths, dependencies, acceptance criteria, planned checks, risks, unresolved decisions, and required handoff. Use `unknown` for an unverified revision. A planned check is not a passed check.
+### Make work independently executable
+For each task, identify exact owned files or directory prefixes. Give shared contracts, lockfiles, generated outputs, and shared tests one owner. Split only at stable interfaces. A task waiting for another task's contract must declare that dependency. Avoid assigning two agents the same file just because their intended line ranges differ.
 
-## Failure handling
-When source access is missing, mark the plan provisional. When requirements conflict, identify the exact conflict and request a decision. Never silently broaden scope or claim that a task can run independently when it changes shared contracts.
+Map every acceptance criterion to an actual project-owned check. A command array records an intended invocation; it is not proof the command exists or ran. Read the manifest before recording it. Use small verification targets where the project supports them.
 
-## Example
-Synthetic task: make catalog search match category names as well as titles.
+### Check the coordination model
+For machine-readable delegation, use the versioned packet format in the companion guide and run:
 
-```text
-goal: Searching "verification" finds matching category entries.
-owned paths: src/scripts/catalog.ts, tests/site.spec.ts
-excluded paths: catalog/entries.json, skills/**, package.json
-accepted base: unknown until git rev-parse HEAD is read
-acceptance: query matches title, description, or category; clear restores all
-planned checks: pnpm test:site (inspect package.json first)
-handoff: commit, changed paths, commands/results, remaining limitations
+```bash
+node tools/skillcheck.mjs plan examples/skillcheck/plan.json
 ```
 
-The example is a proposed packet, not a recorded run. Confirm ownership before editing shared tests.
+Replace the example with the real packet. The helper rejects dependency cycles, missing references, unsafe path declarations, unmapped criteria, and unordered overlapping ownership. It computes dependency waves and propagates explicit blockers. It never launches agents or executes packet commands. Waves express dependency eligibility, not permission to start or a resource budget.
+
+Literal scope semantics are deliberate: `src/search/` covers that directory; `src/search.ts` names one file. No globs, root wildcard, or line-range ownership. These checks are case-sensitive declarations, not a filesystem sandbox or symlink analysis.
+
+## Output
+For a small task, return the three-line plan. For delegation, return the packet, resolved baseline, checker result, and outstanding blockers. Include the smallest next action. Keep unresolved facts explicit; a structurally valid plan does not establish correct requirements or verified repository state.
+
+## Failure handling
+When ownership overlaps, consolidate the edit under one owner or declare a real dependency—do not suppress the check. When a dependency cycle appears, move the shared contract into an earlier task. Do not manufacture dependencies only to make a validator pass while still launching the tasks concurrently.
+
+## Example
+The example packet has independent search and filter tasks, followed by integration. It yields one parallel wave and one integration wave. Giving the filter task ownership of `src/search/` as well is rejected unless the workflow is genuinely serialized. This is a planning fixture, not a claim of a completed product build.
+
+## Companion tools
+
+[Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.

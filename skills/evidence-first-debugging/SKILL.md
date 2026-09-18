@@ -4,59 +4,45 @@ description: Investigate a reproducible software failure by separating observati
 ---
 # Evidence First Debugging
 
-A debugging procedure for Jordan's Agent Toolkit Collection. Written for this collection with AI assistance; experimental until evaluated in an identified agent host.
+Original AI-assisted instructions for Jordan's collection. Companion helpers have automated fixture tests; agent-host effectiveness remains experimental.
 
 ## When to use
-
-Use when a concrete behavior differs from its contract: a failing test, an incorrect response, a rendering defect, or a reproducible environment mismatch. Start with the observed failure, not a favored explanation.
+Use for an observable failure: an incorrect response, broken interaction, failed assertion, or environment mismatch. The goal is the smallest supported repair with evidence that the original failure is gone.
 
 ## When not to use
-
-Do not use for speculative cleanup, a new feature without a defined outcome, or a security incident requiring the organization's incident process. Investigation does not authorize production access, dependency upgrades, destructive cleanup, or unrelated fixes.
+Do not turn a feature request into a debugging exercise or expand a local bug into an architecture rewrite. Incident response, production access, and destructive experiments require their own authorization.
 
 ## Procedure
+### Preserve the failure contract
+Capture input, expected behavior, actual failure signature, revision, and relevant environment. Run the original reproduction before touching implementation. Distinguish the target assertion failing from installation, import, or service-availability failures. Use the receipt runner for executable checks and preserve the failing result.
 
-### Establish the observation
+### Spend experiments on uncertainty
+Write one to three plausible causes and a falsifying observation for each. Select the cheapest experiment that distinguishes them. Keep a bounded experiment budget; after an inconclusive budget, report the remaining uncertainty rather than retrying identical actions. Parallelize independent read-only investigations, not overlapping repairs.
 
-Read repository instructions and inspect the current changes before running commands. Record the relevant revision, input, environment, expected result, and observed result. Redact secrets and personal data from evidence. Choose a bounded reproduction in a disposable or explicitly authorized environment.
+For asynchronous defects, control completion order explicitly instead of adding arbitrary sleeps. For state defects, use an isolated fixture instead of clearing shared caches. Change one meaningful variable per probe. Separate observation, interpretation, and proposed change.
 
-Attempt the original reproduction without changing the implementation. Record the command, result, and evidence location. A failure to install a dependency is a blocked reproduction, not confirmation of the reported application bug. For intermittent failures, preserve attempt counts and conditions rather than rerunning until a convenient result appears.
+### Repair and replay
+Make the smallest correction supported by the observations. Add an assertion that rejects the original behavior; prove that failure is about the target defect, not broken setup. Run the same reproduction after the repair, then neighboring behaviors that share the changed boundary. Keep generated instrumentation separate from the final change.
 
-### Compare explanations
+### Validate the record, then inspect its evidence
+For multi-step investigations, use a structured debugging record:
 
-Write at most three plausible explanations. For each, specify what observation would distinguish it from the others and what result would contradict it. Prefer a small experiment over a large rewrite. Inspect the narrowest relevant data or execution boundary; expand only when evidence points outward.
+```bash
+node tools/skillcheck.mjs report debug examples/skillcheck/debug.json
+node examples/skillcheck/defect-demo.mjs
+```
 
-Change one meaningful variable per experiment. Keep temporary instrumentation separate from the proposed repair. Do not clear shared caches, reset databases, or alter another worktree merely to make the symptom disappear. Use isolated state when state itself is under investigation.
-
-### Repair the demonstrated cause
-
-Once evidence supports a cause, describe the violated invariant and the smallest proposed correction. Add a regression case when practical. Establish that the case detects the original defect before accepting a passing result after the fix; explain when that comparison cannot be run.
-
-Make the bounded repair, rerun the original reproduction, and run the relevant project checks. Check neighboring behavior that the same correction could affect. A passing new test does not replace the original reproduction. Remove temporary instrumentation unless retaining it is part of the approved change.
-
-### Close with a falsifiable account
-
-Tie findings to the final diff and revision. Separate a confirmed cause, a plausible explanation, and an unresolved symptom. State which checks ran and which remain blocked. Do not upgrade an uncertain diagnosis to certainty because implementation work has finished.
+The example record is unresolved. The checker rejects a fixed conclusion without a failed original reproduction, a supporting experiment, the same check passing afterward, and regression evidence. It checks record consistency, not whether referenced artifacts are authentic. Open the actual receipts or traces before accepting the diagnosis.
 
 ## Output
-
-Return a debugging record containing:
-
-- Failure contract: input, expected result, observed result, revision, and environment.
-- Experiments: hypothesis, discriminating observation, actual result, and evidence location.
-- Repair: supported cause, owned paths changed, and regression coverage.
-- Verification: original reproduction after the repair, focused checks, and remaining uncertainty.
-
-Use status `confirmed`, `partially-supported`, or `unresolved` for the diagnosis. A blocked check retains its own blocked status.
+Return the failure contract, tested explanations and falsifiers, observed experiments, supported cause or unresolved alternatives, repair, before/after evidence, and next action. Use unresolved, supported, or fixed precisely. A speculative explanation is not promoted because code was changed.
 
 ## Failure handling
-
-If reproduction fails, request the smallest missing input or capture a bounded diagnostic plan. If requirements conflict, identify the conflict before patching. If an experiment requires unapproved access, stop at that boundary. After repeated inconclusive experiments, summarize what has been ruled out rather than accumulating unrelated changes.
+A blocked reproduction remains blocked. When the environment is the problem, describe the environmental finding separately from application correctness. Preserve unrelated work. Do not delete a valid test, relax its requirement, or broadly reset state to manufacture success.
 
 ## Example
+Two searches complete out of order; the older response replaces the latest results. The included original defect demo controls both completion orders and cancellation with no timers. It demonstrates a request-generation check on small synthetic functions. Its results are reproducible fixture evidence—not a production fix or an agent-performance benchmark.
 
-Synthetic scenario: a result list shows the wrong item after two overlapping searches. Input A starts first; input B starts second. B finishes first, then A finishes and replaces B's displayed results.
+## Companion tools
 
-One hypothesis is that obsolete responses are still accepted. A discriminating test controls completion order while keeping the query inputs unchanged. The required outcome is that the result associated with the current query remains displayed. A repair must pass both normal and reversed completion order, plus error and cancellation behavior defined by the application. This is a proposed experiment, not a record of an executed test.
-
-Evaluation scenarios are in `references/scenarios.md`.
+[Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.

@@ -4,37 +4,43 @@ description: Select relevant project-owned checks for an observed change and pro
 ---
 # Affected Verification
 
-New experimental starter instructions. Host behavior has not yet been evaluated.
+Original AI-assisted instructions for Jordan's collection. Companion helpers have automated fixture tests; agent-host effectiveness remains experimental.
 
 ## When to use
-Use after a scoped change, during review, or before a handoff when running the entire repository's checks would be wasteful or when a full validation policy must be applied deliberately.
+Use after a scoped change or before handing work to an integrator. Prefer the smallest check set that proves the changed behavior while preserving mandatory repository and release checks.
 
 ## When not to use
-Do not replace mandatory CI or release checks with a smaller local selection. Do not run destructive integration tests, migrations, external publishing, or production operations without the required authorization.
+Do not replace required integration checks with a convenient unit test. Do not add new frameworks or run production mutations to verify an unrelated edit. A command runner inherits the caller's authority; it is not a sandbox.
 
 ## Procedure
-1. Read repository instructions, package/build manifests, the work packet, and the actual diff against a verified baseline. Capture the revision and uncommitted state being checked.
-2. Map changed files to their projects and consumers using existing repository-owned graph tooling when available. Explain uncertainty where the graph is incomplete.
-3. Select tests, type checks, formatting, linting, and build targets relevant to the observed change. Contract, lockfile, build configuration, migration, and shared-module edits often justify wider checks; explain the selection.
-4. Inspect each command's prerequisites and side effects. Use the correct worktree and test environment. Do not invent Nx targets, scripts, credentials, or services.
-5. Run authorized commands and capture exit codes and relevant output. Record cache use if visible; do not call cached results fresh execution. A timeout is not a pass.
-6. Record failures before attempting fixes. Never weaken assertions, skip mandatory checks, or alter production behavior solely to obtain green output.
-7. Recheck the working state and identify changes made after verification. Tie results to the checked state and list the additional integration/release checks still required.
+### Choose checks from the actual change
+Read the baseline, diff, project manifests, and acceptance criteria. Use existing dependency or affected-target tooling when available. Connect each criterion to a real check; explain why shared contracts, migrations, lockfiles, or build wiring require wider coverage. Do not guess scripts or run every package by default.
+
+### Execute without losing the exit result
+After inspecting the command and its side effects, run it directly as an argument array through the helper. Store output outside the target repository:
+
+```bash
+node tools/skillcheck.mjs run --repo ../target-repo --id search-tests --timeout-ms 60000 -- node --test tests/search.test.mjs > ../evidence/search-check.json
+```
+
+Create the evidence directory first. The runner does not invoke a shell, does not approve the command, and does not hide nonzero exits behind a display pipeline. It captures exit code, signal, elapsed time, bounded stdout/stderr, full-stream digests, runtime, and before/after Git-visible fingerprints.
+
+Receipt outcomes are `passed`, `failed`, `blocked`, `timed-out`, or `invalidated`. A missing executable is blocked. A killed command does not pass. Exit zero with changed source is invalidated. Human-report categories may also include skipped or not-run, but those never become passing receipts. A printed success message cannot override the real process result.
+
+### Reconcile what was actually proved
+The helper deliberately leaves cache status unknown: a successful command can have used its own cache. Check the tool's output before calling a run fresh. Record skipped or unavailable checks with reasons. Preserve failure evidence before repairing a defect.
+
+Before handoff, verify each passing receipt against the current state. If ignored configuration, external services, environment variables, or cache state changed, reevaluate even when the Git fingerprint matches. For long-running or writing tests, choose an isolated fixture and explicitly describe outputs.
 
 ## Output
-Return the baseline and checked revision/state, impact analysis, selection rationale, one row per check (command, status, result/evidence), limitations, and readiness conclusion. Use only `passed`, `failed`, `skipped`, `blocked`, or `not-run` for check status. Say what the evidence covers rather than claiming universal correctness.
+Return the impact analysis and selection rationale, baseline and final revision/state, one row per check, receipt locations, cache information actually observed, excluded checks, and a scoped conclusion. Distinguish a passing focused check from release readiness.
 
 ## Failure handling
-If dependencies or services are unavailable, report blocked checks and the specific missing prerequisite. When a target is missing, inspect the project configuration instead of guessing. Preserve failing output; distinguish flaky results from reproducible failures.
+Stop claiming completion at the failed boundary, not necessarily all useful work. Reproduce a failing check before changing its assertion. Do not automatically retry until a pass hides flakiness. Run formatters before final verification because source changes invalidate earlier receipts. Review artifacts for secrets before sharing them.
 
 ## Example
-Synthetic report, not executed evidence:
+The command prints `PASS` and exits 7. The runner emits status failed and exits nonzero. A different command exits 0 but edits a tracked source file; its receipt is invalidated. Both cases are exercised automatically rather than left as prompt instructions.
 
-```text
-change: search normalizes category and title text
-selected: unit tests + browser search/clear/navigation cases
-unit tests: not-run
-browser tests: blocked (browser dependency missing)
-release readiness: not established
-next action: provide the required browser, then run the documented checks
-```
+## Companion tools
+
+[Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.
