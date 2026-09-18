@@ -1,14 +1,18 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Card from '../../components/Card.astro';
-import { loadBundles } from '../../../tools/lib/bundles.mjs';
+import { loadBundles, type BundleDefinition } from '../../../tools/lib/bundles.mjs';
 import { loadCatalog } from '../../../scripts/catalog.mjs';
 import { withBase, repository } from '../../lib/paths';
+interface Props { bundle: BundleDefinition; }
 export async function getStaticPaths() { return (await loadBundles()).map(bundle=>({params:{slug:bundle.id},props:{bundle}})); }
 const { bundle } = Astro.props;
 const catalog = await loadCatalog();
-const entries = bundle.skills.map((id:string)=>catalog.find(e=>e.id===id));
-if(entries.some(e=>!e))throw new Error('Bundle references missing entry');
+const entries = bundle.skills.map(id=>{
+  const entry=catalog.find(e=>e.id===id);
+  if(!entry)throw new Error(`Bundle references missing entry: ${id}`);
+  return entry;
+});
 const command = `node tools/bundle.mjs resolve ${bundle.id}`;
 ---
 <Base title={bundle.title} active="bundles" description={bundle.description}>
