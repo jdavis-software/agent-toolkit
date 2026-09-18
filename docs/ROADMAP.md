@@ -1,25 +1,31 @@
-# Roadmap and handoff
+# Collection roadmap
 
-## Implemented in the initial branch
-- Astro static site, catalog search/filtering, detail routes, theme switching, responsive layout, source links, sitemap, and JSON export.
-- Three newly written experimental starter skills: work-packet-planner, worktree-handoff, affected-verification.
-- Six attributed external references. These are not installed or benchmarked by this project.
-- Catalog validation, negative tests, browser tests, and GitHub Actions configuration.
+## Current direction
 
-Implementation is distinct from passing checks and public deployment. Current results belong in Actions; do not mark unrun tests green in this document.
+Jordan’s Agent Toolkit Collection aggregates useful individual community skills, engineering workflows, and developer tools. Curation, source credit, clear use cases, and practical browsing are the primary product—not a requirement that every item be original work.
 
-## Before calling the toolkit released
-- [ ] Owner selects an original-content license.
-- [ ] Review the initial design and complete public diff.
-- [ ] Confirm the locked install, static build, checks, and browser tests pass.
-- [ ] Enable and verify GitHub Pages deployment.
-- [ ] Inventory Jordan's actual existing skills and tooling; do not assume these starter names match existing assets.
-- [ ] Decide which actual assets can be published without exposing company or personal information.
-- [ ] Evaluate original skills in an identified agent host with success and boundary cases.
-- [ ] Test selective installation, activation, update, and removal before adding install controls.
+## Implemented
 
-## Next useful additions
-Add actual public-safe skill packages backed by evidence. Then consider contract-change review, bounded context packets, cache-invalidation review, and the separate content-writing collection. Reuse existing graph, browser, and installation tools. A custom CLI/MCP service or bundle builder is not a launch requirement.
+- Personal collection branding, author/source attribution, source filter, and sources directory.
+- Individual selections from Vercel, ECC, Superpowers, Anthropic, and Supabase.
+- Reviewed source snapshots with preserved licenses/support files, pinned revisions, and file-integrity checks; link-only entries where appropriate.
+- Original experimental starters kept separate from community authorship and prior-use claims.
+- Searchable Astro site, shareable filters, dark/light themes, mobile layouts, source detail pages, JSON and sitemap.
+- Repository-generated README selection table and CI/browser checks. Test and deployment outcomes belong in Actions, not assumed checkboxes here.
 
-## Parallel task boundaries
-Catalog/schema owner: catalog metadata and validation. UI owner: components, styles, pages. Skill owner: one package and its fixtures. CI owner: toolchain, lockfile, workflows. Coordinate shared browser tests. Integration must validate the combined candidate, not only independent green branches.
+## Next curation passes
+
+- Evaluate additional source collections by actual package usefulness, not just stars or volume.
+- Add structured context/research, content publishing, security review, and infrastructure selections where they fill a real gap.
+- Record comparative notes for overlapping skills and small task-oriented starter sets.
+- Inventory public-safe components Jordan actually uses and add accurate usage notes after confirmation.
+- Review licensing details for currently linked packages before considering source inclusion.
+
+## Separate validation milestones
+
+- Owner chooses a license for original site/toolkit content.
+- Qualify selective install, activation, update, and removal for identified hosts.
+- Run behavioral skill evaluations with success and boundary cases.
+- Add public-safe real-use examples, cross-browser testing, and accessibility/performance audits.
+
+No unattended upstream replacement or bulk hook installation. A custom CLI/MCP service is not required to make the collection useful.

@@ -1,17 +1,11 @@
-# Getting started
+# Using Jordan’s collection
 
-## Read before installing
-Start with one original skill's `SKILL.md`. Its body contains when to use it, when not to use it, its output, failure cases, and a synthetic example. The first packages are experimental; there is no tested one-click installation or host-compatibility claim yet.
+Start on the public catalog, choose a problem or source, and read the individual selection notes. Each item separates the upstream author from Jordan’s role as curator.
 
-Original repository licensing is pending. Do not assume that public visibility grants reuse rights. Upstream curated projects have their own installation instructions and licenses.
+For **Source included**, open `vendor/<source>/<package>/` to inspect the complete copied subtree and included license. Keep the folder’s references/helpers together. Use the consuming agent’s documented installation method and evaluate with a disposable task; framework dependencies mentioned by the upstream author may need separate setup. The collection does not install or activate components for you.
 
-## Evaluate an original package
-After licensing and host installation decisions are settled, use a disposable repository with no production credentials. Record the host/version, operating system, skill revision, task input, actual output, and relevant artifacts. Try one intended trigger and one non-trigger or failure case. For a handoff, verify reported commits and checks against real command output. For verification, seed a failing check and confirm it is not reported as passing.
+For **Upstream link**, use the author’s package documentation. For **Original starter**, note that the files are experimental and the owner’s original-content licensing decision is still pending. Do not apply a vendor package’s license to the entire toolkit.
 
-Store only public-safe, reviewed evidence. Do not fabricate transcripts or benchmark gains. Update metadata only when the evidence justifies it.
+Source review, file-hash verification, and browser tests are different from an agent-host evaluation. Record host/version, task, actual output, checks, and a boundary case before promoting compatibility claims. Choose among overlapping workflows rather than loading every instruction at once.
 
-## Local website development
-Follow the README's pinned toolchain and commands. The static site reads local repository content; it never contacts Notion. The JSON catalog and counts are derived from the same source used for detail pages.
-
-## Deploying
-Enable GitHub Pages with GitHub Actions as the source. The workflow on `main` installs from the committed lockfile, validates, checks, tests, builds, uploads, and deploys. Verify the returned public URL after deployment. A successful static build is not confirmation that Pages settings or deployment succeeded.
+For website development and Pages publishing, follow the root README. The site is static and builds from local reviewed files. No private Notion source or credentials are used. New selected entries and their source attribution flow into the public site, JSON catalog, and README table.

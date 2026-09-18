@@ -7,9 +7,10 @@ export async function getStaticPaths() {
   return (await loadCatalog()).map(entry => ({ params: { kind: entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows', slug: entry.id }, props: { entry } }));
 }
 const { entry } = Astro.props;
-const local = entry.origin !== 'curated';
-const doc = local ? await getEntry('skills',entry.id) : undefined;
-if (local && !doc) throw new Error(`Missing skill document: ${entry.id}`);
+const original = entry.origin !== 'curated';
+const included = Boolean(entry.vendorPath);
+const doc = original ? await getEntry('skills',entry.id) : included ? await getEntry('community',entry.id) : undefined;
+if ((original || included) && !doc) throw new Error(`Missing skill document: ${entry.id}`);
 const rendered = doc ? await render(doc) : undefined;
 const Content = rendered?.Content;
 const section = entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows';
@@ -17,10 +18,17 @@ const section = entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'too
 <Base title={entry.title} description={entry.description} active={section}>
   <div class="container detail-container">
     <a class="back-link" href={withBase(`${section}/`)}>← Back to {section}</a>
-    <div class="detail-heading"><div class="detail-badges"><span class="tag">{entry.origin}</span><span class:list={['status',{'experimental':entry.stage==='experimental'}]}>{entry.stage}</span></div><h1>{entry.title}</h1><p>{entry.description}</p></div>
+    <div class="detail-heading"><div class="detail-badges"><span class="tag">{original ? 'Original starter' : 'Community selection'}</span><span class:list={['status',{'experimental':entry.stage==='experimental'}]}>{included ? 'Source included' : entry.stage === 'reference' ? 'Upstream link' : entry.stage}</span></div><h1>{entry.title}</h1><p>{entry.description}</p></div>
     <div class="detail-layout"><article class="prose">
-      {local && <div class="notice"><strong>Experimental starter.</strong> Source is available for review. Agent-host behavior, activation, and installation compatibility have not yet been evaluated. This is not a production-use claim.</div>}
-      {Content ? <Content /> : <><h2>Why it’s here</h2><p>{entry.outcome}</p><h2>What to consider</h2><p>{entry.note}</p><h2>Start upstream</h2><p>This entry is a curated reference, not a repackaged tool. Read the author’s current documentation for installation, requirements, license, and limitations.</p><p><a href={entry.source}>Open the official source ↗</a></p></>}
-    </article><aside class="detail-sidebar"><div class="source-panel"><h2>At a glance</h2><dl><dt>Origin</dt><dd>{entry.origin}</dd><dt>Category</dt><dd>{entry.category}</dd><dt>Author</dt><dd>{entry.author}</dd><dt>Tested agent hosts</dt><dd>{entry.testedHosts.length ? entry.testedHosts.join(', ') : 'Not evaluated'}</dd></dl><a class="button primary" href={entry.source}>{local ? 'Read SKILL.md' : 'Visit upstream'} <span aria-hidden="true">↗</span></a></div><div class="sidebar-note"><strong>Expected output</strong><p>{entry.outcome}</p>{entry.requires.length > 0 && <><strong>Prerequisites</strong><p>{entry.requires.join(' · ')}</p></>}<p>Format checks do not prove behavior. Inspect first, then evaluate.</p></div></aside></div>
+      <h2>Why it’s in the collection</h2><p>{entry.why}</p>
+      <h2>What to consider</h2><p>{entry.note}</p>
+      {original && <div class="notice"><strong>Experimental starter.</strong> Newly written for this toolkit. Agent-host behavior and installation have not been evaluated; this is not a prior-use or production claim.</div>}
+      {included && <div class="notice"><strong>Unmodified upstream source.</strong> The full selected package and its license are included in the repository. Helpers and references are preserved, not installed or executed. Other framework components mentioned by the author may still be required. Source review is not a host-compatibility or security certification.</div>}
+      {Content ? <section class="upstream-document" aria-label={included ? 'Upstream skill instructions' : 'Skill instructions'}><h2>{included ? 'Upstream instructions' : 'Skill instructions'}</h2><Content /></section> : <><h2>Read the source</h2><p>This selection links directly to its author. It is not copied into this repository. Use the official documentation for the complete package, installation instructions, and applicable terms.</p><a href={entry.source}>Open the selected source ↗</a></>}
+    </article><aside class="detail-sidebar"><div class="source-panel"><h2>At a glance</h2><dl><dt>Selected for</dt><dd>{entry.category}</dd><dt>Author</dt><dd>{entry.author}</dd><dt>Collection curator</dt><dd>Jordan Davis</dd><dt>Availability</dt><dd>{included ? `${entry.fileCount} source files included` : original ? 'Experimental starter' : 'Upstream link'}</dd><dt>Tested agent hosts</dt><dd>{entry.testedHosts.length ? entry.testedHosts.join(', ') : 'Not evaluated'}</dd>{entry.upstreamRevision && <><dt>Source revision</dt><dd><a class="revision" href={`https://github.com/${entry.upstreamRepo}/commit/${entry.upstreamRevision}`}>{entry.upstreamRevision.slice(0,12)}</a></dd></>}{entry.license && <><dt>Upstream terms</dt><dd>{entry.license}</dd></>}</dl>
+      <a class="button primary" href={entry.packageSource ?? entry.source}>{included ? 'Browse source package' : original ? 'Read SKILL.md' : 'Visit upstream'} <span aria-hidden="true">↗</span></a>
+      {included && <><a class="text-link" href={entry.source}>Original SKILL.md ↗</a><a class="text-link" href={entry.licenseSource}>Included license ↗</a></>}
+      {entry.sourceId && <a class="text-link" href={withBase(`sources/#${entry.sourceId}`)}>About this source ↗</a>}
+      </div><div class="sidebar-note"><strong>Expected output</strong><p>{entry.outcome}</p>{entry.requires.length > 0 && <><strong>Prerequisites</strong><p>{entry.requires.join(' · ')}</p></>}<p>Choose individual components. Don’t enable overlapping workflows or grant new permissions just because they appear together here.</p></div></aside></div>
   </div>
 </Base>

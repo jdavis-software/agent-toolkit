@@ -1,6 +1,6 @@
 import { loadCatalog } from './catalog.mjs';
-try {
-  const entries = await loadCatalog();
-  console.log(`Catalog valid: ${entries.length} entries; ${entries.filter(e => e.origin === 'original').length} original experimental packages.`);
-  console.log('Structural validation only. This does not establish agent-host behavior.');
-} catch (error) { console.error(error); process.exitCode = 1; }
+import { syncReadme } from './readme.mjs';
+const entries=await loadCatalog();
+await syncReadme();
+console.log(`Catalog valid: ${entries.filter(e=>e.listed!==false).length} listed entries; ${entries.filter(e=>e.vendorPath).length} source packages verified.`);
+console.log('Checks validate source integrity and site structure, not agent-host behavior.');
