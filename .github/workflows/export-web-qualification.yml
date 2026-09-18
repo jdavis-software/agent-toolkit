@@ -1,0 +1,40 @@
+name: Export web qualification inputs
+on:
+  push:
+    branches: [feat/web-access-qualification]
+    paths: [.github/workflows/export-web-qualification.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/web-access-qualification'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: bd328660b0123a0f0a3191f230a9392b12728cbb
+          persist-credentials: false
+      - name: Export baseline and download optional parser-only wheels without executing them
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/qualification/wheels"
+          git archive --format=tar HEAD > "$RUNNER_TEMP/qualification/baseline.tar"
+          python3 -m pip download --dest "$RUNNER_TEMP/qualification/wheels" --only-binary=:all: --python-version 3.13 'scrapling==0.4.15'
+          python3 - <<'PY'
+          import email, hashlib, json, os, pathlib, zipfile
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'qualification'
+          packages=[]
+          for path in sorted((root/'wheels').glob('*.whl')):
+              with zipfile.ZipFile(path) as z:
+                  metadata=email.message_from_bytes(z.read(next(n for n in z.namelist() if n.endswith('.dist-info/METADATA'))))
+              packages.append({'name':metadata['Name'],'version':metadata['Version'],'file':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+          (root/'wheel-manifest.json').write_text(json.dumps(packages,indent=2)+'\n')
+          (root/'requirements-linux-py313.lock').write_text('# Optional parser evaluation only; generated from downloaded wheels on Linux x86_64 / CPython 3.13.\n'+'\n'.join(p['name']+'=='+p['version']+' --hash=sha256:'+p['sha256'] for p in packages)+'\n')
+          print(json.dumps(packages,indent=2))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: web-qualification-inputs
+          path: ${{ runner.temp }}/qualification/
+          retention-days: 3
