@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadCatalog } from '../../../scripts/catalog.mjs';
+import { getEntry, render } from 'astro:content';
+import { withBase } from '../../lib/paths';
+export async function getStaticPaths() {
+  return (await loadCatalog()).map(entry => ({ params: { kind: entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows', slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const local = entry.origin !== 'curated';
+const doc = local ? await getEntry('skills',entry.id) : undefined;
+if (local && !doc) throw new Error(`Missing skill document: ${entry.id}`);
+const rendered = doc ? await render(doc) : undefined;
+const Content = rendered?.Content;
+const section = entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows';
+---
+<Base title={entry.title} description={entry.description} active={section}>
+  <div class="container detail-container">
+    <a class="back-link" href={withBase(`${section}/`)}>← Back to {section}</a>
+    <div class="detail-heading"><div class="detail-badges"><span class="tag">{entry.origin}</span><span class:list={['status',{'experimental':entry.stage==='experimental'}]}>{entry.stage}</span></div><h1>{entry.title}</h1><p>{entry.description}</p></div>
+    <div class="detail-layout"><article class="prose">
+      {local && <div class="notice"><strong>Experimental starter.</strong> Source is available for review. Agent-host behavior, activation, and installation compatibility have not yet been evaluated. This is not a production-use claim.</div>}
+      {Content ? <Content /> : <><h2>Why it’s here</h2><p>{entry.outcome}</p><h2>What to consider</h2><p>{entry.note}</p><h2>Start upstream</h2><p>This entry is a curated reference, not a repackaged tool. Read the author’s current documentation for installation, requirements, license, and limitations.</p><p><a href={entry.source}>Open the official source ↗</a></p></>}
+    </article><aside class="detail-sidebar"><div class="source-panel"><h2>At a glance</h2><dl><dt>Origin</dt><dd>{entry.origin}</dd><dt>Category</dt><dd>{entry.category}</dd><dt>Author</dt><dd>{entry.author}</dd><dt>Tested agent hosts</dt><dd>{entry.testedHosts.length ? entry.testedHosts.join(', ') : 'Not evaluated'}</dd></dl><a class="button primary" href={entry.source}>{local ? 'Read SKILL.md' : 'Visit upstream'} <span aria-hidden="true">↗</span></a></div><div class="sidebar-note"><strong>Expected output</strong><p>{entry.outcome}</p>{entry.requires.length > 0 && <><strong>Prerequisites</strong><p>{entry.requires.join(' · ')}</p></>}<p>Format checks do not prove behavior. Inspect first, then evaluate.</p></div></aside></div>
+  </div>
+</Base>

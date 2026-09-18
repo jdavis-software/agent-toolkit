@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/paths';
+---
+<Base title="Page not found"><div class="container reading-page"><p class="mono muted">404</p><h1>This path ends here.</h1><p>The entry may have moved, or the URL may be incomplete.</p><a class="button primary" href={withBase()}>Back to the toolkit</a></div></Base>
