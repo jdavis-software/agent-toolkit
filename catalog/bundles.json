@@ -120,9 +120,10 @@
         "bounded-context-assembly",
         "tenant-authorization-boundaries",
         "toolchain-reproducibility",
-        "work-packet-planner"
+        "work-packet-planner",
+        "mcp-server-qualification"
       ],
-      "version": "0.1.0",
+      "version": "0.2.0",
       "stage": "experimental"
     },
     {
@@ -171,7 +172,7 @@
       "id": "web-research",
       "title": "Web Research and Source Access",
       "description": "Route sources, qualify connector access, read bounded public content, compare feeds, and produce timestamped research evidence.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "stage": "experimental",
       "skills": [
         "source-access-routing",
@@ -181,7 +182,10 @@
         "transcript-evidence-extraction",
         "authenticated-source-access",
         "multi-source-research",
-        "connector-setup-review"
+        "connector-setup-review",
+        "browser-session-isolation",
+        "structured-web-extraction",
+        "bounded-crawl-planning"
       ]
     }
   ]

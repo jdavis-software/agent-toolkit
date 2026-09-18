@@ -62,3 +62,7 @@ Use the full toolkit checkout. [Sourcekit commands](https://github.com/jdavis-so
 
 - [GitHub CLI auth status](https://cli.github.com/manual/gh_auth_status)
 - [Python subprocess](https://docs.python.org/3/library/subprocess.html)
+
+## Content-level diagnostic evidence
+
+Keep successful transport separate from the requested result. Sourcekit 0.2 can return capture `status: ok` alongside `contentAssessment.state: authentication-required` or `unknown`. Do not turn that into a connectivity failure or a successful source read. A local parser assessment also does not establish live authentication. Preserve the original capture, limits and exact operation before choosing an authorized next step.

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "structured-web-extraction",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "structured-web-extraction-trigger",
+      "kind": "trigger",
+      "input": "An approved capture has a refactored pricing layout and needs a standard monthly value.",
+      "expected": "Use an independent record/field/unit contract, validate cardinality, and retain the recovery evidence."
+    },
+    {
+      "id": "structured-web-extraction-boundary",
+      "kind": "boundary",
+      "input": "The old selector now matches a promotional amount while the standard amount has moved.",
+      "expected": "Reject the promotion despite successful selector lookup; do not claim recovery until independently justified."
+    },
+    {
+      "id": "structured-web-extraction-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling error in an unrelated local README.",
+      "expected": "Perform only the authorized small edit; do not install tools, launch browsers, crawl sources or connect credentials."
+    }
+  ]
+}

@@ -6,7 +6,7 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 ## The expanded skill collection
 
-**62 original skills · 13 primary categories · 11 overlapping bundles · 4 original utilities · 3 selected external tools.**
+**66 original skills · 13 primary categories · 11 overlapping bundles · 4 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +22,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 56 domain, orchestration, and source-access additions contain 168 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 60 domain, orchestration, source-access and qualification additions contain 180 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -90,6 +90,10 @@ The 56 domain, orchestration, and source-access additions contain 168 synthetic 
 | [Authenticated Source Access](skills/authenticated-source-access/SKILL.md) | Web and research |
 | [Multi-source Research](skills/multi-source-research/SKILL.md) | Web and research |
 | [Connector Setup Review](skills/connector-setup-review/SKILL.md) | Web and research |
+| [Browser Session Isolation](skills/browser-session-isolation/SKILL.md) | Web and research |
+| [Structured Web Extraction](skills/structured-web-extraction/SKILL.md) | Web and research |
+| [Bounded Crawl Planning](skills/bounded-crawl-planning/SKILL.md) | Web and research |
+| [MCP Server Qualification](skills/mcp-server-qualification/SKILL.md) | MCP and bundles |
 
 <!-- skill-index:end -->
 
@@ -176,3 +180,9 @@ A license for this repository's original content has not yet been selected. Publ
 The original [Sourcekit](docs/SOURCEKIT.md) companion adds bounded public HTTPS reads, RSS/Atom/JSON Feed snapshots and comparisons, and WebVTT/SRT evidence parsing. [Browse the bundle](https://jdavis-software.github.io/agent-toolkit/bundles/web-research/). Authenticated platform adapters remain separate; source routing is not a claim of installed access. Python 3.10+ is required for this optional companion and its tests.
 
 [Agent-Reach architecture research](docs/research/AGENT_REACH.md) records the pinned reference and the differences in our original implementation.
+
+## Content correctness and web qualification
+
+Sourcekit 0.2 separates capture success from a conservative content assessment. Explicit `--require-content` checks declared literal expectations without claiming semantic truth. Optional link references never trigger a crawl. Four original skills cover browser-session isolation, structured extraction, bounded crawl planning and MCP server qualification.
+
+[Implementation and limits](docs/WEB_QUALIFICATION.md) · [Optional pinned Scrapling parser evaluation](evals/scrapling/README.md). The optional parser environment is separate from the website and default tools; it adds no browser or MCP service.

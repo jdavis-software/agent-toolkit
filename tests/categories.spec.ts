@@ -7,7 +7,7 @@ test('category directory renders counted cards and usable keyboard focus',async(
  await expect(page).toHaveTitle(/Categories/);await expect(page.getByRole('heading',{level:1})).toContainText('Explore by category');
  const categories:Category[]=(await(await request.get(base+'categories.json')).json()).categories;
  await expect(page.locator('[data-category-card]')).toHaveCount(13);
- expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(69);
+ expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(73);
  for(const c of categories){const card=page.locator(`[data-category-card="${c.id}"]`);await expect(card).toContainText(c.title);await expect(card).toContainText(`${c.counts.entries} ${c.counts.entries===1?'entry':'entries'}`);await expect(card).toHaveAttribute('href',base+`categories/${c.id}/`);}
  const first=page.locator('[data-category-card]').first();await first.focus();await expect(first).toBeFocused();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
@@ -48,14 +48,14 @@ test('web research category, canonical skill, bundle and Sourcekit detail work',
  await page.locator('[data-category-card="web-research"]').click();
  await expect(page).toHaveURL(/categories\/web-research\/$/);
  await expect(page.getByRole('heading',{level:1})).toHaveText('Web & Research');
- await expect(page.locator('[data-entry]:visible')).toHaveCount(9);
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(12);
  await page.getByRole('searchbox').fill('feed-change-tracking');
  await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
  await page.getByRole('link',{name:'Feed Change Tracking',exact:false}).first().click();
  await expect(page.getByRole('heading',{level:1})).toHaveText('Feed Change Tracking');
  await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/feed-change-tracking\/SKILL.md$/);
  await page.goto(base+'bundles/web-research/');
- await expect(page.locator('[data-entry]')).toHaveCount(8);
+ await expect(page.locator('[data-entry]')).toHaveCount(11);
  await page.goto(base+'tools/sourcekit/');
  await expect(page.getByRole('heading',{level:1})).toHaveText('Sourcekit');
  await expect(page.getByRole('link',{name:'Read tool source'})).toHaveAttribute('href',/tools\/sourcekit.mjs$/);
@@ -63,4 +63,38 @@ test('web research category, canonical skill, bundle and Sourcekit detail work',
  await page.screenshot({path:`test-results/${testInfo.project.name}-web-research.png`,fullPage:true});
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
  expect((await request.get(base+'bundles/web-research/')).status()).toBe(200);
+});
+
+test('web qualification additions expose original source and remain searchable',async({page,request},testInfo)=>{
+ const errors:string[]=[]; page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'categories/web-research/');
+ await page.getByRole('searchbox').fill('structured-web-extraction');
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
+ await page.getByRole('link',{name:'Structured Web Extraction',exact:true}).click();
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Structured Web Extraction');
+ await expect(page.locator('.prose')).toContainText('decoy');
+ await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/structured-web-extraction\/SKILL.md$/);
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:`test-results/${testInfo.project.name}-web-qualification.png`,fullPage:true});
+ for(const id of ['browser-session-isolation','bounded-crawl-planning','mcp-server-qualification']){
+  await page.goto(base+'skills/'+id+'/');
+  await expect(page.getByRole('heading',{name:'Procedure',exact:true})).toBeVisible();
+ }
+ await page.goto(base+'tools/sourcekit/');
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Sourcekit');
+ await expect(page.locator('main')).toContainText('content assessment');
+ expect(errors).toEqual([]);
+});
+
+test('fresh synthetic browser contexts do not share cookie or localStorage state',async({browser})=>{
+ const a=await browser.newContext(), b=await browser.newContext();
+ try{
+  const pa=await a.newPage(),pb=await b.newPage();
+  await Promise.all([pa.goto('http://127.0.0.1:4321'+base),pb.goto('http://127.0.0.1:4321'+base)]);
+  await pa.evaluate(()=>{localStorage.setItem('synthetic-lane','alpha');document.cookie='synthetic_session=alpha; Path=/';});
+  expect(await pa.evaluate(()=>localStorage.getItem('synthetic-lane'))).toBe('alpha');
+  expect(await pb.evaluate(()=>localStorage.getItem('synthetic-lane'))).toBeNull();
+  expect(await pb.evaluate(()=>document.cookie)).not.toContain('synthetic_session');
+  expect((await a.cookies()).some(c=>c.name==='synthetic_session')).toBeTruthy();
+ }finally{await a.close();await b.close();}
 });

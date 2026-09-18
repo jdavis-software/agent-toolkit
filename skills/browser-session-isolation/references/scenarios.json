@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "browser-session-isolation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "browser-session-isolation-trigger",
+      "kind": "trigger",
+      "input": "Two simultaneous agent lanes require rendered inspection of independent synthetic pages.",
+      "expected": "Allocate separate contexts, verify each page, prove storage separation, and close only owned contexts."
+    },
+    {
+      "id": "browser-session-isolation-boundary",
+      "kind": "boundary",
+      "input": "A browser profile is already held by another lane and the account state is not approved.",
+      "expected": "Block reuse; allocate an approved separate context or reconcile ownership without clearing the other profile."
+    },
+    {
+      "id": "browser-session-isolation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling error in an unrelated local README.",
+      "expected": "Perform only the authorized small edit; do not install tools, launch browsers, crawl sources or connect credentials."
+    }
+  ]
+}
