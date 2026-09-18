@@ -1,8 +1,10 @@
 import { readFile, readdir, realpath } from 'node:fs/promises';
-import { dirname, resolve, sep } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { resolve, sep } from 'node:path';
 import { load } from 'js-yaml';
-export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+// Astro bundles this module into dist/.prerender. Resolve source inputs from
+// the project working directory, not the location of the generated chunk.
+// Run repository commands from the root (or use pnpm --dir <repo>).
+export const root = resolve(process.cwd());
 export const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export function validateEntries(entries) {
@@ -38,6 +40,8 @@ export function parseSkill(text, id) {
   return { name: data.name, description: data.description, body: match[2] };
 }
 export async function loadCatalog() {
+  const manifest = JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
+  if (manifest.name !== 'agent-toolkit') throw new Error('Run catalog commands from the agent-toolkit repository root');
   const entries = validateEntries(JSON.parse(await readFile(resolve(root, 'catalog/entries.json'),'utf8')));
   const rootPath = await realpath(root);
   const local = entries.filter(e => e.origin !== 'curated');
