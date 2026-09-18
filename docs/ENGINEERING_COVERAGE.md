@@ -1,6 +1,6 @@
 # Engineering coverage and evidence
 
-The collection contains 54 original skills: six core procedures, 30 domain skills, and 18 orchestration/runtime/context additions. Three original utilities and three separately identified external tools make 60 catalog entries. Twelve primary categories partition those entries without duplicate counts. Ten overlapping bundles select canonical packages rather than copy their instructions.
+The collection contains 62 original skills: six core procedures, 30 domain skills, 18 orchestration/runtime/context additions, and eight source-access skills. Four original utilities and three separately identified external tools make 69 catalog entries. Thirteen primary categories partition those entries without duplicate counts. Eleven overlapping bundles select canonical packages rather than copy their instructions.
 
 ## Inputs to the design
 
@@ -25,7 +25,7 @@ Those sources mix architectural direction, proposed experiments, illustrative mo
 | Runtime and evaluation | Permission delegation, approval boundaries, budgets, loop detection, delegation evaluation |
 | Context and memory | Context budgeting and recoverable checkpoints |
 
-The six core skills retain their executable Skillcheck support. Domain and orchestration instructions include 144 synthetic scenario inputs in JSON; these are not 144 completed host evaluations. Earlier core scenario notes remain available separately. New skills describe procedures and actual boundaries, not newly implemented compilers, provider services, or autonomous workers.
+The six core skills retain their executable Skillcheck support. Domain and orchestration instructions include 168 synthetic scenario inputs in JSON; these are not 168 completed host evaluations. Earlier core scenario notes remain available separately. New skills describe procedures and actual boundaries, not newly implemented compilers, provider services, or autonomous workers.
 
 ## Executable coordination
 
@@ -46,3 +46,5 @@ Agent-host outcomes are a separate evidence layer. All scenario documents retain
 ## Canonical maintenance
 
 Edit each skill's name, description, and instructions in its `SKILL.md`; metadata belongs in `catalog/entries.json`. Edit bundle selections in `catalog/bundles.json` and primary category definitions in `catalog/categories.json`. Regenerate the README index with `node scripts/readme.mjs --write`. Keep published counts and selection links aligned with those sources. Private projects pin the public source and supply bindings outside this repository; see [private adapters](PRIVATE_ADAPTERS.md).
+
+Sourcekit adds actually executable public text/feed/caption intake, not authenticated social-platform adapters. Separate local parsing, mocked transport-policy tests, live public read checks, and agent-host evaluations in evidence.

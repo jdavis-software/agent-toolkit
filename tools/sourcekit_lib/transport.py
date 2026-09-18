@@ -107,9 +107,13 @@ def fetch_public(url: str, allowed_hosts: list[str], *, timeout=15):
                 chunks.append(block); size += len(block)
                 if size > MAX_BYTES:
                     fail('too-large', 'Response exceeds 1 MiB; partial content is rejected.')
+            if length is not None and size != int(length):
+                fail('incomplete-response', 'Response ended before its declared length; partial content is rejected.')
             return b''.join(chunks), {'finalUrl': current, 'mimeType': mime, 'redirects': hop, 'httpStatus': status}
         except SourceError:
             raise
+        except socket.timeout:
+            fail('timeout', 'Public HTTPS operation timed out; partial content is rejected.')
         except (OSError, http.client.HTTPException, ssl.SSLError):
             fail('network-error', 'Public HTTPS read failed; no credential or private-network fallback was attempted.')
         finally:

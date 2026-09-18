@@ -1570,5 +1570,301 @@
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Coordination core, not a sandbox or live distributed scheduler. Registry, usage, approvals and reviews are caller-supplied.",
     "categoryId": "agent-orchestration"
+  },
+  {
+    "id": "source-access-routing",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/source-access-routing/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "source",
+      "access",
+      "routing"
+    ],
+    "scenarioPath": "skills/source-access-routing/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A routing record distinguishing requested operation, source identity, selected path, observed capabilities, authorization, missing evidence, and accepted fallback conditions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "connector-health-diagnostics",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/connector-health-diagnostics/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "connector",
+      "health",
+      "diagnostics"
+    ],
+    "scenarioPath": "skills/connector-health-diagnostics/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A per-operation health matrix with evidence level, timestamp, binding, failure class, redacted evidence, and a minimal repair or recheck plan.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "public-web-reading",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/public-web-reading/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "public",
+      "web",
+      "reading"
+    ],
+    "scenarioPath": "skills/public-web-reading/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A bounded Sourcekit document packet and a source-grounded answer, with extraction, access, and freshness limitations retained.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "feed-change-tracking",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/feed-change-tracking/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "feed",
+      "change",
+      "tracking"
+    ],
+    "scenarioPath": "skills/feed-change-tracking/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A validated current feed packet plus stable-ID changes, explicit comparison completeness, preserved prior checkpoint, and delivery decisions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "transcript-evidence-extraction",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/transcript-evidence-extraction/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "transcript",
+      "evidence",
+      "extraction"
+    ],
+    "scenarioPath": "skills/transcript-evidence-extraction/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A local or live-adapter caption provenance record, timestamped cue packet, and summary with traceable time ranges and modality limits.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "authenticated-source-access",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/authenticated-source-access/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "authenticated",
+      "source",
+      "access"
+    ],
+    "scenarioPath": "skills/authenticated-source-access/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A bounded access result or precise blocked state, with account/workspace binding, approved operation, source references, redaction decisions, and limitations.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "multi-source-research",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/multi-source-research/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "multi",
+      "source",
+      "research"
+    ],
+    "scenarioPath": "skills/multi-source-research/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A research brief with claim-to-source mapping, revisions, evidence class, counterevidence, gaps, and explicit adoption recommendations.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "connector-setup-review",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/connector-setup-review/SKILL.md",
+    "packageVersion": "0.1.0",
+    "companionTools": [
+      "sourcekit"
+    ],
+    "tags": [
+      "source access",
+      "web",
+      "research",
+      "Agent-Reach research",
+      "connector",
+      "setup",
+      "review"
+    ],
+    "scenarioPath": "skills/connector-setup-review/references/scenarios.json",
+    "requires": [
+      "Authorized source/operation and data destination",
+      "Full toolkit checkout for the companion",
+      "Python 3.10+ for Sourcekit; approved connector for authenticated platforms"
+    ],
+    "outcome": "A reviewed setup or upgrade plan with source pin, effect inventory, permissions, execution scope, operation tests, recovery, and owned uninstall boundaries.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original source-access procedure with technical references and not-run scenario inputs; no platform or agent-host compatibility claim."
+  },
+  {
+    "id": "sourcekit",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Source intake",
+    "categoryId": "web-research",
+    "title": "Sourcekit",
+    "description": "Bounded public HTTPS reading, feed snapshots and diffs, timestamped caption parsing, and honest offline source routing. No platform logins or automatic installation.",
+    "sourcePath": "tools/sourcekit.mjs",
+    "docsPath": "docs/SOURCEKIT.md",
+    "tags": [
+      "web",
+      "research",
+      "RSS",
+      "Atom",
+      "JSON Feed",
+      "WebVTT",
+      "SRT",
+      "transcripts",
+      "source access"
+    ],
+    "requires": [
+      "Python 3.10+",
+      "Explicit host approval for network reads"
+    ],
+    "outcome": "Source-linked JSON packets with byte/content hashes, timestamps, representation limits, and explicit failure states.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Implemented reader/parser and offline adviser. Social/video adapter recognition does not implement authenticated access or video downloading."
   }
 ]

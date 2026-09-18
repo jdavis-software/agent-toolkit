@@ -167,6 +167,16 @@ class NetworkPolicyTests(unittest.TestCase):
         for status,code in [(401,'authentication-required'),(403,'access-denied'),(429,'rate-limited'),(500,'http-error')]:
             with self.subTest(status=status),self.assertRaises(SourceError) as context:self.fake_request([(status,{},b'secret')])
             self.assertEqual(context.exception.code,code);self.assertNotIn('secret',str(context.exception))
+    def test_incomplete_content_length_fails(self):
+        with self.assertRaises(SourceError) as error:
+            self.fake_request([(200,{'Content-Type':'text/plain','Content-Length':'100'},b'short')])
+        self.assertEqual(error.exception.code,'incomplete-response')
+    def test_socket_timeout_is_not_generic_error(self):
+        from unittest.mock import MagicMock
+        conn=MagicMock();conn.request.side_effect=socket.timeout()
+        with patch('sourcekit_lib.transport.resolve_public',return_value=('numeric','only')),patch('sourcekit_lib.transport.PinnedHTTPS',return_value=conn),self.assertRaises(SourceError) as error:
+            fetch_public('https://example.com/',['example.com'])
+        self.assertEqual(error.exception.code,'timeout');conn.close.assert_called_once()
     def test_compressed_and_binary_bodies_denied(self):
         for headers in [{'Content-Type':'text/plain','Content-Encoding':'gzip'},{'Content-Type':'application/octet-stream'},{'Content-Type':'text/plain; charset=iso-8859-1'}]:
             with self.assertRaises(SourceError):self.fake_request([(200,headers,b'x')])

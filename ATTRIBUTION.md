@@ -22,3 +22,7 @@ This table preserves the initial research/reference record. It is not the curren
 ECC informed initial discoverability; Vercel informed initial focused-packaging research. No affiliation or endorsement is implied. The original skill pages link to this repository's own instructions. External tool descriptions are summaries, not compatibility certifications.
 
 Actual reused materials and dependencies retain applicable notices and license terms. Original repository licensing remains pending the owner's choice; this file grants no additional rights and does not relicense external projects.
+
+## Agent-Reach research
+
+[Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) at `a19a171fa980a0785849596492e0af4db800c82f` informed the source-access problem assessment. [The review](docs/research/AGENT_REACH.md) links the inspected implementation. Sourcekit and the eight source-access procedures are newly authored for this collection; no upstream code, skill text, assets, or packages are redistributed here. Underlying protocols and optional external tools retain their actual identities.

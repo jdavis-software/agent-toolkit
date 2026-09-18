@@ -2,7 +2,7 @@
 
 A bundle selects canonical skill packages for a class of work. It does not create a new agent runtime, install skills, load all instructions into every task, or grant permission to execute tools. The supported starting point is a full checkout of this repository.
 
-The collection contains 36 original skills selected into eight overlapping bundles. The website and bundle resolver read `catalog/bundles.json`; there is no separately maintained copy of the selection in the UI.
+The collection contains 62 original skills selected into eleven overlapping bundles. The website and bundle resolver read `catalog/bundles.json`; there is no separately maintained copy of the selection in the UI.
 
 | Bundle ID | Focus |
 | --- | --- |
@@ -55,6 +55,10 @@ Public bundles deliberately contain no company-specific overrides. They are a fo
 
 ## Evidence levels
 
-Package/frontmatter and scenario checks validate structure. Bundle tests validate selection, file boundaries, fingerprints, and strict Git behavior. Skillcheck tests exercise its mechanical checks. Website tests validate browsing and rendering. None of these establishes the effectiveness of all 36 instructions inside an agent host.
+Package/frontmatter and scenario checks validate structure. Bundle tests validate selection, file boundaries, fingerprints, and strict Git behavior. Skillcheck tests exercise its mechanical checks. Website tests validate browsing and rendering. None of these establishes the effectiveness of all 62 instructions inside an agent host.
 
 Each new domain skill includes three synthetic cases at `references/scenarios.json`: intended activation, a difficult boundary, and a non-trigger. Their status remains `not-run` until a real host evaluation is recorded separately. Do not change a source scenario into a fabricated successful transcript.
+
+## Source-access companion
+
+The `web-research` bundle selects eight canonical skills and includes the Sourcekit Node wrapper, Python implementation/modules, and command documentation. Python 3.10+ is required to run that optional tool; resolving the bundle itself remains a read-only Node operation. No connector, interpreter, or package is installed automatically.
