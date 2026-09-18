@@ -1,0 +1,44 @@
+name: Read supplied public research list
+on:
+  push:
+    branches: [research/rentry-wikc9oo7]
+    paths: [.github/workflows/research-source-read.yml]
+permissions:
+  contents: read
+jobs:
+  read:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/research/rentry-wikc9oo7'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+          ref: bd328660b0123a0f0a3191f230a9392b12728cbb
+      - name: Capture supplied public text without executing it
+        env:
+          EVIDENCE_DIR: ${{ runner.temp }}/research-source
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, subprocess
+          output = pathlib.Path(os.environ['EVIDENCE_DIR'])
+          output.mkdir(mode=0o700, exist_ok=True)
+          attempts = []
+          for name, url in [('raw','https://rentry.org/wikc9oo7/raw'), ('page','https://rentry.org/wikc9oo7')]:
+              try:
+                  result = subprocess.run(['python3','tools/sourcekit.py','read',url,'--allow-host','rentry.org'], capture_output=True, timeout=50)
+                  (output / (name + '.json')).write_bytes(result.stdout[:2000000])
+                  attempts.append({'representation':name,'exitCode':result.returncode,'bytes':len(result.stdout)})
+                  if result.returncode == 0:
+                      break
+              except subprocess.TimeoutExpired:
+                  attempts.append({'representation':name,'status':'process-timeout'})
+          (output / 'attempts.json').write_text(json.dumps(attempts,indent=2))
+          print(json.dumps(attempts))
+          PY
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: supplied-research-source
+          path: ${{ runner.temp }}/research-source/
+          retention-days: 1
