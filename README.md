@@ -1,55 +1,80 @@
-# Jordan's Agent Toolkit Collection
+# Jordan’s Agent Toolkit Collection
 
-A personal collection of original agent skills, engineering workflows, and selected developer tools. One place to explore the work, inspect the source, and share a useful approach from a profile or an article.
+A personal collection of standout agent skills, workflows, and developer tools from across the community—selected by Jordan Davis and gathered in one place.
 
-[Explore the website](https://jdavis-software.github.io/agent-toolkit/) · [Browse the skills](skills/) · [Follow the workflow](https://jdavis-software.github.io/agent-toolkit/workflows/) · [Read the engineering article](https://jdavis-software.github.io/content/articles/parallel-agent-engineering/)
+**[Explore the collection](https://jdavis-software.github.io/agent-toolkit/)** · [Sources & authors](https://jdavis-software.github.io/agent-toolkit/sources/) · [My GitHub](https://github.com/jdavis-software) · [Engineering articles](https://jdavis-software.github.io/content/)
 
-## The skill collection
+This is a curated collection, not a claim that I authored every component. It brings together individual selections from Vercel, ECC, Superpowers, Anthropic, and Supabase, alongside useful tools and a small original starter collection. Each entry explains why it is included and what to consider before using it.
 
-| Skill | What it produces |
-| --- | --- |
-| [Work Packet Planner](skills/work-packet-planner/SKILL.md) | A bounded task with ownership, dependencies, and acceptance criteria. |
-| [Worktree Handoff](skills/worktree-handoff/SKILL.md) | A commit-specific account of changes, checks, and unresolved work. |
-| [Affected Verification](skills/affected-verification/SKILL.md) | Focused checks with explicit passed, failed, blocked, and untested results. |
-| [Evidence First Debugging](skills/evidence-first-debugging/SKILL.md) | A supported diagnosis and bounded repair tied to the original reproduction. |
-| [Behavior Test Design](skills/behavior-test-design/SKILL.md) | Requirement-linked cases that test observable behavior and meaningful boundaries. |
-| [Interface Quality Review](skills/interface-quality-review/SKILL.md) | Reproducible rendered-interface findings and scoped verification. |
+## Explore the selections
 
-These skills were written for this collection with AI assistance. They are experimental: synthetic examples and evaluation scenarios are not claims of completed agent-host tests, prior production use, or productivity gains. The latest additions are new task-specific procedures, not renamed upstream files.
+<!-- collection:start -->
 
-## Collection, not a link directory
+| Selection | Source | Availability |
+| --- | --- | --- |
+| [React Best Practices](https://jdavis-software.github.io/agent-toolkit/skills/vercel-react-best-practices/) | Vercel Agent Skills | Upstream link |
+| [React Composition Patterns](https://jdavis-software.github.io/agent-toolkit/skills/vercel-composition-patterns/) | Vercel Agent Skills | Upstream link |
+| [Frontend Design](https://jdavis-software.github.io/agent-toolkit/skills/anthropic-frontend-design/) | Anthropic Skills | Source included |
+| [Web Interface Review](https://jdavis-software.github.io/agent-toolkit/skills/vercel-web-design-guidelines/) | Vercel Agent Skills | Upstream link |
+| [Search Before You Build](https://jdavis-software.github.io/agent-toolkit/workflows/ecc-search-first/) | ECC | Source included |
+| [Systematic Debugging](https://jdavis-software.github.io/agent-toolkit/workflows/superpowers-systematic-debugging/) | Superpowers | Source included |
+| [Test-Driven Development](https://jdavis-software.github.io/agent-toolkit/workflows/ecc-tdd-workflow/) | ECC | Source included |
+| [Web App Testing](https://jdavis-software.github.io/agent-toolkit/skills/anthropic-webapp-testing/) | Anthropic Skills | Source included |
+| [Verification Loop](https://jdavis-software.github.io/agent-toolkit/workflows/ecc-verification-loop/) | ECC | Source included |
+| [Evidence Before Completion](https://jdavis-software.github.io/agent-toolkit/workflows/superpowers-verification-before-completion/) | Superpowers | Source included |
+| [Working in Git Worktrees](https://jdavis-software.github.io/agent-toolkit/workflows/superpowers-using-git-worktrees/) | Superpowers | Source included |
+| [API Design](https://jdavis-software.github.io/agent-toolkit/skills/ecc-api-design/) | ECC | Source included |
+| [Go Development Patterns](https://jdavis-software.github.io/agent-toolkit/skills/ecc-golang-patterns/) | ECC | Source included |
+| [Go Testing Patterns](https://jdavis-software.github.io/agent-toolkit/skills/ecc-golang-testing/) | ECC | Source included |
+| [Postgres Best Practices](https://jdavis-software.github.io/agent-toolkit/skills/supabase-supabase-postgres-best-practices/) | Supabase Agent Skills | Source included |
+| [Document Co-Authoring](https://jdavis-software.github.io/agent-toolkit/workflows/anthropic-doc-coauthoring/) | Anthropic Skills | Upstream link |
+| [Skills CLI](https://jdavis-software.github.io/agent-toolkit/tools/skills-cli/) | Vercel | Upstream link |
+| [Nx AI Integration](https://jdavis-software.github.io/agent-toolkit/tools/nx/) | Nx | Upstream link |
+| [Playwright MCP](https://jdavis-software.github.io/agent-toolkit/tools/playwright-mcp/) | Microsoft | Upstream link |
+| [Work Packet Planner](https://jdavis-software.github.io/agent-toolkit/skills/work-packet-planner/) | Jordan’s starters | Experimental starter |
+| [Worktree Handoff](https://jdavis-software.github.io/agent-toolkit/skills/worktree-handoff/) | Jordan’s starters | Experimental starter |
+| [Affected Verification](https://jdavis-software.github.io/agent-toolkit/skills/affected-verification/) | Jordan’s starters | Experimental starter |
+| [Evidence First Debugging](https://jdavis-software.github.io/agent-toolkit/skills/evidence-first-debugging/) | Jordan’s starters | Experimental starter |
+| [Behavior Test Design](https://jdavis-software.github.io/agent-toolkit/skills/behavior-test-design/) | Jordan’s starters | Experimental starter |
+| [Interface Quality Review](https://jdavis-software.github.io/agent-toolkit/skills/interface-quality-review/) | Jordan’s starters | Experimental starter |
 
-The primary skill catalog contains local instructions and examples. External executable tools remain in a separate Tools collection with their real authors and source links. The website does not install them, and this repository does not claim to have implemented them.
+<!-- collection:end -->
 
-[Original authoring approach](docs/ORIGINAL_SKILLS.md) · [Catalog metadata](catalog/entries.json) · [Getting started](docs/GETTING_STARTED.md) · [Roadmap](docs/ROADMAP.md) · [Contribution guide](CONTRIBUTING.md)
+## What is included
 
-## Develop
+**Source included:** the selected package is copied byte-for-byte into `vendor/<source>/<package>/`, including its supporting files and applicable license. Original authors keep their credit. `catalog/upstream-lock.json` records each file’s source revision and SHA-256; validation fails on drift.
 
-Use Node 24 and the pinned package manager, `pnpm@12.4.2`.
+**Upstream link:** the full tool or package stays with its author. Some packages remain linked because redistribution details need further review. A link can still be a useful curated selection; it is not counted as an original skill.
+
+**Experimental starter:** newly written AI-assisted instructions in `skills/`. These are not represented as existing private production tools. A license for original repository content has not yet been selected. The licenses of copied packages apply to those packages, not to this entire repository.
+
+## Using the collection
+
+The [task-to-handoff workflow](https://jdavis-software.github.io/agent-toolkit/workflows/task-to-handoff/) connects the six original starter skills. Community selections complement this workflow rather than replace it.
+
+Choose the problem first, then read the selection notes and complete source package. Keep the original package folder intact so references and helpers are available. Follow the target agent host’s documented installation method in a disposable project before enabling a skill in real work. The collection does not automatically install tools, activate hooks, or grant credentials. Some packages reference broader frameworks or live external documents.
+
+Several testing and verification workflows overlap. Compare them; do not blindly enable all of them. Source review and website tests are not agent-host evaluations, security certifications, or claims that Jordan uses every selection in production.
+
+## Contributing and maintenance
+
+Suggest a concrete skill or tool with its use case and source. See [CONTRIBUTING.md](CONTRIBUTING.md), [ATTRIBUTION.md](ATTRIBUTION.md), and [the curation policy](docs/CURATION.md). Upstream changes are reviewed before adoption, never silently synchronized at build time. No private Notion exports, credentials, company code, or machine configurations belong here.
+
+## Website development
+
+Run commands from the repository root with Node 24 and the pinned `pnpm@12.4.2`:
 
 ```bash
-npm install --global pnpm@12.4.2
 pnpm install --frozen-lockfile
+pnpm validate
+pnpm test
+pnpm check
+pnpm build
+pnpm exec playwright install chromium
+pnpm test:site
 pnpm dev
 ```
 
-```bash
-pnpm validate  # Package shape and provenance checks
-pnpm test      # Catalog and boundary tests
-pnpm check     # Astro / TypeScript checks
-pnpm build     # Static output in dist/
-pnpm exec playwright install chromium
-pnpm test:site # Browser tests against the production build
-```
+The Astro site uses `/agent-toolkit/` as its base. The catalog, source registry, public JSON, and this README’s selection table share the same metadata. After changing metadata, run `node scripts/readme.mjs --write`; CI checks for drift. The website builds offline from the committed source packages, without calling Notion or upstream repositories.
 
-The site uses `/agent-toolkit/` as its base, including during local development. Repository checks and browser tests do not evaluate agent-host behavior.
-
-## Hosting
-
-The deployment workflow builds and publishes changes that reach `main`. GitHub Pages uses GitHub Actions as its source. No database, hosted MCP server, paid CMS, or Notion credentials are needed by the site. Check the deployment run for the revision currently published.
-
-## Authorship and terms
-
-The collection is maintained for Jordan Davis. Research can guide which problems to solve; each original package needs its own instructions, examples, and honest evidence. Actual reused materials and dependencies retain applicable notices and terms. See [ATTRIBUTION.md](ATTRIBUTION.md), [docs/ORIGINAL_SKILLS.md](docs/ORIGINAL_SKILLS.md), and [AGENTS.md](AGENTS.md).
-
-A license for this repository's original content has not yet been selected. Public source visibility does not itself grant a reuse license. External projects retain their own terms; none are relicensed by this repository. Never publish private configurations, credentials, company code, or unapproved knowledge-base content here.
+GitHub Actions validates the combined changes and deploys approved `main` revisions to GitHub Pages. See [the roadmap](docs/ROADMAP.md) for work that remains separate from publishing the website.

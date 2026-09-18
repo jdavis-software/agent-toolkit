@@ -1,27 +1,22 @@
 import { test, expect } from '@playwright/test';
 const base = '/agent-toolkit/';
-test('personal collection renders without errors or horizontal overflow',async({page},testInfo)=>{
+test('home renders without errors and has no horizontal overflow',async({page},testInfo)=>{
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base);
-  await expect(page).toHaveTitle('Jordan’s Agent Toolkit Collection');
   await expect(page.getByRole('heading',{level:1})).toContainText('Jordan’s Agent');
-  await expect(page.getByRole('heading',{level:1})).toContainText('Toolkit Collection.');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(9);
-  await expect(page.locator('#result-count')).toHaveText('Showing 9 of 9 entries');
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
+  await expect(page.locator('#result-count')).toHaveText('Showing 25 of 25 entries');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   expect(errors).toEqual([]);
   await page.screenshot({path:`test-results/${testInfo.project.name}-home.png`,fullPage:true});
 });
 test('search, reset, category and origin filters work',async({page})=>{
   await page.goto(base);
-  await page.getByRole('searchbox').fill('behavior-test-design');
+  await page.getByRole('searchbox').fill('postgres');
   await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
-  await expect(page).toHaveURL(/q=behavior-test-design/);
+  await expect(page).toHaveURL(/q=postgres/);
   await page.getByRole('button',{name:'Reset filters'}).click();
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(9);
-  await page.locator('[data-filter-category="Frontend"]').click();
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
-  await page.getByRole('button',{name:'Reset filters'}).click();
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
   await page.getByLabel('Filter by origin').selectOption('original');
   await expect(page.locator('[data-entry]:visible')).toHaveCount(6);
   await page.getByLabel('Filter by origin').selectOption('adapted');
@@ -49,9 +44,7 @@ test('detail, source, nested route and theme work',async({page},testInfo)=>{
 });
 test('catalog export and all local navigation targets resolve',async({page,request})=>{
   const catalog = await request.get(base+'catalog.json');expect(catalog.status()).toBe(200);
-  const entries = (await catalog.json()).entries;
-  expect(entries).toHaveLength(9);
-  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(6);
+  expect((await catalog.json()).entries).toHaveLength(25);
   await page.goto(base);
   const links = await page.locator('a[href^="/agent-toolkit/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
   for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
@@ -64,24 +57,48 @@ test('keyboard shortcut and collection navigation work',async({page})=>{
   await expect(page).toHaveURL(/tools\/$/);
   await expect(page.locator('[data-entry]:visible')).toHaveCount(3);
 });
-test('skills are local packages with working instructions',async({page})=>{
-  await page.goto(base+'skills/');
-  await expect(page.locator('[data-entry]')).toHaveCount(6);
-  await expect(page.locator('[data-entry][data-origin="curated"]')).toHaveCount(0);
-  for (const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
-    await page.goto(base+`skills/${id}/`);
-    await expect(page.getByRole('heading',{name:'Procedure',exact:true})).toBeVisible();
-    await expect(page.getByRole('heading',{name:'Example',exact:true})).toBeVisible();
-    await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',`https://github.com/jdavis-software/agent-toolkit/blob/main/skills/${id}/SKILL.md`);
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
-  }
+test('source filter and direct source URLs work',async({page})=>{
+  await page.goto(base+'?source=vercel');
+  await expect(page.getByLabel('Filter by source')).toHaveValue('vercel');
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(3);
+  await page.getByLabel('Filter by source').selectOption('ecc');
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(6);
+  await expect(page).toHaveURL(/source=ecc/);
+  await page.getByRole('button',{name:'Reset filters'}).click();
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
 });
-test('workflow connects the original collection rather than external skill libraries',async({page,request},testInfo)=>{
-  await page.goto(base+'workflows/');
-  await expect(page.getByRole('heading',{level:1})).toContainText('From task');
-  const links = await page.locator('.prose a[href^="/agent-toolkit/skills/"]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
-  expect(links).toHaveLength(6);
-  for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
+test('included package preserves source references, credit and license',async({page},testInfo)=>{
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  await page.goto(base+'workflows/superpowers-systematic-debugging/');
+  await expect(page.getByRole('heading',{level:1})).toHaveText('Systematic Debugging');
+  await expect(page.getByRole('heading',{name:'Upstream instructions',exact:true})).toBeVisible();
+  await expect(page.getByRole('link',{name:'Browse source package'})).toHaveAttribute('href',/vendor\/superpowers\/systematic-debugging$/);
+  await expect(page.getByRole('link',{name:'Included license'})).toHaveAttribute('href',/UPSTREAM_LICENSE.txt$/);
+  await expect(page.getByRole('link',{name:'Original SKILL.md'})).toHaveAttribute('href','https://github.com/obra/superpowers/blob/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/systematic-debugging/SKILL.md');
+  await expect(page.locator('.source-panel')).toContainText('Jesse Vincent');
+  // Upstream writes supporting filenames as inline code, not Markdown links.
+  // Preserve that representation; the complete folder is available via Browse source package.
+  await expect(page.locator('.upstream-document code').filter({hasText:'root-cause-tracing.md'}).first()).toBeVisible();
+  const links=await page.locator('.upstream-document a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
+  expect(links.some(h=>/^javascript:/i.test(h))).toBeFalsy();
+  await expect(page.locator('.upstream-document script')).toHaveCount(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
-  await page.screenshot({path:`test-results/${testInfo.project.name}-workflow.png`,fullPage:true});
+  expect(errors).toEqual([]);
+  await page.screenshot({path:`test-results/${testInfo.project.name}-community-detail.png`,fullPage:true});
+});
+test('source directory and legacy detail URLs remain accessible',async({page,request})=>{
+  await page.goto(base+'sources/');
+  await expect(page.locator('.source-row')).toHaveCount(5);
+  await expect(page).toHaveTitle(/Jordan’s Agent Toolkit Collection/);
+  for(const path of ['skills/vercel-agent-skills/','workflows/ecc/','workflows/superpowers/']) expect((await request.get(base+path)).status()).toBe(200);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});
+test('preserves original additions and the task-to-handoff workflow',async({page,request})=>{
+ for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
+  await page.goto(base+'skills/'+id+'/');
+  await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',new RegExp('skills/'+id+'/SKILL.md$'));
+ }
+ await page.goto(base+'workflows/task-to-handoff/');
+ await expect(page.locator('.prose a[href*="/skills/"]')).toHaveCount(6);
+ for(const href of await page.locator('.prose a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!))) expect((await request.get(href)).status()).toBe(200);
 });

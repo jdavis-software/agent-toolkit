@@ -1,11 +1,12 @@
 ---
 import Base from '../layouts/Base.astro';
 import Card from './Card.astro';
-import { loadCatalog } from '../../scripts/catalog.mjs';
+import { loadCatalog, loadSources } from '../../scripts/catalog.mjs';
 import { withBase, repository } from '../lib/paths';
 interface Props { kind?: string; title?: string; description?: string; home?: boolean; }
-const { kind = 'all', title = 'Explore the collection', description, home = false } = Astro.props;
-const all = await loadCatalog();
+const { kind = 'all', title = 'Explore the toolkit', description, home = false } = Astro.props;
+const all = (await loadCatalog()).filter(e => e.listed !== false);
+const sources = await loadSources();
 const entries = kind === 'all' ? all : all.filter(e => e.kind === kind);
 const categories = [...new Set(entries.map(e => e.category))].sort();
 const active = kind === 'all' ? '' : kind === 'skill' ? 'skills' : kind === 'tool' ? 'tools' : 'workflows';
@@ -13,19 +14,21 @@ const active = kind === 'all' ? '' : kind === 'skill' ? 'skills' : kind === 'too
 <Base title={home ? 'Jordan’s Agent Toolkit Collection' : title} active={active}>
   <div class="container">
     {home ? <section class="hero">
-      <div class="hero-copy"><h1>Jordan’s Agent<br /><span>Toolkit Collection.</span></h1><p>A personal collection of original skills, practical workflows, and selected tools for AI-assisted engineering. One place to explore the work, read the source, and try the approach.</p><div class="hero-actions"><a class="button primary" href="#catalog">Explore the collection <span aria-hidden="true">↓</span></a><a class="text-link" href={withBase('workflows/')}>See the workflow <span aria-hidden="true">↗</span></a></div></div>
-      <div class="workflow-preview" aria-label="Illustrative engineering workflow, not a live execution">
-        <div class="preview-heading"><span class="mono">from task to handoff</span><span class="preview-label">ILLUSTRATION</span></div>
-        <div class="workflow-step"><span class="step-number">01</span><div><strong>Plan the work</strong><span>One outcome. Explicit boundaries.</span></div><span class="step-symbol" aria-hidden="true">◇</span></div>
-        <div class="workflow-step"><span class="step-number">02</span><div><strong>Own your lane</strong><span>Isolated work. Clear handoffs.</span></div><span class="step-symbol" aria-hidden="true">⇄</span></div>
-        <div class="workflow-step"><span class="step-number">03</span><div><strong>Show the evidence</strong><span>Real checks. Honest limitations.</span></div><span class="step-symbol" aria-hidden="true">↗</span></div>
-        <div class="preview-footer"><span class="preview-dot" aria-hidden="true"></span>Small, composable, inspectable.</div>
+      <div class="hero-copy"><h1>Jordan’s Agent<br /><span>Toolkit Collection.</span></h1><p>A personal collection of standout agent skills, workflows, and developer tools from across the community. Selected for useful engineering work. Gathered in one place.</p><div class="hero-actions"><a class="button primary" href="#catalog">Explore the collection <span aria-hidden="true">↓</span></a><a class="text-link" href={withBase('sources/')}>Meet the sources <span aria-hidden="true">↗</span></a></div></div>
+      <div class="workflow-preview" aria-label="Explore community selections by topic">
+        <div class="preview-heading"><span class="mono">from across the ecosystem</span></div>
+        <a class="workflow-step" href={withBase('?category=Frontend#catalog')}><span class="step-number">01</span><div><strong>Frontend & design</strong><span>Vercel + Anthropic</span></div><span class="step-symbol" aria-hidden="true">↗</span></a>
+        <a class="workflow-step" href={withBase('?category=Testing%20%26%20quality#catalog')}><span class="step-number">02</span><div><strong>Build, debug & verify</strong><span>ECC + Superpowers + Anthropic</span></div><span class="step-symbol" aria-hidden="true">↗</span></a>
+        <a class="workflow-step" href={withBase('?source=supabase#catalog')}><span class="step-number">03</span><div><strong>Postgres & data</strong><span>Supabase</span></div><span class="step-symbol" aria-hidden="true">↗</span></a>
+        <div class="preview-footer">Selected by Jordan. Authored by the community.</div>
       </div>
     </section> : <section class="page-heading"><h1>{title}</h1><p>{description}</p></section>}
+    <slot />
     <section id="catalog" class="catalog-section" data-catalog>
       <div class="section-title"><h2>{home ? 'Explore the collection' : 'Browse the collection'}</h2><span class="mono muted">{entries.length} entries</span></div>
       <div class="catalog-controls">
         <label class="search-box"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span class="sr-only">Search the catalog</span><input id="catalog-search" type="search" placeholder="Search skills, tools, or a problem to solve…" autocomplete="off"/><kbd aria-hidden="true">/</kbd></label>
+        <label class="source-select"><span class="sr-only">Filter by source</span><select id="source-filter"><option value="all">All sources</option>{Object.entries(sources).filter(([id]) => entries.some(e => e.sourceId === id)).map(([id,source]) => <option value={id}>{source.title}</option>)}<option value="jordan">Jordan’s starters</option></select></label>
         <label class="origin-select"><span class="sr-only">Filter by origin</span><select id="origin-filter"><option value="all">All origins</option><option value="original">Original</option><option value="curated">Curated</option><option value="adapted">Adapted</option></select></label>
       </div>
       <div class="catalog-layout">
@@ -37,13 +40,13 @@ const active = kind === 'all' ? '' : kind === 'skill' ? 'skills' : kind === 'too
           </div>
           <p class="filter-heading">CATEGORIES</p>
           <div class="filter-buttons" data-filter-group="category"><button type="button" data-filter-category="all" aria-pressed="true">All categories</button>{categories.map(category=><button type="button" data-filter-category={category} aria-pressed="false">{category}</button>)}</div>
-          <div class="sidebar-note"><strong>A collection, not a directory.</strong><p>Skills live here with their own instructions and examples. External tools stay separately identified. Experimental labels show what still needs evaluation.</p><a href={withBase('about/')}>About Jordan’s collection <span aria-hidden="true">↗</span></a></div>
+          <div class="sidebar-note"><strong>Curated, not rebranded.</strong><p>Community selections include copied source packages and upstream links. Each keeps its author and selection notes. Nothing installs automatically.</p><a href={withBase('about/')}>How this collection works <span aria-hidden="true">↗</span></a></div>
         </aside>
         <div class="catalog-results"><div class="results-bar"><p id="result-count" aria-live="polite" aria-atomic="true">Showing {entries.length} entries</p><button type="button" id="clear-filters" class="clear-button">Reset filters</button></div><div class="card-grid">{entries.map(entry=><Card entry={entry}/>)}</div><div id="empty-state" class="empty-state" hidden><h3>No matching entries.</h3><p>Try another search or reset your filters.</p></div></div>
       </div>
       <noscript><p class="notice">All entries are available below. Search and filters require JavaScript.</p></noscript>
     </section>
-    {home && <section class="contribution-band"><div><h2>From the collection to the work.</h2><p>Follow a skill from its instructions to a concrete example, then make it useful in your own project.</p></div><a class="button secondary" href="https://jdavis-software.github.io/content/articles/parallel-agent-engineering/">Read the engineering article <span aria-hidden="true">↗</span></a></section>}
+    {home && <section class="contribution-band"><div><h2>Collected here. Credit stays upstream.</h2><p>A useful collection grows through good choices, not bulk imports. Suggest a skill and the problem it solves.</p></div><a class="button secondary" href={`${repository}/blob/main/CONTRIBUTING.md`}>Suggest an addition <span aria-hidden="true">↗</span></a></section>}
   </div>
   <script src="../scripts/catalog.ts"></script>
 </Base>

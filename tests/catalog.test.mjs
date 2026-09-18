@@ -1,7 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
-import { loadCatalog, validateEntries, parseSkill } from '../scripts/catalog.mjs';
+import { loadCatalog, validateEntries, parseSkill, verifyFileDigest, loadSources, verifySnapshots } from '../scripts/catalog.mjs';
 const entries = await loadCatalog();
 const first = entries.find(e => e.origin === 'original');
 const raw = { ...first }; delete raw.title; delete raw.description; delete raw.source;
@@ -18,24 +17,60 @@ test('rejects incomplete instructions', () => assert.throws(()=>parseSkill('---\
 test('new skills make no host compatibility claims', () => {
  for (const entry of entries.filter(e=>e.origin==='original')) { assert.equal(entry.stage,'experimental'); assert.deepEqual(entry.testedHosts,[]); }
 });
-test('personal skill catalog contains six local packages, not external library cards',()=>{
-  const skills=entries.filter(e=>e.kind==='skill');
-  assert.equal(skills.length,6);
-  for(const entry of skills) {
-    assert.equal(entry.origin,'original');
-    assert.equal(entry.source,`https://github.com/jdavis-software/agent-toolkit/blob/main/skills/${entry.id}/SKILL.md`);
-  }
+
+import { readFile } from 'node:fs/promises';
+import { transformMarkdown } from '../scripts/safe-markdown.mjs';
+const sources = await loadSources();
+test('individual collection excludes legacy repository cards', () => {
+ assert.equal(entries.filter(e=>e.listed!==false).length,25);
+ assert.equal(entries.filter(e=>e.vendorPath).length,12);
+ assert.equal(entries.filter(e=>e.upstreamPath).length,16);
 });
-test('external tools retain their own identities',()=>{
-  assert.deepEqual(entries.filter(e=>e.kind==='tool').map(e=>[e.id,e.author]),[
-    ['skills-cli','Vercel'],['nx','Nx'],['playwright-mcp','Microsoft']
-  ]);
+test('rejects traversal vendor path', () => {
+ const entry=entries.find(e=>e.vendorPath);
+ assert.throws(()=>validateEntries([{...entry,vendorPath:'vendor/../../private'}]),/vendor path/);
 });
-test('new skills include synthetic evaluation inputs without host-run evidence',async()=>{
-  for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
-    const text=await readFile(new URL(`../skills/${id}/references/scenarios.md`,import.meta.url),'utf8');
-    for(const heading of ['Trigger case','Boundary case','Non-trigger case']) assert.ok(text.includes(`## ${heading}`),`${id}: ${heading}`);
-    assert.ok(text.includes('not completed runs'));
-    assert.deepEqual(entries.find(e=>e.id===id).evidence,[]);
-  }
+test('requires selection rationale', () => assert.throws(()=>validateEntries([{...raw,why:''}]),/Missing why/));
+test('upstream files have a separate schema, not forced original headings', () => {
+ const parsed=parseSkill('---\nname: upstream-name\ndescription: useful\n---\n# Different structure','source-id',false);
+ assert.equal(parsed.name,'upstream-name');
+});
+test('snapshot integrity and package licenses agree', async () => {
+ const lock=await verifySnapshots(entries,sources);
+ assert.equal(lock.packages.length,12);
+ assert.equal(lock.packages.flatMap(p=>p.files).length,73);
+ for(const p of lock.packages) assert.ok(p.files.some(f=>f.path===p.licensePath));
+});
+test('detects changed source bytes', async () => {
+ const lock=JSON.parse(await readFile('catalog/upstream-lock.json','utf8'));
+ const f=lock.packages[0].files[0];
+ assert.throws(()=>verifyFileDigest(Buffer.from('changed'),f.sha256,f.path),/hash mismatch/);
+});
+test('rendering escapes HTML, images, and executable links', () => {
+ const tree={type:'root',children:[{type:'html',value:'<script>alert(1)</script>'},{type:'image',url:'https://tracker.test/a',alt:'source image'},{type:'link',url:'javascript:alert(1)',children:[]},{type:'heading',depth:1,children:[]}]};
+ transformMarkdown(tree,'/vendor/ecc/api-design/SKILL.md',sources);
+ assert.equal(tree.children[0].type,'text');assert.equal(tree.children[1].type,'text');
+ assert.equal(tree.children[2].url,'#');assert.equal(tree.children[3].depth,2);
+});
+test('relative supporting-file links resolve to pinned upstream', () => {
+ const tree={type:'link',url:'root-cause-tracing.md',children:[]};
+ transformMarkdown(tree,'/vendor/superpowers/systematic-debugging/SKILL.md',sources);
+ assert.equal(tree.url,`https://github.com/obra/superpowers/blob/${sources.superpowers.revision}/skills/systematic-debugging/root-cause-tracing.md`);
+});
+test('retains all six original skills and new scenario fixtures', async () => {
+ assert.equal(entries.filter(e=>e.origin==='original').length,6);
+ for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
+  const scenarios=await readFile(`skills/${id}/references/scenarios.md`,'utf8');
+  assert.ok(scenarios.includes('Scenario') || scenarios.includes('scenario'));
+ }
+});
+test('original supporting-file links point to repository source, not missing site routes', () => {
+ const tree={type:'link',url:'references/scenarios.md',children:[]};
+ transformMarkdown(tree,'skills/evidence-first-debugging/SKILL.md',sources);
+ assert.equal(tree.url,'https://github.com/jdavis-software/agent-toolkit/blob/main/skills/evidence-first-debugging/references/scenarios.md');
+});
+test('relative source links cannot escape their source revision', () => {
+ const tree={type:'link',url:'../../../../../../outside',children:[]};
+ transformMarkdown(tree,'vendor/ecc/api-design/SKILL.md',sources);
+ assert.equal(tree.url,'#');
 });

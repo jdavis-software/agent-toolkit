@@ -1,11 +1,10 @@
 ---
 import '../styles/global.css';
+import '../styles/collection.css';
 import { withBase, repository } from '../lib/paths';
 interface Props { title: string; description?: string; active?: string; }
-const { title, description = "Jordan Davis's personal collection of original agent skills, engineering workflows, and selected developer tools.", active = '' } = Astro.props;
+const { title, description = 'Jordan Davis’s personal collection of agent skills, engineering workflows, and developer tools, selected from across the community.', active = '' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const brand = "Jordan’s Agent Toolkit Collection";
-const pageTitle = title === brand ? brand : `${title} · Jordan’s Agent Toolkit`;
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -14,13 +13,13 @@ const pageTitle = title === brand ? brand : `${title} · Jordan’s Agent Toolki
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#111214" />
-  <meta property="og:title" content={pageTitle} />
+  <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
-  <title>{pageTitle}</title>
+  <title>{title === 'Jordan’s Agent Toolkit Collection' ? title : `${title} · Jordan’s Agent Toolkit Collection`}</title>
   <script is:inline>
     try {
       const saved = localStorage.getItem('agent-toolkit-theme');
@@ -31,9 +30,9 @@ const pageTitle = title === brand ? brand : `${title} · Jordan’s Agent Toolki
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="header">
-    <a href={withBase()} class="brand" aria-label="Jordan’s Agent Toolkit home"><span class="brand-mark" aria-hidden="true">j/</span><span>Jordan’s Toolkit</span></a>
+    <a href={withBase()} class="brand" aria-label="Jordan’s Agent Toolkit Collection home"><span class="brand-mark" aria-hidden="true">j/</span><span>Jordan’s <span class="brand-slash">/</span> toolkit</span></a>
     <nav aria-label="Main navigation">
-      {['Skills','Tools','Workflows','About'].map(label => <a href={withBase(`${label.toLowerCase()}/`)} aria-current={active === label.toLowerCase() ? 'page' : undefined}>{label}</a>)}
+      {['Skills','Tools','Workflows','Sources','About'].map(label => <a href={withBase(`${label.toLowerCase()}/`)} aria-current={active === label.toLowerCase() ? 'page' : undefined}>{label}</a>)}
     </nav>
     <div class="header-actions">
       <button type="button" id="theme-toggle" class="icon-button" aria-label="Switch color theme" title="Switch color theme"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
@@ -42,9 +41,9 @@ const pageTitle = title === brand ? brand : `${title} · Jordan’s Agent Toolki
   </header>
   <main id="main"><slot /></main>
   <footer class="footer">
-    <span>Jordan’s Agent Toolkit <span class="muted">/</span> Collection</span>
-    <div><a href={withBase('about/')}>About the collection</a><a href={`${repository}/blob/main/CONTRIBUTING.md`}>Contribute</a><a href={`${repository}/blob/main/docs/ROADMAP.md`}>Roadmap</a></div>
-    <span class="footer-note">Practical skills. Inspectable source.</span>
+    <span>Jordan’s Agent Toolkit Collection</span>
+    <div><a href={withBase('about/')}>About & attribution</a><a href={`${repository}/blob/main/CONTRIBUTING.md`}>Contribute</a><a href={`${repository}/blob/main/docs/ROADMAP.md`}>Roadmap</a></div>
+    <span class="footer-note">Curated here. Credit stays upstream.</span>
   </footer>
   <script>
     const button = document.querySelector<HTMLButtonElement>('#theme-toggle');

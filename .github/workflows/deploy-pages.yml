@@ -43,3 +43,21 @@ jobs:
       - name: Deploy the validated artifact
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: Verify public collection endpoints
+        shell: bash
+        env:
+          SITE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          test "$SITE_URL" = 'https://jdavis-software.github.io/agent-toolkit/'
+          for attempt in 1 2 3 4 5 6; do
+            if curl --fail --silent --show-error --max-time 30 "${SITE_URL}catalog.json?deployment=${GITHUB_SHA}" -o /tmp/catalog.json && python3 -c 'import json; d=json.load(open("/tmp/catalog.json")); assert d["schemaVersion"] == 2; assert len(d["entries"]) >= 22'; then
+              curl --fail --silent --show-error --max-time 30 "${SITE_URL}sources/" -o /tmp/sources.html
+              curl --fail --silent --show-error --max-time 30 "${SITE_URL}skills/anthropic-frontend-design/" -o /tmp/detail.html
+              echo 'Public catalog, source directory, and included skill page responded successfully.'
+              exit 0
+            fi
+            sleep 10
+          done
+          echo 'Public collection verification failed.' >&2
+          exit 1
