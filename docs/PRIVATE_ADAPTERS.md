@@ -46,3 +46,7 @@ Do not silently follow a moving branch in production tooling. Do not regenerate 
 The public repository supplies skills, bundle selection, and a read-only resolver. It does not install private company integrations, configure identities, connect production databases, authorize a provider call, or create internal MCP servers. Product-specific adoption needs its own approved implementation and tests.
 
 Technical protocol references: [MCP tools](https://modelcontextprotocol.io/specification/2025-11-25/server/tools), [MCP resources](https://modelcontextprotocol.io/specification/2025-11-25/server/resources), and [security guidance](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices). Use documentation matching the installed protocol and SDK versions.
+
+## Source access
+
+Bind Sourcekit public reads to approved hosts and operation policy; constrain process lifetime, resources, output destination, and retention. Keep authenticated source identities and secrets in the private connector. A routing suggestion, optional command on PATH, source packet hash, or category listing does not grant access. No private MCP implementation is added by this bundle.

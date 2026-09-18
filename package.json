@@ -11,7 +11,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "validate": "node scripts/validate.mjs",
-    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/categories.test.mjs",
+    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/categories.test.mjs && python3 -m unittest discover -s tests -p test_sourcekit.py -v",
     "test:skills": "node --test tests/skillcheck.test.mjs",
     "demo:skills": "node examples/skillcheck/defect-demo.mjs",
     "build": "pnpm validate && astro build",
@@ -20,7 +20,9 @@
     "bundles:list": "node tools/bundle.mjs list",
     "test:bundles": "node --test tests/bundles.test.mjs",
     "test:agentflow": "node --test tests/agentflow.test.mjs",
-    "demo:agentflow": "node examples/agentflow/demo.mjs"
+    "demo:agentflow": "node examples/agentflow/demo.mjs",
+    "test:sourcekit": "python3 -m unittest discover -s tests -p test_sourcekit.py -v",
+    "demo:sourcekit": "python3 examples/sourcekit/demo.py"
   },
   "dependencies": {
     "astro": "7.3.3",

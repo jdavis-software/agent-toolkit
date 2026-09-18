@@ -166,6 +166,23 @@
         "mcp-adapter-design",
         "affected-verification"
       ]
+    },
+    {
+      "id": "web-research",
+      "title": "Web Research and Source Access",
+      "description": "Route sources, qualify connector access, read bounded public content, compare feeds, and produce timestamped research evidence.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "skills": [
+        "source-access-routing",
+        "connector-health-diagnostics",
+        "public-web-reading",
+        "feed-change-tracking",
+        "transcript-evidence-extraction",
+        "authenticated-source-access",
+        "multi-source-research",
+        "connector-setup-review"
+      ]
     }
   ]
 }

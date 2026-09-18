@@ -6,8 +6,8 @@ test('category directory renders counted cards and usable keyboard focus',async(
  await page.goto(base+'categories/');
  await expect(page).toHaveTitle(/Categories/);await expect(page.getByRole('heading',{level:1})).toContainText('Explore by category');
  const categories:Category[]=(await(await request.get(base+'categories.json')).json()).categories;
- await expect(page.locator('[data-category-card]')).toHaveCount(12);
- expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(60);
+ await expect(page.locator('[data-category-card]')).toHaveCount(13);
+ expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(69);
  for(const c of categories){const card=page.locator(`[data-category-card="${c.id}"]`);await expect(card).toContainText(c.title);await expect(card).toContainText(`${c.counts.entries} ${c.counts.entries===1?'entry':'entries'}`);await expect(card).toHaveAttribute('href',base+`categories/${c.id}/`);}
  const first=page.locator('[data-category-card]').first();await first.focus();await expect(first).toBeFocused();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
@@ -40,4 +40,27 @@ test('categories work in light theme and new bundle/tool routes resolve',async({
  await expect(page.getByRole('link',{name:'Read tool source'})).toHaveAttribute('href',/tools\/agentflow.mjs$/);
  await page.goto(base+'skills/orchestration-resume/');await expect(page.getByRole('heading',{name:'Procedure',exact:true})).toBeVisible();
  expect((await request.get(base+'categories/missing/')).status()).toBe(404);
+});
+
+test('web research category, canonical skill, bundle and Sourcekit detail work',async({page,request},testInfo)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'categories/');
+ await page.locator('[data-category-card="web-research"]').click();
+ await expect(page).toHaveURL(/categories\/web-research\/$/);
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Web & Research');
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(9);
+ await page.getByRole('searchbox').fill('feed-change-tracking');
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
+ await page.getByRole('link',{name:'Feed Change Tracking',exact:false}).first().click();
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Feed Change Tracking');
+ await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/feed-change-tracking\/SKILL.md$/);
+ await page.goto(base+'bundles/web-research/');
+ await expect(page.locator('[data-entry]')).toHaveCount(8);
+ await page.goto(base+'tools/sourcekit/');
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Sourcekit');
+ await expect(page.getByRole('link',{name:'Read tool source'})).toHaveAttribute('href',/tools\/sourcekit.mjs$/);
+ await page.goto(base+'categories/web-research/');
+ await page.screenshot({path:`test-results/${testInfo.project.name}-web-research.png`,fullPage:true});
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
+ expect((await request.get(base+'bundles/web-research/')).status()).toBe(200);
 });

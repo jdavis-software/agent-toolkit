@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "source-access-routing",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "source-access-routing-trigger",
+      "kind": "trigger",
+      "input": "A user asks what a public video says. The selected adapter must provide captions and language metadata; returning the title and description does not complete the task.",
+      "expected": "A routing record distinguishing requested operation, source identity, selected path, observed capabilities, authorization, missing evidence, and accepted fallback conditions. Provide real evidence or report missing prerequisites."
+    },
+    {
+      "id": "source-access-routing-boundary",
+      "kind": "boundary",
+      "input": "A YouTube-looking host is actually youtube.com.evil.example. Treat it as an unrelated public website, not a trusted video adapter input.",
+      "expected": "A YouTube-looking host is actually youtube.com.evil.example. Treat it as an unrelated public website, not a trusted video adapter input. Do not fabricate successful access or change authority."
+    },
+    {
+      "id": "source-access-routing-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a typo in an unrelated local README.",
+      "expected": "Make the authorized small edit without querying external sources or installing connectors."
+    }
+  ]
+}

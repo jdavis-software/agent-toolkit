@@ -9,3 +9,7 @@ The twelve initial areas are Agent Orchestration, Runtime & Governance, Context 
 The category index uses a responsive three-column icon-card grid, inspired by the browsing pattern Jordan selected. It retains the toolkit's identity and palette, with original descriptions and icon paths. Each card opens a statically generated category page; search and topic/origin filters then operate only within that category. Reset does not remove the category boundary. Category contents work without JavaScript; interactive filters need JavaScript.
 
 Counts explicitly describe entries and their skill/tool breakdown. Categories do not imply the presence of hosted agents or MCP servers: an instruction package remains a skill, and a linked tool remains an external tool. JSON discovery, build metadata, and the sitemap are generated from the same validated definitions.
+
+## Web & Research
+
+The `web-research` primary category contains eight original source-access procedures and Sourcekit. Counts derive from canonical entries. It does not advertise working access to every recognized social or video platform.

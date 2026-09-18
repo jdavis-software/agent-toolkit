@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "transcript-evidence-extraction",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "transcript-evidence-extraction-trigger",
+      "kind": "trigger",
+      "input": "A tutorial says a feature is experimental at 02:10. The summary retains that qualifier and time reference rather than treating the feature as generally released.",
+      "expected": "A local or live-adapter caption provenance record, timestamped cue packet, and summary with traceable time ranges and modality limits. Provide real evidence or report missing prerequisites."
+    },
+    {
+      "id": "transcript-evidence-extraction-boundary",
+      "kind": "boundary",
+      "input": "A silent demonstration changes the UI without speech. The caption packet cannot establish the visual behavior; require separate viewing evidence.",
+      "expected": "A silent demonstration changes the UI without speech. The caption packet cannot establish the visual behavior; require separate viewing evidence. Do not fabricate successful access or change authority."
+    },
+    {
+      "id": "transcript-evidence-extraction-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a typo in an unrelated local README.",
+      "expected": "Make the authorized small edit without querying external sources or installing connectors."
+    }
+  ]
+}

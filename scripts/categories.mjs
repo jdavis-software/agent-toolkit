@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-export const categoryIcons=['agents','shield','context','code','terminal','plug','database','workflow','test','server','media','tools'];
+export const categoryIcons=['globe','agents','shield','context','code','terminal','plug','database','workflow','test','server','media','tools'];
 export function validateCategories(document,entries) {
   if(!document || document.schemaVersion!==1 || !Array.isArray(document.categories) || !document.categories.length || document.categories.length>30 || !Array.isArray(entries))throw new Error('Invalid category registry');
   const seen=new Set();

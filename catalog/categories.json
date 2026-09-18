@@ -20,6 +20,12 @@
       "icon": "context"
     },
     {
+      "id": "web-research",
+      "title": "Web & Research",
+      "description": "Read public sources, compare feeds, inspect captions, and use authenticated connectors without confusing discovery with evidence.",
+      "icon": "globe"
+    },
+    {
       "id": "typescript",
       "title": "TypeScript",
       "description": "Native TypeScript 7 adoption, domain types, ESM packages, and precise quality checks.",

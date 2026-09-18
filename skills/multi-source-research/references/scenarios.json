@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "multi-source-research",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "multi-source-research-trigger",
+      "kind": "trigger",
+      "input": "A README promises universal access, but a channel's code only checks whether a command exists. Report that observation and require a live operation check before advertising access.",
+      "expected": "A research brief with claim-to-source mapping, revisions, evidence class, counterevidence, gaps, and explicit adoption recommendations. Provide real evidence or report missing prerequisites."
+    },
+    {
+      "id": "multi-source-research-boundary",
+      "kind": "boundary",
+      "input": "Three articles repeat the same vendor benchmark. Treat them as one underlying measurement, not three independent validations.",
+      "expected": "Three articles repeat the same vendor benchmark. Treat them as one underlying measurement, not three independent validations. Do not fabricate successful access or change authority."
+    },
+    {
+      "id": "multi-source-research-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a typo in an unrelated local README.",
+      "expected": "Make the authorized small edit without querying external sources or installing connectors."
+    }
+  ]
+}

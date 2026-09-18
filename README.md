@@ -6,7 +6,7 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 ## The expanded skill collection
 
-**54 original skills · 12 primary categories · 10 overlapping bundles · 3 original utilities · 3 selected external tools.**
+**62 original skills · 13 primary categories · 11 overlapping bundles · 4 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +22,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 48 domain and orchestration additions contain 144 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 56 domain, orchestration, and source-access additions contain 168 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -82,6 +82,14 @@ The 48 domain and orchestration additions contain 144 synthetic trigger, boundar
 | [Delegation Evaluation](skills/delegation-evaluation/SKILL.md) | Testing |
 | [Context Budget Planning](skills/context-budget-planning/SKILL.md) | Context and memory |
 | [Context Checkpointing](skills/context-checkpointing/SKILL.md) | Context and memory |
+| [Source Access Routing](skills/source-access-routing/SKILL.md) | Web and research |
+| [Connector Health Diagnostics](skills/connector-health-diagnostics/SKILL.md) | Web and research |
+| [Public Web Reading](skills/public-web-reading/SKILL.md) | Web and research |
+| [Feed Change Tracking](skills/feed-change-tracking/SKILL.md) | Web and research |
+| [Transcript Evidence Extraction](skills/transcript-evidence-extraction/SKILL.md) | Web and research |
+| [Authenticated Source Access](skills/authenticated-source-access/SKILL.md) | Web and research |
+| [Multi-source Research](skills/multi-source-research/SKILL.md) | Web and research |
+| [Connector Setup Review](skills/connector-setup-review/SKILL.md) | Web and research |
 
 <!-- skill-index:end -->
 
@@ -162,3 +170,9 @@ The deployment workflow builds and publishes changes that reach `main`. GitHub P
 The collection is maintained for Jordan Davis. Each original package has its own instructions, examples, and evidence requirements. Actual reused materials and dependencies retain applicable notices and terms. See [ATTRIBUTION.md](ATTRIBUTION.md), [docs/ORIGINAL_SKILLS.md](docs/ORIGINAL_SKILLS.md), and [AGENTS.md](AGENTS.md).
 
 A license for this repository's original content has not yet been selected. Public source visibility does not itself grant a reuse license. External projects retain their own terms; none are relicensed by this repository. Never publish private configurations, credentials, company code, or unapproved knowledge-base content here.
+
+## Web research and source access
+
+The original [Sourcekit](docs/SOURCEKIT.md) companion adds bounded public HTTPS reads, RSS/Atom/JSON Feed snapshots and comparisons, and WebVTT/SRT evidence parsing. [Browse the bundle](https://jdavis-software.github.io/agent-toolkit/bundles/web-research/). Authenticated platform adapters remain separate; source routing is not a claim of installed access. Python 3.10+ is required for this optional companion and its tests.
+
+[Agent-Reach architecture research](docs/research/AGENT_REACH.md) records the pinned reference and the differences in our original implementation.

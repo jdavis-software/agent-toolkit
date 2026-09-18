@@ -36,3 +36,6 @@ Use the pinned versions and committed lockfile. Never hand-author a lockfile or 
 
 ## Category and orchestration contracts
 `catalog/categories.json` owns primary category metadata; each entry has exactly one `categoryId`. Counts are derived. Fine-grained `category` topics and overlapping bundles remain distinct. `tools/agentflow.mjs` and `tools/lib/agentflow.mjs` provide offline coordination only. Use explicit private adapters for actual workers and authority. Keep `companionTools` and resolved package files aligned. Agentflow tests and synthetic scenarios do not establish agent-host effectiveness.
+
+## Public source intake
+`tools/sourcekit.mjs` wraps `tools/sourcekit.py`; reusable modules live under `tools/sourcekit_lib/`. Python 3.10+ standard library only. Keep `docs/SOURCEKIT.md`, examples, Python tests, bundle companions, and private-adapter boundaries aligned. Default routing/doctor and local parsing have no network effects. Live reads require exact approved hosts; never weaken private-address, redirect, credential, or size checks to make a test pass. Do not install Agent-Reach or other source tools as a side effect of building this site. Run `pnpm test:sourcekit` and the existing browser suite.
