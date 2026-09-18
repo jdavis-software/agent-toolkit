@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "go-performance-profiling",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "go-performance-profiling-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Investigate Go latency, CPU, allocation, and contention bottlenecks using representative profiles, controlled benchmarks, and correctness-preserving changes.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "go-performance-profiling-boundary",
+      "kind": "boundary",
+      "input": "A faster microbenchmark doubles peak memory: report both and judge against the predeclared acceptance target.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "go-performance-profiling-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

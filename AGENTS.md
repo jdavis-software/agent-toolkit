@@ -5,6 +5,11 @@
 
 `tools/skillcheck.mjs` is the executable helper entry point; its original contracts, Git inspection, and process collection modules live in `tools/lib/`. `examples/skillcheck/` contains synthetic fixtures, not real user evidence. `docs/SKILL_TOOLS.md` documents supported commands and limits. Keep CLI behavior, docs, and tests aligned.
 
+## Bundles and project adapters
+`catalog/bundles.json` selects canonical local skills. `tools/bundle.mjs` and `tools/lib/bundles.mjs` implement read-only resolution; they do not install or execute selected tools. Keep source identity and content-only resolution distinguishable. Keep private project bindings outside this public repository; follow `docs/PRIVATE_ADAPTERS.md`.
+
+New domain skills include `references/scenarios.json` as not-run evaluation inputs. Run `node --test tests/bundles.test.mjs` for bundle/resolution tests. All local skills must appear in at least one focused bundle. Keep bundle selection, validation, site routes, and counts derived from canonical files. Use `node scripts/readme.mjs --write` to update the README index. Published instruction changes require browser verification as well as package checks.
+
 ## Personal collection and authoring
 The public identity is Jordan's Agent Toolkit Collection. Lead with local skill packages and practical workflows, not a directory of entire upstream skill libraries. Write new instructions from task requirements, with new examples and evaluation scenarios. Do not paraphrase an upstream file and label it independent merely because its wording changed. Follow `docs/ORIGINAL_SKILLS.md`.
 

@@ -1,5 +1,13 @@
 # Roadmap — Jordan's Agent Toolkit Collection
 
+## Reusable engineering expansion
+
+Implemented: 36 original skills, 8 overlapping bundles, and 5 catalogued tools (2 original, 3 external). The read-only resolver, source-linked bundle pages, JSON discovery endpoint, generated README index, and private-adapter boundary are documented and tested separately from agent-host effectiveness.
+
+No private product MCP or configuration is installed by this change. The 30 domain packages add 90 not-run scenario inputs. Current execution/build/deployment evidence belongs in Actions, not invented historical success claims in this roadmap.
+
+Next: evaluate selected packages in actual hosts, choose the original-content license, and implement private project bindings under separate approval. See [coverage](ENGINEERING_COVERAGE.md), [bundles](BUNDLES.md), and [private adapters](PRIVATE_ADAPTERS.md).
+
 ## Implemented surfaces
 
 The repository contains the Astro catalog, search/filtering, detail routes, theme switching, responsive layout, source links, sitemap, JSON export, validation, browser tests, and GitHub Pages workflows. The personal-collection update adds Jordan's branding and a local task-to-handoff workflow.

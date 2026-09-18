@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "go-testing-determinism",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "go-testing-determinism-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Design Go tests with independent assertions, controlled in-process timing, bounded fuzz/race checks, and isolated real dependencies for persistence and network semantics.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "go-testing-determinism-boundary",
+      "kind": "boundary",
+      "input": "The test depends on a real PostgreSQL response: do not claim fake-clock unit coverage proves its integration behavior.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "go-testing-determinism-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}
