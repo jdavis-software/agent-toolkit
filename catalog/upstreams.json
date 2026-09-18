@@ -1,0 +1,47 @@
+{
+  "vercel": {
+    "title": "Vercel Agent Skills",
+    "repo": "vercel-labs/agent-skills",
+    "revision": "063bee94c3f4df8453406c830b0a7df0f2860278",
+    "author": "Vercel",
+    "archiveSha256": "3d11926496b220075c3e9ad57b42deef5d3f7a35c8253719c2059d18ad1a3b35",
+    "license": "MIT declared upstream; linked only",
+    "licensePath": null
+  },
+  "ecc": {
+    "title": "ECC",
+    "repo": "affaan-m/ECC",
+    "revision": "dd6ee538aee0f548d4a6b520118f875431fd749e",
+    "author": "Affaan Mustafa and ECC contributors",
+    "archiveSha256": "d953919fb7dfd11633e3fff833735a243aadb2222bec1e7bbeeb44c47794c13a",
+    "license": "MIT",
+    "licensePath": "LICENSE"
+  },
+  "superpowers": {
+    "title": "Superpowers",
+    "repo": "obra/superpowers",
+    "revision": "b36e0829c6d0140e93cfef2ca599b1b07d4a7797",
+    "author": "Jesse Vincent and Superpowers contributors",
+    "archiveSha256": "7c3ae7db406f8d92cf55329aa9e9a41e53f6cef00bdb68e1325713be97ef5d7c",
+    "license": "MIT",
+    "licensePath": "LICENSE"
+  },
+  "anthropic": {
+    "title": "Anthropic Skills",
+    "repo": "anthropics/skills",
+    "revision": "34040c9c568585f6929bedeaad110ad08f079624",
+    "author": "Anthropic",
+    "archiveSha256": "94527d9bf3b49a8951aba1ce9420a37079f1a6677accca4b04435c79aabbe5bb",
+    "license": "Per-package; see each entry",
+    "licensePath": null
+  },
+  "supabase": {
+    "title": "Supabase Agent Skills",
+    "repo": "supabase/agent-skills",
+    "revision": "8331f910845103c08d51f6ca1d86ebb7d1f745e3",
+    "author": "Supabase",
+    "archiveSha256": "f92f816eb578717e77a3b10d6b38a0e9ccad233c09fb83e0ff3cfd865b2e0a78",
+    "license": "MIT",
+    "licensePath": "LICENSE"
+  }
+}
