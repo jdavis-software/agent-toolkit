@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/paths';
+---
+<Base title="From task to handoff" active="workflows">
+  <div class="container reading-page">
+    <a class="back-link" href={withBase()}>← Explore the collection</a>
+    <h1>From task<br /><span class="muted">to handoff.</span></h1>
+    <div class="prose">
+      <p class="lead">A practical way to combine this collection’s skills without loading every procedure into every task.</p>
+      <p>This is a suggested workflow, not a claim of benchmarked performance. Each step links to instructions maintained in this repository.</p>
+      <h2>1. Bound the work</h2>
+      <p>Use <a href={withBase('skills/work-packet-planner/')}>Work Packet Planner</a> to establish the outcome, owned paths, dependencies, acceptance criteria, and handoff. Resolve shared ownership before parallel work starts.</p>
+      <h2>2. Make the behavior observable</h2>
+      <p>Use <a href={withBase('skills/behavior-test-design/')}>Behavior Test Design</a> when behavior is changing. Define the cases and expected outcomes before treating the implementation as correct. Reuse project-owned test infrastructure.</p>
+      <h2>3. Investigate only when needed</h2>
+      <p>When a concrete failure blocks the task, use <a href={withBase('skills/evidence-first-debugging/')}>Evidence First Debugging</a>. Keep the original reproduction, test explanations, and repair the supported cause. Do not turn every edit into an incident investigation.</p>
+      <h2>4. Verify the changed boundary</h2>
+      <p>Use <a href={withBase('skills/affected-verification/')}>Affected Verification</a> for relevant checks. For a rendered interface, add <a href={withBase('skills/interface-quality-review/')}>Interface Quality Review</a> and exercise the actual journey. Mark unavailable checks as blocked or untested.</p>
+      <h2>5. Hand back evidence</h2>
+      <p>Use <a href={withBase('skills/worktree-handoff/')}>Worktree Handoff</a> to connect the final revision, changes, check results, unresolved work, and resource ownership. Review the combined integration candidate; isolated success is not integration evidence.</p>
+      <h2>Keep the workflow proportional</h2>
+      <p>A small documentation correction may need none of these extended procedures. Select the skill that solves the current problem rather than impose an entire framework. No skill grants additional tool permissions or approval to publish.</p>
+    </div>
+  </div>
+</Base>
