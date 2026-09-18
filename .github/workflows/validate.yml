@@ -32,7 +32,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/sourcekit-live"
-          node tools/sourcekit.mjs read https://jdavis-software.github.io/agent-toolkit/ --allow-host jdavis-software.github.io > "$RUNNER_TEMP/sourcekit-live/page.json"
+          node tools/sourcekit.mjs read https://jdavis-software.github.io/agent-toolkit/ --allow-host jdavis-software.github.io --expect-text 'Toolkit Collection' --require-content --include-links > "$RUNNER_TEMP/sourcekit-live/page.json"
           node tools/sourcekit.mjs read https://jdavis-software.github.io/agent-toolkit/build-info.json --allow-host jdavis-software.github.io --format text > "$RUNNER_TEMP/sourcekit-live/metadata.json"
           python3 - <<'PY'
           import json, os
@@ -43,7 +43,11 @@ jobs:
               assert packet['status']=='ok' and packet['source']['mode']=='live'
               assert packet['observations'][0]['httpStatus']==200
               assert packet['trust']=='untrusted-source-content'
-              if name=='page': assert 'Toolkit Collection' in packet['content']['text']
+              if name=='page':
+                  assert 'Toolkit Collection' in packet['content']['text']
+                  assert packet['contentAssessment']['state']=='expected-content'
+                  assert packet['contentAssessment']['criteriaMatched'] is True
+                  assert packet['content']['links']['items']
               else: assert json.loads(packet['content']['text'])['schemaVersion']==1
           print('Two authorized live public HTTPS reads passed; no authenticated platform access was tested.')
           PY

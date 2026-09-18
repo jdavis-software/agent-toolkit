@@ -64,16 +64,16 @@ jobs:
               try:
                   info=json.loads(get('build-info.json'))
                   assert info['sourceRevision'] == expected, 'Published revision has not propagated'
-                  assert info['counts'] == {'entries':69,'skills':62,'tools':7,'bundles':11,'categories':13}, info
+                  assert info['counts'] == {'entries':73,'skills':66,'tools':7,'bundles':11,'categories':13}, info
                   entries=json.loads(get('catalog.json'))['entries']
                   bundles=json.loads(get('bundles.json'))['bundles']
-                  assert len(entries)==69 and len(bundles)==11
-                  assert len([e for e in entries if e['kind']=='skill'])==62
-                  assert len(set(s for b in bundles for s in b['skills']))==62
+                  assert len(entries)==73 and len(bundles)==11
+                  assert len([e for e in entries if e['kind']=='skill'])==66
+                  assert len(set(s for b in bundles for s in b['skills']))==66
                   categories=json.loads(get('categories.json'))['categories']
-                  assert len(categories)==13 and sum(c['counts']['entries'] for c in categories)==69
-                  assert len({i for c in categories for i in c['entryIds']})==69
-                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver'),('categories/','Explore by category'),('categories/agent-orchestration/','Agent Orchestration'),('tools/agentflow/','Agentflow'),('skills/orchestration-resume/','Orchestration Resume'),('categories/web-research/','Web & Research'),('tools/sourcekit/','Sourcekit'),('bundles/web-research/','Web Research and Source Access')]:
+                  assert len(categories)==13 and sum(c['counts']['entries'] for c in categories)==73
+                  assert len({i for c in categories for i in c['entryIds']})==73
+                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver'),('categories/','Explore by category'),('categories/agent-orchestration/','Agent Orchestration'),('tools/agentflow/','Agentflow'),('skills/orchestration-resume/','Orchestration Resume'),('categories/web-research/','Web & Research'),('tools/sourcekit/','Sourcekit'),('bundles/web-research/','Web Research and Source Access'),('skills/structured-web-extraction/','Structured Web Extraction'),('skills/mcp-server-qualification/','MCP Server Qualification')]:
                       assert needle in html.unescape(get(path).decode('utf-8')), path
                   print(json.dumps({'publication':'verified','sourceRevision':expected,'counts':info['counts'],'url':base}))
                   break
