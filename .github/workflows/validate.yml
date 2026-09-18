@@ -26,6 +26,34 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:site
+      - name: Qualify direct public HTTPS reading against the existing public site
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/sourcekit-live"
+          node tools/sourcekit.mjs read https://jdavis-software.github.io/agent-toolkit/ --allow-host jdavis-software.github.io > "$RUNNER_TEMP/sourcekit-live/page.json"
+          node tools/sourcekit.mjs read https://jdavis-software.github.io/agent-toolkit/build-info.json --allow-host jdavis-software.github.io --format text > "$RUNNER_TEMP/sourcekit-live/metadata.json"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'sourcekit-live'
+          for name in ['page','metadata']:
+              packet=json.loads((root/(name+'.json')).read_text())
+              assert packet['status']=='ok' and packet['source']['mode']=='live'
+              assert packet['observations'][0]['httpStatus']==200
+              assert packet['trust']=='untrusted-source-content'
+              if name=='page': assert 'Toolkit Collection' in packet['content']['text']
+              else: assert json.loads(packet['content']['text'])['schemaVersion']==1
+          print('Two authorized live public HTTPS reads passed; no authenticated platform access was tested.')
+          PY
+      - name: Preserve live public-read evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sourcekit-live-evidence
+          path: ${{ runner.temp }}/sourcekit-live/
+          retention-days: 7
       - name: Preserve build and browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

@@ -1,0 +1,43 @@
+name: Materialize reviewed source-access collection
+on:
+  push:
+    branches: [feat/source-access-toolkit]
+    paths: [.github/workflows/materialize-source-access.yml]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/source-access-toolkit'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Materialize independently authored packages
+        run: |
+          set -euo pipefail
+          python3 .github/seed-source-access.py
+          python3 .github/integrate-source-access.py
+          node --test tests/skillcheck.test.mjs tests/bundles.test.mjs tests/categories.test.mjs tests/agentflow.test.mjs
+          python3 -m unittest discover -s tests -p test_sourcekit.py -v
+          python3 examples/sourcekit/demo.py
+      - name: Commit content only; workflow cleanup uses the authorized connector
+        run: |
+          set -euo pipefail
+          git rm .github/seed-source-access.py .github/integrate-source-access.py
+          git add .gitignore AGENTS.md ATTRIBUTION.md README.md catalog docs examples package.json scripts src tests tools
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: materialize Sourcekit, eight source-access skills, and Web Research discovery'
+          git push origin HEAD:feat/source-access-toolkit
+          git archive --format=tar HEAD > /tmp/sourcekit-candidate.tar
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: sourcekit-candidate
+          path: /tmp/sourcekit-candidate.tar
+          retention-days: 7
