@@ -4,18 +4,20 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@12.4.2",
-  "engines": { "node": ">=22.12.0" },
+  "engines": {"node": ">=22.12.0"},
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
     "validate": "node scripts/validate.mjs",
-    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs",
+    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs tests/bundles.test.mjs",
     "test:skills": "node --test tests/skillcheck.test.mjs",
     "demo:skills": "node examples/skillcheck/defect-demo.mjs",
     "build": "pnpm validate && astro build",
     "preview": "astro preview",
-    "test:site": "playwright test"
+    "test:site": "playwright test",
+    "bundles:list": "node tools/bundle.mjs list",
+    "test:bundles": "node --test tests/bundles.test.mjs"
   },
-  "dependencies": { "astro": "7.3.3", "js-yaml": "4.3.0" },
-  "devDependencies": { "@astrojs/check": "0.9.10", "typescript": "6.0.3", "@playwright/test": "1.63.0" }
+  "dependencies": {"astro": "7.3.3", "js-yaml": "4.3.0"},
+  "devDependencies": {"@astrojs/check": "0.9.10", "typescript": "6.0.3", "@playwright/test": "1.63.0"}
 }

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadBundles } from '../../../tools/lib/bundles.mjs';
+import { withBase, repository } from '../../lib/paths';
+const bundles = await loadBundles();
+---
+<Base title="Engineering bundles" active="bundles" description="Task-sized selections of Jordan's reusable engineering skills, with private project bindings kept separate.">
+  <div class="container">
+    <section class="page-heading"><p class="eyebrow">COMPOSE, DON'T COPY</p><h1>Your stack.<br />A focused toolkit.</h1><p>{bundles.length} starting points for real engineering work. Each bundle selects canonical skills; it does not load every instruction, run tools, or grant permissions.</p></section>
+    <section class="bundle-grid" aria-label="Skill bundles">
+      {bundles.map(bundle=><article class="bundle-card"><div class="bundle-card-top"><span class="mono">{String(bundle.skills.length).padStart(2,'0')} SKILLS</span><span class="status">Experimental</span></div><h2><a href={withBase(`bundles/${bundle.id}/`)}>{bundle.title} <span aria-hidden="true">↗</span></a></h2><p>{bundle.description}</p></article>)}
+    </section>
+    <section class="bundle-explainer"><h2>One public core. Private context where it belongs.</h2><p>Keep the skills reusable. A project adapter can bind its own repository paths, accepted contracts, approved checks, and permission policy without forking the public instructions.</p><p><a class="text-link" href={`${repository}/blob/main/docs/BUNDLES.md`}>Read bundle contracts ↗</a> <span aria-hidden="true"> · </span> <a class="text-link" href={`${repository}/blob/main/docs/PRIVATE_ADAPTERS.md`}>Design a private adapter ↗</a></p></section>
+  </div>
+</Base>

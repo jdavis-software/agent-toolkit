@@ -22,6 +22,8 @@ export function validateEntries(entries) {
       if (!e.title?.trim() || !e.description?.trim() || e.sourcePath || e.stage !== 'reference') throw new Error(`Invalid reference: ${e.id}`);
       const url = new URL(e.url);
       if (url.protocol !== 'https:' || url.username || url.password) throw new Error(`Invalid source URL: ${e.id}`);
+    } else if (e.kind === 'tool') {
+      if (e.origin !== 'original' || !/^tools\/[a-z][a-z0-9-]*\.mjs$/.test(e.sourcePath) || !/^docs\/[A-Z_]+\.md$/.test(e.docsPath) || !e.title?.trim() || !e.description?.trim() || e.stage !== 'experimental') throw new Error(`Invalid original tool: ${e.id}`);
     } else {
       if (e.kind !== 'skill' || e.sourcePath !== `skills/${e.id}/SKILL.md`) throw new Error(`Invalid source path: ${e.id}`);
       if (e.title || e.description) throw new Error(`Name and description belong in SKILL.md: ${e.id}`);
@@ -37,21 +39,27 @@ export function parseSkill(text, id) {
   const data = load(match[1]);
   if (!data || typeof data !== 'object' || data.name !== id || typeof data.description !== 'string' || !data.description.trim() || data.description.length > 1024) throw new Error(`Invalid skill frontmatter: ${id}`);
   for (const heading of ['When to use','When not to use','Procedure','Output','Failure handling','Example']) if (!match[2].includes(`## ${heading}`)) throw new Error(`Missing ${heading}: ${id}`);
-  return { name: data.name, description: data.description, body: match[2] };
+  const title = match[2].match(/^# (.+)$/m)?.[1] ?? data.name.split('-').map(word => word[0].toUpperCase()+word.slice(1)).join(' ');
+  return { name: data.name, title, description: data.description, body: match[2] };
 }
 export async function loadCatalog() {
   const manifest = JSON.parse(await readFile(resolve(root,'package.json'),'utf8'));
   if (manifest.name !== 'agent-toolkit') throw new Error('Run catalog commands from the agent-toolkit repository root');
   const entries = validateEntries(JSON.parse(await readFile(resolve(root, 'catalog/entries.json'),'utf8')));
   const rootPath = await realpath(root);
-  const local = entries.filter(e => e.origin !== 'curated');
+  const local = entries.filter(e => e.kind === 'skill' && e.origin !== 'curated');
   const dirs = (await readdir(resolve(root,'skills'),{withFileTypes:true})).filter(e => e.isDirectory()).map(e => e.name).sort();
   if (JSON.stringify(dirs) !== JSON.stringify(local.map(e => e.id).sort())) throw new Error('Skill directories and catalog entries disagree');
   return Promise.all(entries.map(async e => {
     if (e.origin === 'curated') return {...e, source: e.url};
     const path = await realpath(resolve(root,e.sourcePath));
     if (!path.startsWith(`${rootPath}${sep}`)) throw new Error(`Source escapes repository: ${e.id}`);
+    if (e.kind === 'tool') {
+      const docPath=await realpath(resolve(root,e.docsPath));
+      if(!docPath.startsWith(`${rootPath}${sep}`)) throw new Error(`Docs escape repository: ${e.id}`);
+      return {...e, source: `https://github.com/jdavis-software/agent-toolkit/blob/main/${e.sourcePath}`, documentation: `https://github.com/jdavis-software/agent-toolkit/blob/main/${e.docsPath}`};
+    }
     const skill = parseSkill(await readFile(path,'utf8'),e.id);
-    return {...e, title: skill.name.split('-').map(word => word[0].toUpperCase()+word.slice(1)).join(' '), description: skill.description, source: `https://github.com/jdavis-software/agent-toolkit/blob/main/${e.sourcePath}`};
+    return {...e, title: skill.title, description: skill.description, source: `https://github.com/jdavis-software/agent-toolkit/blob/main/${e.sourcePath}`};
   }));
 }
