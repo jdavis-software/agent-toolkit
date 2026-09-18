@@ -1,0 +1,14 @@
+---
+import CategoryIcon from './CategoryIcon.astro';
+import { withBase } from '../lib/paths';
+import type { CategoryDefinition } from '../../scripts/categories.mjs';
+interface Props { categories:CategoryDefinition[]; }
+const {categories}=Astro.props;
+---
+<div class="category-grid">
+ {categories.map(category=><a class="category-card" href={withBase(`categories/${category.id}/`)} data-category-card={category.id}>
+  <div class="category-top"><span class="category-icon"><CategoryIcon name={category.icon}/></span><div><h2>{category.title}</h2><p class="category-count">{category.counts.entries} {category.counts.entries===1?'entry':'entries'}<span aria-hidden="true"> · </span><span>{category.counts.skills} {category.counts.skills===1?'skill':'skills'}{category.counts.tools?` + ${category.counts.tools} ${category.counts.tools===1?'tool':'tools'}`:''}</span></p></div></div>
+  <p class="category-description">{category.description}</p>
+  <span class="category-arrow" aria-hidden="true">↗</span>
+ </a>)}
+</div>

@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import CategoryGrid from '../../components/CategoryGrid.astro';
+import { loadCategories } from '../../../scripts/categories.mjs';
+import { withBase } from '../../lib/paths';
+const categories=await loadCategories();
+const skills=categories.reduce((n,c)=>n+c.counts.skills,0), tools=categories.reduce((n,c)=>n+c.counts.tools,0);
+---
+<Base title="Categories" active="categories" description="Explore Jordan’s original agent skills and developer tools by engineering discipline.">
+ <div class="container categories-page">
+  <section class="categories-heading"><p class="eyebrow mono">JORDAN’S AGENT TOOLKIT</p><h1>Explore by category.</h1><p>{skills} original skills and {tools} tools, organized around the work.<br class="desktop-break"/> Find a useful capability, inspect its source, and make it part of your workflow.</p></section>
+  <CategoryGrid categories={categories}/>
+  <section class="categories-note"><p><strong>Categories help you discover. Bundles help you compose.</strong><br/>Each entry has one primary category. Bundles combine skills across disciplines without duplicating their source.</p><a class="button secondary" href={withBase('bundles/')}>Explore bundles <span aria-hidden="true">→</span></a></section>
+ </div>
+</Base>

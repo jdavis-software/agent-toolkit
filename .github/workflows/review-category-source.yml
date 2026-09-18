@@ -1,8 +1,8 @@
-name: Export category baseline
+name: Export staged category source
 on:
   push:
     branches: [feat/categories-agentflow]
-    paths: [.github/workflows/category-baseline.yml]
+    paths: [.github/workflows/review-category-source.yml]
 permissions:
   contents: read
 jobs:
@@ -12,11 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
-          ref: 28becb582b2749aa3a613a611548972d50d2c5f6
           persist-credentials: false
-      - run: git archive --format=tar HEAD > /tmp/category-baseline.tar
+      - run: git archive --format=tar HEAD > /tmp/category-staged.tar
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: category-baseline
-          path: /tmp/category-baseline.tar
+          name: category-staged-source
+          path: /tmp/category-staged.tar
           retention-days: 1

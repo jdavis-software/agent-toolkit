@@ -1,0 +1,9 @@
+---
+import CatalogPage from '../../components/CatalogPage.astro';
+import { loadCategories } from '../../../scripts/categories.mjs';
+import type { CategoryDefinition } from '../../../scripts/categories.mjs';
+export async function getStaticPaths() {return (await loadCategories()).map(category=>({params:{slug:category.id},props:{category}}));}
+interface Props {category:CategoryDefinition;}
+const {category}=Astro.props;
+---
+<CatalogPage title={category.title} description={category.description} categoryId={category.id}/>
