@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "validUntil": "2099-01-01T00:00:00Z",
+  "workers": [
+    {
+      "id": "fixture-editor",
+      "capabilities": [
+        "edit"
+      ],
+      "effects": [
+        "local-write"
+      ],
+      "phases": [
+        "implementation"
+      ],
+      "capacity": 2,
+      "available": true,
+      "rank": 1
+    },
+    {
+      "id": "fixture-reviewer",
+      "capabilities": [
+        "review"
+      ],
+      "effects": [
+        "local-write"
+      ],
+      "phases": [
+        "verification",
+        "integration"
+      ],
+      "capacity": 1,
+      "available": true,
+      "rank": 1
+    }
+  ],
+  "approvals": []
+}

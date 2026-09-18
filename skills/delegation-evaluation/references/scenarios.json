@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "delegation-evaluation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "delegation-evaluation-trigger",
+      "kind": "trigger",
+      "input": "Two configurations both produce compiling patches; only one passes the independent cross-tenant denial and combined integration tests.",
+      "expected": "A matched evaluation protocol, complete run records, independent scores, limitations, and a scoped adoption decision."
+    },
+    {
+      "id": "delegation-evaluation-boundary",
+      "kind": "boundary",
+      "input": "A comparator cannot access the required browser",
+      "expected": "A comparator cannot access the required browser: report the mismatch or redesign the comparison instead of claiming an easier run is a fair win."
+    },
+    {
+      "id": "delegation-evaluation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

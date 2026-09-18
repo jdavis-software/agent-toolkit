@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-task-routing",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-task-routing-trigger",
+      "kind": "trigger",
+      "input": "A browser-only verification task excludes two fast coding workers; an eligible browser worker wins despite a higher configured rank.",
+      "expected": "A routing decision with qualification evidence, tie-breaking policy, fallback conditions, and explicit exclusions."
+    },
+    {
+      "id": "agent-task-routing-boundary",
+      "kind": "boundary",
+      "input": "No candidate satisfies the required effect policy",
+      "expected": "No candidate satisfies the required effect policy: return no eligible worker instead of widening permissions."
+    },
+    {
+      "id": "agent-task-routing-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+---
+interface Props { name:string; }
+const { name }=Astro.props;
+const paths:Record<string,string>={
+ agents:'M9 3h6M12 3v4M5 8h14v12H5zM2 12v4m20-4v4M8 12h1m6 0h1M9 16h6',
+ shield:'M12 3 3 7v6c0 4 9 8 9 8s9-4 9-8V7zM8 12l3 3 5-6',
+ context:'M4 4h11v4h5v12H4zM15 4v4h5M8 11h8M8 15h5',
+ code:'m8 5-7 7 7 7m8-14 7 7-7 7m-3-15-2 16',
+ terminal:'M3 4h18v16H3zM6 8l4 4-4 4m7 0h5',
+ plug:'M8 2v5m8-5v5M5 7h14v4a7 7 0 0 1-7 7v4m0-4a7 7 0 0 1-7-7V7',
+ database:'M3 6c0-4 18-4 18 0s-18 4-18 0m0 0v12c0 4 18 4 18 0V6M3 12c0 4 18 4 18 0',
+ workflow:'M9 2h6v6H9zM2 16h6v6H2zm14 0h6v6h-6zM12 8v4M5 16v-4h14v4',
+ test:'M8 2h8M9 2v12l-5 7h16l-5-7V2M8 16h8',
+ server:'M3 3h18v7H3zM3 14h18v7H3zM6 6h1m-1 11h1M11 6h7m-7 11h7',
+ media:'M3 4h18v16H3zM3 16l5-5 4 4 4-6 5 7M7 7h.01',
+ tools:'M3 5h18v15H3zM8 5V2h8v3M3 11h18M10 11v3h4v-3'
+};
+---
+<svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={paths[name] ?? paths.tools}/></svg>

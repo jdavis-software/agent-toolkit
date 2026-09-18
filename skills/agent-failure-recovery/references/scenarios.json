@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-failure-recovery",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-failure-recovery-trigger",
+      "kind": "trigger",
+      "input": "A missing browser executable blocks verification. Repair the authorized test environment rather than rewriting the UI or marking browser checks passed.",
+      "expected": "Failure classification, preserved attempt evidence, retry/reconcile/escalate decision, remaining budget, and recovery check."
+    },
+    {
+      "id": "agent-failure-recovery-boundary",
+      "kind": "boundary",
+      "input": "The prior attempt may have completed an irreversible effect",
+      "expected": "The prior attempt may have completed an irreversible effect: reconcile its state before authorizing any repeat."
+    },
+    {
+      "id": "agent-failure-recovery-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

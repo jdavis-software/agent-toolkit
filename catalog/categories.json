@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "id": "agent-orchestration",
+      "title": "Agent Orchestration",
+      "description": "Plan bounded work, route capable workers, coordinate parallel lanes, and recover interrupted runs.",
+      "icon": "agents"
+    },
+    {
+      "id": "runtime-governance",
+      "title": "Runtime & Governance",
+      "description": "Define permissions, approval boundaries, budgets, and safe stop conditions for agent-assisted work.",
+      "icon": "shield"
+    },
+    {
+      "id": "context-memory",
+      "title": "Context & Memory",
+      "description": "Assemble relevant context, preserve decisions and failures, and resume with current source identities.",
+      "icon": "context"
+    },
+    {
+      "id": "typescript",
+      "title": "TypeScript",
+      "description": "Native TypeScript 7 adoption, domain types, ESM packages, and precise quality checks.",
+      "icon": "code"
+    },
+    {
+      "id": "go",
+      "title": "Go Engineering",
+      "description": "Cohesive services, bounded concurrency, deterministic tests, and evidence-led performance work.",
+      "icon": "terminal"
+    },
+    {
+      "id": "apis-integrations",
+      "title": "APIs & Integrations",
+      "description": "Evolve contracts, generate consumers, and connect providers without hiding important differences.",
+      "icon": "plug"
+    },
+    {
+      "id": "data-state",
+      "title": "Data & State",
+      "description": "Protect database invariants, evolve schemas, reconcile jobs, and account for usage consistently.",
+      "icon": "database"
+    },
+    {
+      "id": "durable-workflows",
+      "title": "Durable Workflows",
+      "description": "Build deterministic Temporal workflows, retry-safe activities, and compatible worker rollouts.",
+      "icon": "workflow"
+    },
+    {
+      "id": "testing-quality",
+      "title": "Testing & Quality",
+      "description": "Diagnose failures, design meaningful tests, review interfaces, and evaluate delegated work.",
+      "icon": "test"
+    },
+    {
+      "id": "devops-delivery",
+      "title": "DevOps & Delivery",
+      "description": "Keep toolchains reproducible, caches trustworthy, containers useful, and artifacts verified.",
+      "icon": "server"
+    },
+    {
+      "id": "media-pipelines",
+      "title": "Media Pipelines",
+      "description": "Track asset identities, derivation history, integrity, and appropriate data boundaries.",
+      "icon": "media"
+    },
+    {
+      "id": "mcp-tooling",
+      "title": "MCP & CLI Tooling",
+      "description": "Compose reusable skills, expose bounded MCP operations, and inspect executable developer tools.",
+      "icon": "tools"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "orchestration-observability",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "orchestration-observability-trigger",
+      "kind": "trigger",
+      "input": "Ten workers appear busy but completed work waits on one integration lane. Report integration queue growth instead of celebrating model throughput.",
+      "expected": "A redacted trace index, phase timings where observed, result-to-integration mapping, and a focused bottleneck finding."
+    },
+    {
+      "id": "orchestration-observability-boundary",
+      "kind": "boundary",
+      "input": "Trace payloads contain a credential or private source prompt",
+      "expected": "Trace payloads contain a credential or private source prompt: restrict and redact them before sharing any diagnostic artifact."
+    },
+    {
+      "id": "orchestration-observability-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

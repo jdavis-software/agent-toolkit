@@ -1,3 +1,4 @@
+import { loadCategories } from '../../scripts/categories.mjs';
 import type { APIRoute } from 'astro';
 import { loadCatalog } from '../../scripts/catalog.mjs';
 import { loadBundles } from '../../tools/lib/bundles.mjs';
@@ -8,6 +9,6 @@ export const GET: APIRoute = async () => {
   return new Response(JSON.stringify({
     schemaVersion: 1,
     sourceRevision: buildRevision(),
-    counts: { entries: entries.length, skills: entries.filter(e => e.kind === 'skill').length, tools: entries.filter(e => e.kind === 'tool').length, bundles: bundles.length },
+    counts: { entries: entries.length, skills: entries.filter(e => e.kind === 'skill').length, tools: entries.filter(e => e.kind === 'tool').length, bundles: bundles.length, categories: (await loadCategories()).length },
   }), { headers: { 'Content-Type': 'application/json; charset=utf-8' } });
 };

@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "runId": "synthetic-example",
+  "policy": {
+    "maxConcurrent": 3,
+    "reservedReviewSlots": 1,
+    "maxTokens": 1000,
+    "allowedEffects": [
+      "read",
+      "local-write"
+    ],
+    "resources": {
+      "cpu": 3
+    }
+  },
+  "tasks": [
+    {
+      "id": "api",
+      "goal": "Produce the synthetic api fixture",
+      "owns": [
+        "api/"
+      ],
+      "dependsOn": [],
+      "checks": [
+        {
+          "id": "api-check",
+          "argv": [
+            "node",
+            "--version"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "api-criterion",
+          "expect": "Synthetic expected artifact is present",
+          "checkIds": [
+            "api-check"
+          ]
+        }
+      ],
+      "inputDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "capabilities": [
+        "edit"
+      ],
+      "effects": [
+        "local-write"
+      ],
+      "phase": "implementation",
+      "tokenBudget": 100,
+      "maxAttempts": 2,
+      "resources": {
+        "cpu": 1
+      },
+      "requiresApproval": false
+    },
+    {
+      "id": "ui",
+      "goal": "Produce the synthetic ui fixture",
+      "owns": [
+        "ui/"
+      ],
+      "dependsOn": [],
+      "checks": [
+        {
+          "id": "ui-check",
+          "argv": [
+            "node",
+            "--version"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "ui-criterion",
+          "expect": "Synthetic expected artifact is present",
+          "checkIds": [
+            "ui-check"
+          ]
+        }
+      ],
+      "inputDigest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "capabilities": [
+        "edit"
+      ],
+      "effects": [
+        "local-write"
+      ],
+      "phase": "implementation",
+      "tokenBudget": 100,
+      "maxAttempts": 2,
+      "resources": {
+        "cpu": 1
+      },
+      "requiresApproval": false
+    },
+    {
+      "id": "review",
+      "goal": "Produce the synthetic review fixture",
+      "owns": [
+        "review/"
+      ],
+      "dependsOn": [
+        "api",
+        "ui"
+      ],
+      "checks": [
+        {
+          "id": "review-check",
+          "argv": [
+            "node",
+            "--version"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "review-criterion",
+          "expect": "Synthetic expected artifact is present",
+          "checkIds": [
+            "review-check"
+          ]
+        }
+      ],
+      "inputDigest": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "capabilities": [
+        "review"
+      ],
+      "effects": [
+        "local-write"
+      ],
+      "phase": "verification",
+      "tokenBudget": 100,
+      "maxAttempts": 2,
+      "resources": {
+        "cpu": 1
+      },
+      "requiresApproval": false
+    }
+  ]
+}

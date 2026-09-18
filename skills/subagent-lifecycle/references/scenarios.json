@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "subagent-lifecycle",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "subagent-lifecycle-trigger",
+      "kind": "trigger",
+      "input": "A worker uploads an artifact, then disconnects before reporting success. The run remains indeterminate until the artifact and external effect are reconciled.",
+      "expected": "A current state, transition history, owner/attempt identity, unresolved effects, and next safe action."
+    },
+    {
+      "id": "subagent-lifecycle-boundary",
+      "kind": "boundary",
+      "input": "A running attempt times out",
+      "expected": "A running attempt times out: keep it out of automatic retry until there is evidence that repeating it is safe."
+    },
+    {
+      "id": "subagent-lifecycle-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

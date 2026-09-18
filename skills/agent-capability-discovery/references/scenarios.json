@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-capability-discovery",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-capability-discovery-trigger",
+      "kind": "trigger",
+      "input": "A parent has browser tools but its coding child does not. Route UI verification to a worker with a verified browser instead of assuming inherited access.",
+      "expected": "A versioned registry plus probe evidence, expiry, missing capabilities, and distinct authorization notes."
+    },
+    {
+      "id": "agent-capability-discovery-boundary",
+      "kind": "boundary",
+      "input": "A registry is expired or rooted in another worktree",
+      "expected": "A registry is expired or rooted in another worktree: refresh it or report the task blocked, not supported."
+    },
+    {
+      "id": "agent-capability-discovery-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

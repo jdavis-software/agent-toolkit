@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "approval-gate-design",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "approval-gate-design-trigger",
+      "kind": "trigger",
+      "input": "A deploy was approved for artifact A. A later rebuild produces B; the launcher must not reuse A\u2019s approval simply because the task ID is unchanged.",
+      "expected": "Approval placement, immutable decision context, enforcement owner, expiration/revocation behavior, and boundary tests."
+    },
+    {
+      "id": "approval-gate-design-boundary",
+      "kind": "boundary",
+      "input": "A task input digest changes after approval",
+      "expected": "A task input digest changes after approval: stop at the gate and obtain an appropriately scoped new decision."
+    },
+    {
+      "id": "approval-gate-design-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

@@ -14,5 +14,6 @@ test('publication metadata exposes only the revision and matching catalog counts
     skills: entries.filter((e: { kind: string }) => e.kind === 'skill').length,
     tools: entries.filter((e: { kind: string }) => e.kind === 'tool').length,
     bundles: bundles.length,
+    categories: (await (await request.get(base+'categories.json')).json()).categories.length,
   });
 });

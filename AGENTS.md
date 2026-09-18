@@ -33,3 +33,6 @@ The skills are AI-assisted experimental packages. Preserve that distinction unti
 
 ## Dependencies
 Use the pinned versions and committed lockfile. Never hand-author a lockfile or silently switch package managers. Dependency upgrades are separate reviewed changes. Keep helper modules dependency-free unless a concrete requirement warrants a reviewed exception. Avoid new frameworks, remote APIs, telemetry, installers, or MCP services without a demonstrated task gap.
+
+## Category and orchestration contracts
+`catalog/categories.json` owns primary category metadata; each entry has exactly one `categoryId`. Counts are derived. Fine-grained `category` topics and overlapping bundles remain distinct. `tools/agentflow.mjs` and `tools/lib/agentflow.mjs` provide offline coordination only. Use explicit private adapters for actual workers and authority. Keep `companionTools` and resolved package files aligned. Agentflow tests and synthetic scenarios do not establish agent-host effectiveness.

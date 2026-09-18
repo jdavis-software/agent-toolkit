@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-result-integration",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-result-integration-trigger",
+      "kind": "trigger",
+      "input": "A new server and client each pass their local fixtures but disagree on a nullable field. Combined integration rejects the mismatch before publication.",
+      "expected": "Result acceptance or rejection, exact combined candidate, executed evidence, unresolved conflicts, and separate release status."
+    },
+    {
+      "id": "agent-result-integration-boundary",
+      "kind": "boundary",
+      "input": "The worker changed the acceptance test to match its output",
+      "expected": "The worker changed the acceptance test to match its output: restore independent review before accepting the result."
+    },
+    {
+      "id": "agent-result-integration-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}
