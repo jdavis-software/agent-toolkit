@@ -1843,7 +1843,7 @@
     "category": "Source intake",
     "categoryId": "web-research",
     "title": "Sourcekit",
-    "description": "Bounded public HTTPS reading, feed snapshots and diffs, timestamped caption parsing, and honest offline source routing. No platform logins or automatic installation.",
+    "description": "Bounded public HTTPS reading, content assessment, link references, feed comparisons and timestamped captions. Optional extraction experiments stay separate.",
     "sourcePath": "tools/sourcekit.mjs",
     "docsPath": "docs/SOURCEKIT.md",
     "tags": [
@@ -1861,10 +1861,121 @@
       "Python 3.10+",
       "Explicit host approval for network reads"
     ],
-    "outcome": "Source-linked JSON packets with byte/content hashes, timestamps, representation limits, and explicit failure states.",
+    "outcome": "Source packets with explicit capture-versus-content status, expectation checks and provenance; never a universal crawler or authenticated browser.",
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Implemented reader/parser and offline adviser. Social/video adapter recognition does not implement authenticated access or video downloading."
+    "note": "Sourcekit 0.2 adds conservative content assessment and opt-in links without altering transport policy. Scrapling is tested only in an isolated optional parser evaluation."
+  },
+  {
+    "id": "browser-session-isolation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/browser-session-isolation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "browser",
+      "session",
+      "isolation",
+      "qualification"
+    ],
+    "scenarioPath": "skills/browser-session-isolation/references/scenarios.json",
+    "requires": [
+      "Accepted task, source and policy baseline",
+      "Owned disposable test environment",
+      "Actual pinned tools and independently defined acceptance checks"
+    ],
+    "outcome": "Assign browser contexts and account state to explicit agent lanes, verify readiness and isolation, and preserve evidence before releasing only owned resources.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented."
+  },
+  {
+    "id": "structured-web-extraction",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/structured-web-extraction/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "structured",
+      "web",
+      "extraction",
+      "qualification"
+    ],
+    "scenarioPath": "skills/structured-web-extraction/references/scenarios.json",
+    "requires": [
+      "Accepted task, source and policy baseline",
+      "Owned disposable test environment",
+      "Actual pinned tools and independently defined acceptance checks"
+    ],
+    "outcome": "Extract records against an independent field contract, rejecting decoy matches, wrong cardinality, and unsupported adaptive recovery while preserving source evidence.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented.",
+    "companionTools": [
+      "sourcekit"
+    ]
+  },
+  {
+    "id": "bounded-crawl-planning",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/bounded-crawl-planning/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "bounded",
+      "crawl",
+      "planning",
+      "qualification"
+    ],
+    "scenarioPath": "skills/bounded-crawl-planning/references/scenarios.json",
+    "requires": [
+      "Accepted task, source and policy baseline",
+      "Owned disposable test environment",
+      "Actual pinned tools and independently defined acceptance checks"
+    ],
+    "outcome": "Specify finite, authorized multi-page collection with persistent cooldowns, deduplication, freshness and recovery rules, without treating a plan as an executing crawler.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented."
+  },
+  {
+    "id": "mcp-server-qualification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "MCP and bundles",
+    "categoryId": "mcp-tooling",
+    "sourcePath": "skills/mcp-server-qualification/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "mcp",
+      "server",
+      "qualification",
+      "qualification"
+    ],
+    "scenarioPath": "skills/mcp-server-qualification/references/scenarios.json",
+    "requires": [
+      "Accepted task, source and policy baseline",
+      "Owned disposable test environment",
+      "Actual pinned tools and independently defined acceptance checks"
+    ],
+    "outcome": "Qualify a specific third-party MCP server revision through identity, effect review and actual protocol/operation evidence rather than treating discovery as approval.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented."
   }
 ]

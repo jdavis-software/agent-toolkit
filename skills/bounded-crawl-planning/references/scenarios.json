@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "bounded-crawl-planning",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "bounded-crawl-planning-trigger",
+      "kind": "trigger",
+      "input": "Collect an explicitly bounded set of public documentation pages with known pagination.",
+      "expected": "Produce a finite host/path-scoped plan with budgets, visited identities and durable cooldown/recovery rules."
+    },
+    {
+      "id": "bounded-crawl-planning-boundary",
+      "kind": "boundary",
+      "input": "A checkpoint has pending requests but omits an outstanding server rate-limit wait.",
+      "expected": "Do not resume admission until the cooldown is recovered or conservatively re-established; retain spent budgets."
+    },
+    {
+      "id": "bounded-crawl-planning-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling error in an unrelated local README.",
+      "expected": "Perform only the authorized small edit; do not install tools, launch browsers, crawl sources or connect credentials."
+    }
+  ]
+}

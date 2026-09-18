@@ -10,7 +10,7 @@ from pathlib import Path
 from urllib.parse import parse_qsl, urlsplit, urlunsplit
 
 MAX_BYTES = 1024 * 1024
-VERSION = '0.1.0'
+VERSION = '0.2.0'
 
 class SourceError(ValueError):
     def __init__(self, code: str, message: str):

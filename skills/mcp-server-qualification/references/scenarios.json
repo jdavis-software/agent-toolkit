@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "mcp-server-qualification",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "mcp-server-qualification-trigger",
+      "kind": "trigger",
+      "input": "Review a pinned third-party MCP server before making selected operations available to agents.",
+      "expected": "Produce revision-bound per-operation qualification with actual intended and denied-effect tests and explicit untested areas."
+    },
+    {
+      "id": "mcp-server-qualification-boundary",
+      "kind": "boundary",
+      "input": "Tool discovery succeeds but the supposed read-only identity can delete the test document.",
+      "expected": "Fail qualification, preserve the observed effect evidence and do not expose the mutation operation."
+    },
+    {
+      "id": "mcp-server-qualification-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling error in an unrelated local README.",
+      "expected": "Perform only the authorized small edit; do not install tools, launch browsers, crawl sources or connect credentials."
+    }
+  ]
+}

@@ -63,3 +63,7 @@ Use the full toolkit checkout. [Sourcekit commands](https://github.com/jdavis-so
 - [HTTP semantics](https://www.rfc-editor.org/rfc/rfc9110.html)
 - [Robots Exclusion Protocol](https://www.rfc-editor.org/rfc/rfc9309.html)
 - [TLS client identity](https://docs.python.org/3/library/ssl.html)
+
+## Capture versus requested content
+
+Sourcekit 0.2 adds `contentAssessment` alongside capture `status`. Use independently chosen literal markers and `--require-content` for a machine gate: exit 3 preserves the packet but signals that expected content was not established. No expectations means `unknown`, not healthy. Use `assess FILE --format html` to inspect a local interstitial without invoking a browser. A matching literal marker is not proof of semantic correctness. The optional `--include-links` emits bounded references without fetching them. See `docs/SOURCEKIT.md`.

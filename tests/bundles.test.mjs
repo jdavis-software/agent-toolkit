@@ -24,7 +24,7 @@ async function fixture(t,{git=false}={}) {
  return dir;
 }
 const check=(d,entries=[entry])=>validateBundleDefinitions(d,entries);
-test('eleven bundles cover all 62 original skills and 168 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:11,skills:62,scenarioInputs:168}));
+test('eleven bundles cover all 66 original skills and 180 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:11,skills:66,scenarioInputs:180}));
 test('bundle registry requires its version and nonempty list',()=>{for(const d of [null,{},[],{schemaVersion:2,bundles:[]},{schemaVersion:1,bundles:[]}])assert.throws(()=>check(d));});
 test('unknown skill IDs fail rather than selecting a similar name',()=>{const d=registry();d.bundles[0].skills=['example-skil'];assert.throws(()=>check(d),/Unknown/);});
 test('curated links cannot masquerade as local skill packages',()=>assert.throws(()=>check(registry(),[{...entry,origin:'curated'}]),/nonlocal/));
@@ -57,6 +57,6 @@ test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(ro
 
 test('web research includes the actual Python implementation and wrapper',async()=>{
  const result=await resolveBundle(root,'web-research');const files=new Set(result.files.map(f=>f.path));
- for(const path of ['tools/sourcekit.mjs','tools/sourcekit.py','tools/sourcekit_lib/common.py','tools/sourcekit_lib/transport.py','tools/sourcekit_lib/formats.py','tools/sourcekit_lib/routing.py','docs/SOURCEKIT.md'])assert.ok(files.has(path),path);
+ for(const path of ['tools/sourcekit.mjs','tools/sourcekit.py','tools/sourcekit_lib/common.py','tools/sourcekit_lib/transport.py','tools/sourcekit_lib/formats.py','tools/sourcekit_lib/routing.py','tools/sourcekit_lib/assessment.py','docs/SOURCEKIT.md'])assert.ok(files.has(path),path);
  assert.ok(![...files].some(p=>p.includes('__pycache__')));
 });
