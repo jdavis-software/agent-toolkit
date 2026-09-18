@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "connector-health-diagnostics",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "connector-health-diagnostics-trigger",
+      "kind": "trigger",
+      "input": "The transcript command is on PATH but its interpreter was removed. Report executable failure; do not tell the user the video lacks captions.",
+      "expected": "A per-operation health matrix with evidence level, timestamp, binding, failure class, redacted evidence, and a minimal repair or recheck plan. Provide real evidence or report missing prerequisites."
+    },
+    {
+      "id": "connector-health-diagnostics-boundary",
+      "kind": "boundary",
+      "input": "A diagnostic command would start a browser daemon. Do not run it under a read-only check mandate; use an approved passive probe or report the limitation.",
+      "expected": "A diagnostic command would start a browser daemon. Do not run it under a read-only check mandate; use an approved passive probe or report the limitation. Do not fabricate successful access or change authority."
+    },
+    {
+      "id": "connector-health-diagnostics-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a typo in an unrelated local README.",
+      "expected": "Make the authorized small edit without querying external sources or installing connectors."
+    }
+  ]
+}

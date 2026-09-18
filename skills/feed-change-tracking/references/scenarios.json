@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "feed-change-tracking",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "feed-change-tracking-trigger",
+      "kind": "trigger",
+      "input": "A release-feed item keeps its ID but corrects its title. Report a changed item; an older item leaving the feed window is not a deleted release.",
+      "expected": "A validated current feed packet plus stable-ID changes, explicit comparison completeness, preserved prior checkpoint, and delivery decisions. Provide real evidence or report missing prerequisites."
+    },
+    {
+      "id": "feed-change-tracking-boundary",
+      "kind": "boundary",
+      "input": "The feed contains duplicate IDs with conflicting content. Reject the ambiguous snapshot and retain the last accepted one rather than choosing whichever item appeared last.",
+      "expected": "The feed contains duplicate IDs with conflicting content. Reject the ambiguous snapshot and retain the last accepted one rather than choosing whichever item appeared last. Do not fabricate successful access or change authority."
+    },
+    {
+      "id": "feed-change-tracking-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a typo in an unrelated local README.",
+      "expected": "Make the authorized small edit without querying external sources or installing connectors."
+    }
+  ]
+}
