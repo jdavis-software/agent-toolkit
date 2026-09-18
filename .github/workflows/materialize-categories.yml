@@ -23,11 +23,15 @@ jobs:
           python .github/finalize-categories.py
           node --test tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/categories.test.mjs
           node examples/agentflow/demo.mjs
-      - name: Remove staging and commit the final candidate
+      - name: Commit content without modifying workflow definitions
         run: |
           set -euo pipefail
-          git rm .github/seed-agentflow.py .github/finalize-categories.py .github/workflows/review-category-source.yml .github/workflows/materialize-categories.yml
-          git add AGENTS.md README.md package.json catalog skills examples tools scripts src tests playwright.config.ts .github/workflows/deploy-pages.yml
+          # The job has contents permission, not workflows permission.
+          # Discard only this script's generated workflow edit; the connector
+          # applies and reviews that edit separately before publication.
+          git show HEAD:.github/workflows/deploy-pages.yml > .github/workflows/deploy-pages.yml
+          git rm .github/seed-agentflow.py .github/finalize-categories.py
+          git add AGENTS.md README.md package.json catalog skills examples tools scripts src tests playwright.config.ts
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'feat: finalize 54 original skills, Agentflow, and 12 counted categories'
