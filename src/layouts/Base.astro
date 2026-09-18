@@ -2,8 +2,10 @@
 import '../styles/global.css';
 import { withBase, repository } from '../lib/paths';
 interface Props { title: string; description?: string; active?: string; }
-const { title, description = 'Practical agent skills, workflows, and developer tooling for parallel AI-assisted engineering.', active = '' } = Astro.props;
+const { title, description = "Jordan Davis's personal collection of original agent skills, engineering workflows, and selected developer tools.", active = '' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const brand = "Jordan’s Agent Toolkit Collection";
+const pageTitle = title === brand ? brand : `${title} · Jordan’s Agent Toolkit`;
 ---
 <!doctype html>
 <html lang="en" data-theme="dark">
@@ -12,13 +14,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#111214" />
-  <meta property="og:title" content={title} />
+  <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
-  <title>{title} · Agent Toolkit</title>
+  <title>{pageTitle}</title>
   <script is:inline>
     try {
       const saved = localStorage.getItem('agent-toolkit-theme');
@@ -29,7 +31,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
   <header class="header">
-    <a href={withBase()} class="brand" aria-label="Agent Toolkit home"><span class="brand-mark" aria-hidden="true">a/</span><span>agent<span class="brand-slash">/</span>toolkit</span></a>
+    <a href={withBase()} class="brand" aria-label="Jordan’s Agent Toolkit home"><span class="brand-mark" aria-hidden="true">j/</span><span>Jordan’s Toolkit</span></a>
     <nav aria-label="Main navigation">
       {['Skills','Tools','Workflows','About'].map(label => <a href={withBase(`${label.toLowerCase()}/`)} aria-current={active === label.toLowerCase() ? 'page' : undefined}>{label}</a>)}
     </nav>
@@ -40,9 +42,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </header>
   <main id="main"><slot /></main>
   <footer class="footer">
-    <span>Agent Toolkit <span class="muted">/</span> Jordan Davis</span>
-    <div><a href={withBase('about/')}>About & attribution</a><a href={`${repository}/blob/main/CONTRIBUTING.md`}>Contribute</a><a href={`${repository}/blob/main/docs/ROADMAP.md`}>Roadmap</a></div>
-    <span class="footer-note">Source first. Evidence over claims.</span>
+    <span>Jordan’s Agent Toolkit <span class="muted">/</span> Collection</span>
+    <div><a href={withBase('about/')}>About the collection</a><a href={`${repository}/blob/main/CONTRIBUTING.md`}>Contribute</a><a href={`${repository}/blob/main/docs/ROADMAP.md`}>Roadmap</a></div>
+    <span class="footer-note">Practical skills. Inspectable source.</span>
   </footer>
   <script>
     const button = document.querySelector<HTMLButtonElement>('#theme-toggle');

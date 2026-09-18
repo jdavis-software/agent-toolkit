@@ -2,6 +2,23 @@
 import Base from '../layouts/Base.astro';
 import { repository, withBase } from '../lib/paths';
 ---
-<Base title="About the toolkit" active="about">
-<div class="container reading-page"><a class="back-link" href={withBase()}>← Explore the toolkit</a><h1>Useful work.<br /><span class="muted">Inspectable source.</span></h1><div class="prose"><p class="lead">Agent Toolkit is Jordan Davis’s public collection of agent-assisted engineering skills, workflows, and selected developer tools.</p><h2>Small pieces that earn their place</h2><p>The goal is not to collect the most prompts. It is to make useful engineering procedures understandable: bound the task, establish ownership, use existing tools, and hand back evidence.</p><h2>Three kinds of contribution</h2><p><strong>Original</strong> means written for this repository. The first starter skills are newly created, AI-assisted drafts—not an inventory of private production workflows. <strong>Adapted</strong> work must identify its upstream source, revision, license, and changes. <strong>Curated</strong> entries link to other authors without claiming their work.</p><h2>Evidence, not badges</h2><p>The initial skills are experimental. Structural checks test the package shape; they do not establish that a host activates a skill correctly or that its outputs improve real tasks. Compatibility and usage claims require recorded evaluations.</p><h2>Credit where it belongs</h2><p>The catalog approach takes inspiration from <a href="https://ecc.tools/skills">ECC</a>. Focused skill packaging takes inspiration from <a href="https://github.com/vercel-labs/agent-skills">Vercel Agent Skills</a> and the <a href="https://agentskills.io/specification">Agent Skills specification</a>. External projects retain their authorship and terms. No upstream skill bodies are copied into this initial collection.</p><h2>Public by intention</h2><p>No private knowledge-base exports, machine configurations, credentials, or product code belong here. Hiding an item from the website does not make a public repository file private.</p><h2>Help improve it</h2><p>Bring a real use case, a small example, and an honest account of what was tested. Read the <a href={`${repository}/blob/main/CONTRIBUTING.md`}>contribution guide</a> and <a href={`${repository}/blob/main/docs/ROADMAP.md`}>roadmap</a>. A license for original repository content has not yet been selected; do not assume the upstream projects’ licenses apply to this code.</p></div></div>
+<Base title="About Jordan’s collection" active="about">
+  <div class="container reading-page">
+    <a class="back-link" href={withBase()}>← Explore the collection</a>
+    <h1>One personal collection.<br /><span class="muted">Useful, inspectable work.</span></h1>
+    <div class="prose">
+      <p class="lead">Jordan’s Agent Toolkit Collection brings together original skills, practical workflows, and selected tools for AI-assisted software engineering.</p>
+      <h2>The work behind the profile</h2>
+      <p>This is a home for the approaches Jordan is developing and documenting: bounded tasks, parallel work, focused testing, debugging, interface review, and evidence-backed handoffs. Individual skill pages provide direct links that can be shared from a profile or an article.</p>
+      <h2>Own instructions, not renamed packages</h2>
+      <p>The skills are written for this collection with AI assistance, using task requirements and concrete examples. They are not line-by-line rewrites of other skill libraries. Research helps identify useful problems; the collection develops its own procedures and evaluation cases.</p>
+      <h2>How the pieces fit</h2>
+      <p>Start with the <a href={withBase('skills/')}>skill collection</a>, then follow the <a href={withBase('workflows/')}>task-to-handoff workflow</a>. Selected external tools live in their <a href={withBase('tools/')}>own section</a>. A skill using a third-party tool does not claim ownership of that tool.</p>
+      <h2>Evidence as the collection grows</h2>
+      <p>The current skills are experimental. Examples and evaluation scenarios explain intended behavior; they are not fabricated execution results. Website tests do not establish agent-host compatibility, production usage, or productivity improvements.</p>
+      <h2>Explore further</h2>
+      <p>Read Jordan’s <a href="https://jdavis-software.github.io/content/articles/parallel-agent-engineering/">parallel-agent engineering article</a>, inspect the <a href={repository}>repository</a>, or suggest an improvement with a concrete use case.</p>
+      <p>Authoring and provenance are documented in the <a href={`${repository}/blob/main/docs/ORIGINAL_SKILLS.md`}>original-skills guide</a> and <a href={`${repository}/blob/main/ATTRIBUTION.md`}>repository notices</a>. Actual reused material and dependencies retain their applicable terms. The original-content license remains unselected.</p>
+    </div>
+  </div>
 </Base>
