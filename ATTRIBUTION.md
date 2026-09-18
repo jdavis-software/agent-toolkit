@@ -1,8 +1,12 @@
-# Attribution
+# Authorship and attribution
 
-The initial skill bodies, site source, tests, and repository guidance were newly prepared with AI assistance for Agent Toolkit. They were not copied from private product repositories or from upstream skill bodies. This is not a record of prior production use.
+Jordan's Agent Toolkit Collection is a personal project maintained for Jordan Davis. The initial skill bodies, site source, tests, and repository guidance were newly prepared with AI assistance. They were not copied from private product repositories or from upstream skill bodies. This is not a record of prior production use.
 
-## References, not vendored packages
+The evidence-first-debugging, behavior-test-design, and interface-quality-review additions were written as new task-specific procedures with new synthetic examples and evaluation scenarios. They are not file-by-file paraphrases of upstream skills. This authoring record is not a legal clean-room certification or a claim that every engineering idea is novel. See [the original-skills guide](docs/ORIGINAL_SKILLS.md).
+
+## External tools and historical research references
+
+This table preserves the initial research/reference record. It is not the current public skill catalog, a dependency manifest, or a statement that code from these projects was imported. Whole-library reference cards have been removed from the primary skill collection; actual external tools remain separately identified.
 
 | Project | Author / owner | Source |
 | --- | --- | --- |
@@ -15,6 +19,6 @@ The initial skill bodies, site source, tests, and repository guidance were newly
 | Agent Skills format | Agent Skills contributors | https://agentskills.io/specification |
 | Astro documentation | Astro contributors | https://docs.astro.build/en/guides/deploy/github/ |
 
-ECC informed discoverability; Vercel informed focused packaging. No affiliation or endorsement is implied. Descriptions are original summaries with links to official sources, not compatibility certifications. Consult each upstream project's current terms before reuse.
+ECC informed initial discoverability; Vercel informed initial focused-packaging research. No affiliation or endorsement is implied. The original skill pages link to this repository's own instructions. External tool descriptions are summaries, not compatibility certifications.
 
-Original repository licensing is pending the owner's choice. Dependency licenses remain those of their authors.
+Actual reused materials and dependencies retain applicable notices and license terms. Original repository licensing remains pending the owner's choice; this file grants no additional rights and does not relicense external projects.
