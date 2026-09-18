@@ -499,6 +499,62 @@
     "why": "A verification report that separates executed checks, skipped checks, failures, and remaining uncertainty."
   },
   {
+    "id": "evidence-first-debugging",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Debugging",
+    "sourcePath": "skills/evidence-first-debugging/SKILL.md",
+    "requires": [
+      "A reported failure",
+      "Repository read access",
+      "An authorized reproduction environment"
+    ],
+    "outcome": "A supported diagnosis, bounded repair, and evidence tied to the original reproduction.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "why": "A supported diagnosis, bounded repair, and evidence tied to the original reproduction."
+  },
+  {
+    "id": "behavior-test-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Testing",
+    "sourcePath": "skills/behavior-test-design/SKILL.md",
+    "requires": [
+      "An explicit behavior contract",
+      "Project-owned test runner and fixtures"
+    ],
+    "outcome": "A requirement-linked case matrix and execution record that distinguishes meaningful failures from setup problems.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "why": "A requirement-linked case matrix and execution record that distinguishes meaningful failures from setup problems."
+  },
+  {
+    "id": "interface-quality-review",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Frontend",
+    "sourcePath": "skills/interface-quality-review/SKILL.md",
+    "requires": [
+      "A target user journey",
+      "A rendered interface",
+      "Authorized browser access for interaction checks"
+    ],
+    "outcome": "Reproducible interface findings with desktop/mobile evidence, keyboard checks, and scoped repair verification.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "why": "Reproducible interface findings with desktop/mobile evidence, keyboard checks, and scoped repair verification."
+  },
+  {
     "id": "vercel-agent-skills",
     "title": "Vercel Agent Skills",
     "description": "Focused guidance for React performance, component composition, and web interface reviews.",

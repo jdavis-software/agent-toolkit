@@ -15,6 +15,9 @@ Run `pnpm validate`, `pnpm test`, `pnpm check`, and `pnpm build`. For UI changes
 ## Trust and publication
 This repository is public, including branches. Never commit private research, local paths, customer data, credentials, personal context, or company code. A hidden website card is not a privacy boundary. No automatic Notion export. Do not invent adoption, authorship, benchmark, installer, or host-compatibility claims. Do not install a curated tool merely because it appears in the catalog.
 
+## Original authoring
+For original contributions, retain the task-first and attribution guidance in `docs/ORIGINAL_SKILLS.md`. Do not paraphrase upstream code or instructions merely to relabel them as original. Those authoring rules apply to original work; community source snapshots are explicitly curated and retain their authors and licenses.
+
 ## Skills and licenses
 The initial skills are new AI-assisted experimental starters. Preserve that distinction until real evaluations justify an update. Adaptations require upstream source, pinned revision, applicable license, and a change summary. Do not add a license grant for original repository content without the owner's decision. Prefer links over redistribution when upstream terms are unclear. Preserve all copied package bytes, supporting files, and license notices; review exact revisions and never automatically execute imported scripts.
 

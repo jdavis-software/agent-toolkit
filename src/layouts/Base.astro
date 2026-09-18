@@ -19,7 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:url" content={canonical} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} />
-  <title>{title} · Jordan’s Agent Toolkit Collection</title>
+  <title>{title === 'Jordan’s Agent Toolkit Collection' ? title : `${title} · Jordan’s Agent Toolkit Collection`}</title>
   <script is:inline>
     try {
       const saved = localStorage.getItem('agent-toolkit-theme');

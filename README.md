@@ -34,6 +34,9 @@ This is a curated collection, not a claim that I authored every component. It br
 | [Work Packet Planner](https://jdavis-software.github.io/agent-toolkit/skills/work-packet-planner/) | Jordan’s starters | Experimental starter |
 | [Worktree Handoff](https://jdavis-software.github.io/agent-toolkit/skills/worktree-handoff/) | Jordan’s starters | Experimental starter |
 | [Affected Verification](https://jdavis-software.github.io/agent-toolkit/skills/affected-verification/) | Jordan’s starters | Experimental starter |
+| [Evidence First Debugging](https://jdavis-software.github.io/agent-toolkit/skills/evidence-first-debugging/) | Jordan’s starters | Experimental starter |
+| [Behavior Test Design](https://jdavis-software.github.io/agent-toolkit/skills/behavior-test-design/) | Jordan’s starters | Experimental starter |
+| [Interface Quality Review](https://jdavis-software.github.io/agent-toolkit/skills/interface-quality-review/) | Jordan’s starters | Experimental starter |
 
 <!-- collection:end -->
 
@@ -46,6 +49,8 @@ This is a curated collection, not a claim that I authored every component. It br
 **Experimental starter:** newly written AI-assisted instructions in `skills/`. These are not represented as existing private production tools. A license for original repository content has not yet been selected. The licenses of copied packages apply to those packages, not to this entire repository.
 
 ## Using the collection
+
+The [task-to-handoff workflow](https://jdavis-software.github.io/agent-toolkit/workflows/task-to-handoff/) connects the six original starter skills. Community selections complement this workflow rather than replace it.
 
 Choose the problem first, then read the selection notes and complete source package. Keep the original package folder intact so references and helpers are available. Follow the target agent host’s documented installation method in a disposable project before enabling a skill in real work. The collection does not automatically install tools, activate hooks, or grant credentials. Some packages reference broader frameworks or live external documents.
 

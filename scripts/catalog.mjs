@@ -54,6 +54,7 @@ export function parseSkill(text, id, original = true) {
   }
   return { name: data.name, description: data.description, body: match[2] };
 }
+/** @returns {Promise<Record<string, {title:string, repo:string, revision:string, author:string, archiveSha256:string, license:string, licensePath:string|null}>>} */
 export async function loadSources() {
   const sources = JSON.parse(await readFile(resolve(root,'catalog/upstreams.json'),'utf8'));
   for (const [id,s] of Object.entries(sources)) {

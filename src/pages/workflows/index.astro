@@ -1,4 +1,7 @@
 ---
-import CatalogPage from "../../components/CatalogPage.astro";
+import CatalogPage from '../../components/CatalogPage.astro';
+import { withBase } from '../../lib/paths';
 ---
-<CatalogPage kind="workflow" title="Engineering workflows" description="Reusable ways to structure planning, implementation, verification, and handoffs. References to evaluate, not systems to install blindly." />
+<CatalogPage kind="workflow" title="Engineering workflows" description="Community procedures for planning, debugging, testing, and working in isolated lanes. Choose what fits the task.">
+  <p class="workflow-intro"><a class="button secondary" href={withBase('workflows/task-to-handoff/')}>Explore Jordan’s task-to-handoff workflow ↗</a></p>
+</CatalogPage>

@@ -4,8 +4,8 @@ test('home renders without errors and has no horizontal overflow',async({page},t
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base);
   await expect(page.getByRole('heading',{level:1})).toContainText('Jordan’s Agent');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(22);
-  await expect(page.locator('#result-count')).toHaveText('Showing 22 of 22 entries');
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
+  await expect(page.locator('#result-count')).toHaveText('Showing 25 of 25 entries');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   expect(errors).toEqual([]);
   await page.screenshot({path:`test-results/${testInfo.project.name}-home.png`,fullPage:true});
@@ -16,9 +16,9 @@ test('search, reset, category and origin filters work',async({page})=>{
   await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
   await expect(page).toHaveURL(/q=postgres/);
   await page.getByRole('button',{name:'Reset filters'}).click();
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(22);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
   await page.getByLabel('Filter by origin').selectOption('original');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(3);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(6);
   await page.getByLabel('Filter by origin').selectOption('adapted');
   await expect(page.locator('#empty-state')).toBeVisible();
 });
@@ -44,7 +44,7 @@ test('detail, source, nested route and theme work',async({page},testInfo)=>{
 });
 test('catalog export and all local navigation targets resolve',async({page,request})=>{
   const catalog = await request.get(base+'catalog.json');expect(catalog.status()).toBe(200);
-  expect((await catalog.json()).entries).toHaveLength(22);
+  expect((await catalog.json()).entries).toHaveLength(25);
   await page.goto(base);
   const links = await page.locator('a[href^="/agent-toolkit/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
   for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
@@ -66,7 +66,7 @@ test('source filter and direct source URLs work',async({page})=>{
   await expect(page.locator('[data-entry]:visible')).toHaveCount(6);
   await expect(page).toHaveURL(/source=ecc/);
   await page.getByRole('button',{name:'Reset filters'}).click();
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(22);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
 });
 test('included package renders source, credit, license and safe reference links',async({page},testInfo)=>{
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
@@ -89,4 +89,14 @@ test('source directory and legacy detail URLs remain accessible',async({page,req
   await expect(page).toHaveTitle(/Jordan’s Agent Toolkit Collection/);
   for(const path of ['skills/vercel-agent-skills/','workflows/ecc/','workflows/superpowers/']) expect((await request.get(base+path)).status()).toBe(200);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+});
+
+test('preserves original additions and the task-to-handoff workflow',async({page,request})=>{
+ for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
+  await page.goto(base+'skills/'+id+'/');
+  await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',new RegExp('skills/'+id+'/SKILL.md$'));
+ }
+ await page.goto(base+'workflows/task-to-handoff/');
+ await expect(page.locator('.prose a[href*="/skills/"]')).toHaveCount(6);
+ for(const href of await page.locator('.prose a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!))) expect((await request.get(href)).status()).toBe(200);
 });

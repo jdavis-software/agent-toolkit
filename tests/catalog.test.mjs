@@ -22,7 +22,7 @@ import { readFile } from 'node:fs/promises';
 import { transformMarkdown } from '../scripts/safe-markdown.mjs';
 const sources = await loadSources();
 test('individual collection excludes legacy repository cards', () => {
- assert.equal(entries.filter(e=>e.listed!==false).length,22);
+ assert.equal(entries.filter(e=>e.listed!==false).length,25);
  assert.equal(entries.filter(e=>e.vendorPath).length,12);
  assert.equal(entries.filter(e=>e.upstreamPath).length,16);
 });
@@ -56,4 +56,12 @@ test('relative supporting-file links resolve to pinned upstream', () => {
  const tree={type:'link',url:'root-cause-tracing.md',children:[]};
  transformMarkdown(tree,'/vendor/superpowers/systematic-debugging/SKILL.md',sources);
  assert.equal(tree.url,`https://github.com/obra/superpowers/blob/${sources.superpowers.revision}/skills/systematic-debugging/root-cause-tracing.md`);
+});
+
+test('retains all six original skills and new scenario fixtures', async () => {
+ assert.equal(entries.filter(e=>e.origin==='original').length,6);
+ for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
+  const scenarios=await readFile(`skills/${id}/references/scenarios.md`,'utf8');
+  assert.ok(scenarios.includes('Scenario') || scenarios.includes('scenario'));
+ }
 });
