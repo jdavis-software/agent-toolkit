@@ -44,7 +44,7 @@ jobs:
       - name: Deploy the validated artifact
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
-      - name: Verify published revision, catalog, bundles, and skill pages
+      - name: Verify published revision, categories, bundles, and skill pages
         env:
           PAGE_URL: ${{ steps.deployment.outputs.page_url }}
           EXPECTED_SHA: ${{ github.sha }}
@@ -64,13 +64,16 @@ jobs:
               try:
                   info=json.loads(get('build-info.json'))
                   assert info['sourceRevision'] == expected, 'Published revision has not propagated'
-                  assert info['counts'] == {'entries':41,'skills':36,'tools':5,'bundles':8}, info
+                  assert info['counts'] == {'entries':60,'skills':54,'tools':6,'bundles':10,'categories':12}, info
                   entries=json.loads(get('catalog.json'))['entries']
                   bundles=json.loads(get('bundles.json'))['bundles']
-                  assert len(entries)==41 and len(bundles)==8
-                  assert len([e for e in entries if e['kind']=='skill'])==36
-                  assert len(set(s for b in bundles for s in b['skills']))==36
-                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver')]:
+                  assert len(entries)==60 and len(bundles)==10
+                  assert len([e for e in entries if e['kind']=='skill'])==54
+                  assert len(set(s for b in bundles for s in b['skills']))==54
+                  categories=json.loads(get('categories.json'))['categories']
+                  assert len(categories)==12 and sum(c['counts']['entries'] for c in categories)==60
+                  assert len({i for c in categories for i in c['entryIds']})==60
+                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver'),('categories/','Explore by category'),('categories/agent-orchestration/','Agent Orchestration'),('tools/agentflow/','Agentflow'),('skills/orchestration-resume/','Orchestration Resume')]:
                       assert needle in get(path).decode('utf-8'), path
                   print(json.dumps({'publication':'verified','sourceRevision':expected,'counts':info['counts'],'url':base}))
                   break
