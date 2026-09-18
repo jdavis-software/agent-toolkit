@@ -1,0 +1,22 @@
+name: Export harness baseline
+on:
+  push:
+    branches: [feat/harness-qualification]
+    paths: [.github/workflows/harness-source.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: 50acadbdf4f4f14e9cdf78c75fde41967fc36cf5
+          persist-credentials: false
+      - run: git archive --format=tar HEAD > "$RUNNER_TEMP/harness-baseline.tar"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: harness-baseline
+          path: ${{ runner.temp }}/harness-baseline.tar
+          retention-days: 1
