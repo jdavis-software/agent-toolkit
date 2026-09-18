@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "reproduction": {
+    "checkId": "search-order",
+    "signature": "An older response replaces the current query results",
+    "status": "not-run",
+    "evidence": []
+  },
+  "hypotheses": [{
+    "id": "stale-response",
+    "claim": "The completion handler accepts obsolete request identities",
+    "falsifier": "Only the current request is accepted, but the wrong results still render"
+  }],
+  "experiments": [],
+  "conclusion": "unresolved"
+}

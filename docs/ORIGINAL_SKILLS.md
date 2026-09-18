@@ -24,11 +24,12 @@ The U.S. Copyright Office distinguishes ideas and methods from their expression:
 
 ## Current original batch
 
-- Existing: work-packet-planner, worktree-handoff, affected-verification.
-- Added: evidence-first-debugging, behavior-test-design, interface-quality-review.
+The collection contains work-packet-planner, worktree-handoff, affected-verification, evidence-first-debugging, behavior-test-design, and interface-quality-review. All six now have revised, task-sized instructions connected to original executable helpers and versioned JSON examples.
 
-The additions are newly authored AI-assisted experimental procedures with new synthetic examples. They are not a file-by-file rewrite, fork, or feature-equivalent replacement for another repository. The first three remain unchanged in this update.
+The helpers live in `tools/` and are tested with disposable repositories and actual processes. They check coordination and evidence consistency rather than replacing engineering judgment. They are not a fork or a feature-equivalent replacement for another repository. See [SKILL_TOOLS.md](SKILL_TOOLS.md) and [EVALUATION.md](EVALUATION.md).
+
+Helper regression results, controlled defect demonstrations, browser tests, and host-effectiveness evaluations must remain separate evidence categories. Only actual host runs may justify activation or comparative performance claims.
 
 ## Next topics to assess
 
-Evaluate requirements for React state/performance review, contract-change review, cache-invalidation review, context assembly, and research-to-article workflows. Choose a topic because it closes a demonstrated task gap, not because a popular repository has a similarly named file. Do not describe this initial batch as a completed audit or extraction of the best skills across the ecosystem.
+Evaluate requirements for React state/performance review, contract-change review, cache-invalidation review, context assembly, and research-to-article workflows. Choose a topic because it closes a demonstrated task gap, not because a popular repository has a similarly named file. Do not describe this batch as a completed audit or extraction of the best skills across the ecosystem.

@@ -4,56 +4,44 @@ description: Review a rendered web interaction for usability, responsive layout,
 ---
 # Interface Quality Review
 
-A browser-review procedure for Jordan's Agent Toolkit Collection. Written for this collection with AI assistance; experimental until evaluated in an identified agent host.
+Original AI-assisted instructions for Jordan's collection. Companion helpers have automated fixture tests; agent-host effectiveness remains experimental.
 
 ## When to use
-
-Use when a web interface or UI change is ready to inspect in a browser. Begin with a concrete user journey, target URL, relevant requirements, and available browser tooling. Apply it to the existing framework and visual system rather than redesigning by default.
+Use when a rendered interface or UI change is ready for a specific journey review. Start from the existing design, required behavior, actual URL, and available browser—not a generic design checklist.
 
 ## When not to use
-
-Do not treat this as a new visual design brief, a security assessment, a legal accessibility certification, or evidence of support for browsers and devices that were not tested. A screenshot-only review cannot establish that controls work.
+Do not redesign by default, label preferences defects, infer interactive behavior from screenshots, or claim accessibility certification. A Chromium mobile viewport is not Safari or a physical-device test.
 
 ## Procedure
+### Define a short acceptance journey
+Record entry state, actions, expected result, route, and relevant application revision. Confirm the actual page identity, meaningful content, loaded assets, and console condition. A framework error overlay is not a valid UI under review.
 
-### Select the journey and evidence
+### Exercise failures as well as success
+Perform the primary path and a relevant recovery path: empty search and reset, invalid submission and correction, interrupted load and retry, or a comparable state. Verify the actual rendered result after every significant action. Check whether user input, selection, and focus remain sensible. Avoid real publication, purchase, messaging, and deletion during testing unless that specific test is authorized.
 
-Describe the path under review: entry state, user action, and intended result. Confirm the requested page actually loaded and record browser, viewport, zoom, relevant data state, and application revision when available. Inspect console errors and failed resources. Do not proceed as though an error page were the application.
+### Inspect the views that matter
+Use desktop and a narrow viewport. Inspect the first screen and downstream content for overlap, clipped copy, content-driven shifts, obscured controls, and overflow. Include long or missing text when relevant. Navigate the same journey by keyboard, including focus after closing dialogs or resetting results. Use tools for numeric contrast claims.
 
-Use a provided design reference when there is one. Otherwise judge against the task requirements and the application's existing visual system. Do not invent a reference or use personal styling preferences as defects.
+### Close findings with comparable evidence
+For each defect, record its task impact, exact reproduction, expected and actual state, and screenshot or DOM/trace evidence. Prioritize blocked user actions over cosmetic differences. When editing is authorized, make the smallest fix and repeat the same journey at the same viewport. Compare screenshots as well as state assertions.
 
-### Exercise meaningful states
+### Keep the review structurally honest
 
-Perform the primary interaction and observe a real state change. Check relevant loading, success, empty, invalid, and failure states. Distinguish an unavailable backend from a broken frontend. Review whether controls expose feedback, retain necessary input, and support an appropriate recovery path.
+```bash
+node tools/skillcheck.mjs report interface examples/skillcheck/interface.json
+```
 
-Do not send real messages, purchase items, delete data, or publish content merely to test a control. Use fixtures, a non-destructive path, or an explicitly approved test environment for external effects.
-
-### Inspect layout and keyboard use
-
-Inspect a desktop and a narrow viewport, including the first screen and downstream content. Look for clipped headings, unreadable labels, content overlap, unexpected horizontal scrolling, obscured controls, and layout changes as data arrives. Test long text and empty data when they belong to the interface.
-
-Navigate the journey with a keyboard. Check that interactive elements can be reached and operated, focus remains visible, and opening or closing a dialog leaves focus in a sensible place. Inspect labels and rendered semantics. Use measurements or appropriate tools for claims about contrast; do not infer a numeric ratio by eye.
-
-### Separate defects from preferences
-
-For each finding, record the user impact, reproduction steps, expected versus actual result, and screenshot or DOM evidence. Categorize it as blocked task, degraded task, or polish. Identify the likely source file when inspected; otherwise leave ownership unconfirmed. Prioritize a broken primary action above cosmetic consistency.
-
-### Verify bounded corrections
-
-When editing is authorized, make the smallest correction consistent with the existing design. Re-run the same journey and capture the same viewport/state to compare. Inspect the resulting screenshot as well as the DOM. Passing compilation does not close a visual or interaction finding.
+The report requires primary interaction, keyboard, layout, and console entries—even when not tested. A complete passing review cannot contain untested or failed checks. Observed results require evidence references. The helper does not operate a browser, read a screenshot, or authenticate those references; the reviewer must do that work. Use the available browser integration or the consuming repository's existing Playwright suite.
 
 ## Output
-
-Return a review containing the tested journey and environment, reproducible findings, changes made, before/after evidence locations, and remaining untested conditions. List each observation as `observed`, `not-reproduced`, or `not-tested`; do not infer a pass from missing evidence.
-
-Conclude with a scoped result such as: the specified search/reset journey passed in the recorded Chromium viewports. Do not turn that into a claim that the entire interface is accessible or works on all devices.
+Return the scoped journey and exact environment, checks and observations, reproduced findings, corrections, evidence locations, and untested conditions. Use partial when a required observation is absent. A full passing result applies only to the declared journey and environment.
 
 ## Failure handling
-
-If a browser is unavailable, report a static-code or screenshot review and keep interactive checks untested. If a reference is missing, do not claim pixel fidelity. If content is private, redact the evidence before sharing it. If a defect cannot be reproduced, preserve the reported conditions and identify the next observation needed.
+When browser access is unavailable, deliver a static review and leave interactions untested. Missing design references prevent fidelity claims, not useful bug findings. Missing backend credentials remain an environment limitation; do not invent successful transactions. Redact private content before sharing screenshots.
 
 ## Example
+Search/reset works with a mouse, but keyboard focus becomes hidden under a fixed header. A screenshot of the default page cannot close this finding. Record the keyboard path, capture the focused state, make a scoped correction, and repeat the path. The report checker rejects marking the review complete while its keyboard row remains not-tested.
 
-Synthetic scenario: a catalog filter shows an empty state correctly with a mouse, but keyboard focus is hidden under a fixed header after selecting Reset. Reproduce the keyboard path at the recorded viewport, capture the obscured focus target, and compare after a focused correction. Mouse behavior alone does not close the keyboard finding.
+## Companion tools
 
-Evaluation scenarios are in `references/scenarios.md`.
+[Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.

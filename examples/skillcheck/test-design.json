@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "requirements": [{"id": "lease-expiry", "expect": "Renewal at now >= expiresAt fails without changing the expiry"}],
+  "cases": [{
+    "id": "at-expiry",
+    "requirementIds": ["lease-expiry"],
+    "partition": "boundary",
+    "arrange": "A lease expires at 100; current time is fixed at 100",
+    "act": "Request renewal for 30 time units",
+    "assert": "Renewal is rejected and persisted expiry remains 100",
+    "forbiddenEffects": ["No change to lease owner or expiry"],
+    "oracle": "The explicit inclusive expiry requirement, not the current implementation"
+  }]
+}

@@ -4,56 +4,44 @@ description: Turn a feature or bug contract into focused tests with explicit inp
 ---
 # Behavior Test Design
 
-A testing procedure for Jordan's Agent Toolkit Collection. Written for this collection with AI assistance; experimental until evaluated in an identified agent host.
+Original AI-assisted instructions for Jordan's collection. Companion helpers have automated fixture tests; agent-host effectiveness remains experimental.
 
 ## When to use
-
-Use before implementing a behavior change or when existing tests miss a demonstrated failure. The input should include a requested outcome, affected boundary, and access to the consuming repository's testing conventions.
+Use when implementing an observable behavior or when a reproduced defect escaped existing tests. The contract, not the current implementation, supplies expected results.
 
 ## When not to use
-
-Do not use to inflate a coverage percentage, invent missing product decisions, or replace repository testing conventions with a different framework. This skill designs and exercises focused tests; it does not declare a whole release ready.
+Do not chase a coverage percentage, switch the project's test framework, or demand exhaustive tests for a trivial edit. Do not delete useful implementation merely because it was written before a test. Add evidence around the actual task.
 
 ## Procedure
+### Establish an independent expectation
+Read requirements and neighboring conventions. Assign each required behavior an ID and an observable expected result. Identify unresolved assumptions before encoding them permanently. Select the smallest test boundary that still exercises the real interaction being protected; do not mock away that boundary.
 
-### Define the observable contract
+### Build a small case matrix
+Each case records the requirement IDs, initial state, action, assertion, source of the expected result, input partition, and prohibited side effects. Include meaningful ordinary, boundary, invalid, concurrency, cancellation, or authorization cases only where the feature requires them. Record excluded partitions with a reason rather than generating irrelevant cases.
 
-Read the requirement, relevant implementation, and neighboring tests. Write a brief statement of what a caller or user must observe, including what must not happen. Separate explicit requirements from assumptions. Ask about unresolved behavior only when it changes the expected result.
+### Demonstrate that the assertion can catch the bug
+Run regression cases against the original behavior and the candidate fix. A missing dependency, syntax error, or empty test selection is not evidence of detecting the intended defect. Where practical, seed one controlled fault in a disposable copy and verify rejection. Never modify the user's current code just to run a mutation probe.
 
-Choose the smallest boundary that can observe the contract without simulating away the thing under test. Reuse the repository's runner and fixtures. Use an integration boundary where correctness depends on a real interaction, and a browser boundary where the required evidence is rendered interaction.
+Preserve test isolation: control time, randomness, completion order, and fixtures. Check state changes as well as return values. Snapshot updates require inspection, not automatic approval. Avoid assertions that merely duplicate the implementation's calculation.
 
-### Partition the inputs
+### Check the matrix and run the cases
 
-Build a compact case matrix. Include representative ordinary input, meaningful boundaries, invalid input, and absent input where applicable. Add cancellation, retries, duplicate requests, concurrency, authorization, or tenant separation only when the feature actually involves them.
+```bash
+node tools/skillcheck.mjs report test-design examples/skillcheck/test-design.json
+node examples/skillcheck/defect-demo.mjs
+```
 
-For each case, specify initial state, action, expected observation, and prohibited side effects. Each expected result must come from the requirement or an explicitly approved assumption—not be copied from the current implementation merely because that is what it returns.
-
-### Control the environment
-
-Use deterministic fixtures and isolated state. Control clocks, random seeds, and network responses where appropriate, but do not mock the precise boundary whose behavior is being tested. Record which dependencies are real and which are substitutes. Avoid real credentials, customer records, arbitrary sleeps, and reliance on another test running first.
-
-### Prove the test is meaningful
-
-For a regression, run the new case against the unfixed behavior when practical, then against the proposed fix. For new functionality, make sure the test fails because the behavior is absent, not because the fixture is broken. A syntax error or unavailable database is not evidence that the test detects the intended defect.
-
-Where useful, introduce one temporary, controlled fault in a disposable copy and confirm that the case rejects it. Restore the fault before continuing. Do not label a single fault probe comprehensive mutation testing.
-
-### Report the actual evidence
-
-Run the focused suite and relevant neighboring checks using repository-owned commands. Inspect assertion failures rather than automatically updating snapshots. Explain excluded cases and the remaining integration checks. Preserve the command, revision, result, and evidence location for the handoff.
+The matrix checker catches missing requirement coverage, undeclared requirement IDs, missing oracles, and omitted side-effect fields. It does not execute tests or judge the semantics of their assertions. Use the project's runner through Affected Verification to collect execution receipts separately.
 
 ## Output
-
-Return a test design with the behavior contract, case matrix, chosen test boundary, real versus simulated dependencies, and implementation paths. Follow it with an execution record distinguishing `passed`, `failed`, `blocked`, and `not-run` cases.
-
-Each case should have a short identifier that can be connected to its assertion and requirement. Do not return only a test count or coverage number.
+Return requirement-linked cases, chosen boundaries, real and simulated dependencies, expected-result sources, forbidden effects, actual execution outcomes, and excluded coverage. A complete matrix is design evidence; executed assertions are behavior evidence. Keep them distinct.
 
 ## Failure handling
-
-If the specification is ambiguous, identify the exact ambiguous outcome instead of encoding a guess as a permanent test. If setup fails, report setup failure separately. If a case passes without exercising the target boundary, repair the fixture or assertion. Never delete a valid failing assertion merely to obtain a green run.
+Resolve ambiguous outcomes with the requirement owner, not by accepting whatever the current code does. Repair fixtures that pass without exercising the target. Preserve valid failing assertions. Record blocked and unrun checks instead of counting them as successes.
 
 ## Example
+A lease is expired at `now >= expiresAt`. At time 100 with expiry 100, renewal must fail and leave persistent expiry unchanged. The included demo tests 99, 100, and 101, and shows that the exact-boundary case rejects a deliberately faulty `>` implementation. This is one controlled defect probe, not comprehensive mutation coverage.
 
-Synthetic contract: a queue rejects a lease renewal after the lease has expired. For an expiry of 100, design cases at 99, 100, and 101 only after the contract explicitly establishes whether expiry is inclusive. Verify both the returned result and the persisted lease state. A test that checks only a returned boolean may miss an unintended state change.
+## Companion tools
 
-These are suggested cases, not executed results. Evaluation scenarios are in `references/scenarios.md`.
+[Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.
