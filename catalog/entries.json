@@ -14,7 +14,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "agent-orchestration"
   },
   {
     "id": "worktree-handoff",
@@ -32,7 +33,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "agent-orchestration"
   },
   {
     "id": "affected-verification",
@@ -50,7 +52,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "testing-quality"
   },
   {
     "id": "evidence-first-debugging",
@@ -69,7 +72,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "testing-quality"
   },
   {
     "id": "behavior-test-design",
@@ -87,7 +91,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "testing-quality"
   },
   {
     "id": "interface-quality-review",
@@ -106,7 +111,8 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
-    "packageVersion": "0.1.0"
+    "packageVersion": "0.1.0",
+    "categoryId": "testing-quality"
   },
   {
     "id": "typescript-7-adoption",
@@ -132,7 +138,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "typescript"
   },
   {
     "id": "typescript-type-design",
@@ -158,7 +165,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "typescript"
   },
   {
     "id": "typescript-esm-packages",
@@ -185,7 +193,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "typescript"
   },
   {
     "id": "typescript-native-quality",
@@ -212,7 +221,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "typescript"
   },
   {
     "id": "go-service-boundaries",
@@ -239,7 +249,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "go"
   },
   {
     "id": "go-concurrency-cancellation",
@@ -266,7 +277,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "go"
   },
   {
     "id": "go-testing-determinism",
@@ -293,7 +305,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "go"
   },
   {
     "id": "go-performance-profiling",
@@ -320,7 +333,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "go"
   },
   {
     "id": "openapi-contract-evolution",
@@ -347,7 +361,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "apis-integrations"
   },
   {
     "id": "generated-client-integrity",
@@ -375,7 +390,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "apis-integrations"
   },
   {
     "id": "postgres-transaction-boundaries",
@@ -402,7 +418,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "data-state"
   },
   {
     "id": "postgres-migration-safety",
@@ -429,7 +446,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "data-state"
   },
   {
     "id": "temporal-workflow-determinism",
@@ -456,7 +474,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "durable-workflows"
   },
   {
     "id": "temporal-activity-idempotency",
@@ -483,7 +502,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "durable-workflows"
   },
   {
     "id": "temporal-worker-rollout",
@@ -510,7 +530,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "durable-workflows"
   },
   {
     "id": "nx-graph-and-boundaries",
@@ -537,7 +558,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "agent-orchestration"
   },
   {
     "id": "cache-invalidation-testing",
@@ -564,7 +586,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "agent-orchestration"
   },
   {
     "id": "build-cache-trust",
@@ -591,7 +614,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "devops-delivery"
   },
   {
     "id": "worktree-resource-isolation",
@@ -618,7 +642,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "agent-orchestration"
   },
   {
     "id": "bounded-context-assembly",
@@ -645,7 +670,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "context-memory"
   },
   {
     "id": "toolchain-reproducibility",
@@ -672,7 +698,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "devops-delivery"
   },
   {
     "id": "docker-development-loop",
@@ -699,7 +726,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "devops-delivery"
   },
   {
     "id": "integration-artifact-promotion",
@@ -726,7 +754,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "devops-delivery"
   },
   {
     "id": "mcp-adapter-design",
@@ -753,7 +782,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "provider-adapter-contracts",
@@ -780,7 +810,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "apis-integrations"
   },
   {
     "id": "tenant-authorization-boundaries",
@@ -807,7 +838,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "runtime-governance"
   },
   {
     "id": "usage-metering-idempotency",
@@ -834,7 +866,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "data-state"
   },
   {
     "id": "async-job-state-machines",
@@ -861,7 +894,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "data-state"
   },
   {
     "id": "asset-lineage-provenance",
@@ -888,7 +922,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "media-pipelines"
   },
   {
     "id": "skill-bundle-composition",
@@ -915,7 +950,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established.",
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "skillcheck",
@@ -935,7 +971,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary."
+    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary.",
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "bundle-resolver",
@@ -955,7 +992,8 @@
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
-    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary."
+    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary.",
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "skills-cli",
@@ -971,7 +1009,8 @@
     "requires": [],
     "outcome": "Evaluate selective installation against the intended agent host and project scope.",
     "testedHosts": [],
-    "evidence": []
+    "evidence": [],
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "nx",
@@ -987,7 +1026,8 @@
     "requires": [],
     "outcome": "Evaluate existing workspace discovery and task-graph capabilities rather than duplicate them.",
     "testedHosts": [],
-    "evidence": []
+    "evidence": [],
+    "categoryId": "mcp-tooling"
   },
   {
     "id": "playwright-mcp",
@@ -1003,6 +1043,532 @@
     "requires": [],
     "outcome": "Evaluate browser tooling for the consuming host without confusing a skill with the browser implementation.",
     "testedHosts": [],
-    "evidence": []
+    "evidence": [],
+    "categoryId": "mcp-tooling"
+  },
+  {
+    "id": "goal-decomposition",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/goal-decomposition/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "goal decomposition"
+    ],
+    "scenarioPath": "skills/goal-decomposition/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A goal contract, task graph, edge rationale, acceptance owner, and first ready wave.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-capability-discovery",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/agent-capability-discovery/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent capability discovery"
+    ],
+    "scenarioPath": "skills/agent-capability-discovery/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A versioned registry plus probe evidence, expiry, missing capabilities, and distinct authorization notes.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-task-routing",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/agent-task-routing/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent task routing"
+    ],
+    "scenarioPath": "skills/agent-task-routing/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A routing decision with qualification evidence, tie-breaking policy, fallback conditions, and explicit exclusions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "parallel-dispatch-planning",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/parallel-dispatch-planning/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "parallel dispatch planning"
+    ],
+    "scenarioPath": "skills/parallel-dispatch-planning/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Selected tasks and workers, resource/token reservations, deferred tasks with reasons, and launch-time checks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "subagent-execution-contract",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/subagent-execution-contract/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "subagent execution contract"
+    ],
+    "scenarioPath": "skills/subagent-execution-contract/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A task/attempt envelope plus an acceptance schema and a confirmed child capability binding.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "subagent-lifecycle",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/subagent-lifecycle/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "subagent lifecycle"
+    ],
+    "scenarioPath": "skills/subagent-lifecycle/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A current state, transition history, owner/attempt identity, unresolved effects, and next safe action.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "orchestration-resume",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/orchestration-resume/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "orchestration resume"
+    ],
+    "scenarioPath": "skills/orchestration-resume/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Reusable task IDs, stale or blocked results, unresolved attempts, consumed budget, and a bounded next-wave proposal.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-failure-recovery",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/agent-failure-recovery/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent failure recovery"
+    ],
+    "scenarioPath": "skills/agent-failure-recovery/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Failure classification, preserved attempt evidence, retry/reconcile/escalate decision, remaining budget, and recovery check.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-result-integration",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/agent-result-integration/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent result integration"
+    ],
+    "scenarioPath": "skills/agent-result-integration/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Result acceptance or rejection, exact combined candidate, executed evidence, unresolved conflicts, and separate release status.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "orchestration-observability",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/orchestration-observability/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "orchestration observability"
+    ],
+    "scenarioPath": "skills/orchestration-observability/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A redacted trace index, phase timings where observed, result-to-integration mapping, and a focused bottleneck finding.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-permission-delegation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent runtime",
+    "sourcePath": "skills/agent-permission-delegation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent permission delegation"
+    ],
+    "scenarioPath": "skills/agent-permission-delegation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A least-privilege delegation binding, policy/identity sources, expiry/revocation rules, and executed denial evidence.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "runtime-governance",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "approval-gate-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent runtime",
+    "sourcePath": "skills/approval-gate-design/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "approval gate design"
+    ],
+    "scenarioPath": "skills/approval-gate-design/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Approval placement, immutable decision context, enforcement owner, expiration/revocation behavior, and boundary tests.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "runtime-governance",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-budget-control",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent runtime",
+    "sourcePath": "skills/agent-budget-control/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent budget control"
+    ],
+    "scenarioPath": "skills/agent-budget-control/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Budget definitions, reservations, actual/unknown usage, remaining capacity, and a policy-bound next-action decision.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "runtime-governance",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "resource-aware-agent-scheduling",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "sourcePath": "skills/resource-aware-agent-scheduling/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "resource aware agent scheduling"
+    ],
+    "scenarioPath": "skills/resource-aware-agent-scheduling/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "Resource pools, review reservation, admitted/deferred tasks with reasons, and measured bottleneck evidence.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "agent-orchestration",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agent-loop-detection",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent runtime",
+    "sourcePath": "skills/agent-loop-detection/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "agent loop detection"
+    ],
+    "scenarioPath": "skills/agent-loop-detection/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A loop signature, window and evidence, progress comparison, and safe pause/diagnosis/escalation decision.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "runtime-governance",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "delegation-evaluation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Testing",
+    "sourcePath": "skills/delegation-evaluation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "delegation evaluation"
+    ],
+    "scenarioPath": "skills/delegation-evaluation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A matched evaluation protocol, complete run records, independent scores, limitations, and a scoped adoption decision.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "testing-quality",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "context-budget-planning",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Context and memory",
+    "sourcePath": "skills/context-budget-planning/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "context budget planning"
+    ],
+    "scenarioPath": "skills/context-budget-planning/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A context allocation, included/omitted references, authority and freshness notes, and a child-readiness check.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "context-memory",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "context-checkpointing",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Context and memory",
+    "sourcePath": "skills/context-checkpointing/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "agents",
+      "orchestration",
+      "context checkpointing"
+    ],
+    "scenarioPath": "skills/context-checkpointing/references/scenarios.json",
+    "requires": [
+      "Accepted task and source identity",
+      "Qualified host and authorized private adapter"
+    ],
+    "outcome": "A compact recovery packet with authoritative references, actual/unknown state, unresolved work, and required rechecks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
+    "categoryId": "context-memory",
+    "companionTools": [
+      "agentflow"
+    ]
+  },
+  {
+    "id": "agentflow",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Agent orchestration",
+    "title": "Agentflow",
+    "description": "Offline task scheduling, capability matching, bounded budgets, run journals, and checked artifact reuse. No agent launching or model calls.",
+    "sourcePath": "tools/agentflow.mjs",
+    "docsPath": "docs/AGENTFLOW.md",
+    "requires": [
+      "Node >=22.12",
+      "Explicit JSON inputs and private execution bindings"
+    ],
+    "outcome": "A deterministic coordination proposal or locally checked run record, without executing its tasks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Coordination core, not a sandbox or live distributed scheduler. Registry, usage, approvals and reviews are caller-supplied.",
+    "categoryId": "agent-orchestration"
   }
 ]

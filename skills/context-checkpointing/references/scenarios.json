@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "context-checkpointing",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "context-checkpointing-trigger",
+      "kind": "trigger",
+      "input": "Before compaction, the worker records that a provider call may have succeeded and the response is missing; the resumed worker reconciles instead of submitting it again.",
+      "expected": "A compact recovery packet with authoritative references, actual/unknown state, unresolved work, and required rechecks."
+    },
+    {
+      "id": "context-checkpointing-boundary",
+      "kind": "boundary",
+      "input": "A checkpoint says tests passed but names no revision or output",
+      "expected": "A checkpoint says tests passed but names no revision or output: retain the claim as unverified and rerun the required check where authorized."
+    },
+    {
+      "id": "context-checkpointing-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

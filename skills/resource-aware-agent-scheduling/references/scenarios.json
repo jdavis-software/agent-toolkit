@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "resource-aware-agent-scheduling",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "resource-aware-agent-scheduling-trigger",
+      "kind": "trigger",
+      "input": "Two coding agents can share cached downloads but cannot each consume the only database fixture. Serialize or allocate distinct resources while keeping one review slot.",
+      "expected": "Resource pools, review reservation, admitted/deferred tasks with reasons, and measured bottleneck evidence."
+    },
+    {
+      "id": "resource-aware-agent-scheduling-boundary",
+      "kind": "boundary",
+      "input": "Integration is saturated while implementation output grows",
+      "expected": "Integration is saturated while implementation output grows: reduce new implementation admission rather than adding more workers."
+    },
+    {
+      "id": "resource-aware-agent-scheduling-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

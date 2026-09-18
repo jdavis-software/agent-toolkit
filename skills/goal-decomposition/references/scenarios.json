@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "goal-decomposition",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "goal-decomposition-trigger",
+      "kind": "trigger",
+      "input": "An export feature needs a wire contract, two adapters, a client, and acceptance tests. The contract is accepted before adapter/client work fans out; integration validates their combination.",
+      "expected": "A goal contract, task graph, edge rationale, acceptance owner, and first ready wave."
+    },
+    {
+      "id": "goal-decomposition-boundary",
+      "kind": "boundary",
+      "input": "Two proposed tasks both own the API specification with no ordering",
+      "expected": "Two proposed tasks both own the API specification with no ordering: assign one owner or establish a dependency before dispatch."
+    },
+    {
+      "id": "goal-decomposition-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

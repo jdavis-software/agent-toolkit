@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "context-budget-planning",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "context-budget-planning-trigger",
+      "kind": "trigger",
+      "input": "A worker fixing one retry seam receives the accepted effect contract, activity boundary, and failure case rather than an entire company knowledge base.",
+      "expected": "A context allocation, included/omitted references, authority and freshness notes, and a child-readiness check."
+    },
+    {
+      "id": "context-budget-planning-boundary",
+      "kind": "boundary",
+      "input": "The accepted schema is omitted to reduce size",
+      "expected": "The accepted schema is omitted to reduce size: restore that contract and remove lower-value history instead."
+    },
+    {
+      "id": "context-budget-planning-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

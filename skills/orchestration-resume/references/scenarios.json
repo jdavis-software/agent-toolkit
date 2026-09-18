@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "orchestration-resume",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "orchestration-resume-trigger",
+      "kind": "trigger",
+      "input": "The contract artifact still matches its digest, but a derived review report was edited. Retain valid unrelated work and block dependent reuse until review is restored.",
+      "expected": "Reusable task IDs, stale or blocked results, unresolved attempts, consumed budget, and a bounded next-wave proposal."
+    },
+    {
+      "id": "orchestration-resume-boundary",
+      "kind": "boundary",
+      "input": "An accepted artifact is missing or symlinked",
+      "expected": "An accepted artifact is missing or symlinked: mark it stale rather than follow an uncontrolled path or call the task complete."
+    },
+    {
+      "id": "orchestration-resume-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}

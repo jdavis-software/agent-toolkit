@@ -62,6 +62,24 @@ New domain packages contain synthetic trigger, boundary, and non-trigger scenari
 | [Async Job State Machines](skills/async-job-state-machines/SKILL.md) | Security and state |
 | [Asset Lineage and Provenance](skills/asset-lineage-provenance/SKILL.md) | Media pipelines |
 | [Skill Bundle Composition](skills/skill-bundle-composition/SKILL.md) | MCP and bundles |
+| [Goal Decomposition](skills/goal-decomposition/SKILL.md) | Agent orchestration |
+| [Agent Capability Discovery](skills/agent-capability-discovery/SKILL.md) | Agent orchestration |
+| [Agent Task Routing](skills/agent-task-routing/SKILL.md) | Agent orchestration |
+| [Parallel Dispatch Planning](skills/parallel-dispatch-planning/SKILL.md) | Agent orchestration |
+| [Subagent Execution Contract](skills/subagent-execution-contract/SKILL.md) | Agent orchestration |
+| [Subagent Lifecycle](skills/subagent-lifecycle/SKILL.md) | Agent orchestration |
+| [Orchestration Resume](skills/orchestration-resume/SKILL.md) | Agent orchestration |
+| [Agent Failure Recovery](skills/agent-failure-recovery/SKILL.md) | Agent orchestration |
+| [Agent Result Integration](skills/agent-result-integration/SKILL.md) | Agent orchestration |
+| [Orchestration Observability](skills/orchestration-observability/SKILL.md) | Agent orchestration |
+| [Agent Permission Delegation](skills/agent-permission-delegation/SKILL.md) | Agent runtime |
+| [Approval Gate Design](skills/approval-gate-design/SKILL.md) | Agent runtime |
+| [Agent Budget Control](skills/agent-budget-control/SKILL.md) | Agent runtime |
+| [Resource-aware Agent Scheduling](skills/resource-aware-agent-scheduling/SKILL.md) | Agent orchestration |
+| [Agent Loop Detection](skills/agent-loop-detection/SKILL.md) | Agent runtime |
+| [Delegation Evaluation](skills/delegation-evaluation/SKILL.md) | Testing |
+| [Context Budget Planning](skills/context-budget-planning/SKILL.md) | Context and memory |
+| [Context Checkpointing](skills/context-checkpointing/SKILL.md) | Context and memory |
 
 <!-- skill-index:end -->
 

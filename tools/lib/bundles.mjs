@@ -94,6 +94,8 @@ export async function resolveBundle(root,id,{requireClean=false,expectedRevision
   if((requireClean || expectedRevision!==undefined) && (before.dirty!==false || !before.revision)) throw new Error('A clean verified Git checkout is required');
   if(expectedRevision!==undefined && before.revision!==expectedRevision) throw new Error('Revision mismatch');
   const paths=['catalog/bundles.json','catalog/entries.json'];
+  const catalog=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
+  if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('agentflow'))) paths.push('tools/agentflow.mjs','tools/lib/agentflow.mjs','tools/lib/contracts.mjs','docs/AGENTFLOW.md');
   for(const id of [...b.skills].sort()) {
     const selected=await filesBelow(root,`skills/${id}`);
     if(!selected.includes(`skills/${id}/SKILL.md`)) throw new Error(`Missing skill document: ${id}`);

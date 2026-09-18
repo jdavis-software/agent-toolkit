@@ -13,6 +13,7 @@ export function validateEntries(entries) {
   for (const e of entries) {
     if (!slugPattern.test(e.id) || e.id.length > 64 || ids.has(e.id)) throw new Error(`Invalid or duplicate id: ${e.id}`);
     ids.add(e.id);
+    if(e.companionTools!==undefined && (!Array.isArray(e.companionTools)||e.companionTools.some(id=>id!=='agentflow')||new Set(e.companionTools).size!==e.companionTools.length))throw new Error(`Invalid companion tools: ${e.id}`);
     if (!['skill','tool','workflow'].includes(e.kind)) throw new Error(`Invalid kind: ${e.id}`);
     if (!['original','adapted','curated'].includes(e.origin)) throw new Error(`Invalid origin: ${e.id}`);
     if (!['experimental','validated','released','reference','deprecated'].includes(e.stage)) throw new Error(`Invalid stage: ${e.id}`);

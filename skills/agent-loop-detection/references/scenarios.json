@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-loop-detection",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-loop-detection-trigger",
+      "kind": "trigger",
+      "input": "A worker alternates two import fixes while the same type error persists. Capture the cycle and inspect the actual package-resolution contract before another edit.",
+      "expected": "A loop signature, window and evidence, progress comparison, and safe pause/diagnosis/escalation decision."
+    },
+    {
+      "id": "agent-loop-detection-boundary",
+      "kind": "boundary",
+      "input": "A provider is still processing a legitimate long job",
+      "expected": "A provider is still processing a legitimate long job: use bounded status polling instead of treating every unchanged status as failure."
+    },
+    {
+      "id": "agent-loop-detection-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix one spelling mistake in an unrelated README without changing any behavior.",
+      "expected": "Apply the bounded edit; do not trigger an agent orchestration process or broaden execution authority."
+    }
+  ]
+}
