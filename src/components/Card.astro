@@ -3,7 +3,7 @@ import { withBase } from '../lib/paths';
 const { entry } = Astro.props;
 const path = `${entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows'}/${entry.id}/`;
 ---
-<article class="catalog-card" data-entry data-kind={entry.kind} data-origin={entry.origin} data-category={entry.category} data-search={`${entry.title} ${entry.id} ${entry.description} ${entry.category} ${entry.author}`.toLowerCase()}>
+<article class="catalog-card" data-entry data-kind={entry.kind} data-origin={entry.origin} data-category={entry.category} data-search={`${entry.title} ${entry.id} ${entry.description} ${entry.category} ${entry.author} ${(entry.tags ?? []).join(' ')}`.toLowerCase()}>
   <div class="card-top"><span class:list={['kind-icon',entry.kind]} aria-hidden="true">{entry.kind === 'skill' ? '◇' : entry.kind === 'tool' ? '⌘' : '⇄'}</span><span class="origin-label">{entry.origin === 'original' ? 'Original' : entry.origin === 'adapted' ? 'Adapted' : 'Curated'}</span></div>
   <h3><a href={withBase(path)}>{entry.title}<span class="card-arrow" aria-hidden="true">↗</span></a></h3>
   <p>{entry.description}</p>

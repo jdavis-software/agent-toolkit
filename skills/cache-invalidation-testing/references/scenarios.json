@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "cache-invalidation-testing",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "cache-invalidation-testing-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Verify cache reuse with controlled input mutations and fresh reference execution, including generated and ignored outputs, environment, and toolchain changes.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "cache-invalidation-testing-boundary",
+      "kind": "boundary",
+      "input": "A cache hits after consumed ignored output changed: prove whether it is stale and correct the actual missing dependency.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "cache-invalidation-testing-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

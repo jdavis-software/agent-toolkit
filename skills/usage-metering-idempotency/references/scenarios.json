@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "usage-metering-idempotency",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "usage-metering-idempotency-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Account for usage through stable event identities, explicit precision and settlement policy, duplicate protection, adjustments, and replayable reconciliation.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "usage-metering-idempotency-boundary",
+      "kind": "boundary",
+      "input": "Cancellation returns locally while the provider completes: reconcile using the accepted metering policy, not an assumed refund rule.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "usage-metering-idempotency-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

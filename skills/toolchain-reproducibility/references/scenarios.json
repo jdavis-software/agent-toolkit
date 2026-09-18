@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "toolchain-reproducibility",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "toolchain-reproducibility-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Compare actual compiler, runtime, package-manager, container, and agent-tool identities across environments and verify targeted drift corrections.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "toolchain-reproducibility-boundary",
+      "kind": "boundary",
+      "input": "Only one of two developer machines is accessible: the other remains uninspected, not synchronized.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "toolchain-reproducibility-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

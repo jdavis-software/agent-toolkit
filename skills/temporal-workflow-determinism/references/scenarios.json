@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "temporal-workflow-determinism",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "temporal-workflow-determinism-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Evolve deterministic orchestration using representative history replay, version-qualified SDK behavior, and separate tests for external activity effects.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "temporal-workflow-determinism-boundary",
+      "kind": "boundary",
+      "input": "History replay passes but an activity can double-charge on retry: keep the effect invariant unresolved and test it separately.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "temporal-workflow-determinism-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

@@ -4,6 +4,67 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 [Explore the website](https://jdavis-software.github.io/agent-toolkit/) · [Browse the skills](skills/) · [Follow the workflow](https://jdavis-software.github.io/agent-toolkit/workflows/) · [Read the engineering article](https://jdavis-software.github.io/content/articles/parallel-agent-engineering/)
 
+## The expanded skill collection
+
+**36 original skills · 8 focused bundles · 2 original utilities · 3 selected external tools.**
+
+Start with [TypeScript](https://jdavis-software.github.io/agent-toolkit/bundles/typescript/), [Go](https://jdavis-software.github.io/agent-toolkit/bundles/go-backend/), [contracts and data](https://jdavis-software.github.io/agent-toolkit/bundles/contracts-data/), [durable workflows](https://jdavis-software.github.io/agent-toolkit/bundles/durable-workflows/), [parallel engineering](https://jdavis-software.github.io/agent-toolkit/bundles/parallel-engineering/), [infrastructure](https://jdavis-software.github.io/agent-toolkit/bundles/infrastructure/), [media/provider pipelines](https://jdavis-software.github.io/agent-toolkit/bundles/media-integrations/), or [MCP tooling](https://jdavis-software.github.io/agent-toolkit/bundles/mcp-tooling/).
+
+Each skill is maintained under `skills/`. Bundles reference canonical files; private adapters supply repository paths, commands, accepted contracts, and policies without forking the public instructions. TypeScript 7 qualification is covered without silently changing this Astro site's compiler dependency.
+
+```bash
+node tools/bundle.mjs list
+node tools/bundle.mjs resolve typescript
+node tools/bundle.mjs resolve mcp-tooling --require-clean
+```
+
+The resolver uses Node built-ins and prints selection/file hashes. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
+
+New domain packages contain synthetic trigger, boundary, and non-trigger scenarios. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+
+<!-- skill-index:start -->
+
+| Skill | Area |
+| --- | --- |
+| [Work Packet Planner](skills/work-packet-planner/SKILL.md) | Planning |
+| [Worktree Handoff](skills/worktree-handoff/SKILL.md) | Parallel engineering |
+| [Affected Verification](skills/affected-verification/SKILL.md) | Verification |
+| [Evidence First Debugging](skills/evidence-first-debugging/SKILL.md) | Debugging |
+| [Behavior Test Design](skills/behavior-test-design/SKILL.md) | Testing |
+| [Interface Quality Review](skills/interface-quality-review/SKILL.md) | Frontend |
+| [TypeScript 7 Adoption](skills/typescript-7-adoption/SKILL.md) | TypeScript |
+| [TypeScript Type Design](skills/typescript-type-design/SKILL.md) | TypeScript |
+| [TypeScript ESM Packages](skills/typescript-esm-packages/SKILL.md) | TypeScript |
+| [TypeScript Native Quality Checks](skills/typescript-native-quality/SKILL.md) | TypeScript |
+| [Go Service Boundaries](skills/go-service-boundaries/SKILL.md) | Go |
+| [Go Concurrency and Cancellation](skills/go-concurrency-cancellation/SKILL.md) | Go |
+| [Go Deterministic Testing](skills/go-testing-determinism/SKILL.md) | Go |
+| [Go Performance Profiling](skills/go-performance-profiling/SKILL.md) | Go |
+| [OpenAPI Contract Evolution](skills/openapi-contract-evolution/SKILL.md) | Contracts |
+| [Generated Client Integrity](skills/generated-client-integrity/SKILL.md) | Contracts |
+| [PostgreSQL Transaction Boundaries](skills/postgres-transaction-boundaries/SKILL.md) | Data |
+| [PostgreSQL Migration Safety](skills/postgres-migration-safety/SKILL.md) | Data |
+| [Temporal Workflow Determinism](skills/temporal-workflow-determinism/SKILL.md) | Durable workflows |
+| [Temporal Activity Idempotency](skills/temporal-activity-idempotency/SKILL.md) | Durable workflows |
+| [Temporal Worker Rollout](skills/temporal-worker-rollout/SKILL.md) | Durable workflows |
+| [Nx Graph and Boundaries](skills/nx-graph-and-boundaries/SKILL.md) | Parallel engineering |
+| [Cache Invalidation Testing](skills/cache-invalidation-testing/SKILL.md) | Parallel engineering |
+| [Build Cache Trust](skills/build-cache-trust/SKILL.md) | Infrastructure |
+| [Worktree Resource Isolation](skills/worktree-resource-isolation/SKILL.md) | Parallel engineering |
+| [Bounded Context Assembly](skills/bounded-context-assembly/SKILL.md) | Parallel engineering |
+| [Toolchain Reproducibility](skills/toolchain-reproducibility/SKILL.md) | Infrastructure |
+| [Docker Development Loop](skills/docker-development-loop/SKILL.md) | Infrastructure |
+| [Integration Artifact Promotion](skills/integration-artifact-promotion/SKILL.md) | Infrastructure |
+| [MCP Adapter Design](skills/mcp-adapter-design/SKILL.md) | MCP and bundles |
+| [Provider Adapter Contracts](skills/provider-adapter-contracts/SKILL.md) | Integrations |
+| [Tenant Authorization Boundaries](skills/tenant-authorization-boundaries/SKILL.md) | Security and state |
+| [Usage Metering Idempotency](skills/usage-metering-idempotency/SKILL.md) | Security and state |
+| [Async Job State Machines](skills/async-job-state-machines/SKILL.md) | Security and state |
+| [Asset Lineage and Provenance](skills/asset-lineage-provenance/SKILL.md) | Media pipelines |
+| [Skill Bundle Composition](skills/skill-bundle-composition/SKILL.md) | MCP and bundles |
+
+<!-- skill-index:end -->
+
 ## Skills with executable support
 
 | Skill | What it produces | Companion check |

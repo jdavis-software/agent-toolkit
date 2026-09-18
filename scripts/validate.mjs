@@ -1,6 +1,10 @@
+import { syncReadme } from './readme.mjs';
 import { loadCatalog } from './catalog.mjs';
+import { validateExpansion } from '../tools/lib/bundles.mjs';
 try {
   const entries = await loadCatalog();
-  console.log(`Catalog valid: ${entries.length} entries; ${entries.filter(e => e.origin === 'original').length} original experimental packages.`);
-  console.log('Structural validation only. This does not establish agent-host behavior.');
+  const expansion = await validateExpansion();
+  await syncReadme();
+  console.log(`Catalog valid: ${entries.length} entries; ${entries.filter(e => e.kind === 'skill').length} original skills; ${expansion.bundles} bundles; ${expansion.scenarioInputs} new scenario inputs.`);
+  console.log('Package, bundle, and source validation only. Agent-host behavior remains unevaluated.');
 } catch (error) { console.error(error); process.exitCode = 1; }

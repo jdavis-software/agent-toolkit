@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "asset-lineage-provenance",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "asset-lineage-provenance-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Track immutable asset identities and derivation operations with versioned metadata, integrity checks, and explicit access, privacy, and retention boundaries.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "asset-lineage-provenance-boundary",
+      "kind": "boundary",
+      "input": "A provider does not expose the model revision: record unknown provenance instead of inventing reproducibility, seeds, rights, or consent.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "asset-lineage-provenance-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
-  testMatch: '**/site.spec.ts',
+  testMatch: ['**/site.spec.ts', '**/publication.spec.ts'],
   fullyParallel: true,
   // Use the same bounded execution policy locally and in CI.
   retries: 1,

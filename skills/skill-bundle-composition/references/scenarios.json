@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "skill-bundle-composition",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "skill-bundle-composition-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Select canonical public skills and bind private repository context separately without copying instructions, silently installing packages, or broadening tool authority.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "skill-bundle-composition-boundary",
+      "kind": "boundary",
+      "input": "A selection references a missing helper or traversal path: fail resolution and preserve the prior known selection rather than substituting another package.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "skill-bundle-composition-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

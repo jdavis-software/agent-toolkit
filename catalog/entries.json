@@ -1,11 +1,1008 @@
 [
-  {"id":"work-packet-planner","kind":"skill","origin":"original","stage":"experimental","category":"Planning","sourcePath":"skills/work-packet-planner/SKILL.md","requires":["Repository read access"],"outcome":"A scoped task packet with owned paths, dependencies, acceptance criteria, and a handoff contract.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"Written for this collection. Agent-host evaluation and prior personal usage have not been established."},
-  {"id":"worktree-handoff","kind":"skill","origin":"original","stage":"experimental","category":"Parallel engineering","sourcePath":"skills/worktree-handoff/SKILL.md","requires":["Git","An existing worktree"],"outcome":"A commit-specific handoff that records changes, checks, unresolved work, and resource ownership.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"Written for this collection. Agent-host evaluation and prior personal usage have not been established."},
-  {"id":"affected-verification","kind":"skill","origin":"original","stage":"experimental","category":"Verification","sourcePath":"skills/affected-verification/SKILL.md","requires":["Git","Project-owned check commands"],"outcome":"A verification report that separates executed checks, skipped checks, failures, and remaining uncertainty.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"Written for this collection. Agent-host evaluation and prior personal usage have not been established."},
-  {"id":"evidence-first-debugging","kind":"skill","origin":"original","stage":"experimental","category":"Debugging","sourcePath":"skills/evidence-first-debugging/SKILL.md","requires":["A reported failure","Repository read access","An authorized reproduction environment"],"outcome":"A supported diagnosis, bounded repair, and evidence tied to the original reproduction.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending."},
-  {"id":"behavior-test-design","kind":"skill","origin":"original","stage":"experimental","category":"Testing","sourcePath":"skills/behavior-test-design/SKILL.md","requires":["An explicit behavior contract","Project-owned test runner and fixtures"],"outcome":"A requirement-linked case matrix and execution record that distinguishes meaningful failures from setup problems.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending."},
-  {"id":"interface-quality-review","kind":"skill","origin":"original","stage":"experimental","category":"Frontend","sourcePath":"skills/interface-quality-review/SKILL.md","requires":["A target user journey","A rendered interface","Authorized browser access for interaction checks"],"outcome":"Reproducible interface findings with desktop/mobile evidence, keyboard checks, and scoped repair verification.","testedHosts":[],"evidence":[],"author":"Jordan's Agent Toolkit · AI-assisted","note":"New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending."},
-  {"id":"skills-cli","title":"Skills CLI","description":"Discover and selectively install skill packages with an existing open-source command-line tool.","kind":"tool","origin":"curated","stage":"reference","category":"Developer tooling","url":"https://github.com/vercel-labs/skills","author":"Vercel","note":"A separate upstream tool, not software written by this collection. Review the installer and selected package revision before use.","requires":[],"outcome":"Evaluate selective installation against the intended agent host and project scope.","testedHosts":[],"evidence":[]},
-  {"id":"nx","title":"Nx AI Integration","description":"Workspace-aware agent integration for projects already built around Nx.","kind":"tool","origin":"curated","stage":"reference","category":"Parallel engineering","url":"https://nx.dev/docs/features/enhance-ai","author":"Nx","note":"A separate upstream tool. Use the actual worktree and pinned workspace tooling. Nx is not a dependency of this catalog website.","requires":[],"outcome":"Evaluate existing workspace discovery and task-graph capabilities rather than duplicate them.","testedHosts":[],"evidence":[]},
-  {"id":"playwright-mcp","title":"Playwright MCP","description":"Expose browser automation to an agent through a Model Context Protocol server.","kind":"tool","origin":"curated","stage":"reference","category":"Verification","url":"https://github.com/microsoft/playwright-mcp","author":"Microsoft","note":"A separate upstream tool. Keep browser permissions and external-action approvals explicit; catalog inclusion is not installation or compatibility evidence.","requires":[],"outcome":"Evaluate browser tooling for the consuming host without confusing a skill with the browser implementation.","testedHosts":[],"evidence":[]}
+  {
+    "id": "work-packet-planner",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Planning",
+    "sourcePath": "skills/work-packet-planner/SKILL.md",
+    "requires": [
+      "Repository read access"
+    ],
+    "outcome": "A scoped task packet with owned paths, dependencies, acceptance criteria, and a handoff contract.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "worktree-handoff",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Parallel engineering",
+    "sourcePath": "skills/worktree-handoff/SKILL.md",
+    "requires": [
+      "Git",
+      "An existing worktree"
+    ],
+    "outcome": "A commit-specific handoff that records changes, checks, unresolved work, and resource ownership.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "affected-verification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Verification",
+    "sourcePath": "skills/affected-verification/SKILL.md",
+    "requires": [
+      "Git",
+      "Project-owned check commands"
+    ],
+    "outcome": "A verification report that separates executed checks, skipped checks, failures, and remaining uncertainty.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "evidence-first-debugging",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Debugging",
+    "sourcePath": "skills/evidence-first-debugging/SKILL.md",
+    "requires": [
+      "A reported failure",
+      "Repository read access",
+      "An authorized reproduction environment"
+    ],
+    "outcome": "A supported diagnosis, bounded repair, and evidence tied to the original reproduction.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "behavior-test-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Testing",
+    "sourcePath": "skills/behavior-test-design/SKILL.md",
+    "requires": [
+      "An explicit behavior contract",
+      "Project-owned test runner and fixtures"
+    ],
+    "outcome": "A requirement-linked case matrix and execution record that distinguishes meaningful failures from setup problems.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "interface-quality-review",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Frontend",
+    "sourcePath": "skills/interface-quality-review/SKILL.md",
+    "requires": [
+      "A target user journey",
+      "A rendered interface",
+      "Authorized browser access for interaction checks"
+    ],
+    "outcome": "Reproducible interface findings with desktop/mobile evidence, keyboard checks, and scoped repair verification.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "New instructions and synthetic examples written for this collection. Evaluation scenarios are included; agent-host runs remain pending.",
+    "packageVersion": "0.1.0"
+  },
+  {
+    "id": "typescript-7-adoption",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "TypeScript",
+    "sourcePath": "skills/typescript-7-adoption/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "typescript",
+      "typescript 7",
+      "native compiler",
+      "migration"
+    ],
+    "scenarioPath": "skills/typescript-7-adoption/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Qualify a repository for native TypeScript 7 with a compatibility matrix, separate compiler-API consumers, diagnostic parity, measured performance, and reversible adoption.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "typescript-type-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "TypeScript",
+    "sourcePath": "skills/typescript-type-design/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "typescript",
+      "types",
+      "validation",
+      "state machines"
+    ],
+    "scenarioPath": "skills/typescript-type-design/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Design domain types and runtime input boundaries that distinguish legal states, optional values, and exhaustive transitions without unsafe assertions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "typescript-esm-packages",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "TypeScript",
+    "sourcePath": "skills/typescript-esm-packages/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "typescript",
+      "esm",
+      "node",
+      "sdk",
+      "exports"
+    ],
+    "scenarioPath": "skills/typescript-esm-packages/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Build ESM package boundaries against real Node/browser consumers, export maps, declaration files, and initialization behavior instead of workspace-only imports.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "typescript-native-quality",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "TypeScript",
+    "sourcePath": "skills/typescript-native-quality/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "typescript",
+      "typescript 7",
+      "oxlint",
+      "oxfmt",
+      "typecheck"
+    ],
+    "scenarioPath": "skills/typescript-native-quality/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Compose native compiler diagnostics, formatting, linting, type-aware analysis, and runtime tests as distinct checks with precise task inputs and actual evidence.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "go-service-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Go",
+    "sourcePath": "skills/go-service-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "go",
+      "golang",
+      "architecture",
+      "http",
+      "mcp"
+    ],
+    "scenarioPath": "skills/go-service-boundaries/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Implement cohesive Go packages with thin transports, explicit dependency and transaction ownership, and shared application policy across API, CLI, and MCP entry points.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "go-concurrency-cancellation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Go",
+    "sourcePath": "skills/go-concurrency-cancellation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "go",
+      "concurrency",
+      "cancellation",
+      "workers",
+      "backpressure"
+    ],
+    "scenarioPath": "skills/go-concurrency-cancellation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Implement bounded Go concurrency with clear goroutine lifetimes, cancellation, backpressure, channel ownership, and verified shutdown/error behavior.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "go-testing-determinism",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Go",
+    "sourcePath": "skills/go-testing-determinism/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "go",
+      "testing",
+      "synctest",
+      "fuzz",
+      "race detector"
+    ],
+    "scenarioPath": "skills/go-testing-determinism/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Design Go tests with independent assertions, controlled in-process timing, bounded fuzz/race checks, and isolated real dependencies for persistence and network semantics.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "go-performance-profiling",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Go",
+    "sourcePath": "skills/go-performance-profiling/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "go",
+      "pprof",
+      "profiling",
+      "performance",
+      "benchmarks"
+    ],
+    "scenarioPath": "skills/go-performance-profiling/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Investigate Go latency, CPU, allocation, and contention bottlenecks using representative profiles, controlled benchmarks, and correctness-preserving changes.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "openapi-contract-evolution",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Contracts",
+    "sourcePath": "skills/openapi-contract-evolution/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "openapi",
+      "api",
+      "contracts",
+      "compatibility",
+      "oasdiff"
+    ],
+    "scenarioPath": "skills/openapi-contract-evolution/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Evolve OpenAPI contracts against an accepted consumer baseline with explicit wire semantics, compatibility analysis, migration decisions, and runtime checks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "generated-client-integrity",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Contracts",
+    "sourcePath": "skills/generated-client-integrity/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "openapi",
+      "codegen",
+      "go",
+      "typescript",
+      "valibot",
+      "sqlc"
+    ],
+    "scenarioPath": "skills/generated-client-integrity/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Keep generated Go and TypeScript clients, validators, and queries aligned with canonical inputs using pinned generation, reproducible output, and real consumer/wire tests.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "postgres-transaction-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Data",
+    "sourcePath": "skills/postgres-transaction-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "postgresql",
+      "pgx",
+      "sqlc",
+      "transactions",
+      "concurrency"
+    ],
+    "scenarioPath": "skills/postgres-transaction-boundaries/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Implement database invariants with explicit transaction ownership, isolation decisions, constraint-backed concurrency control, and retry-safe effects.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "postgres-migration-safety",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Data",
+    "sourcePath": "skills/postgres-migration-safety/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "postgresql",
+      "migrations",
+      "squawk",
+      "backfill",
+      "testcontainers"
+    ],
+    "scenarioPath": "skills/postgres-migration-safety/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Test schema changes against populated prior versions, rolling application compatibility, locks/backfills, and explicit recovery rather than clean-install success alone.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "temporal-workflow-determinism",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Durable workflows",
+    "sourcePath": "skills/temporal-workflow-determinism/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "temporal",
+      "go",
+      "workflow",
+      "replay",
+      "determinism"
+    ],
+    "scenarioPath": "skills/temporal-workflow-determinism/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Evolve deterministic orchestration using representative history replay, version-qualified SDK behavior, and separate tests for external activity effects.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "temporal-activity-idempotency",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Durable workflows",
+    "sourcePath": "skills/temporal-activity-idempotency/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "temporal",
+      "activities",
+      "idempotency",
+      "retries",
+      "providers"
+    ],
+    "scenarioPath": "skills/temporal-activity-idempotency/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Design retryable effects with stable business identities, bounded timeouts, durable reconciliation, and tests for success before acknowledgment failure.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "temporal-worker-rollout",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Durable workflows",
+    "sourcePath": "skills/temporal-worker-rollout/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "temporal",
+      "workers",
+      "rollout",
+      "self-hosted",
+      "draining"
+    ],
+    "scenarioPath": "skills/temporal-worker-rollout/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Qualify worker upgrades against self-hosted prerequisites, actual execution routing, replay evidence, external compatibility, and safe version drainage.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "nx-graph-and-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Parallel engineering",
+    "sourcePath": "skills/nx-graph-and-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "nx",
+      "graphs",
+      "module boundaries",
+      "gopls",
+      "worktrees"
+    ],
+    "scenarioPath": "skills/nx-graph-and-boundaries/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Use current project/task graphs and semantic navigation to map impact, enforce important boundaries, and validate derived configuration without duplicating existing tooling.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "cache-invalidation-testing",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Parallel engineering",
+    "sourcePath": "skills/cache-invalidation-testing/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "cache",
+      "invalidation",
+      "nx",
+      "generated output",
+      "warming"
+    ],
+    "scenarioPath": "skills/cache-invalidation-testing/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Verify cache reuse with controlled input mutations and fresh reference execution, including generated and ignored outputs, environment, and toolchain changes.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "build-cache-trust",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Infrastructure",
+    "sourcePath": "skills/build-cache-trust/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "cache",
+      "supply chain",
+      "credentials",
+      "docker",
+      "ci"
+    ],
+    "scenarioPath": "skills/build-cache-trust/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Review producer/consumer cache authority, scoped credentials, sensitive output, nonproduction denial tests, and recovery from suspect artifacts.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "worktree-resource-isolation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Parallel engineering",
+    "sourcePath": "skills/worktree-resource-isolation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "worktrees",
+      "isolation",
+      "resources",
+      "leases",
+      "parallel"
+    ],
+    "scenarioPath": "skills/worktree-resource-isolation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Manage parallel lanes with separate source, mutable output, port, database, queue, process, lease, and recoverable cleanup ownership.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "bounded-context-assembly",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Parallel engineering",
+    "sourcePath": "skills/bounded-context-assembly/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "context",
+      "graphs",
+      "agents",
+      "delegation",
+      "canonical sources"
+    ],
+    "scenarioPath": "skills/bounded-context-assembly/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Assemble task-sized context from current canonical source, accepted contracts, graphs, and semantic tools while tracking freshness and missing information.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "toolchain-reproducibility",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Infrastructure",
+    "sourcePath": "skills/toolchain-reproducibility/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "toolchain",
+      "versions",
+      "mise",
+      "node",
+      "containers"
+    ],
+    "scenarioPath": "skills/toolchain-reproducibility/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Compare actual compiler, runtime, package-manager, container, and agent-tool identities across environments and verify targeted drift corrections.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "docker-development-loop",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Infrastructure",
+    "sourcePath": "skills/docker-development-loop/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "docker",
+      "compose",
+      "buildkit",
+      "containers",
+      "dev loop"
+    ],
+    "scenarioPath": "skills/docker-development-loop/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Distinguish file synchronization, restart, recompilation, image rebuild, and platform validation in a container loop that preserves owned application state.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "integration-artifact-promotion",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Infrastructure",
+    "sourcePath": "skills/integration-artifact-promotion/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "integration",
+      "artifacts",
+      "release",
+      "ci",
+      "merge queue"
+    ],
+    "scenarioPath": "skills/integration-artifact-promotion/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Validate combined parallel changes and promote identified artifacts while preserving independent release approval, integration capacity, and recovery.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "mcp-adapter-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "MCP and bundles",
+    "sourcePath": "skills/mcp-adapter-design/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "mcp",
+      "adapters",
+      "tools",
+      "authorization",
+      "resources"
+    ],
+    "scenarioPath": "skills/mcp-adapter-design/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Design thin MCP adapters with bounded schemas, trusted application identity, shared authorization, and explicit effects rather than treating instructions as permissions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "provider-adapter-contracts",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Integrations",
+    "sourcePath": "skills/provider-adapter-contracts/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "providers",
+      "adapters",
+      "webhooks",
+      "retries",
+      "capabilities"
+    ],
+    "scenarioPath": "skills/provider-adapter-contracts/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Integrate providers through capability-aware contracts, normalized outcomes, bounded retries, authenticated callbacks, and explicit reconciliation/cancellation differences.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "tenant-authorization-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Security and state",
+    "sourcePath": "skills/tenant-authorization-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "tenancy",
+      "authorization",
+      "rbac",
+      "service accounts",
+      "security"
+    ],
+    "scenarioPath": "skills/tenant-authorization-boundaries/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Enforce tenant-scoped operations across transports, jobs, data, and caches using trusted identity and independent cross-tenant denial tests.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "usage-metering-idempotency",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Security and state",
+    "sourcePath": "skills/usage-metering-idempotency/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "metering",
+      "usage",
+      "idempotency",
+      "ledger",
+      "billing"
+    ],
+    "scenarioPath": "skills/usage-metering-idempotency/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Account for usage through stable event identities, explicit precision and settlement policy, duplicate protection, adjustments, and replayable reconciliation.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "async-job-state-machines",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Security and state",
+    "sourcePath": "skills/async-job-state-machines/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "jobs",
+      "state machines",
+      "events",
+      "cancellation",
+      "reconciliation"
+    ],
+    "scenarioPath": "skills/async-job-state-machines/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Model durable jobs with legal transition authority, stable operation/attempt identity, guarded effects, cancellation races, and recoverable indeterminate outcomes.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "asset-lineage-provenance",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Media pipelines",
+    "sourcePath": "skills/asset-lineage-provenance/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "assets",
+      "lineage",
+      "media",
+      "provenance",
+      "storage"
+    ],
+    "scenarioPath": "skills/asset-lineage-provenance/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Track immutable asset identities and derivation operations with versioned metadata, integrity checks, and explicit access, privacy, and retention boundaries.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "skill-bundle-composition",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "MCP and bundles",
+    "sourcePath": "skills/skill-bundle-composition/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "bundles",
+      "skills",
+      "mcp",
+      "composition",
+      "private adapters"
+    ],
+    "scenarioPath": "skills/skill-bundle-composition/references/scenarios.json",
+    "requires": [
+      "Accepted task and source/contract baseline",
+      "Actual project toolchain and check commands",
+      "Authorized isolated evaluation environment"
+    ],
+    "outcome": "Select canonical public skills and bind private repository context separately without copying instructions, silently installing packages, or broadening tool authority.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original project-agnostic procedure with technical references and not-run synthetic evaluation inputs. Agent-host effectiveness is not established."
+  },
+  {
+    "id": "skillcheck",
+    "title": "Skillcheck",
+    "description": "Original local checks for task coordination, Git state, real command receipts, and report consistency.",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "MCP and bundles",
+    "sourcePath": "tools/skillcheck.mjs",
+    "docsPath": "docs/SKILL_TOOLS.md",
+    "requires": [
+      "Node >=22.12",
+      "Full toolkit checkout"
+    ],
+    "outcome": "A validated plan, Git snapshot, command receipt, or consistency report with explicit limits.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary."
+  },
+  {
+    "id": "bundle-resolver",
+    "title": "Bundle Resolver",
+    "description": "Read-only skill selection and content fingerprints for reproducible bundle review and future private adapters.",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "MCP and bundles",
+    "sourcePath": "tools/bundle.mjs",
+    "docsPath": "docs/BUNDLES.md",
+    "requires": [
+      "Node >=22.12",
+      "Full toolkit checkout"
+    ],
+    "outcome": "A deterministic file manifest with content hashes and separately reported Git provenance; no installation or execution.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original executable support. Tool tests do not establish agent-host effectiveness or a security boundary."
+  },
+  {
+    "id": "skills-cli",
+    "title": "Skills CLI",
+    "description": "Discover and selectively install skill packages with an existing open-source command-line tool.",
+    "kind": "tool",
+    "origin": "curated",
+    "stage": "reference",
+    "category": "Developer tooling",
+    "url": "https://github.com/vercel-labs/skills",
+    "author": "Vercel",
+    "note": "A separate upstream tool, not software written by this collection. Review the installer and selected package revision before use.",
+    "requires": [],
+    "outcome": "Evaluate selective installation against the intended agent host and project scope.",
+    "testedHosts": [],
+    "evidence": []
+  },
+  {
+    "id": "nx",
+    "title": "Nx AI Integration",
+    "description": "Workspace-aware agent integration for projects already built around Nx.",
+    "kind": "tool",
+    "origin": "curated",
+    "stage": "reference",
+    "category": "Parallel engineering",
+    "url": "https://nx.dev/docs/features/enhance-ai",
+    "author": "Nx",
+    "note": "A separate upstream tool. Use the actual worktree and pinned workspace tooling. Nx is not a dependency of this catalog website.",
+    "requires": [],
+    "outcome": "Evaluate existing workspace discovery and task-graph capabilities rather than duplicate them.",
+    "testedHosts": [],
+    "evidence": []
+  },
+  {
+    "id": "playwright-mcp",
+    "title": "Playwright MCP",
+    "description": "Expose browser automation to an agent through a Model Context Protocol server.",
+    "kind": "tool",
+    "origin": "curated",
+    "stage": "reference",
+    "category": "Verification",
+    "url": "https://github.com/microsoft/playwright-mcp",
+    "author": "Microsoft",
+    "note": "A separate upstream tool. Keep browser permissions and external-action approvals explicit; catalog inclusion is not installation or compatibility evidence.",
+    "requires": [],
+    "outcome": "Evaluate browser tooling for the consuming host without confusing a skill with the browser implementation.",
+    "testedHosts": [],
+    "evidence": []
+  }
 ]

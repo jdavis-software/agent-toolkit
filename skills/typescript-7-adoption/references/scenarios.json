@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "typescript-7-adoption",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "typescript-7-adoption-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Qualify a repository for native TypeScript 7 with a compatibility matrix, separate compiler-API consumers, diagnostic parity, measured performance, and reversible adoption.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "typescript-7-adoption-boundary",
+      "kind": "boundary",
+      "input": "A framework plugin imports the classic compiler API: preserve a scoped compatibility route rather than forcing a native compiler into that API slot.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "typescript-7-adoption-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "temporal-activity-idempotency",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "temporal-activity-idempotency-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Design retryable effects with stable business identities, bounded timeouts, durable reconciliation, and tests for success before acknowledgment failure.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "temporal-activity-idempotency-boundary",
+      "kind": "boundary",
+      "input": "The provider\u2019s idempotency retention expires before retry: use durable reconciliation or an indeterminate outcome rather than blindly resubmit.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "temporal-activity-idempotency-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

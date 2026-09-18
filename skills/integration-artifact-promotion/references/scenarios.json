@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "integration-artifact-promotion",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "integration-artifact-promotion-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Validate combined parallel changes and promote identified artifacts while preserving independent release approval, integration capacity, and recovery.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "integration-artifact-promotion-boundary",
+      "kind": "boundary",
+      "input": "Deployment rebuilds from a newer untested commit: require new evidence or use the previously validated artifact.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "integration-artifact-promotion-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

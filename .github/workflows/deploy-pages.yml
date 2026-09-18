@@ -33,6 +33,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       pages: write
       id-token: write
@@ -43,3 +44,38 @@ jobs:
       - name: Deploy the validated artifact
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
+      - name: Verify published revision, catalog, bundles, and skill pages
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import json, os, time, urllib.request
+          base=os.environ['PAGE_URL']
+          assert base == 'https://jdavis-software.github.io/agent-toolkit/', 'Unexpected Pages destination'
+          expected=os.environ['EXPECTED_SHA']
+          def get(path):
+              url=base+path+'?revision='+expected
+              request=urllib.request.Request(url,headers={'Cache-Control':'no-cache','User-Agent':'agent-toolkit-pages-check'})
+              with urllib.request.urlopen(request,timeout=15) as response:
+                  assert response.status == 200, path
+                  return response.read()
+          for attempt in range(12):
+              try:
+                  info=json.loads(get('build-info.json'))
+                  assert info['sourceRevision'] == expected, 'Published revision has not propagated'
+                  assert info['counts'] == {'entries':41,'skills':36,'tools':5,'bundles':8}, info
+                  entries=json.loads(get('catalog.json'))['entries']
+                  bundles=json.loads(get('bundles.json'))['bundles']
+                  assert len(entries)==41 and len(bundles)==8
+                  assert len([e for e in entries if e['kind']=='skill'])==36
+                  assert len(set(s for b in bundles for s in b['skills']))==36
+                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver')]:
+                      assert needle in get(path).decode('utf-8'), path
+                  print(json.dumps({'publication':'verified','sourceRevision':expected,'counts':info['counts'],'url':base}))
+                  break
+              except Exception as error:
+                  if attempt==11: raise
+                  print('Waiting for matching public content:',str(error))
+                  time.sleep(5)
+          PY

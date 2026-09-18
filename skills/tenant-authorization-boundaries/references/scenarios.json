@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "tenant-authorization-boundaries",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "tenant-authorization-boundaries-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Enforce tenant-scoped operations across transports, jobs, data, and caches using trusted identity and independent cross-tenant denial tests.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "tenant-authorization-boundaries-boundary",
+      "kind": "boundary",
+      "input": "Tests run as a table owner that bypasses the intended row policies: repeat with the actual application role and explain the difference.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "tenant-authorization-boundaries-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

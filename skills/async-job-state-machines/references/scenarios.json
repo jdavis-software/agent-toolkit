@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "async-job-state-machines",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "async-job-state-machines-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Model durable jobs with legal transition authority, stable operation/attempt identity, guarded effects, cancellation races, and recoverable indeterminate outcomes.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "async-job-state-machines-boundary",
+      "kind": "boundary",
+      "input": "Success arrives after a cancellation request: reconcile using explicit race policy and authoritative evidence instead of inventing an event-order rule.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "async-job-state-machines-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "build-cache-trust",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "build-cache-trust-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Review producer/consumer cache authority, scoped credentials, sensitive output, nonproduction denial tests, and recovery from suspect artifacts.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "build-cache-trust-boundary",
+      "kind": "boundary",
+      "input": "Only a directory label separates untrusted and release jobs: require real permissions instead of claiming namespace security.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "build-cache-trust-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

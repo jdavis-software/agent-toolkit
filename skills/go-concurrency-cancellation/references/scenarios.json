@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "go-concurrency-cancellation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "go-concurrency-cancellation-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Implement bounded Go concurrency with clear goroutine lifetimes, cancellation, backpressure, channel ownership, and verified shutdown/error behavior.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "go-concurrency-cancellation-boundary",
+      "kind": "boundary",
+      "input": "A provider completes after local cancellation: reconcile that outcome rather than assuming cancellation reversed the effect.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "go-concurrency-cancellation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

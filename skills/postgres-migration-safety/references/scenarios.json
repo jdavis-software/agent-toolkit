@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "postgres-migration-safety",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "postgres-migration-safety-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Test schema changes against populated prior versions, rolling application compatibility, locks/backfills, and explicit recovery rather than clean-install success alone.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "postgres-migration-safety-boundary",
+      "kind": "boundary",
+      "input": "Another lane is using the database selected for restore: wait or allocate separate owned resources rather than reset shared active state.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "postgres-migration-safety-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "openapi-contract-evolution",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "openapi-contract-evolution-trigger",
+      "kind": "trigger",
+      "input": "An authorized task requires: Evolve OpenAPI contracts against an accepted consumer baseline with explicit wire semantics, compatibility analysis, migration decisions, and runtime checks.",
+      "expected": "Resolve actual inputs and versions, follow the domain procedure, and return implementation/review evidence with explicit limitations."
+    },
+    {
+      "id": "openapi-contract-evolution-boundary",
+      "kind": "boundary",
+      "input": "Schema tests pass but a tenant receives another tenant\u2019s object: fail the independent access invariant instead of calling the API correct.",
+      "expected": "Apply the stated boundary response, preserve unrelated work, and do not convert an unsupported or ambiguous condition into a pass."
+    },
+    {
+      "id": "openapi-contract-evolution-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct a spelling mistake in an unrelated Markdown document.",
+      "expected": "Make only the authorized small correction; do not activate this domain workflow or change tooling, credentials, services, or data."
+    }
+  ]
+}

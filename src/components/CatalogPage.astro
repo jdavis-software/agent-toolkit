@@ -2,10 +2,12 @@
 import Base from '../layouts/Base.astro';
 import Card from './Card.astro';
 import { loadCatalog } from '../../scripts/catalog.mjs';
-import { withBase, repository } from '../lib/paths';
+import { loadBundles } from '../../tools/lib/bundles.mjs';
+import { withBase } from '../lib/paths';
 interface Props { kind?: string; title?: string; description?: string; home?: boolean; }
 const { kind = 'all', title = 'Explore the collection', description, home = false } = Astro.props;
 const all = await loadCatalog();
+const bundles = home ? await loadBundles() : [];
 const entries = kind === 'all' ? all : all.filter(e => e.kind === kind);
 const categories = [...new Set(entries.map(e => e.category))].sort();
 const active = kind === 'all' ? '' : kind === 'skill' ? 'skills' : kind === 'tool' ? 'tools' : 'workflows';
@@ -22,6 +24,7 @@ const active = kind === 'all' ? '' : kind === 'skill' ? 'skills' : kind === 'too
         <div class="preview-footer"><span class="preview-dot" aria-hidden="true"></span>Small, composable, inspectable.</div>
       </div>
     </section> : <section class="page-heading"><h1>{title}</h1><p>{description}</p></section>}
+    {home && <section class="bundle-strip" aria-label="Engineering bundles"><div><strong>Start with your engineering stack.</strong><p>TypeScript 7, Go, durable workflows, data, infrastructure, and parallel agents.</p></div><a class="button secondary" href={withBase('bundles/')}>Explore {bundles.length} bundles <span aria-hidden="true">→</span></a></section>}
     <section id="catalog" class="catalog-section" data-catalog>
       <div class="section-title"><h2>{home ? 'Explore the collection' : 'Browse the collection'}</h2><span class="mono muted">{entries.length} entries</span></div>
       <div class="catalog-controls">
