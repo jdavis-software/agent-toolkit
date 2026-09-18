@@ -1,0 +1,29 @@
+name: Lock the Markdown processor
+on:
+  push:
+    branches: [feat/personal-collection]
+    paths: [.github/workflows/markdown-processor.yml]
+permissions:
+  contents: write
+jobs:
+  lock:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/personal-collection'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@12.4.2
+      - name: Pin Astro's official unified renderer without running dependencies
+        run: |
+          set -euo pipefail
+          pnpm add --save-exact --lockfile-only @astrojs/markdown-remark
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/markdown-processor.yml
+          git add package.json pnpm-lock.yaml
+          git commit -m 'build: pin the official Astro Markdown processor required for safe rendering'
+          git push origin HEAD:feat/personal-collection
