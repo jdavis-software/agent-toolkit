@@ -15,26 +15,22 @@ jobs:
         with:
           persist-credentials: false
           ref: bd328660b0123a0f0a3191f230a9392b12728cbb
-      - name: Capture supplied public text without executing it
+      - name: Capture normal public HTML as data only
         env:
           EVIDENCE_DIR: ${{ runner.temp }}/research-source
         run: |
-          python3 - <<'PY'
-          import json, os, pathlib, subprocess
+          timeout 50s python3 - <<'PY'
+          import hashlib, json, os, pathlib, sys
+          sys.path.insert(0, 'tools')
+          from sourcekit_lib.transport import fetch_public
           output = pathlib.Path(os.environ['EVIDENCE_DIR'])
           output.mkdir(mode=0o700, exist_ok=True)
-          attempts = []
-          for name, url in [('raw','https://rentry.org/wikc9oo7/raw'), ('page','https://rentry.org/wikc9oo7')]:
-              try:
-                  result = subprocess.run(['python3','tools/sourcekit.py','read',url,'--allow-host','rentry.org'], capture_output=True, timeout=50)
-                  (output / (name + '.json')).write_bytes(result.stdout[:2000000])
-                  attempts.append({'representation':name,'exitCode':result.returncode,'bytes':len(result.stdout)})
-                  if result.returncode == 0:
-                      break
-              except subprocess.TimeoutExpired:
-                  attempts.append({'representation':name,'status':'process-timeout'})
-          (output / 'attempts.json').write_text(json.dumps(attempts,indent=2))
-          print(json.dumps(attempts))
+          body, metadata = fetch_public('https://rentry.org/wikc9oo7', ['rentry.org'])
+          (output / 'page.html').write_bytes(body)
+          metadata['sha256'] = hashlib.sha256(body).hexdigest()
+          metadata['bytes'] = len(body)
+          (output / 'metadata.json').write_text(json.dumps(metadata,indent=2))
+          print(json.dumps(metadata))
           PY
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
