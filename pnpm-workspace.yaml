@@ -1,0 +1,4 @@
+# Approve only the pinned binary-install step required by the Astro toolchain.
+# Other dependency scripts remain blocked by pnpm's default policy.
+allowBuilds:
+  'esbuild@0.28.2': true
