@@ -51,7 +51,7 @@ test('catalog export and all local navigation targets resolve',async({page,reque
   const catalog = await request.get(base+'catalog.json');expect(catalog.status()).toBe(200);
   const entries = (await catalog.json()).entries;
   expect(entries).toHaveLength(69);
-  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(57);
+  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(66);
   await page.goto(base);
   const links = await page.locator('a[href^="/agent-toolkit/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
   for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
