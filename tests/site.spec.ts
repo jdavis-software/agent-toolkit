@@ -57,7 +57,6 @@ test('keyboard shortcut and collection navigation work',async({page})=>{
   await expect(page).toHaveURL(/tools\/$/);
   await expect(page.locator('[data-entry]:visible')).toHaveCount(3);
 });
-
 test('source filter and direct source URLs work',async({page})=>{
   await page.goto(base+'?source=vercel');
   await expect(page.getByLabel('Filter by source')).toHaveValue('vercel');
@@ -68,15 +67,19 @@ test('source filter and direct source URLs work',async({page})=>{
   await page.getByRole('button',{name:'Reset filters'}).click();
   await expect(page.locator('[data-entry]:visible')).toHaveCount(25);
 });
-test('included package renders source, credit, license and safe reference links',async({page},testInfo)=>{
+test('included package preserves source references, credit and license',async({page},testInfo)=>{
   const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
   await page.goto(base+'workflows/superpowers-systematic-debugging/');
   await expect(page.getByRole('heading',{level:1})).toHaveText('Systematic Debugging');
   await expect(page.getByRole('heading',{name:'Upstream instructions',exact:true})).toBeVisible();
   await expect(page.getByRole('link',{name:'Browse source package'})).toHaveAttribute('href',/vendor\/superpowers\/systematic-debugging$/);
   await expect(page.getByRole('link',{name:'Included license'})).toHaveAttribute('href',/UPSTREAM_LICENSE.txt$/);
+  await expect(page.getByRole('link',{name:'Original SKILL.md'})).toHaveAttribute('href','https://github.com/obra/superpowers/blob/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/skills/systematic-debugging/SKILL.md');
+  await expect(page.locator('.source-panel')).toContainText('Jesse Vincent');
+  // Upstream writes supporting filenames as inline code, not Markdown links.
+  // Preserve that representation; the complete folder is available via Browse source package.
+  await expect(page.locator('.upstream-document code').filter({hasText:'root-cause-tracing.md'}).first()).toBeVisible();
   const links=await page.locator('.upstream-document a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
-  expect(links.some(h=>h.includes('/blob/b36e0829c6d0140e93cfef2ca599b1b07d4a7797/')&&h.endsWith('root-cause-tracing.md'))).toBeTruthy();
   expect(links.some(h=>/^javascript:/i.test(h))).toBeFalsy();
   await expect(page.locator('.upstream-document script')).toHaveCount(0);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
@@ -90,7 +93,6 @@ test('source directory and legacy detail URLs remain accessible',async({page,req
   for(const path of ['skills/vercel-agent-skills/','workflows/ecc/','workflows/superpowers/']) expect((await request.get(base+path)).status()).toBe(200);
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
 });
-
 test('preserves original additions and the task-to-handoff workflow',async({page,request})=>{
  for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
   await page.goto(base+'skills/'+id+'/');
