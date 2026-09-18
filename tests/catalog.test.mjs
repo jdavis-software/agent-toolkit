@@ -57,11 +57,20 @@ test('relative supporting-file links resolve to pinned upstream', () => {
  transformMarkdown(tree,'/vendor/superpowers/systematic-debugging/SKILL.md',sources);
  assert.equal(tree.url,`https://github.com/obra/superpowers/blob/${sources.superpowers.revision}/skills/systematic-debugging/root-cause-tracing.md`);
 });
-
 test('retains all six original skills and new scenario fixtures', async () => {
  assert.equal(entries.filter(e=>e.origin==='original').length,6);
  for(const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
   const scenarios=await readFile(`skills/${id}/references/scenarios.md`,'utf8');
   assert.ok(scenarios.includes('Scenario') || scenarios.includes('scenario'));
  }
+});
+test('original supporting-file links point to repository source, not missing site routes', () => {
+ const tree={type:'link',url:'references/scenarios.md',children:[]};
+ transformMarkdown(tree,'skills/evidence-first-debugging/SKILL.md',sources);
+ assert.equal(tree.url,'https://github.com/jdavis-software/agent-toolkit/blob/main/skills/evidence-first-debugging/references/scenarios.md');
+});
+test('relative source links cannot escape their source revision', () => {
+ const tree={type:'link',url:'../../../../../../outside',children:[]};
+ transformMarkdown(tree,'vendor/ecc/api-design/SKILL.md',sources);
+ assert.equal(tree.url,'#');
 });
