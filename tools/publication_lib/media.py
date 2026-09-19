@@ -29,7 +29,10 @@ def command(argv: list[str], timeout: float = 30) -> bytes:
                     size += len(chunk)
                     if size > 1024 * 1024: raise Invalid('Media command output exceeds limit')
                     if key.data == 'stdout': result.extend(chunk)
-            proc.wait(timeout=max(.001, timeout - (time.monotonic() - start)))
+            try:
+                proc.wait(timeout=max(.001, timeout - (time.monotonic() - start)))
+            except subprocess.TimeoutExpired as error:
+                raise Invalid('Media command timed out') from error
         if proc.returncode: raise Invalid('Media probe or decode failed')
         return bytes(result)
     finally:
@@ -61,7 +64,9 @@ def inspect_media(root: Path, relative: str, spec: dict) -> dict:
     duration = None
     try:
         duration = float(probe.get('format', {}).get('duration')); number(duration, .001, 120)
-    except (TypeError, ValueError): add('unknown-or-excessive-duration')
+    except (TypeError, ValueError):
+        duration = None
+        add('unknown-or-excessive-duration')
     if duration is not None and abs(duration - spec['durationSeconds']) > spec['toleranceSeconds']: add('duration-mismatch')
     if len(video) != 1: add('expected-one-video-stream')
     else:

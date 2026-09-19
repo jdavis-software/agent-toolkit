@@ -24,6 +24,13 @@ jobs:
       - run: pnpm test
       - run: pnpm check
       - run: pnpm build
+      - name: Provision the media-fixture prerequisites on the disposable runner
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version
+          ffprobe -version
       - name: Check local publication artifacts and synthetic media
         env:
           PYTHONDONTWRITEBYTECODE: '1'
