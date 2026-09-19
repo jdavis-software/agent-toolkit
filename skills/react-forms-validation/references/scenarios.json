@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "react-forms-validation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "react-forms-validation-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Build React forms with a deliberate native or React Hook Form lifecycle, accessible errors, stable field identity and authoritative server validation.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "react-forms-validation-boundary",
+      "kind": "boundary",
+      "input": "A name form looks valid locally, receives a server conflict, then resets all user input and announces success because the submit promise was not awaited.",
+      "expected": "Await submission, show the server error, keep the draft, block duplicate submits and verify the success path only after actual acceptance."
+    },
+    {
+      "id": "react-forms-validation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

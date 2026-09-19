@@ -1,0 +1,19 @@
+import { test, expect } from '@playwright/test';
+const base='/agent-toolkit/';
+test('frontend category leads to original React Query skill and worked recipe',async({page},info)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base+'categories/');await page.locator('[data-category-card="frontend-engineering"]').click();await expect(page.getByRole('heading',{level:1})).toHaveText('Frontend Engineering');await expect(page.locator('[data-entry]')).toHaveCount(21);
+ await page.getByRole('searchbox').fill('react-query');await expect(page.locator('[data-entry]:visible')).toHaveCount(1);await page.getByRole('link',{name:'TanStack Query Engineering',exact:true}).click();await expect(page.getByRole('heading',{level:1})).toHaveText('TanStack Query Engineering');await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/tanstack-query-engineering\/SKILL.md$/);await expect(page.getByRole('link',{name:'original worked recipe'})).toHaveAttribute('href',/references\/recipe.md$/);expect(errors).toEqual([]);
+ await page.screenshot({path:`test-results/${info.project.name}-frontend-query-skill.png`,fullPage:true});
+});
+test('React Icons is discoverable as an original integration procedure with external library references',async({page})=>{
+ await page.goto(base+'?q=react-icons');await expect(page.locator('[data-entry]:visible')).toHaveCount(1);await page.getByRole('link',{name:'Icon System Integration — React Icons',exact:true}).click();await expect(page.getByRole('heading',{level:1})).toContainText('React Icons');await expect(page.locator('.prose')).toContainText('wrapper license is not a universal license');await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/icon-system-integration\/SKILL.md$/);
+});
+test('frontend bundle guide, readable disclosure and source links work',async({page},info)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(base+'bundles/modern-react/');await page.getByRole('link',{name:'Explore the frontend worked guide →',exact:true}).click();await expect(page).toHaveURL(/examples\/frontend-engineering\/$/);await expect(page).toHaveTitle(/Frontend Engineering — Worked Guide/);await expect(page.getByRole('heading',{level:1})).toContainText('hold together.');
+ await page.getByText('The server rejects a form',{exact:true}).click();await expect(page.getByText('Keep the draft, map the error to its field',{exact:false})).toBeVisible();await expect(page.getByRole('link',{name:'Run the isolated React fixture ↗',exact:true})).toHaveAttribute('href',/evals\/frontend\/README.md$/);expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
+ await page.screenshot({path:`test-results/${info.project.name}-frontend-guide.png`,fullPage:true});
+});
+test('frontend guide remains readable without JavaScript and in light theme',async({page,browser},info)=>{
+ await page.goto(base+'examples/frontend-engineering/');await page.getByRole('button',{name:'Switch to light theme'}).click();await page.reload();await expect(page.locator('html')).toHaveAttribute('data-theme','light');await page.screenshot({path:`test-results/${info.project.name}-frontend-guide-light.png`,fullPage:true});
+ const context=await browser.newContext({javaScriptEnabled:false,baseURL:'http://127.0.0.1:4321'});try{const p=await context.newPage();await p.goto(base+'examples/frontend-engineering/');await p.getByText('An old search finishes late',{exact:true}).click();await expect(p.getByText('The new filter owns the view.',{exact:false})).toBeVisible();await expect(p.getByRole('link',{name:'Read the icon integration skill →'})).toBeVisible();}finally{await context.close();}
+});

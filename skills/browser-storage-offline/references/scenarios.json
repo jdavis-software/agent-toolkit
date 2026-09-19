@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "browser-storage-offline",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "browser-storage-offline-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Persist frontend state only under explicit privacy, schema, quota and reconciliation policies; distinguish local durability from synchronized server acceptance.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "browser-storage-offline-boundary",
+      "kind": "boundary",
+      "input": "Two accounts use the same persistent query cache and a new account briefly sees the previous account\u2019s drafts after reload.",
+      "expected": "Scope and validate storage by trusted identity, clear the accepted private state at transition, and test reload and cross-tab behavior."
+    },
+    {
+      "id": "browser-storage-offline-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

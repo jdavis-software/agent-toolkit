@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-security-boundaries",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-security-boundaries-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Keep untrusted content, navigation, credentials and server effects behind explicit boundaries while testing the real browser-to-server trust model.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-security-boundaries-boundary",
+      "kind": "boundary",
+      "input": "A user-supplied `javascript:` destination is passed to navigation, or a sanitized-looking preview uses raw innerHTML for later updates.",
+      "expected": "Constrain the actual sink on every path and verify hostile input remains text or is rejected without execution."
+    },
+    {
+      "id": "frontend-security-boundaries-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

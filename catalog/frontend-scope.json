@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "skills": [
+    "react-component-architecture",
+    "react-rendering-performance",
+    "react-state-ownership",
+    "tanstack-query-engineering",
+    "nextjs-application-architecture",
+    "react-server-component-boundaries",
+    "tailwind-css-engineering",
+    "design-system-architecture",
+    "responsive-ui-implementation",
+    "frontend-accessibility",
+    "react-forms-validation",
+    "url-navigation-state",
+    "frontend-data-boundaries",
+    "frontend-loading-error-states",
+    "browser-storage-offline",
+    "frontend-background-work",
+    "frontend-performance-budgets",
+    "frontend-testing-strategy",
+    "visual-regression-verification",
+    "frontend-security-boundaries",
+    "interface-motion-design",
+    "frontend-behavior-preserving-refactoring",
+    "icon-system-integration",
+    "interface-design-brief",
+    "headless-component-integration"
+  ],
+  "bundles": [
+    "modern-react",
+    "frontend-performance",
+    "interface-design"
+  ],
+  "fixture": "evals/frontend",
+  "scope": "One isolated client-rendered React fixture; not a live product or agent-host evaluation."
+}

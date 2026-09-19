@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-testing-strategy",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-testing-strategy-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Choose unit, component and browser checks around user-visible frontend contracts, with independent network fixtures and explicit integration coverage.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-testing-strategy-boundary",
+      "kind": "boundary",
+      "input": "A newly added test file is absent from Playwright\u2019s explicit registry, so CI reports success without running its interaction tests.",
+      "expected": "Check discovery and expected execution counts, register the file, and prove the required user journey ran without a hidden skip."
+    },
+    {
+      "id": "frontend-testing-strategy-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

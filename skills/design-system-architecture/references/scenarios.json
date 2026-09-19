@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "design-system-architecture",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "design-system-architecture-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Establish a small versioned system of semantic tokens, accessible primitives and feature compositions with clear ownership and migration criteria.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "design-system-architecture-boundary",
+      "kind": "boundary",
+      "input": "A global token update makes destructive buttons indistinguishable from primary actions and removes visible focus in dark mode.",
+      "expected": "Test semantic states and focus in each theme, preserve noncolor cues, and migrate affected consumers with explicit acceptance."
+    },
+    {
+      "id": "design-system-architecture-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

@@ -47,3 +47,6 @@ Context checkpoints and canary reports extend Harnesskit without changing its au
 
 ## Research and delivery evidence
 Publicationcheck (`tools/publicationcheck.mjs`, `tools/publicationcheck.py`, `tools/publication_lib/`) handles bounded local records, static artifacts and explicit trusted local media. Keep `docs/PUBLICATIONCHECK.md`, companion resolution and tests aligned. It is not a search engine, renderer, permission service, truth classifier or publisher. Original synthetic examples remain labeled. Run `pnpm test:publication`; after building, run the static audit and separately qualify the media smoke where FFmpeg/ffprobe are available.
+
+## Frontend examples
+The 25 frontend skills remain original procedures with not-run host scenarios. `evals/frontend/` is a separate optional npm-locked React fixture; root dependencies remain pinned by pnpm. Do not install the fixture merely to browse or resolve a bundle. `evals/frontend/sources.json` lists distributable sources explicitly; never collect node_modules, `.build` or `.evidence` into bundle manifests. Keep that list and the actual files aligned. Use its own TypeScript and Playwright configuration for real-library qualification; the static Astro guide is not the React runtime. Preserve third-party notices for actual libraries and icon glyphs.

@@ -1,0 +1,42 @@
+name: Qualify frontend fixture
+on:
+  pull_request:
+    paths: ['evals/frontend/**','skills/**','docs/FRONTEND_ENGINEERING.md','catalog/**','tools/lib/bundles.mjs','.github/workflows/frontend-qualification.yml']
+  push:
+    branches: [main]
+    paths: ['evals/frontend/**','skills/**','docs/FRONTEND_ENGINEERING.md','catalog/**','tools/lib/bundles.mjs','.github/workflows/frontend-qualification.yml']
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@12.4.2
+      - run: pnpm install --frozen-lockfile
+      - name: Install only the reviewed isolated fixture lock without dependency scripts
+        run: npm ci --prefix evals/frontend --ignore-scripts
+      - run: npm --prefix evals/frontend run check
+      - run: npm --prefix evals/frontend run build
+      - run: npm --prefix evals/frontend test
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm exec playwright test --config=evals/frontend/playwright.config.ts
+      - name: Verify source and both dependency locks were not modified by qualification
+        run: git diff --exit-code
+      - name: Preserve scoped fixture evidence and required third-party notices
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: frontend-fixture-evidence
+          path: |
+            evals/frontend/.build/
+            evals/frontend/.evidence/
+          include-hidden-files: true
+          retention-days: 7

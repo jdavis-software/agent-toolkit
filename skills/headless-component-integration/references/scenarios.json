@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "headless-component-integration",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "headless-component-integration-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Compose installed headless primitives and shadcn/ui source components without breaking keyboard semantics, local changes or version-specific APIs.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "headless-component-integration-boundary",
+      "kind": "boundary",
+      "input": "A wrapper drops the trigger ref and event props, so a composed dropdown no longer returns focus or opens from the keyboard.",
+      "expected": "Preserve the actual base contract and test the composed control\u2019s keyboard/focus behavior rather than replacing it with a visually similar div."
+    },
+    {
+      "id": "headless-component-integration-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

@@ -5,7 +5,7 @@ test('design category leads through original skill to its worked example',async(
  await page.goto(base+'categories/');
  await page.locator('[data-category-card="design-communication"]').click();
  await expect(page.getByRole('heading',{level:1})).toHaveText('Design & Communication');
- await expect(page.locator('[data-entry]')).toHaveCount(2);
+ await expect(page.locator('[data-entry]')).toHaveCount(6);
  await page.getByRole('link',{name:'Evidence-backed Visual Explanation',exact:true}).click();
  await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/evidence-backed-visual-explanation\/SKILL.md$/);
  await expect(page.getByRole('link',{name:'Open the synthetic worked example'})).toHaveAttribute('href','https://jdavis-software.github.io/agent-toolkit/examples/research-to-delivery/');
@@ -37,10 +37,10 @@ test('bundle example and publication tool have working internal navigation',asyn
 
 test('worked explanation has a readable light theme and no JavaScript dependency',async({page,browser},testInfo)=>{
  await page.goto(base+'examples/research-to-delivery/');
- await page.getByRole('button',{name:'Switch to light theme'}).click();await page.reload();
- await expect(page.locator('html')).toHaveAttribute('data-theme','light');
+ await page.getByRole('button',{name:'Switch to light theme'}).click();
+ await page.reload();await expect(page.locator('html')).toHaveAttribute('data-theme','light');
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  await page.screenshot({path:`test-results/${testInfo.project.name}-research-delivery-light.png`,fullPage:true});
  const context=await browser.newContext({javaScriptEnabled:false,baseURL:'http://127.0.0.1:4321'});
- try{const p=await context.newPage();await p.goto(base+'examples/research-to-delivery/');await expect(p.locator('.proof-card')).toHaveCount(3);await expect(p.locator('.evidence-details')).toContainText('The fixture reads input');}finally{await context.close();}
+ try{const p=await context.newPage();await p.goto(base+'examples/research-to-delivery/');await expect(p.getByRole('list',{name:'Synthetic pipeline stages'}).locator('li')).toHaveCount(3);await expect(p.getByRole('link',{name:'Explore Publicationcheck'})).toBeVisible();}finally{await context.close();}
 });

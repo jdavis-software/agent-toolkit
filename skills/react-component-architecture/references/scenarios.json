@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "react-component-architecture",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "react-component-architecture-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Design React components around stable identity, explicit ownership and composable behavior; preserve focus and local state while making feature boundaries easier to change.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "react-component-architecture-boundary",
+      "kind": "boundary",
+      "input": "A reordered editable list loses focus and applies the draft to a different record because keys use array positions.",
+      "expected": "Keep identity with the record ID, preserve the draft and focused field during reorder, and test that editing record A never changes B."
+    },
+    {
+      "id": "react-component-architecture-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

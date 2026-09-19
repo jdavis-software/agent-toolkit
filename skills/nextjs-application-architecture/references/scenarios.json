@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "nextjs-application-architecture",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "nextjs-application-architecture-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Plan App Router features around route ownership, server/client execution, loading and failure boundaries, cache semantics and the actual deployment target.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "nextjs-application-architecture-boundary",
+      "kind": "boundary",
+      "input": "A feature works in a development server but depends on a server-only write while the accepted target is a static export.",
+      "expected": "Report the incompatible deployment contract, choose an authorized backend boundary, and do not advertise working server behavior from a static build."
+    },
+    {
+      "id": "nextjs-application-architecture-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

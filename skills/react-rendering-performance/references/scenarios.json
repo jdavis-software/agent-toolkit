@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "react-rendering-performance",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "react-rendering-performance-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Identify the actual cause of slow React interactions and reduce unnecessary work using measured state boundaries, subscriptions, scheduling and justified memoization.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "react-rendering-performance-boundary",
+      "kind": "boundary",
+      "input": "A search field becomes unresponsive because every keystroke filters and paints a very large table.",
+      "expected": "Measure the bottleneck, isolate urgent input, reduce or defer presentation work, and verify that the newest search result and keyboard focus remain correct."
+    },
+    {
+      "id": "react-rendering-performance-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-loading-error-states",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-loading-error-states-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Design initial, empty, refreshing, partially failed and mutation-pending UI states that preserve useful data and offer safe, attributable recovery.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-loading-error-states-boundary",
+      "kind": "boundary",
+      "input": "A refetch fails while valid cached rows exist; the screen replaces them with an empty-state message saying no items exist.",
+      "expected": "Retain the same-identity data with an explicit refresh error and scoped retry, and do not relabel a request failure as successful emptiness."
+    },
+    {
+      "id": "frontend-loading-error-states-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "react-server-component-boundaries",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "react-server-component-boundaries-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Keep server-only data and execution out of client graphs while composing small interactive React islands with explicit serialization and hydration contracts.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "react-server-component-boundaries-boundary",
+      "kind": "boundary",
+      "input": "A harmless-looking shared barrel re-exports a server database helper into a client component.",
+      "expected": "Split the export boundary, fail an intentional forbidden-import fixture, and inspect the browser bundle and serialized props for private values."
+    },
+    {
+      "id": "react-server-component-boundaries-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

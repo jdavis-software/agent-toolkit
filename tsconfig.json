@@ -1,1 +1,15 @@
-{"extends":"astro/tsconfigs/strict","include":[".astro/types.d.ts","**/*"],"exclude":["dist","test-results"],"compilerOptions":{"checkJs":false}}
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist",
+    "test-results",
+    "evals/frontend"
+  ],
+  "compilerOptions": {
+    "checkJs": false
+  }
+}

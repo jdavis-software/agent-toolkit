@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "interface-motion-design",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "interface-motion-design-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Use motion to explain interaction and hierarchy while preserving reduced-motion alternatives, interruption behavior and rendering performance.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "interface-motion-design-boundary",
+      "kind": "boundary",
+      "input": "A dialog\u2019s exit animation removes the trigger before focus returns, and reduced-motion users wait through an unnecessary full-screen pan.",
+      "expected": "Preserve a valid focus destination, make interruption safe and provide a reduced-motion transition that retains meaning."
+    },
+    {
+      "id": "interface-motion-design-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

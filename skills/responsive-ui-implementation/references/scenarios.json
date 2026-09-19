@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "responsive-ui-implementation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "responsive-ui-implementation-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Implement layouts that adapt to container space, content length, input mode and zoom without hiding required actions or masking overflow.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "responsive-ui-implementation-boundary",
+      "kind": "boundary",
+      "input": "A sidebar hides skill-to-bundle navigation on narrow screens, leaving no visible route back to the relevant workflow.",
+      "expected": "Keep the required link in visible semantic navigation, click it on the narrow viewport, and verify it was not merely found in hidden DOM."
+    },
+    {
+      "id": "responsive-ui-implementation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

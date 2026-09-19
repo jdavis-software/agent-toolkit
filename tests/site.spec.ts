@@ -6,8 +6,8 @@ test('personal collection renders without errors or horizontal overflow',async({
   await expect(page).toHaveTitle('Jordan’s Agent Toolkit Collection');
   await expect(page.getByRole('heading',{level:1})).toContainText('Jordan’s Agent');
   await expect(page.getByRole('heading',{level:1})).toContainText('Toolkit Collection.');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(88);
-  await expect(page.locator('#result-count')).toHaveText('Showing 88 of 88 entries');
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(113);
+  await expect(page.locator('#result-count')).toHaveText('Showing 113 of 113 entries');
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
   expect(errors).toEqual([]);
   await page.screenshot({path:`test-results/${testInfo.project.name}-home.png`,fullPage:true});
@@ -18,12 +18,12 @@ test('search, reset, category and origin filters work',async({page})=>{
   await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
   await expect(page).toHaveURL(/q=behavior-test-design/);
   await page.getByRole('button',{name:'Reset filters'}).click();
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(88);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(113);
   await page.locator('[data-filter-category="Frontend"]').click();
   await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
   await page.getByRole('button',{name:'Reset filters'}).click();
   await page.getByLabel('Filter by origin').selectOption('original');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(85);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(110);
   await page.getByLabel('Filter by origin').selectOption('adapted');
   await expect(page.locator('#empty-state')).toBeVisible();
 });
@@ -50,8 +50,8 @@ test('detail, source, nested route and theme work',async({page},testInfo)=>{
 test('catalog export and all local navigation targets resolve',async({page,request})=>{
   const catalog = await request.get(base+'catalog.json');expect(catalog.status()).toBe(200);
   const entries = (await catalog.json()).entries;
-  expect(entries).toHaveLength(88);
-  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(85);
+  expect(entries).toHaveLength(113);
+  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(110);
   await page.goto(base);
   const links = await page.locator('a[href^="/agent-toolkit/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
   for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
@@ -66,7 +66,7 @@ test('keyboard shortcut and collection navigation work',async({page})=>{
 });
 test('skills are local packages with working instructions',async({page})=>{
   await page.goto(base+'skills/');
-  await expect(page.locator('[data-entry]')).toHaveCount(79);
+  await expect(page.locator('[data-entry]')).toHaveCount(104);
   await expect(page.locator('[data-entry][data-origin="curated"]')).toHaveCount(0);
   for (const id of ['evidence-first-debugging','behavior-test-design','interface-quality-review']) {
     await page.goto(base+`skills/${id}/`);
@@ -109,7 +109,7 @@ test('bundle navigation links to canonical skills and a read-only command',async
  await page.goto(base);
  await page.getByRole('navigation',{name:'Main navigation'}).getByRole('link',{name:'Bundles',exact:true}).click();
  await expect(page).toHaveURL(/bundles\/$/);
- await expect(page.locator('.bundle-card')).toHaveCount(13);
+ await expect(page.locator('.bundle-card')).toHaveCount(16);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  await page.screenshot({path:`test-results/${testInfo.project.name}-bundles.png`,fullPage:true});
  await page.getByRole('link',{name:'TypeScript Engineering'}).click();
@@ -119,8 +119,8 @@ test('bundle navigation links to canonical skills and a read-only command',async
  const hrefs=await page.locator('.bundle-skill-grid a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
  for(const href of hrefs)expect((await request.get(href)).status(),href).toBe(200);
  const data=await request.get(base+'bundles.json');expect(data.status()).toBe(200);
- const bundles=(await data.json()).bundles;expect(bundles).toHaveLength(13);
- expect(new Set(bundles.flatMap((b:{skills:string[]})=>b.skills)).size).toBe(79);
+ const bundles=(await data.json()).bundles;expect(bundles).toHaveLength(16);
+ expect(new Set(bundles.flatMap((b:{skills:string[]})=>b.skills)).size).toBe(104);
 });
 
 test('original executable tools are not mislabeled upstream skills',async({page})=>{

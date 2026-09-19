@@ -6,10 +6,10 @@ import { resolveBundle } from '../tools/lib/bundles.mjs';
 const registry=JSON.parse(await readFile('catalog/categories.json','utf8'));
 const entries=JSON.parse(await readFile('catalog/entries.json','utf8'));
 const copy=x=>structuredClone(x);
-test('fourteen primary categories partition all 88 entries without duplicate counts',async()=>{
- const cs=await loadCategories();assert.equal(cs.length,14);assert.equal(cs.reduce((n,c)=>n+c.counts.entries,0),88);
- assert.equal(cs.reduce((n,c)=>n+c.counts.skills,0),79);assert.equal(cs.reduce((n,c)=>n+c.counts.tools,0),9);
- assert.equal(new Set(cs.flatMap(c=>c.entryIds)).size,88);
+test('fifteen primary categories partition all 113 entries without duplicate counts',async()=>{
+ const cs=await loadCategories();assert.equal(cs.length,15);assert.equal(cs.reduce((n,c)=>n+c.counts.entries,0),113);
+ assert.equal(cs.reduce((n,c)=>n+c.counts.skills,0),104);assert.equal(cs.reduce((n,c)=>n+c.counts.tools,0),9);
+ assert.equal(new Set(cs.flatMap(c=>c.entryIds)).size,113);
 });
 test('category totals come from entries rather than hand-maintained counts',()=>{
  const augmented=[...entries,{id:'synthetic-test',kind:'skill',categoryId:'typescript'}];

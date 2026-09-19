@@ -226,6 +226,70 @@
         "asset-lineage-provenance",
         "interface-quality-review"
       ]
+    },
+    {
+      "id": "modern-react",
+      "title": "Modern React Applications",
+      "description": "React and Next.js boundaries, TanStack Query, forms, Tailwind, design-system composition, accessible icons and complete frontend states.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "skills": [
+        "react-component-architecture",
+        "react-rendering-performance",
+        "react-state-ownership",
+        "tanstack-query-engineering",
+        "nextjs-application-architecture",
+        "react-server-component-boundaries",
+        "tailwind-css-engineering",
+        "design-system-architecture",
+        "responsive-ui-implementation",
+        "frontend-accessibility",
+        "react-forms-validation",
+        "url-navigation-state",
+        "frontend-data-boundaries",
+        "frontend-loading-error-states",
+        "frontend-testing-strategy",
+        "visual-regression-verification",
+        "frontend-security-boundaries",
+        "icon-system-integration",
+        "headless-component-integration"
+      ]
+    },
+    {
+      "id": "frontend-performance",
+      "title": "Frontend Performance and Reliability",
+      "description": "Profile real interactions, control browser concurrency and storage, preserve failure evidence and verify behavior before claiming an improvement.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "skills": [
+        "react-rendering-performance",
+        "frontend-background-work",
+        "frontend-performance-budgets",
+        "browser-storage-offline",
+        "frontend-loading-error-states",
+        "frontend-testing-strategy",
+        "visual-regression-verification",
+        "frontend-security-boundaries",
+        "frontend-behavior-preserving-refactoring"
+      ]
+    },
+    {
+      "id": "interface-design",
+      "title": "Interface Design Systems",
+      "description": "A coherent design brief, semantic tokens, Tailwind variants, accessible primitives, consistent icons, responsive composition and purposeful motion.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "skills": [
+        "design-system-architecture",
+        "interface-design-brief",
+        "icon-system-integration",
+        "interface-motion-design",
+        "headless-component-integration",
+        "tailwind-css-engineering",
+        "responsive-ui-implementation",
+        "frontend-accessibility",
+        "visual-regression-verification"
+      ]
     }
   ]
 }

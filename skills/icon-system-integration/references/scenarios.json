@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "icon-system-integration",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "icon-system-integration-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Select and integrate a coherent icon family using React Icons, Lucide or an existing library with accessible meaning, bounded imports and preserved upstream license information.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "icon-system-integration-boundary",
+      "kind": "boundary",
+      "input": "A toolbar imports every React Icons pack by namespace and exposes unlabeled icon-only buttons whose SVG titles disappear in the accessibility tree.",
+      "expected": "Use a finite family/registry, label the actionable elements, verify keyboard/accessible names and inspect the production bundle and family notices."
+    },
+    {
+      "id": "icon-system-integration-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

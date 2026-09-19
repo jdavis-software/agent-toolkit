@@ -26,6 +26,12 @@
       "icon": "globe"
     },
     {
+      "id": "frontend-engineering",
+      "title": "Frontend Engineering",
+      "description": "Build React and Next.js interfaces with deliberate state, TanStack Query, Tailwind, forms, accessibility and browser-level verification.",
+      "icon": "code"
+    },
+    {
       "id": "typescript",
       "title": "TypeScript",
       "description": "Native TypeScript 7 adoption, domain types, ESM packages, and precise quality checks.",
@@ -82,7 +88,7 @@
     {
       "id": "design-communication",
       "title": "Design & Communication",
-      "description": "Explain systems with evidence and plan product stories before rendering or publishing.",
+      "description": "Define coherent interfaces, semantic tokens, accessible icons and purposeful motion; explain systems with evidence.",
       "icon": "context"
     }
   ]

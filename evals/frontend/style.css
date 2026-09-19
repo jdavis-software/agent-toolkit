@@ -1,0 +1,17 @@
+@import "tailwindcss" source(none);
+@source "./app";
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel);
+  --color-hover: var(--hover);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-error: var(--error);
+  --color-danger: #b42335;
+}
+:root { color-scheme: dark; --canvas:#101213; --panel:#191c1e; --hover:#24282b; --ink:#f1f4ed; --muted:#abb2aa; --line:#3a413b; --accent:#bdeb81; --on-accent:#18200d; --error:#ffb4bb; }
+:root[data-theme="light"] { color-scheme: light; --canvas:#f5f7f0; --panel:#ffffff; --hover:#eef2e7; --ink:#192119; --muted:#4e5b4c; --line:#c4cdbd; --accent:#436c11; --on-accent:#ffffff; --error:#a7192d; }
+body { margin:0; background:var(--canvas); font-family:ui-sans-serif,system-ui,sans-serif; }

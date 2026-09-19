@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "react-state-ownership",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "react-state-ownership-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Assign each UI value one authoritative owner across local state, URL state, form drafts, server caches and shared client stores, with explicit reconciliation rules.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "react-state-ownership-boundary",
+      "kind": "boundary",
+      "input": "A refetch overwrites a dirty form, while a local selected-object copy continues to show the previous record.",
+      "expected": "Preserve the draft under an explicit conflict policy, derive selection by ID, and avoid introducing another synchronized copy."
+    },
+    {
+      "id": "react-state-ownership-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

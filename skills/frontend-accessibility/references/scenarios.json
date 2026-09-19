@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-accessibility",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-accessibility-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Implement and verify accessible frontend interactions through native semantics, meaningful names, keyboard/focus behavior and explicit assistive-technology limits.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-accessibility-boundary",
+      "kind": "boundary",
+      "input": "A dialog opens from an icon-only action but has no accessible title, loses the trigger on close and leaves keyboard focus behind the overlay.",
+      "expected": "Give the action and dialog names, use a qualified focus pattern, test dismissal/return focus, and record any untested assistive-technology coverage."
+    },
+    {
+      "id": "frontend-accessibility-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

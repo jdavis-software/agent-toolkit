@@ -6,8 +6,8 @@ test('category directory renders counted cards and usable keyboard focus',async(
  await page.goto(base+'categories/');
  await expect(page).toHaveTitle(/Categories/);await expect(page.getByRole('heading',{level:1})).toContainText('Explore by category');
  const categories:Category[]=(await(await request.get(base+'categories.json')).json()).categories;
- await expect(page.locator('[data-category-card]')).toHaveCount(14);
- expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(88);
+ await expect(page.locator('[data-category-card]')).toHaveCount(15);
+ expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(113);
  for(const c of categories){const card=page.locator(`[data-category-card="${c.id}"]`);await expect(card).toContainText(c.title);await expect(card).toContainText(`${c.counts.entries} ${c.counts.entries===1?'entry':'entries'}`);await expect(card).toHaveAttribute('href',base+`categories/${c.id}/`);}
  const first=page.locator('[data-category-card]').first();await first.focus();await expect(first).toBeFocused();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
@@ -127,8 +127,8 @@ test('harness skills are searchable without adding a second controller category'
  await page.goto(base+'?q=tracker-readiness-reconciliation');
  await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
  await page.getByRole('button',{name:'Reset filters'}).click();
- await expect(page.locator('[data-entry]:visible')).toHaveCount(88);
- await page.goto(base+'categories/');await expect(page.locator('.category-card')).toHaveCount(14);
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(113);
+ await page.goto(base+'categories/');await expect(page.locator('.category-card')).toHaveCount(15);
 });
 
 

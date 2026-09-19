@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-performance-budgets",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-performance-budgets-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Set and evaluate route-specific frontend budgets for transfer size, main-thread work and user-visible loading without equating synthetic checks with field performance.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-performance-budgets-boundary",
+      "kind": "boundary",
+      "input": "An icon picker imports every icon pack to avoid a few explicit imports and makes the initial route much larger.",
+      "expected": "Measure the emitted graph, select a bounded registry or deferred picker, and enforce a predeclared transfer budget while retaining accessible controls."
+    },
+    {
+      "id": "frontend-performance-budgets-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

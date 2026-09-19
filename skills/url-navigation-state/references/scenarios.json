@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "url-navigation-state",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "url-navigation-state-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Use a validated URL as the authority for shareable frontend state while preserving browser history, unrelated parameters and safe navigation boundaries.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "url-navigation-state-boundary",
+      "kind": "boundary",
+      "input": "Browser Back changes the URL, but the select control and query remain on the newer workspace because each keeps separate local state.",
+      "expected": "Subscribe to the selected router state, derive controls and query identity together, and prove back/forward restores all three."
+    },
+    {
+      "id": "url-navigation-state-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

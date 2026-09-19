@@ -4,9 +4,15 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 [Explore the website](https://jdavis-software.github.io/agent-toolkit/) · [Browse categories](https://jdavis-software.github.io/agent-toolkit/categories/) · [Browse the skills](skills/) · [Follow the workflow](https://jdavis-software.github.io/agent-toolkit/workflows/) · [Read the engineering article](https://jdavis-software.github.io/content/articles/parallel-agent-engineering/)
 
+## Frontend engineering and design
+
+Explore [Frontend Engineering](https://jdavis-software.github.io/agent-toolkit/categories/frontend-engineering/), [Modern React Applications](https://jdavis-software.github.io/agent-toolkit/bundles/modern-react/), [Frontend Performance and Reliability](https://jdavis-software.github.io/agent-toolkit/bundles/frontend-performance/) and [Interface Design Systems](https://jdavis-software.github.io/agent-toolkit/bundles/interface-design/). The [worked guide](https://jdavis-software.github.io/agent-toolkit/examples/frontend-engineering/) connects state ownership, data failures and accessible icons.
+
+Twenty-five original skills cover React/Next.js, TanStack Query, Tailwind, forms, state/data/navigation boundaries, browser storage/workers, performance/testing/security, and design systems/icons/motion. A separately locked [optional React fixture](evals/frontend/README.md) exercises actual React, Query, Hook Form, Tailwind and React Icons; it is not installed by the Astro build or bundle resolver. [Coverage and limits](docs/FRONTEND_ENGINEERING.md) distinguish those tests from agent-host or production certification.
+
 ## The expanded skill collection
 
-**79 original skills · 14 primary categories · 13 overlapping bundles · 6 original utilities · 3 selected external tools.**
+**104 original skills · 15 primary categories · 16 overlapping bundles · 6 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +28,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 73 domain, orchestration, source-access, qualification and delivery additions contain 219 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 98 domain, orchestration, source-access, qualification, delivery and frontend additions contain 294 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -107,6 +113,31 @@ The 73 domain, orchestration, source-access, qualification and delivery addition
 | [Product Video Storyboarding](skills/product-video-storyboarding/SKILL.md) | Design and communication |
 | [Media Transform Verification](skills/media-transform-verification/SKILL.md) | Media pipelines |
 | [Search Discoverability Audit](skills/search-discoverability-audit/SKILL.md) | Web and research |
+| [React Component Architecture](skills/react-component-architecture/SKILL.md) | React |
+| [React Rendering and Performance](skills/react-rendering-performance/SKILL.md) | React |
+| [React State Ownership](skills/react-state-ownership/SKILL.md) | React |
+| [TanStack Query Engineering](skills/tanstack-query-engineering/SKILL.md) | TanStack Query |
+| [Next.js Application Architecture](skills/nextjs-application-architecture/SKILL.md) | Next.js |
+| [React Server Component Boundaries](skills/react-server-component-boundaries/SKILL.md) | Next.js |
+| [Tailwind CSS Engineering](skills/tailwind-css-engineering/SKILL.md) | Tailwind CSS |
+| [Design System Architecture](skills/design-system-architecture/SKILL.md) | Design systems |
+| [Responsive UI Implementation](skills/responsive-ui-implementation/SKILL.md) | Layout |
+| [Frontend Accessibility](skills/frontend-accessibility/SKILL.md) | Accessibility |
+| [React Forms and Validation](skills/react-forms-validation/SKILL.md) | React Hook Form |
+| [URL and Navigation State](skills/url-navigation-state/SKILL.md) | Routing |
+| [Frontend Data Boundaries](skills/frontend-data-boundaries/SKILL.md) | Data access |
+| [Frontend Loading and Error States](skills/frontend-loading-error-states/SKILL.md) | Async UI |
+| [Browser Storage and Offline State](skills/browser-storage-offline/SKILL.md) | Browser runtime |
+| [Frontend Concurrency and Background Work](skills/frontend-background-work/SKILL.md) | Browser runtime |
+| [Frontend Performance Budgeting](skills/frontend-performance-budgets/SKILL.md) | Performance |
+| [Frontend Testing Strategy](skills/frontend-testing-strategy/SKILL.md) | Testing |
+| [Visual Regression and UI Verification](skills/visual-regression-verification/SKILL.md) | Testing |
+| [Frontend Security Boundaries](skills/frontend-security-boundaries/SKILL.md) | Security |
+| [Animation and Motion Design](skills/interface-motion-design/SKILL.md) | Design systems |
+| [Frontend Behavior-preserving Refactoring](skills/frontend-behavior-preserving-refactoring/SKILL.md) | React |
+| [Icon System Integration — React Icons](skills/icon-system-integration/SKILL.md) | Icons |
+| [Interface Design Brief](skills/interface-design-brief/SKILL.md) | Design systems |
+| [Headless Components and shadcn/ui](skills/headless-component-integration/SKILL.md) | Design systems |
 
 <!-- skill-index:end -->
 
