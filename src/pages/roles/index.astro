@@ -15,6 +15,7 @@ const roles=await loadRoles();
   <p id="role-empty" class="notice" hidden>No matching role. Reset to explore all eight presets.</p>
   <section class="bundle-explainer"><h2>Choose the job. Keep the skills canonical.</h2><p>A role supplies responsibility, context and expected output. A skill supplies a procedure; a tool performs an operation. None of these grants authority or starts a worker just because you select it.</p><p><code>node tools/bundle.mjs roles</code></p><a class="text-link" href={`${repository}/blob/main/docs/ROLES.md`}>Read role contracts and private binding guidance ↗</a></section>
 </div>
+</Base>
 <script>
  const input=document.querySelector<HTMLInputElement>('#role-search');
  const reset=document.querySelector<HTMLButtonElement>('#role-reset');
