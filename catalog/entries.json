@@ -2426,5 +2426,675 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "No search, crawl, rendering, paid generation, file overwrite, publishing or MCP server. Quote matching and supplied assessments do not authenticate semantic support or rights."
+  },
+  {
+    "id": "react-component-architecture",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "React",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/react-component-architecture/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/react-component-architecture/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "react",
+      "react component architecture",
+      "react best practices"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Design React components around stable identity, explicit ownership and composable behavior; preserve focus and local state while making feature boundaries easier to change.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "react-rendering-performance",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "React",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/react-rendering-performance/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/react-rendering-performance/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "react",
+      "react rendering performance",
+      "react best practices"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Identify the actual cause of slow React interactions and reduce unnecessary work using measured state boundaries, subscriptions, scheduling and justified memoization.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "react-state-ownership",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "React",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/react-state-ownership/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/react-state-ownership/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "react",
+      "react state ownership",
+      "react best practices"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Assign each UI value one authoritative owner across local state, URL state, form drafts, server caches and shared client stores, with explicit reconciliation rules.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "tanstack-query-engineering",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "TanStack Query",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/tanstack-query-engineering/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/tanstack-query-engineering/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "tanstack query",
+      "tanstack query engineering",
+      "react-query",
+      "@tanstack/react-query",
+      "query keys",
+      "optimistic updates"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Implement React Query data access with complete query identities, explicit freshness, cancellation, mutation reconciliation and isolated server-rendering caches.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "nextjs-application-architecture",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Next.js",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/nextjs-application-architecture/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/nextjs-application-architecture/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "next.js",
+      "nextjs application architecture"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Plan App Router features around route ownership, server/client execution, loading and failure boundaries, cache semantics and the actual deployment target.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "react-server-component-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Next.js",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/react-server-component-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/react-server-component-boundaries/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "next.js",
+      "react server component boundaries",
+      "react best practices"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Keep server-only data and execution out of client graphs while composing small interactive React islands with explicit serialization and hydration contracts.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "tailwind-css-engineering",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Tailwind CSS",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/tailwind-css-engineering/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/tailwind-css-engineering/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "tailwind css",
+      "tailwind css engineering",
+      "tailwindcss",
+      "tailwind v4"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Build maintainable utility-based interfaces with version-correct tokens, statically discoverable variants, responsive behavior and tested component composition.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "design-system-architecture",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design systems",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/design-system-architecture/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/design-system-architecture/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "design systems",
+      "design system architecture"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Establish a small versioned system of semantic tokens, accessible primitives and feature compositions with clear ownership and migration criteria.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "responsive-ui-implementation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Layout",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/responsive-ui-implementation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/responsive-ui-implementation/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "layout",
+      "responsive ui implementation"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Implement layouts that adapt to container space, content length, input mode and zoom without hiding required actions or masking overflow.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-accessibility",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Accessibility",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-accessibility/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-accessibility/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "accessibility",
+      "frontend accessibility"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Implement and verify accessible frontend interactions through native semantics, meaningful names, keyboard/focus behavior and explicit assistive-technology limits.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "react-forms-validation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "React Hook Form",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/react-forms-validation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/react-forms-validation/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "react hook form",
+      "react forms validation",
+      "react-hook-form",
+      "RHF",
+      "react best practices"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Build React forms with a deliberate native or React Hook Form lifecycle, accessible errors, stable field identity and authoritative server validation.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "url-navigation-state",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Routing",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/url-navigation-state/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/url-navigation-state/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "routing",
+      "url navigation state"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Use a validated URL as the authority for shareable frontend state while preserving browser history, unrelated parameters and safe navigation boundaries.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-data-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Data access",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-data-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-data-boundaries/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "data access",
+      "frontend data boundaries"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Convert untrusted transport data into deliberate frontend view models without leaking service details, precision errors or unauthorized fields throughout the component tree.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-loading-error-states",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Async UI",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-loading-error-states/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-loading-error-states/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "async ui",
+      "frontend loading error states"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Design initial, empty, refreshing, partially failed and mutation-pending UI states that preserve useful data and offer safe, attributable recovery.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "browser-storage-offline",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Browser runtime",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/browser-storage-offline/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/browser-storage-offline/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "browser runtime",
+      "browser storage offline"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Persist frontend state only under explicit privacy, schema, quota and reconciliation policies; distinguish local durability from synchronized server acceptance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-background-work",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Browser runtime",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-background-work/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-background-work/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "browser runtime",
+      "frontend background work"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Move suitable CPU-heavy work away from urgent UI interactions while controlling worker ownership, message identity, cancellation and stale results.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-performance-budgets",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Performance",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-performance-budgets/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-performance-budgets/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "performance",
+      "frontend performance budgets"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Set and evaluate route-specific frontend budgets for transfer size, main-thread work and user-visible loading without equating synthetic checks with field performance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-testing-strategy",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Testing",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-testing-strategy/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-testing-strategy/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "testing",
+      "frontend testing strategy"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Choose unit, component and browser checks around user-visible frontend contracts, with independent network fixtures and explicit integration coverage.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "visual-regression-verification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Testing",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/visual-regression-verification/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/visual-regression-verification/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "testing",
+      "visual regression verification"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Use reproducible visual evidence to detect frontend regressions while preserving independent interaction, accessibility and content checks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-security-boundaries",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Security",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-security-boundaries/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-security-boundaries/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "security",
+      "frontend security boundaries"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Keep untrusted content, navigation, credentials and server effects behind explicit boundaries while testing the real browser-to-server trust model.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "interface-motion-design",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design systems",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/interface-motion-design/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/interface-motion-design/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "design systems",
+      "interface motion design"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Use motion to explain interaction and hierarchy while preserving reduced-motion alternatives, interruption behavior and rendering performance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "frontend-behavior-preserving-refactoring",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "React",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/frontend-behavior-preserving-refactoring/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/frontend-behavior-preserving-refactoring/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "react",
+      "frontend behavior preserving refactoring"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Restructure React components, hooks and data flow while preserving user-visible behavior, state lifetime, focus and effect ownership.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "icon-system-integration",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Icons",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/icon-system-integration/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/icon-system-integration/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "icons",
+      "icon system integration",
+      "react-icons",
+      "lucide",
+      "bootstrap icons",
+      "icon library"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Select and integrate a coherent icon family using React Icons, Lucide or an existing library with accessible meaning, bounded imports and preserved upstream license information.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "interface-design-brief",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design systems",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/interface-design-brief/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/interface-design-brief/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "design systems",
+      "interface design brief"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Turn a frontend task into a coherent, testable interface direction grounded in the audience, product workflow, existing system and realistic content states.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "headless-component-integration",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design systems",
+    "categoryId": "frontend-engineering",
+    "sourcePath": "skills/headless-component-integration/SKILL.md",
+    "packageVersion": "0.1.0",
+    "scenarioPath": "skills/headless-component-integration/references/scenarios.json",
+    "tags": [
+      "frontend",
+      "design systems",
+      "headless component integration",
+      "shadcn",
+      "radix",
+      "base ui"
+    ],
+    "requires": [
+      "Accepted frontend flow and owned source",
+      "Installed framework/component versions",
+      "Authorized browser and test environment"
+    ],
+    "outcome": "Compose installed headless primitives and shadcn/ui source components without breaking keyboard semantics, local changes or version-specific APIs.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
   }
 ]

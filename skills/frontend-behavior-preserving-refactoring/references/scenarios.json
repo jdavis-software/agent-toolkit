@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-behavior-preserving-refactoring",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-behavior-preserving-refactoring-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Restructure React components, hooks and data flow while preserving user-visible behavior, state lifetime, focus and effect ownership.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-behavior-preserving-refactoring-boundary",
+      "kind": "boundary",
+      "input": "Extracting a row editor changes its key, causing unsaved input to reset whenever a background query refreshes.",
+      "expected": "Preserve the editor\u2019s accepted record identity and draft policy, then test refetch while typing and keyboard focus."
+    },
+    {
+      "id": "frontend-behavior-preserving-refactoring-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

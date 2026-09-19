@@ -99,6 +99,15 @@ export async function resolveBundle(root,id,{requireClean=false,expectedRevision
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('sourcekit'))) paths.push('tools/sourcekit.mjs','tools/sourcekit.py','docs/SOURCEKIT.md',...await filesBelow(root,'tools/sourcekit_lib'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('publicationcheck'))) paths.push('tools/publicationcheck.mjs','tools/publicationcheck.py','docs/PUBLICATIONCHECK.md',...await filesBelow(root,'tools/publication_lib'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('harnesskit'))) paths.push('tools/harnesskit.mjs','docs/HARNESSKIT.md','docs/HARNESS_EVIDENCE.md','tools/lib/worktree.mjs','tools/lib/contracts.mjs',...await filesBelow(root,'tools/lib/harness'));
+  if(b.skills.some(id=>catalog.find(e=>e.id===id)?.tags?.includes('frontend'))) {
+    const manifest=JSON.parse((await bytesAt(root,'evals/frontend/sources.json')).toString('utf8'));
+    if(manifest?.schemaVersion!==1 || !Array.isArray(manifest.files) || manifest.files.length<1 || manifest.files.length>100 || new Set(manifest.files).size!==manifest.files.length) throw new Error('Invalid frontend companion manifest');
+    for(const path of manifest.files) {
+      safeBundlePath(path);
+      if(!(path.startsWith('evals/frontend/') || ['docs/FRONTEND_ENGINEERING.md','docs/research/FRONTEND_ENGINEERING.md','catalog/frontend-scope.json'].includes(path)) || path.split('/').some(part=>['node_modules','.build','.evidence'].includes(part))) throw new Error('Unexpected frontend companion path');
+    }
+    paths.push('evals/frontend/sources.json',...manifest.files);
+  }
   for(const id of [...b.skills].sort()) {
     const selected=await filesBelow(root,`skills/${id}`);
     if(!selected.includes(`skills/${id}/SKILL.md`)) throw new Error(`Missing skill document: ${id}`);

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-background-work",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-background-work-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Move suitable CPU-heavy work away from urgent UI interactions while controlling worker ownership, message identity, cancellation and stale results.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-background-work-boundary",
+      "kind": "boundary",
+      "input": "A thumbnail worker returns results for an old project after the user switches projects and the UI attaches those results to the current project.",
+      "expected": "Bind request and project identity to each result, reject stale messages and test cleanup during switching."
+    },
+    {
+      "id": "frontend-background-work-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

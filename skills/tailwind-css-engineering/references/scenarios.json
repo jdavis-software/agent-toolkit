@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "tailwind-css-engineering",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "tailwind-css-engineering-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Build maintainable utility-based interfaces with version-correct tokens, statically discoverable variants, responsive behavior and tested component composition.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "tailwind-css-engineering-boundary",
+      "kind": "boundary",
+      "input": "An API status produces `bg-${color}-500`; the development page looks acceptable but the selected variant has no generated production CSS.",
+      "expected": "Replace fragment construction with a finite literal variant map and assert computed styles from the actual compiled CSS."
+    },
+    {
+      "id": "tailwind-css-engineering-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

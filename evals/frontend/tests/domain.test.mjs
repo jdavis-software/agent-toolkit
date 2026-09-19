@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parseFilters,writeFilters,parseItems,validateLabel,itemKeys} from '../.build/domain.mjs';
+test('defaults do not fabricate private context',()=>assert.deepEqual(parseFilters(''),{workspace:'studio',q:''}));
+test('unknown workspace falls back and text is bounded',()=>{const f=parseFilters('?workspace=other&q='+ 'a'.repeat(100));assert.equal(f.workspace,'studio');assert.equal(f.q.length,80);});
+test('special characters round trip as data',()=>{const q='<img> & / +';assert.equal(parseFilters(writeFilters('',{q})).q,q);});
+test('default serialization omits duplicates and retains unrelated parameters',()=>assert.equal(writeFilters('?workspace=docs&workspace=other&q=x&q=y&campaign=demo',{workspace:'studio',q:''}),'?campaign=demo'));
+test('query identity includes workspace and filter',()=>{assert.notDeepEqual(itemKeys.list({workspace:'studio',q:''}),itemKeys.list({workspace:'docs',q:''}));assert.notDeepEqual(itemKeys.list({workspace:'studio',q:'a'}),itemKeys.list({workspace:'studio',q:'b'}));});
+test('valid records are projected without extra fields',()=>assert.deepEqual(parseItems([{id:'a',label:'Cedar',favorite:false,privateHint:'not-for-view'}]),[{id:'a',label:'Cedar',favorite:false}]));
+for(const [name,value] of [['object',{}],['null',null],['missing favorite',[{id:'a',label:'A'}]],['numeric ID',[{id:9007199254740992,label:'A',favorite:false}]],['duplicate',[{id:'a',label:'A',favorite:false},{id:'a',label:'B',favorite:true}]],['too many',Array(101).fill({id:'a',label:'A',favorite:false})]])test(`reject ${name}`,()=>assert.throws(()=>parseItems(value)));
+test('hostile-looking label is retained as data, not sanitized HTML',()=>assert.equal(parseItems([{id:'a',label:'<img src=x onerror=alert(1)>',favorite:false}])[0].label,'<img src=x onerror=alert(1)>'));
+for(const [value,expected] of [['  ',false],[' ab ',false],[' abc ',true],['a'.repeat(60),true],['a'.repeat(61),false]])test(`label boundary ${JSON.stringify(value)}`,()=>assert.equal(validateLabel(value)===true,expected));
+test('a seeded workspace-omitting key fails the independent identity assertion',()=>{const bad=filters=>['items',{q:filters.q}];assert.throws(()=>assert.notDeepEqual(bad({workspace:'studio',q:''}),bad({workspace:'docs',q:''})));});

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "frontend-data-boundaries",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "frontend-data-boundaries-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Convert untrusted transport data into deliberate frontend view models without leaking service details, precision errors or unauthorized fields throughout the component tree.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "frontend-data-boundaries-boundary",
+      "kind": "boundary",
+      "input": "A success response contains a numeric identifier above JavaScript exact precision and is silently rounded before a delete action.",
+      "expected": "Reject the incompatible wire shape or use the accepted exact string representation; verify the action never targets a rounded identifier."
+    },
+    {
+      "id": "frontend-data-boundaries-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "interface-design-brief",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "interface-design-brief-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Turn a frontend task into a coherent, testable interface direction grounded in the audience, product workflow, existing system and realistic content states.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "interface-design-brief-boundary",
+      "kind": "boundary",
+      "input": "A polished dashboard concept assumes short labels and full permissions; the real screen has long names, no data and a read-only user.",
+      "expected": "Produce usable empty/read-only/long-content compositions and a clear action hierarchy before declaring the design ready."
+    },
+    {
+      "id": "interface-design-brief-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

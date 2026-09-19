@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "visual-regression-verification",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "visual-regression-verification-trigger",
+      "kind": "trigger",
+      "input": "An authorized feature task requires: Use reproducible visual evidence to detect frontend regressions while preserving independent interaction, accessibility and content checks.",
+      "expected": "Inspect the actual stack, implement the bounded domain procedure, exercise its relevant acceptance flow and preserve untested boundaries."
+    },
+    {
+      "id": "visual-regression-verification-boundary",
+      "kind": "boundary",
+      "input": "A screenshot test is updated to accept a narrow layout that clipped the Save action and hid the focused control.",
+      "expected": "Reject the baseline update until the action is visible and usable, test it directly, and record the corrected screenshot."
+    },
+    {
+      "id": "visual-regression-verification-non-trigger",
+      "kind": "non-trigger",
+      "input": "Correct punctuation in a plain-text changelog unrelated to this frontend feature.",
+      "expected": "Make only the requested text edit. Do not install a library, restructure the UI, change tokens or run unrelated browser effects."
+    }
+  ]
+}

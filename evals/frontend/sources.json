@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "catalog/frontend-scope.json",
+    "docs/FRONTEND_ENGINEERING.md",
+    "docs/research/FRONTEND_ENGINEERING.md",
+    "evals/frontend/.gitignore",
+    "evals/frontend/README.md",
+    "evals/frontend/app/App.tsx",
+    "evals/frontend/app/api.ts",
+    "evals/frontend/app/components.tsx",
+    "evals/frontend/app/domain.ts",
+    "evals/frontend/app/main.tsx",
+    "evals/frontend/app/url-state.ts",
+    "evals/frontend/build.mjs",
+    "evals/frontend/notices/BOOTSTRAP_ICONS_LICENSE.txt",
+    "evals/frontend/package-lock.json",
+    "evals/frontend/package.json",
+    "evals/frontend/playwright.config.ts",
+    "evals/frontend/server.mjs",
+    "evals/frontend/style.css",
+    "evals/frontend/tests/browser.spec.ts",
+    "evals/frontend/tests/domain.test.mjs",
+    "evals/frontend/tests/query.test.mjs",
+    "evals/frontend/tsconfig.json"
+  ]
+}
