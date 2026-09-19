@@ -39,3 +39,6 @@ Use the pinned versions and committed lockfile. Never hand-author a lockfile or 
 
 ## Public source intake
 `tools/sourcekit.mjs` wraps `tools/sourcekit.py`; reusable modules live under `tools/sourcekit_lib/`. Python 3.10+ standard library only. Keep `docs/SOURCEKIT.md`, examples, Python tests, bundle companions, and private-adapter boundaries aligned. Default routing/doctor and local parsing have no network effects. Live reads require exact approved hosts; never weaken private-address, redirect, credential, or size checks to make a test pass. Do not install Agent-Reach or other source tools as a side effect of building this site. Run `pnpm test:sourcekit` and the existing browser suite.
+
+## Harness qualification
+`tools/harnesskit.mjs` uses original modules under `tools/lib/harness/` for read-only preflight, tracker snapshot checks, event reconciliation and a caller-bound conformance suite. Only Git-visible state and this Node process are probed; runtime auth/configuration and tracker acceptance are separately supplied observations. No live controller or worker is launched. Preserve this distinction in docs and examples. Run `pnpm test:harness` and `pnpm demo:harness`. Optional ast-grep qualification stays outside default dependencies. Never run a real controller against an active backlog as an implicit test.

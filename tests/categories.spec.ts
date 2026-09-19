@@ -7,7 +7,7 @@ test('category directory renders counted cards and usable keyboard focus',async(
  await expect(page).toHaveTitle(/Categories/);await expect(page.getByRole('heading',{level:1})).toContainText('Explore by category');
  const categories:Category[]=(await(await request.get(base+'categories.json')).json()).categories;
  await expect(page.locator('[data-category-card]')).toHaveCount(13);
- expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(73);
+ expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(80);
  for(const c of categories){const card=page.locator(`[data-category-card="${c.id}"]`);await expect(card).toContainText(c.title);await expect(card).toContainText(`${c.counts.entries} ${c.counts.entries===1?'entry':'entries'}`);await expect(card).toHaveAttribute('href',base+`categories/${c.id}/`);}
  const first=page.locator('[data-category-card]').first();await first.focus();await expect(first).toBeFocused();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
@@ -97,4 +97,36 @@ test('fresh synthetic browser contexts do not share cookie or localStorage state
   expect(await pb.evaluate(()=>document.cookie)).not.toContain('synthetic_session');
   expect((await a.cookies()).some(c=>c.name==='synthetic_session')).toBeTruthy();
  }finally{await a.close();await b.close();}
+});
+
+
+test('harness bundle leads to canonical qualification skills and original tool',async({page,request},testInfo)=>{
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto(base+'bundles/');
+ await page.getByRole('link',{name:'Harness Engineering and Qualification',exact:true}).click();
+ await expect(page).toHaveURL(/bundles\/harness-engineering\/$/);
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Harness Engineering and Qualification');
+ await expect(page.locator('[data-entry]')).toHaveCount(11);
+ await expect(page.locator('.bundle-command code')).toHaveText('node tools/bundle.mjs resolve harness-engineering');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:`test-results/${testInfo.project.name}-harness-bundle.png`,fullPage:true});
+ await page.getByRole('link',{name:'Execution Profile Audit',exact:true}).click();
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Execution Profile Audit');
+ await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/execution-profile-audit\/SKILL.md$/);
+ await expect(page.locator('.prose')).toContainText('requested, resolved, and observed');
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
+ await page.screenshot({path:`test-results/${testInfo.project.name}-harness-profile.png`,fullPage:true});
+ for(const id of ['agent-runtime-qualification','tracker-readiness-reconciliation','controller-conformance-testing','agent-event-reconciliation','tested-structural-refactoring'])expect((await request.get(base+'skills/'+id+'/')).status()).toBe(200);
+ await page.goto(base+'tools/harnesskit/');
+ await expect(page.getByRole('heading',{level:1})).toHaveText('Harnesskit');
+ await expect(page.getByRole('link',{name:'Read command contracts and limitations'})).toHaveAttribute('href',/docs\/HARNESSKIT.md$/);
+ expect(errors).toEqual([]);
+});
+
+test('harness skills are searchable without adding a second controller category',async({page})=>{
+ await page.goto(base+'?q=tracker-readiness-reconciliation');
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
+ await page.getByRole('button',{name:'Reset filters'}).click();
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(80);
+ await page.goto(base+'categories/');await expect(page.locator('.category-card')).toHaveCount(13);
 });

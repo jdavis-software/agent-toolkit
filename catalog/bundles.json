@@ -187,6 +187,26 @@
         "structured-web-extraction",
         "bounded-crawl-planning"
       ]
+    },
+    {
+      "id": "harness-engineering",
+      "title": "Harness Engineering and Qualification",
+      "description": "Audit effective execution, reconcile task readiness and events, qualify controller failures, and apply tested structural changes without another scheduler.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "skills": [
+        "execution-profile-audit",
+        "agent-runtime-qualification",
+        "tracker-readiness-reconciliation",
+        "controller-conformance-testing",
+        "agent-event-reconciliation",
+        "tested-structural-refactoring",
+        "context-checkpointing",
+        "subagent-lifecycle",
+        "orchestration-resume",
+        "agent-loop-detection",
+        "delegation-evaluation"
+      ]
     }
   ]
 }

@@ -2,7 +2,7 @@
 name: openapi-contract-evolution
 description: "Evolve OpenAPI contracts against an accepted consumer baseline with explicit wire semantics, compatibility analysis, migration decisions, and runtime checks."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # OpenAPI Contract Evolution
@@ -66,3 +66,9 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [Schemathesis](https://schemathesis.readthedocs.io/en/stable/)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Keep reference trees independent
+
+Resolve the accepted baseline and candidate modular specifications within their own revision trees. Restrict external references deliberately; never resolve both against the newest shared files.
+
+For a chosen oasdiff CLI, set an explicit failure threshold and seed a known breaking change. Invalid schemas, unresolved references or a failed tool must not become an empty passing report. Bounded live API tests must report actual selected-operation coverage.

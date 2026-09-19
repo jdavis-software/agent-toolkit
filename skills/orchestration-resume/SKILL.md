@@ -2,7 +2,7 @@
 name: orchestration-resume
 description: "Resume interrupted coordination from checked run records, reusing only current accepted artifacts and withholding ambiguous or stale work."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Orchestration Resume
@@ -50,3 +50,9 @@ The contract artifact still matches its digest, but a derived review report was 
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## One authority during recovery
+
+Pause dispatch after uncertain restart. Reconcile the recorded worker/session identity and owned resources before another writer starts. A reused PID or an expired lease does not prove the previous process stopped.
+
+Require epoch and accepted contract identity when accepting late submissions. Preserve cancelled patches and unknown effects. Keep one controller; do not stack a second retry loop under the first to manufacture progress.

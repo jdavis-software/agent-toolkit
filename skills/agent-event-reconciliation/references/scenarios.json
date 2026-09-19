@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "agent-event-reconciliation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "agent-event-reconciliation-trigger",
+      "kind": "trigger",
+      "input": "Observations of 1200 and 1700 cumulative tokens account for 1700 overall. Two independent 1200-token turn reports account for 2400. Replaying one capture does not add a new accepted task.",
+      "expected": "Resolve the actual task and versioned inputs, apply the documented procedure, and report scoped evidence without claiming unexecuted qualification."
+    },
+    {
+      "id": "agent-event-reconciliation-boundary",
+      "kind": "boundary",
+      "input": "A cumulative counter falls after reconnect. Keep previous known usage, flag the reset, and require an explicit new epoch or reconciliation; do not interpret the lower value as negative cost.",
+      "expected": "Apply the stated failure response. Preserve source/evidence and do not treat unknown or unsupported behavior as success."
+    },
+    {
+      "id": "agent-event-reconciliation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated README.",
+      "expected": "Perform only the small authorized edit without adding a controller, running model calls, or changing the environment."
+    }
+  ]
+}

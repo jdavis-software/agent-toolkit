@@ -2,7 +2,7 @@
 name: subagent-lifecycle
 description: "Track allocated, running, submitted, accepted, failed, and indeterminate work with explicit ownership and recoverable interruption."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Subagent Lifecycle
@@ -50,3 +50,9 @@ A worker uploads an artifact, then disconnects before reporting success. The run
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## Retention and attempt fencing
+
+A worker exit, released claim, cancelled process and accepted task are separate states. Require task/attempt/epoch identity before integrating a result. Reject superseded attempts even when their output looks correct.
+
+Check the actual deletion path: a failing hook is not a veto unless the caller honors it. Preserve dirty/untracked source and external evidence through initialization failure, manual review and terminal-issue cleanup. Uncertain process identity requires reconciliation.

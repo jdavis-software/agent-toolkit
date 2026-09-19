@@ -97,6 +97,7 @@ export async function resolveBundle(root,id,{requireClean=false,expectedRevision
   const catalog=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('agentflow'))) paths.push('tools/agentflow.mjs','tools/lib/agentflow.mjs','tools/lib/contracts.mjs','docs/AGENTFLOW.md');
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('sourcekit'))) paths.push('tools/sourcekit.mjs','tools/sourcekit.py','docs/SOURCEKIT.md',...await filesBelow(root,'tools/sourcekit_lib'));
+  if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('harnesskit'))) paths.push('tools/harnesskit.mjs','docs/HARNESSKIT.md','tools/lib/worktree.mjs','tools/lib/contracts.mjs',...await filesBelow(root,'tools/lib/harness'));
   for(const id of [...b.skills].sort()) {
     const selected=await filesBelow(root,`skills/${id}`);
     if(!selected.includes(`skills/${id}/SKILL.md`)) throw new Error(`Missing skill document: ${id}`);

@@ -2,7 +2,7 @@
 name: delegation-evaluation
 description: "Evaluate whether delegation improves accepted task outcomes using matched inputs, independent checks, repeated sessions, and explicit handoff/integration scoring."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Delegation Evaluation
@@ -50,3 +50,9 @@ Two configurations both produce compiling patches; only one passes the independe
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## Small adoption canary
+
+Begin with one host, two disjoint implementation lanes, independent validation and one integration owner. Freeze source/model/tool versions, accepted tests, limits and cache conditions. Minimum safety repairs define the baseline rather than an invented speedup.
+
+Retain every failed, cancelled and unfinished attempt plus operator interventions, time and observed usage. Record a scoped go/no-go decision. A two-lane result does not qualify larger fan-out; no giant benchmark lab is required before a useful canary.

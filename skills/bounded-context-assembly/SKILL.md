@@ -2,7 +2,7 @@
 name: bounded-context-assembly
 description: "Assemble task-sized context from current canonical source, accepted contracts, graphs, and semantic tools while tracking freshness and missing information."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Bounded Context Assembly
@@ -66,3 +66,9 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [Agent Skills](https://agentskills.io/specification)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Avoid mixed source snapshots
+
+Bind each fetched contract, symbol result and instruction to the actual queried worktree/view. Recheck required identities after assembly; retry a mixed snapshot instead of silently trimming missing callers or tests. Record whether unsaved buffers were visible.
+
+Reuse the existing bootstrap and graph/language services. Do not add a second toolchain manager, vector database or controller merely to collect a compact reading packet.

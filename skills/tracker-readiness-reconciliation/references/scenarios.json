@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "tracker-readiness-reconciliation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "tracker-readiness-reconciliation-trigger",
+      "kind": "trigger",
+      "input": "A planning issue points to a separate code repository. The adapter reads that mapping and uses the approved implementation worktree instead of cloning the planning repository.",
+      "expected": "Resolve the actual task and versioned inputs, apply the documented procedure, and report scoped evidence without claiming unexecuted qualification."
+    },
+    {
+      "id": "tracker-readiness-reconciliation-boundary",
+      "kind": "boundary",
+      "input": "Task B depends on A, but A is outside the agent-ready filter. Hold B until A can be resolved and its acceptance established; never turn an empty dependency result into permission.",
+      "expected": "Apply the stated failure response. Preserve source/evidence and do not treat unknown or unsupported behavior as success."
+    },
+    {
+      "id": "tracker-readiness-reconciliation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated README.",
+      "expected": "Perform only the small authorized edit without adding a controller, running model calls, or changing the environment."
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 name: orchestration-observability
 description: "Capture task/attempt traces that explain delegation, queue time, context identity, resource pressure, and whether submitted work was actually integrated."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Orchestration Observability
@@ -50,3 +50,9 @@ Ten workers appear busy but completed work waits on one integration lane. Report
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## Separate execution and acceptance evidence
+
+Use one versioned event importer for the chosen interface. Preserve stable IDs or explicitly local sequences, counter basis, resets and missing usage. A turn terminal notification is not candidate_accepted.
+
+Harnesskit events imports saved Codex exec JSONL or normalized observations without mutating Agentflow. Link its digest and private capture reference as evidence; the authoritative integrator still owns acceptance. No source event alone grants permissions.

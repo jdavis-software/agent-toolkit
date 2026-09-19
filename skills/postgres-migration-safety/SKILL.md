@@ -2,7 +2,7 @@
 name: postgres-migration-safety
 description: "Test schema changes against populated prior versions, rolling application compatibility, locks/backfills, and explicit recovery rather than clean-install success alone."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # PostgreSQL Migration Safety
@@ -66,3 +66,9 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [ALTER TABLE](https://www.postgresql.org/docs/current/sql-altertable.html)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Match the real migration runner
+
+When the runner separates up/down SQL or renders templates, lint the rendered upward migration as actually executed. Preserve source mapping, PostgreSQL target version and transaction assumptions; do not concatenate rollback SQL into the deployment lint input.
+
+Retain populated old-schema upgrade tests separately from clean installation. Prefer one owned fixture per DB-requiring lane/suite; snapshots are an optimization, not permission to restore active shared database state.
