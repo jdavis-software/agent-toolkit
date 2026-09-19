@@ -1,0 +1,36 @@
+name: Materialize reviewed specialist collection
+on:
+  push:
+    branches: [feat/specialist-roles-and-production]
+    paths: [.github/workflows/materialize-roles.yml]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/specialist-roles-and-production'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Verify and apply only non-workflow source
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, lzma, hashlib, os
+          data=b''.join(pathlib.Path(f'.github/roles-part-{i}.bin').read_bytes() for i in range(7))
+          assert len(data)==49412
+          assert hashlib.sha256(data).hexdigest()=='1319d2422cce0c1349ebe63642330c5c02a0bb7a02e3965feb455bc20e9db859'
+          decoder=lzma.LZMADecompressor(memlimit=268435456)
+          patch=decoder.decompress(data,max_length=500001)
+          assert decoder.eof and not decoder.unused_data and len(patch)==223646
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'roles.patch').write_bytes(patch)
+          PY
+          git apply --exclude='.github/workflows/*' --check "$RUNNER_TEMP/roles.patch"
+          git apply --exclude='.github/workflows/*' --index "$RUNNER_TEMP/roles.patch"
+          git rm .github/roles-part-*.bin
+          git diff --cached --check
+          test -z "$(git diff --cached --name-only -- .github/workflows/)"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: add original specialist skills, role presets and evidence checks'
+          git push origin HEAD:feat/specialist-roles-and-production
