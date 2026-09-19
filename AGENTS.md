@@ -42,3 +42,5 @@ Use the pinned versions and committed lockfile. Never hand-author a lockfile or 
 
 ## Harness qualification
 `tools/harnesskit.mjs` uses original modules under `tools/lib/harness/` for read-only preflight, tracker snapshot checks, event reconciliation and a caller-bound conformance suite. Only Git-visible state and this Node process are probed; runtime auth/configuration and tracker acceptance are separately supplied observations. No live controller or worker is launched. Preserve this distinction in docs and examples. Run `pnpm test:harness` and `pnpm demo:harness`. Optional ast-grep qualification stays outside default dependencies. Never run a real controller against an active backlog as an implicit test.
+
+Context checkpoints and canary reports extend Harnesskit without changing its authority. Keep `docs/HARNESS_EVIDENCE.md`, selected companion modules, private evidence boundaries and `tests/harness-evidence.test.mjs` aligned. Reports over supplied records do not authenticate those records or trigger adoption.

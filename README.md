@@ -6,7 +6,7 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 ## The expanded skill collection
 
-**72 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools.**
+**73 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +22,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 66 domain, orchestration, source-access and qualification additions contain 198 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 67 domain, orchestration, source-access and qualification additions contain 201 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -100,6 +100,7 @@ The 66 domain, orchestration, source-access and qualification additions contain 
 | [Structured Web Extraction](skills/structured-web-extraction/SKILL.md) | Web and research |
 | [Bounded Crawl Planning](skills/bounded-crawl-planning/SKILL.md) | Web and research |
 | [MCP Server Qualification](skills/mcp-server-qualification/SKILL.md) | MCP and bundles |
+| [Bounded Harness Canary](skills/bounded-harness-canary/SKILL.md) | Harness engineering |
 
 <!-- skill-index:end -->
 
@@ -205,3 +206,14 @@ node examples/harnesskit/controller-demo.mjs
 ```
 
 The controller demonstration tests an original synthetic fixture and seven deliberate faults, not Symphony or Contrabass. The optional ast-grep recipe is isolated under `evals/structural-refactoring/`. No default helper installs software or invokes paid inference.
+
+### Checkpoint and canary follow-through
+
+Harnesskit now checks explicitly selected context files (including selected ignored inputs) and reports bounded canaries without hiding unfinished work or missing usage. [Contracts and limits](docs/HARNESS_EVIDENCE.md) · [Bounded Harness Canary](skills/bounded-harness-canary/SKILL.md).
+
+```bash
+node examples/harnesskit/evidence-demo.mjs
+node tools/harnesskit.mjs canary examples/harnesskit/canary.json
+```
+
+The example numbers are synthetic, not measured engineering performance. These additions do not start workers or replace a controller.

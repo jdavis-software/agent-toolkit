@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "runId": "synthetic-canary",
+  "evidenceKind": "synthetic",
+  "clockId": "fixture-coordinator-1",
+  "durationSeconds": 20,
+  "protocol": {
+    "workloadSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "acceptanceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "sourceRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "environmentSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "contextSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "cacheCondition": "cold",
+    "taskIds": [
+      "a",
+      "b"
+    ],
+    "requiredGates": [
+      "profile",
+      "integration"
+    ],
+    "maxSeconds": 30,
+    "maxTokens": 100,
+    "implementationCap": 2
+  },
+  "attemptInventoryComplete": true,
+  "tasks": [
+    {
+      "id": "a",
+      "assignedSeconds": 0,
+      "status": "accepted",
+      "terminalSeconds": 12,
+      "candidateRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "validationEvidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "integrationEvidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "b",
+      "assignedSeconds": 0,
+      "status": "accepted",
+      "terminalSeconds": 20,
+      "candidateRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "validationEvidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "integrationEvidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "a-1",
+      "taskId": "a",
+      "role": "implementation",
+      "parentId": null,
+      "startedSeconds": 0,
+      "endedSeconds": 5,
+      "outcome": "completed",
+      "tokens": {
+        "inputTokens": 10,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": "b-1",
+      "taskId": "b",
+      "role": "implementation",
+      "parentId": null,
+      "startedSeconds": 0,
+      "endedSeconds": 8,
+      "outcome": "completed",
+      "tokens": {
+        "inputTokens": 20,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": "review-1",
+      "taskId": "a",
+      "role": "reviewer",
+      "parentId": null,
+      "startedSeconds": 5,
+      "endedSeconds": 12,
+      "outcome": "completed",
+      "tokens": {
+        "inputTokens": 5,
+        "outputTokens": 0
+      }
+    },
+    {
+      "id": "integrate-1",
+      "taskId": "b",
+      "role": "integration",
+      "parentId": null,
+      "startedSeconds": 8,
+      "endedSeconds": 20,
+      "outcome": "completed",
+      "tokens": {
+        "inputTokens": 5,
+        "outputTokens": 0
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "profile",
+      "status": "passed",
+      "evidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "id": "integration",
+      "status": "passed",
+      "evidenceSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ]
+}

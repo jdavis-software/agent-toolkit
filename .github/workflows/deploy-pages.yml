@@ -64,16 +64,16 @@ jobs:
               try:
                   info=json.loads(get('build-info.json'))
                   assert info['sourceRevision'] == expected, 'Published revision has not propagated'
-                  assert info['counts'] == {'entries':80,'skills':72,'tools':8,'bundles':12,'categories':13}, info
+                  assert info['counts'] == {'entries':81,'skills':73,'tools':8,'bundles':12,'categories':13}, info
                   entries=json.loads(get('catalog.json'))['entries']
                   bundles=json.loads(get('bundles.json'))['bundles']
-                  assert len(entries)==80 and len(bundles)==12
-                  assert len([e for e in entries if e['kind']=='skill'])==72
-                  assert len(set(s for b in bundles for s in b['skills']))==72
+                  assert len(entries)==81 and len(bundles)==12
+                  assert len([e for e in entries if e['kind']=='skill'])==73
+                  assert len(set(s for b in bundles for s in b['skills']))==73
                   categories=json.loads(get('categories.json'))['categories']
-                  assert len(categories)==13 and sum(c['counts']['entries'] for c in categories)==80
-                  assert len({i for c in categories for i in c['entryIds']})==80
-                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver'),('categories/','Explore by category'),('categories/agent-orchestration/','Agent Orchestration'),('tools/agentflow/','Agentflow'),('skills/orchestration-resume/','Orchestration Resume'),('categories/web-research/','Web & Research'),('tools/sourcekit/','Sourcekit'),('bundles/web-research/','Web Research and Source Access'),('skills/structured-web-extraction/','Structured Web Extraction'),('skills/mcp-server-qualification/','MCP Server Qualification'),('bundles/harness-engineering/','Harness Engineering and Qualification'),('tools/harnesskit/','Harnesskit'),('skills/execution-profile-audit/','Execution Profile Audit')]:
+                  assert len(categories)==13 and sum(c['counts']['entries'] for c in categories)==81
+                  assert len({i for c in categories for i in c['entryIds']})==81
+                  for path,needle in [('', 'Toolkit Collection'),('bundles/','Your stack.'),('bundles/typescript/','TypeScript Engineering'),('skills/typescript-7-adoption/','TypeScript 7 Adoption'),('skills/go-concurrency-cancellation/','Go Concurrency'),('tools/bundle-resolver/','Bundle Resolver'),('categories/','Explore by category'),('categories/agent-orchestration/','Agent Orchestration'),('tools/agentflow/','Agentflow'),('skills/orchestration-resume/','Orchestration Resume'),('categories/web-research/','Web & Research'),('tools/sourcekit/','Sourcekit'),('bundles/web-research/','Web Research and Source Access'),('skills/structured-web-extraction/','Structured Web Extraction'),('skills/mcp-server-qualification/','MCP Server Qualification'),('bundles/harness-engineering/','Harness Engineering and Qualification'),('tools/harnesskit/','Harnesskit'),('skills/execution-profile-audit/','Execution Profile Audit'),('skills/bounded-harness-canary/','Bounded Harness Canary'),('skills/context-checkpointing/','Executable file revalidation')]:
                       assert needle in html.unescape(get(path).decode('utf-8')), path
                   print(json.dumps({'publication':'verified','sourceRevision':expected,'counts':info['counts'],'url':base}))
                   break

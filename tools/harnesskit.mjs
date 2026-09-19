@@ -3,7 +3,9 @@ import { readText,readJSON,check } from './lib/harness/common.mjs';
 import { observeWorkspace,auditProfile } from './lib/harness/profile.mjs';
 import { reconcileReadiness } from './lib/harness/readiness.mjs';
 import { reconcileEvents,importCodexExec } from './lib/harness/events.mjs';
-const help=`Harnesskit — read-only harness evidence helpers\n\nobserve --root REPOSITORY\nprofile EXPECTED.json OBSERVED.json --root REPOSITORY\nreadiness TASK.json SNAPSHOT.json\nevents CAPTURE.jsonl --format codex-exec --binding BINDING.json\nevents EVENTS.json --format normalized\n\nNo worker launch, authentication inspection, model call, tracker mutation or installation.\nExit 0: checks satisfied; 3: mismatch/unknown/failed or incomplete run; 2: invalid input/tool error.\nRead docs/HARNESSKIT.md for source, privacy and evidence limitations.`;
+import { createCheckpoint,verifyCheckpoint } from './lib/harness/checkpoint.mjs';
+import { reportCanary } from './lib/harness/canary.mjs';
+const help=`Harnesskit — read-only harness evidence helpers\n\nobserve --root REPOSITORY\ncheckpoint REQUEST.json --root REPOSITORY\nrevalidate CHECKPOINT.json BINDING.json --root REPOSITORY\ncanary RUN.json\nprofile EXPECTED.json OBSERVED.json --root REPOSITORY\nreadiness TASK.json SNAPSHOT.json\nevents CAPTURE.jsonl --format codex-exec --binding BINDING.json\nevents EVENTS.json --format normalized\n\nNo worker launch, authentication inspection, model call, tracker mutation or installation.\nExit 0: checks satisfied; 3: mismatch/unknown/failed or incomplete run; 2: invalid input/tool error.\nRead docs/HARNESSKIT.md for source, privacy and evidence limitations.`;
 try {
   const argv=process.argv.slice(2);
   if(!argv.length||argv.length===1&&['--help','help'].includes(argv[0]))console.log(help);
@@ -15,6 +17,9 @@ try {
     }
     let result;
     if(command==='observe'){check(positional.length===0&&options.root&&Object.keys(options).length===1,'invalid-options');result=observeWorkspace(options.root);}
+    else if(command==='checkpoint'){check(positional.length===1&&options.root&&Object.keys(options).length===1,'invalid-options');result=createCheckpoint(readJSON(positional[0]),options.root);}
+    else if(command==='revalidate'){check(positional.length===2&&options.root&&Object.keys(options).length===1,'invalid-options');result=verifyCheckpoint(readJSON(positional[0]),readJSON(positional[1]),options.root);}
+    else if(command==='canary'){check(positional.length===1&&Object.keys(options).length===0,'invalid-options');result=reportCanary(readJSON(positional[0]));}
     else if(command==='profile'){check(positional.length===2&&options.root&&Object.keys(options).length===1,'invalid-options');result=auditProfile(readJSON(positional[0]),readJSON(positional[1]),observeWorkspace(options.root));}
     else if(command==='readiness'){check(positional.length===2&&Object.keys(options).length===0,'invalid-options');result=reconcileReadiness(readJSON(positional[0]),readJSON(positional[1]));}
     else if(command==='events'){

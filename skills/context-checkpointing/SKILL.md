@@ -2,7 +2,7 @@
 name: context-checkpointing
 description: "Preserve task state across compaction or handoff with source-backed decisions, unresolved failures, current artifacts, and explicit freshness checks."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
   collection: "jordans-agent-toolkit"
 ---
 # Context Checkpointing
@@ -56,3 +56,7 @@ Before compaction, the worker records that a provider call may have succeeded an
 Record task/attempt/epoch, accepted contracts, Git-visible fingerprint, required generated-input hashes, completed checks, rejected approaches, unresolved questions and next discriminating experiment. For each rejected approach, name what changed evidence would justify retrying it. Never carry benchmark answers between independent runs.
 
 Revalidate referenced files and access on resume; stale or inaccessible sources remain explicit. Harnesskit observe supplies a Git-visible fingerprint, not ignored artifacts, unsaved editor buffers, credential state or atomic snapshots.
+
+## Executable file revalidation
+
+Harnesskit `checkpoint` records selected file hashes, task/contract/environment binding and actual Git-visible state. Include required ignored/generated inputs explicitly; unselected ignored data and unsaved buffers are not covered. Keep findings in protected referenced files, not an unaudited ever-growing prompt. `revalidate` compares the current binding and bytes, retaining changed, stale or unavailable evidence. A match does not renew authority or reconcile active side effects. See [checkpoint contracts](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/HARNESS_EVIDENCE.md).

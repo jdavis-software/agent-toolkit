@@ -2,6 +2,10 @@
 
 An original, dependency-free Node helper collection. It complements Agentflow (offline coordination), Skillcheck (actual check receipts) and Bundle Resolver (read-only package selection). It does not launch a coding agent or install a scheduler. Use a full checkout with Node 22.12+; Git is needed for `observe` and `profile`.
 
+## Context and canary evidence
+
+`checkpoint`, `revalidate`, and `canary` add selected-file freshness and bounded end-of-run reporting. Read [the full contracts and runnable example](HARNESS_EVIDENCE.md). Checkpoint creation observes local Git/files; canary calculations operate on supplied records, preserve incomplete work, and never decide adoption. No new scheduler, live worker adapter or default dependency is introduced.
+
 ## Commands and effects
 
 | Command | Actual behavior | Does not establish |
