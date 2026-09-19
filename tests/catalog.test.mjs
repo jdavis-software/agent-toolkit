@@ -18,9 +18,9 @@ test('rejects incomplete instructions', () => assert.throws(()=>parseSkill('---\
 test('new skills make no host compatibility claims', () => {
  for (const entry of entries.filter(e=>e.origin==='original')) { assert.equal(entry.stage,'experimental'); assert.deepEqual(entry.testedHosts,[]); }
 });
-test('personal skill catalog contains 72 local packages, not external library cards',()=>{
+test('personal skill catalog contains 73 local packages, not external library cards',()=>{
   const skills=entries.filter(e=>e.kind==='skill');
-  assert.equal(skills.length,72);
+  assert.equal(skills.length,73);
   for(const entry of skills) {
     assert.equal(entry.origin,'original');
     assert.equal(entry.source,`https://github.com/jdavis-software/agent-toolkit/blob/main/skills/${entry.id}/SKILL.md`);

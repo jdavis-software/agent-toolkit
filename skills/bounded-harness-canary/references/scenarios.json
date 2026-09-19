@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "bounded-harness-canary",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "canary-trigger",
+      "kind": "trigger",
+      "input": "Evaluate an authorized two-worker controller change against a fixed synthetic workload.",
+      "expected": "Freeze protocol and scope, retain all roles/attempts, require independent integrated acceptance and review a bounded report before any scale increase."
+    },
+    {
+      "id": "canary-boundary",
+      "kind": "boundary",
+      "input": "Three fast tasks finish, but one hard task reaches the run cutoff. A report proposes dropping the fourth task to claim speedup.",
+      "expected": "Retain the assigned task as unfinished with null acceptance latency and report the incomplete workload; do not compare it as a complete faster run."
+    },
+    {
+      "id": "canary-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a typo in an unrelated README.",
+      "expected": "Make the authorized small edit without launching workers or a benchmark campaign."
+    }
+  ]
+}

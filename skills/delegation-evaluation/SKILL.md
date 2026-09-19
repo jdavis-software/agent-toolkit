@@ -2,7 +2,7 @@
 name: delegation-evaluation
 description: "Evaluate whether delegation improves accepted task outcomes using matched inputs, independent checks, repeated sessions, and explicit handoff/integration scoring."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
   collection: "jordans-agent-toolkit"
 ---
 # Delegation Evaluation
@@ -56,3 +56,7 @@ Two configurations both produce compiling patches; only one passes the independe
 Begin with one host, two disjoint implementation lanes, independent validation and one integration owner. Freeze source/model/tool versions, accepted tests, limits and cache conditions. Minimum safety repairs define the baseline rather than an invented speedup.
 
 Retain every failed, cancelled and unfinished attempt plus operator interventions, time and observed usage. Record a scoped go/no-go decision. A two-lane result does not qualify larger fan-out; no giant benchmark lab is required before a useful canary.
+
+## Bounded reporting without survivor bias
+
+Use the fixed workload and all-role normalized record described in [canary reporting](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/HARNESS_EVIDENCE.md). Harnesskit `canary` rejects omitted workload rows and requires independent validation/integration references for accepted tasks. It preserves unfinished latency as null, all-attempt usage and overlapping support time. An `ok` report is not adoption, proof of evidence authenticity, or permission to increase worker count.

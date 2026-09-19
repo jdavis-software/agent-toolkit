@@ -2,7 +2,7 @@
 name: orchestration-resume
 description: "Resume interrupted coordination from checked run records, reusing only current accepted artifacts and withholding ambiguous or stale work."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
   collection: "jordans-agent-toolkit"
 ---
 # Orchestration Resume
@@ -56,3 +56,7 @@ The contract artifact still matches its digest, but a derived review report was 
 Pause dispatch after uncertain restart. Reconcile the recorded worker/session identity and owned resources before another writer starts. A reused PID or an expired lease does not prove the previous process stopped.
 
 Require epoch and accepted contract identity when accepting late submissions. Preserve cancelled patches and unknown effects. Keep one controller; do not stack a second retry loop under the first to manufacture progress.
+
+## Revalidate context before reusing it
+
+A valid orchestration record and valid context are different checks. Use Harnesskit `revalidate` for an explicitly captured file/context binding before injecting saved findings. It can detect changes to selected ignored files even when the Git-visible state is unchanged. It cannot prove worker inactivity, account authority or remote outcome; keep those reconciliation gates with the selected controller. See [evidence contracts](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/HARNESS_EVIDENCE.md).

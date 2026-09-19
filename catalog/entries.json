@@ -1221,7 +1221,7 @@
     "stage": "experimental",
     "category": "Agent orchestration",
     "sourcePath": "skills/orchestration-resume/SKILL.md",
-    "packageVersion": "0.1.1",
+    "packageVersion": "0.1.2",
     "tags": [
       "agents",
       "orchestration",
@@ -1239,7 +1239,8 @@
     "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
     "categoryId": "agent-orchestration",
     "companionTools": [
-      "agentflow"
+      "agentflow",
+      "harnesskit"
     ]
   },
   {
@@ -1473,7 +1474,7 @@
     "stage": "experimental",
     "category": "Testing",
     "sourcePath": "skills/delegation-evaluation/SKILL.md",
-    "packageVersion": "0.1.1",
+    "packageVersion": "0.1.2",
     "tags": [
       "agents",
       "orchestration",
@@ -1491,7 +1492,8 @@
     "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
     "categoryId": "testing-quality",
     "companionTools": [
-      "agentflow"
+      "agentflow",
+      "harnesskit"
     ]
   },
   {
@@ -1529,7 +1531,7 @@
     "stage": "experimental",
     "category": "Context and memory",
     "sourcePath": "skills/context-checkpointing/SKILL.md",
-    "packageVersion": "0.1.1",
+    "packageVersion": "0.1.2",
     "tags": [
       "agents",
       "orchestration",
@@ -1547,7 +1549,8 @@
     "note": "Original procedure. Synthetic evaluation inputs are not-run; host effectiveness is not established.",
     "categoryId": "context-memory",
     "companionTools": [
-      "agentflow"
+      "agentflow",
+      "harnesskit"
     ]
   },
   {
@@ -2088,7 +2091,7 @@
     "category": "Harness engineering",
     "categoryId": "mcp-tooling",
     "title": "Harnesskit",
-    "description": "Read-only Git/profile preflight, tracker snapshot readiness, saved runtime event reconciliation, and a controller conformance interface.",
+    "description": "Read-only profile and readiness checks, context-file revalidation, saved event accounting, bounded canary reports, and controller fixtures.",
     "sourcePath": "tools/harnesskit.mjs",
     "docsPath": "docs/HARNESSKIT.md",
     "author": "Jordan's Agent Toolkit · AI-assisted",
@@ -2106,7 +2109,10 @@
       "preflight",
       "events",
       "controller",
-      "readiness"
+      "readiness",
+      "checkpoint",
+      "canary",
+      "evidence"
     ]
   },
   {
@@ -2192,5 +2198,36 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented."
+  },
+  {
+    "id": "bounded-harness-canary",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "testing-quality",
+    "sourcePath": "skills/bounded-harness-canary/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "canary",
+      "measurement",
+      "evaluation",
+      "unfinished work"
+    ],
+    "scenarioPath": "skills/bounded-harness-canary/references/scenarios.json",
+    "requires": [
+      "Accepted fixed workload and independent checks",
+      "Authorized scratch scope and resource limits",
+      "Complete normalized task/attempt observations"
+    ],
+    "outcome": "A bounded evaluation record preserving complete workload, independent acceptance, retries, all-role usage and explicit uncertainty.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable synthetic report fixtures. No live worker canary or performance claim.",
+    "companionTools": [
+      "harnesskit"
+    ]
   }
 ]

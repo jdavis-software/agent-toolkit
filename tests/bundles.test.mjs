@@ -24,7 +24,7 @@ async function fixture(t,{git=false}={}) {
  return dir;
 }
 const check=(d,entries=[entry])=>validateBundleDefinitions(d,entries);
-test('twelve bundles cover all 72 original skills and 198 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:12,skills:72,scenarioInputs:198}));
+test('twelve bundles cover all 73 original skills and 201 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:12,skills:73,scenarioInputs:201}));
 test('bundle registry requires its version and nonempty list',()=>{for(const d of [null,{},[],{schemaVersion:2,bundles:[]},{schemaVersion:1,bundles:[]}])assert.throws(()=>check(d));});
 test('unknown skill IDs fail rather than selecting a similar name',()=>{const d=registry();d.bundles[0].skills=['example-skil'];assert.throws(()=>check(d),/Unknown/);});
 test('curated links cannot masquerade as local skill packages',()=>assert.throws(()=>check(registry(),[{...entry,origin:'curated'}]),/nonlocal/));
@@ -66,4 +66,11 @@ test('harness bundle includes every original helper dependency and no executable
  const r=await resolveBundle(root,'harness-engineering');const paths=new Set(r.files.map(f=>f.path));
  for(const p of ['tools/harnesskit.mjs','tools/lib/harness/common.mjs','tools/lib/harness/profile.mjs','tools/lib/harness/events.mjs','tools/lib/harness/readiness.mjs','tools/lib/harness/conformance.mjs','tools/lib/worktree.mjs','tools/lib/contracts.mjs','docs/HARNESSKIT.md'])assert.ok(paths.has(p),p);
  assert.equal(paths.has('evals/structural-refactoring/qualify.py'),false);
+});
+
+
+test('checkpoint and canary consumers receive all required modules and contracts',async()=>{
+ const manifest=await resolveBundle(root,'harness-engineering');
+ const text=JSON.stringify(manifest);
+ for(const path of ['tools/lib/harness/checkpoint.mjs','tools/lib/harness/canary.mjs','docs/HARNESS_EVIDENCE.md','skills/bounded-harness-canary/SKILL.md'])assert.ok(text.includes(path),path);
 });

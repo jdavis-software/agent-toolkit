@@ -191,8 +191,8 @@
     {
       "id": "harness-engineering",
       "title": "Harness Engineering and Qualification",
-      "description": "Audit effective execution, reconcile task readiness and events, qualify controller failures, and apply tested structural changes without another scheduler.",
-      "version": "0.1.0",
+      "description": "Audit execution, revalidate context, reconcile readiness and usage, qualify controller failures, and review bounded canaries without another scheduler.",
+      "version": "0.1.1",
       "stage": "experimental",
       "skills": [
         "execution-profile-audit",
@@ -205,7 +205,8 @@
         "subagent-lifecycle",
         "orchestration-resume",
         "agent-loop-detection",
-        "delegation-evaluation"
+        "delegation-evaluation",
+        "bounded-harness-canary"
       ]
     }
   ]
