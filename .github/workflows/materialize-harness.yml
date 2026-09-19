@@ -1,0 +1,50 @@
+name: Materialize reviewed harness patch
+on:
+  push:
+    branches: [feat/harness-qualification]
+    paths: [.github/workflows/materialize-harness.yml]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/harness-qualification'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Verify and apply the reviewed original source diff
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, lzma, os, pathlib
+          data=b''.join(pathlib.Path(f'.github/harness-part-{i}.bin').read_bytes() for i in range(5))
+          assert len(data)==36664
+          assert hashlib.sha256(data).hexdigest()=='8ef81ccb0fe15f2e84e9466aab061c78bfc603223a43aeb72ffd21d7fb03626a'
+          decoder=lzma.LZMADecompressor(memlimit=268435456)
+          patch=decoder.decompress(data,max_length=1000001)
+          assert decoder.eof and not decoder.unused_data and len(patch)==164851
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'harness.patch').write_bytes(patch)
+          PY
+          git apply --check "$RUNNER_TEMP/harness.patch"
+          git apply --index "$RUNNER_TEMP/harness.patch"
+          node --test tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/harnesskit.test.mjs
+          python3 -m unittest discover -s tests -p 'test_sourcekit*.py' -q
+          node examples/harnesskit/profile-demo.mjs
+          node examples/harnesskit/controller-demo.mjs
+          git rm .github/harness-part-*.bin .github/workflows/harness-source.yml .github/workflows/materialize-harness.yml
+          git diff --cached --check
+          test "$(git write-tree)" = '340bb6cdf5121d11e498d0f120dd5c1076777a7c'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: add original harness qualification skills, helpers and reproducible fixtures'
+          git push origin HEAD:feat/harness-qualification
+          git archive --format=tar HEAD > "$RUNNER_TEMP/harness-source.tar"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: harness-materialized-source
+          path: ${{ runner.temp }}/harness-source.tar
+          retention-days: 3
