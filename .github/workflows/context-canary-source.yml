@@ -1,0 +1,22 @@
+name: Export context canary baseline
+on:
+  push:
+    branches: [feat/context-canary-evidence]
+    paths: [.github/workflows/context-canary-source.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: 71c253d1d9570aff9393d17e6a5bff97782f3038
+          persist-credentials: false
+      - run: git archive --format=tar HEAD > "$RUNNER_TEMP/context-canary-baseline.tar"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: context-canary-baseline
+          path: ${{ runner.temp }}/context-canary-baseline.tar
+          retention-days: 1
