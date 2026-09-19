@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "evidence-backed-visual-explanation",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "evidence-backed-visual-explanation-trigger",
+      "kind": "trigger",
+      "input": "Explain an inspected system or change with source-linked relationships, explicit assumptions, readable visual structure and an equivalent accessible narrative.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "evidence-backed-visual-explanation-boundary",
+      "kind": "boundary",
+      "input": "A diagram adds a direct client-to-database edge because it looks simpler, but the source only shows an API adapter. Remove or explicitly label the unsupported edge rather than using geometry validation as proof.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "evidence-backed-visual-explanation-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

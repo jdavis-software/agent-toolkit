@@ -11,7 +11,7 @@
     "dev": "astro dev",
     "check": "astro check",
     "validate": "node scripts/validate.mjs",
-    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/categories.test.mjs tests/harnesskit.test.mjs tests/harness-evidence.test.mjs && python3 -m unittest discover -s tests -p 'test_sourcekit*.py' -v",
+    "test": "node --test tests/catalog.test.mjs tests/skillcheck.test.mjs tests/bundles.test.mjs tests/agentflow.test.mjs tests/categories.test.mjs tests/harnesskit.test.mjs tests/harness-evidence.test.mjs && python3 -m unittest discover -s tests -p 'test_sourcekit*.py' -v && python3 -m unittest discover -s tests -p 'test_publicationcheck.py' -v",
     "test:skills": "node --test tests/skillcheck.test.mjs",
     "demo:skills": "node examples/skillcheck/defect-demo.mjs",
     "build": "pnpm validate && astro build",
@@ -24,7 +24,9 @@
     "test:sourcekit": "python3 -m unittest discover -s tests -p 'test_sourcekit*.py' -v",
     "demo:sourcekit": "python3 examples/sourcekit/demo.py",
     "test:harness": "node --test tests/harnesskit.test.mjs tests/harness-evidence.test.mjs",
-    "demo:harness": "node examples/harnesskit/controller-demo.mjs"
+    "demo:harness": "node examples/harnesskit/controller-demo.mjs",
+    "test:publication": "python3 -m unittest discover -s tests -p 'test_publicationcheck.py' -v",
+    "demo:publication": "python3 examples/publicationcheck/demo.py"
   },
   "dependencies": {
     "astro": "7.3.3",

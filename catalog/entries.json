@@ -2229,5 +2229,202 @@
     "companionTools": [
       "harnesskit"
     ]
+  },
+  {
+    "id": "time-windowed-research",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/time-windowed-research/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "time",
+      "windowed",
+      "research"
+    ],
+    "scenarioPath": "skills/time-windowed-research/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Investigate developments in an explicit time window using dated source captures, event-level deduplication, independent evidence and visible coverage gaps.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "technical-debt-triage",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Engineering review",
+    "categoryId": "testing-quality",
+    "sourcePath": "skills/technical-debt-triage/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "technical",
+      "debt",
+      "triage"
+    ],
+    "scenarioPath": "skills/technical-debt-triage/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Produce evidence-linked technical-debt findings with consequences, deliberate tradeoffs, bounded repair targets and independent reproduction checks rather than a style-driven rewrite list.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "evidence-backed-visual-explanation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design and communication",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/evidence-backed-visual-explanation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "evidence",
+      "backed",
+      "visual",
+      "explanation"
+    ],
+    "scenarioPath": "skills/evidence-backed-visual-explanation/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Explain an inspected system or change with source-linked relationships, explicit assumptions, readable visual structure and an equivalent accessible narrative.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "product-video-storyboarding",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Design and communication",
+    "categoryId": "design-communication",
+    "sourcePath": "skills/product-video-storyboarding/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "product",
+      "video",
+      "storyboarding"
+    ],
+    "scenarioPath": "skills/product-video-storyboarding/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Plan a product video as a timed shot, asset, claim and caption contract before authorizing generation, composition or publication.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "media-transform-verification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Media pipelines",
+    "categoryId": "media-pipelines",
+    "sourcePath": "skills/media-transform-verification/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "media",
+      "transform",
+      "verification"
+    ],
+    "scenarioPath": "skills/media-transform-verification/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Qualify a bounded media transformation using input identity, installed capabilities, independent output properties and decode evidence without treating process exit as delivery acceptance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "search-discoverability-audit",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Web and research",
+    "categoryId": "web-research",
+    "sourcePath": "skills/search-discoverability-audit/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "search",
+      "discoverability",
+      "audit"
+    ],
+    "scenarioPath": "skills/search-discoverability-audit/references/scenarios.json",
+    "requires": [
+      "Approved task and input scope",
+      "Independent evidence and acceptance contract",
+      "Python 3.10+ for optional companion; FFmpeg/ffprobe for media checks"
+    ],
+    "outcome": "Audit a static publication for canonical URL, metadata, sitemap, internal-link and indexing-directive mistakes while separating technical findings from search ranking claims.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original instructions and fixtures. Mechanical checks and synthetic examples are not host evaluation, source authentication or publication approval.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "publicationcheck",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Artifact verification",
+    "categoryId": "testing-quality",
+    "title": "Publicationcheck",
+    "description": "Read-only research, debt, storyboard and explanation checks, plus local static-site audits and bounded media probe/decode verification.",
+    "sourcePath": "tools/publicationcheck.mjs",
+    "docsPath": "docs/PUBLICATIONCHECK.md",
+    "requires": [
+      "Python 3.10+",
+      "Trusted owned local inputs",
+      "FFmpeg and ffprobe only for media mode"
+    ],
+    "outcome": "Bounded structured findings tied to actual captured bytes or inspected local artifacts.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "No search, crawl, rendering, paid generation, file overwrite, publishing or MCP server. Quote matching and supplied assessments do not authenticate semantic support or rights."
   }
 ]

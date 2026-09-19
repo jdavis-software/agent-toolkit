@@ -1,0 +1,7 @@
+Synthetic demonstration evidence, not customer research or a production measurement.
+A release was announced on 2026-01-15 and republished on 2026-08-20.
+A new connector was announced on 2026-08-25.
+The offline catalog can be searched. Remote agent execution is planned, not implemented.
+The fixture pipeline reads approved input, builds a catalog, then renders pages.
+Two fixture reservations both observed capacity one; both wrote a reservation.
+The generated listing is large because it is derived output, not independently authored code.

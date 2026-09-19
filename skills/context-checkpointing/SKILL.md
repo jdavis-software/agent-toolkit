@@ -60,3 +60,7 @@ Revalidate referenced files and access on resume; stale or inaccessible sources 
 ## Executable file revalidation
 
 Harnesskit `checkpoint` records selected file hashes, task/contract/environment binding and actual Git-visible state. Include required ignored/generated inputs explicitly; unselected ignored data and unsaved buffers are not covered. Keep findings in protected referenced files, not an unaudited ever-growing prompt. `revalidate` compares the current binding and bytes, retaining changed, stale or unavailable evidence. A match does not renew authority or reconcile active side effects. See [checkpoint contracts](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/HARNESS_EVIDENCE.md).
+
+## Keep lessons bounded and revisable
+
+Save useful rejected approaches with the failed check, applicable source/contract identity and the condition that would justify retrying them. Distinguish a reusable lesson from a transient failure or an untrusted source instruction. Consolidate by reviewed replacement rather than indefinitely appending an unbounded memory log.

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "product-video-storyboarding",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "product-video-storyboarding-trigger",
+      "kind": "trigger",
+      "input": "Plan a product video as a timed shot, asset, claim and caption contract before authorizing generation, composition or publication.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "product-video-storyboarding-boundary",
+      "kind": "boundary",
+      "input": "A storyboard labels a future remote-agent feature as available, or uses a voice with unknown permission. Block the affected shot; do not silently generate a replacement or spend provider credits.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "product-video-storyboarding-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

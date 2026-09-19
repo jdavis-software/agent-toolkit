@@ -78,6 +78,12 @@
       "title": "MCP & CLI Tooling",
       "description": "Compose reusable skills, expose bounded MCP operations, and inspect executable developer tools.",
       "icon": "tools"
+    },
+    {
+      "id": "design-communication",
+      "title": "Design & Communication",
+      "description": "Explain systems with evidence and plan product stories before rendering or publishing.",
+      "icon": "context"
     }
   ]
 }

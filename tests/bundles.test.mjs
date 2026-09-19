@@ -24,7 +24,7 @@ async function fixture(t,{git=false}={}) {
  return dir;
 }
 const check=(d,entries=[entry])=>validateBundleDefinitions(d,entries);
-test('twelve bundles cover all 73 original skills and 201 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:12,skills:73,scenarioInputs:201}));
+test('thirteen bundles cover all 79 original skills and 219 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:13,skills:79,scenarioInputs:219}));
 test('bundle registry requires its version and nonempty list',()=>{for(const d of [null,{},[],{schemaVersion:2,bundles:[]},{schemaVersion:1,bundles:[]}])assert.throws(()=>check(d));});
 test('unknown skill IDs fail rather than selecting a similar name',()=>{const d=registry();d.bundles[0].skills=['example-skil'];assert.throws(()=>check(d),/Unknown/);});
 test('curated links cannot masquerade as local skill packages',()=>assert.throws(()=>check(registry(),[{...entry,origin:'curated'}]),/nonlocal/));
@@ -53,7 +53,7 @@ test('expected revision syntax is checked',async t=>{const dir=await fixture(t);
 test('resolver output omits machine paths',async t=>{const dir=await fixture(t,{git:true});assert.equal(JSON.stringify(await resolveBundle(dir,'example')).includes(dir),false);});
 test('core-skill bundles include all Skillcheck companion modules',async()=>{const r=await resolveBundle(root,'parallel-engineering');for(const p of ['tools/skillcheck.mjs','tools/lib/contracts.mjs','tools/lib/runner.mjs','tools/lib/worktree.mjs'])assert.ok(r.files.some(f=>f.path===p),p);});
 test('scenario status remains not-run rather than invented execution evidence',async()=>{const entries=JSON.parse(await readFile(join(root,'catalog/entries.json'),'utf8'));for(const e of entries.filter(e=>e.scenarioPath)){const d=JSON.parse(await readFile(join(root,e.scenarioPath),'utf8'));assert.equal(d.status,'not-run');assert.deepEqual(e.evidence,[]);}});
-test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,12);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
+test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,13);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
 
 test('web research includes the actual Python implementation and wrapper',async()=>{
  const result=await resolveBundle(root,'web-research');const files=new Set(result.files.map(f=>f.path));
@@ -73,4 +73,11 @@ test('checkpoint and canary consumers receive all required modules and contracts
  const manifest=await resolveBundle(root,'harness-engineering');
  const text=JSON.stringify(manifest);
  for(const path of ['tools/lib/harness/checkpoint.mjs','tools/lib/harness/canary.mjs','docs/HARNESS_EVIDENCE.md','skills/bounded-harness-canary/SKILL.md'])assert.ok(text.includes(path),path);
+});
+
+test('research-to-delivery resolves every publication companion and six original packages',async()=>{
+ const manifest=await resolveBundle(root,'research-to-delivery');
+ for(const file of ['tools/publicationcheck.mjs','tools/publicationcheck.py','tools/publication_lib/common.py','tools/publication_lib/records.py','tools/publication_lib/site.py','tools/publication_lib/media.py','docs/PUBLICATIONCHECK.md'])assert.ok(manifest.files.some(f=>f.path===file),file);
+ for(const id of ['time-windowed-research','technical-debt-triage','evidence-backed-visual-explanation','product-video-storyboarding','media-transform-verification','search-discoverability-audit'])assert.ok(manifest.skills.includes(id),id);
+ assert.equal(manifest.skills.length,9);
 });

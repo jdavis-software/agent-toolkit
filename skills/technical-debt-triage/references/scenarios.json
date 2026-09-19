@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "technical-debt-triage",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "technical-debt-triage-trigger",
+      "kind": "trigger",
+      "input": "Produce evidence-linked technical-debt findings with consequences, deliberate tradeoffs, bounded repair targets and independent reproduction checks rather than a style-driven rewrite list.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "technical-debt-triage-boundary",
+      "kind": "boundary",
+      "input": "A size-only generated-file complaint should not outrank a demonstrated concurrent reservation defect. Do not label an unrun reproduction as confirmed or edit derived files to conceal the cause.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "technical-debt-triage-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

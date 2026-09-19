@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "time-windowed-research",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "time-windowed-research-trigger",
+      "kind": "trigger",
+      "input": "Investigate developments in an explicit time window using dated source captures, event-level deduplication, independent evidence and visible coverage gaps.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "time-windowed-research-boundary",
+      "kind": "boundary",
+      "input": "An old announcement is republished yesterday and echoed by five outlets. Count one old underlying event, not five new discoveries. Missing event dates must not be silently replaced with publication dates.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "time-windowed-research-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

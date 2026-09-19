@@ -72,3 +72,7 @@ Consult documentation for the installed versions before using version-sensitive 
 Bind each fetched contract, symbol result and instruction to the actual queried worktree/view. Recheck required identities after assembly; retry a mixed snapshot instead of silently trimming missing callers or tests. Record whether unsaved buffers were visible.
 
 Reuse the existing bootstrap and graph/language services. Do not add a second toolchain manager, vector database or controller merely to collect a compact reading packet.
+
+## Choose retrieval by the actual question
+
+Use exact files, graphs and language services for known source questions. Optional local document retrieval must have approved collection scope, a pinned engine, indexing/removal tests and visible freshness. Qualify lexical, semantic and reranked paths separately, including warm/cold resource cost. A skill wrapper may lag its engine; do not create a second mandatory knowledge store.

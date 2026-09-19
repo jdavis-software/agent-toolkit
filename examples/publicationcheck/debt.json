@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "evidence": [
+    {
+      "id": "observed",
+      "path": "examples/publicationcheck/evidence/observations.txt",
+      "sha256": "661b9d25a33235932a236bff20924603e8421ced5e7c20e4f93f47a3c8c7896a"
+    }
+  ],
+  "findings": [
+    {
+      "id": "capacity",
+      "classification": "confirmed-defect",
+      "consequence": "Two reservations compete for one available slot.",
+      "tradeoff": "The fixture lacks an atomic guard; simplicity does not preserve this invariant.",
+      "repairTarget": "Fixture reservation use case, not generated output.",
+      "check": {
+        "id": "two-reservations",
+        "status": "reproduced"
+      },
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "Two fixture reservations both observed capacity one; both wrote a reservation."
+        }
+      ]
+    },
+    {
+      "id": "generated-size",
+      "classification": "deliberate-tradeoff",
+      "consequence": "Large derived text, but no independently demonstrated defect.",
+      "tradeoff": "The generator intentionally enumerates catalog entries.",
+      "repairTarget": "Do not edit derived output; change its generator only for an actual requirement.",
+      "check": {
+        "id": "size-observation",
+        "status": "not-run"
+      },
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "The generated listing is large because it is derived output, not independently authored code."
+        }
+      ]
+    }
+  ]
+}

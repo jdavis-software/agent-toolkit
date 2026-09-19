@@ -44,3 +44,7 @@ The example packet has independent search and filter tasks, followed by integrat
 ## Companion tools
 
 [Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.
+
+## Avoid unnecessary implementation
+
+Before allocating new abstractions, trace the existing flow and check project code, native platform features and installed dependencies. Prefer the smallest maintainable change satisfying the accepted behavior. Do not optimize line count by removing validation, error handling, accessibility or tests; record why reuse was not sufficient when new code is justified.
