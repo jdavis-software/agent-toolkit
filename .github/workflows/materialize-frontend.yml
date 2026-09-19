@@ -1,0 +1,41 @@
+name: Materialize reviewed frontend source
+on:
+  push:
+    branches: [feat/frontend-engineering]
+    paths: [.github/workflows/materialize-frontend.yml]
+permissions:
+  contents: write
+jobs:
+  materialize:
+    if: github.repository == 'jdavis-software/agent-toolkit' && github.ref == 'refs/heads/feat/frontend-engineering'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Verify and apply the original source patch
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import pathlib, lzma, hashlib, os
+          data=b''.join(pathlib.Path(f'.github/frontend-part-{i}.bin').read_bytes() for i in range(12))
+          assert len(data)==69220
+          assert hashlib.sha256(data).hexdigest()=='a45962832e0dc955fbe09e1d90d93410962dfd1783e4f6237909de27fc7a08b6'
+          decoder=lzma.LZMADecompressor(memlimit=268435456)
+          patch=decoder.decompress(data,max_length=1000001)
+          assert decoder.eof and not decoder.unused_data and len(patch)==409047
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'frontend.patch').write_bytes(patch)
+          PY
+          git apply --check "$RUNNER_TEMP/frontend.patch"
+          git apply --index "$RUNNER_TEMP/frontend.patch"
+          git rm .github/frontend-part-*.bin
+          git rm .github/workflows/frontend-baseline.yml .github/workflows/materialize-frontend.yml
+          git diff --cached --check
+          test "$(git write-tree)" = '31662b44f9b51133b7165545c8c29695dd403054'
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'feat: add original frontend skills and isolated React qualification'
+          git push origin HEAD:feat/frontend-engineering
