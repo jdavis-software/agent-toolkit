@@ -1,0 +1,42 @@
+name: Qualify practical integration
+on:
+  push:
+    branches: [codex/toolkit-practical-integration]
+  pull_request:
+    paths:
+      - 'tools/**'
+      - 'tests/**'
+      - 'catalog/roles.json'
+      - 'scripts/inventory.mjs'
+      - '.github/workflows/qualify-practical-integration.yml'
+permissions:
+  contents: read
+concurrency:
+  group: practical-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Qualify dependency-free helpers
+        run: node --test tests/*.test.mjs
+      - name: Preserve reviewed source for isolated qualification
+        if: always()
+        run: |
+          mkdir -p "$RUNNER_TEMP/practical-evidence"
+          git archive --format=tar HEAD > "$RUNNER_TEMP/practical-evidence/source.tar"
+          git rev-parse HEAD > "$RUNNER_TEMP/practical-evidence/revision.txt"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: practical-integration-evidence
+          path: ${{ runner.temp }}/practical-evidence/
+          retention-days: 3
