@@ -10,16 +10,19 @@ def run(argv,cwd,allowed=(0,)):
 version=run([binary,'--version'],root).stdout.strip();assert '0.45.3' in version
 with tempfile.TemporaryDirectory(prefix='structural-fixture-') as temp:
     work=pathlib.Path(temp);shutil.copytree(source,work/'recipe');recipe=work/'recipe'
+    config=recipe/'tsconfig.json'
+    config.write_text(json.dumps({'compilerOptions':{'strict':True,'noEmit':True,'skipLibCheck':True,'target':'ES2022'},'files':['input.ts']}))
+    typecheck=['node',str(root/'node_modules/typescript/bin/tsc'),'--project',str(config)]
     run([binary,'test','--skip-snapshot-tests'],recipe)
     target=recipe/'input.ts';run(['node','--experimental-strip-types',str(target)],root)
-    run(['node',str(root/'node_modules/typescript/bin/tsc'),'--strict','--noEmit','--skipLibCheck','--target','ES2022',str(target)],root)
+    run(typecheck,recipe)
     matches=json.loads(run([binary,'scan','--rule',str(recipe/'rules/trace-call.yml'),'--json=compact',str(target)],recipe,(0,1)).stdout)
     assert len(matches)==1, 'Unexpected match cardinality'
     run([binary,'scan','--rule',str(recipe/'rules/trace-call.yml'),'--update-all',str(target)],recipe,(0,1))
     expected=(recipe/'expected.ts').read_bytes();assert target.read_bytes()==expected, 'Unexpected rewrite'
     run([binary,'scan','--rule',str(recipe/'rules/trace-call.yml'),'--update-all',str(target)],recipe,(0,1));assert target.read_bytes()==expected, 'Second application changed bytes'
     run(['node','--experimental-strip-types',str(target)],root)
-    run(['node',str(root/'node_modules/typescript/bin/tsc'),'--strict','--noEmit','--skipLibCheck','--target','ES2022',str(target)],root)
+    run(typecheck,recipe)
     rule=recipe/'rules/trace-call.yml';rule.write_text(rule.read_text().replace('debug.trace($MSG)','missing.trace($MSG)'))
     negative=run([binary,'test','--skip-snapshot-tests'],recipe,(0,1))
     assert negative.returncode!=0 and ('Missing' in negative.stdout or 'Missing' in negative.stderr), 'Broken rule did not fail its match assertion'
