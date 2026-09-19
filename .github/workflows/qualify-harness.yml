@@ -48,11 +48,15 @@ jobs:
               names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='ast-grep']
               if not names:
                   names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='sg']
-              assert len(names)==1, 'Expected one ast-grep release executable; archive members: '+repr(archive.namelist())
-              assert archive.getinfo(names[0]).file_size<50000000
-              content=archive.read(names[0])
+              assert len(names)==1, 'Expected one release executable: '+repr(archive.namelist())
+              info=archive.getinfo(names[0])
+              # Native binary size is distinct from its 8 MB compressed release archive.
+              assert 0<info.file_size<=134217728, f'Unexpected executable size: {info.file_size}'
+              with archive.open(info) as member:
+                  content=member.read(134217729)
+              assert len(content)==info.file_size and content.startswith(b'\x7fELF')
           binary=root/'ast-grep';binary.write_bytes(content);binary.chmod(0o700)
-          evidence={'archiveSha256':digest,'archiveMember':names[0],'binarySha256':hashlib.sha256(content).hexdigest()}
+          evidence={'archiveSha256':digest,'archiveMember':names[0],'binaryBytes':len(content),'binarySha256':hashlib.sha256(content).hexdigest()}
           (pathlib.Path(os.environ['RUNNER_TEMP'])/'harness-evidence/binary.json').write_text(json.dumps(evidence))
           PY
       - name: Qualify actual rule detection, rewrite, repeatability, typechecking and seeded failure
