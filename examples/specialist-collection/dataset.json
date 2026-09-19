@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "path": "runs.csv",
+  "sha256": "01576f9f41f343c6ae83304fc59f69a5eca3d9adde403a0f3d79da1b0a25b73b",
+  "tasks": [
+    "a",
+    "b",
+    "c"
+  ],
+  "conditions": [
+    "baseline",
+    "candidate"
+  ],
+  "durationUnit": "ms"
+}

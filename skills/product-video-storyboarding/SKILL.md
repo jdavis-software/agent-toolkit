@@ -2,7 +2,7 @@
 name: product-video-storyboarding
 description: "Plan a product video as a timed shot, asset, claim and caption contract before authorizing generation, composition or publication."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 # Product Video Storyboarding
 
@@ -62,3 +62,7 @@ The original Publicationcheck helper provides the `storyboard` command. Use a fu
 
 - [Media accessibility](https://www.w3.org/WAI/media/av/)
 - [FFmpeg documentation](https://ffmpeg.org/documentation.html)
+
+## Ground references and invalidate downstream timing
+
+Use Reference Video Analysis when inspiration comes from actual footage and mark missing modalities explicitly. Pass approved assets to Media Timeline Assembly. Changed narration, captions, crop or product claims invalidate dependent timing/review evidence even when a checkpoint says complete. Review actual cut boundaries before accepting a new render.

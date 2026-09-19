@@ -76,3 +76,6 @@ python3 -m unittest discover -s tests -p 'test_publicationcheck.py' -v
 Tests include valid and deliberately misleading records, stale evidence, unknown dates, invalid relationships, unavailable product claims, denied asset state, time gaps/overlaps, malformed JSON, path/symlink/FIFO checks, and independent static-site failures. Mocked metadata checks are separate from the actual media smoke. The public example and canonical skill pages require the repository's desktop/mobile Playwright checks before publication.
 
 External research supplied problem ideas, not implementation code or prose templates. These modules, records and fixtures are original to this collection. FFmpeg and the existing site tools remain external dependencies with their own identities and terms.
+
+## Code, timeline and experiment records
+The additional `index`, `timeline`, `dataset` and `experiment` commands are specified in [SPECIALIST_COLLECTION.md](SPECIALIST_COLLECTION.md). They reuse bounded local I/O and return consistency findings, not executed graph queries, rendered video, statistically established superiority or authorization. See `examples/specialist-collection/demo.py` for an actual local-file drift demonstration and a synthetic descriptive paired dataset.

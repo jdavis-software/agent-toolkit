@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import { loadCatalog } from '../../../scripts/catalog.mjs';
 import { getEntry, render } from 'astro:content';
 import { withBase } from '../../lib/paths';
+import { loadRoles } from '../../../tools/lib/roles.mjs';
 import { loadBundles } from '../../../tools/lib/bundles.mjs';
 export async function getStaticPaths() {
   return (await loadCatalog()).map(entry => ({ params: { kind: entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'tools' : 'workflows', slug: entry.id }, props: { entry } }));
@@ -11,6 +12,7 @@ const { entry } = Astro.props;
 const local = entry.kind === 'skill' && entry.origin !== 'curated';
 const ownedTool = entry.kind === 'tool' && entry.origin === 'original';
 const memberships = local ? (await loadBundles()).filter(b=>b.skills.includes(entry.id)) : [];
+const roleMemberships = local ? (await loadRoles()).filter(r=>r.skills.includes(entry.id)) : [];
 const doc = local ? await getEntry('skills',entry.id) : undefined;
 if (local && !doc) throw new Error(`Missing skill document: ${entry.id}`);
 const rendered = doc ? await render(doc) : undefined;
@@ -24,7 +26,7 @@ const section = entry.kind === 'skill' ? 'skills' : entry.kind === 'tool' ? 'too
     <div class="detail-layout"><article class="prose">
       {local && <div class="notice"><strong>Experimental skill.</strong> Source is available for review. Agent-host behavior, activation, and installation compatibility have not yet been evaluated. This is not a production-use claim.</div>}
       {Content ? <Content /> : ownedTool ? <><h2>Original executable support</h2><p>{entry.outcome}</p><h2>Execution boundary</h2><p>{entry.note}</p><p><a href={entry.documentation}>Read command contracts and limitations ↗</a></p><p>Use a full checkout and the documented commands. No tool is automatically installed or run by visiting this page.</p></> : <><h2>Why it’s here</h2><p>{entry.outcome}</p><h2>What to consider</h2><p>{entry.note}</p><h2>Start upstream</h2><p>This entry is a curated reference, not a repackaged tool. Read the author’s current documentation for installation, requirements, license, and limitations.</p><p><a href={entry.source}>Open the official source ↗</a></p></>}
-    </article><aside class="detail-sidebar"><div class="source-panel"><h2>At a glance</h2><dl><dt>Origin</dt><dd>{entry.origin}</dd><dt>Category</dt><dd>{entry.category}</dd><dt>Author</dt><dd>{entry.author}</dd><dt>Tested agent hosts</dt><dd>{entry.testedHosts.length ? entry.testedHosts.join(', ') : 'Not evaluated'}</dd></dl><a class="button primary" href={entry.source}>{local ? 'Read SKILL.md' : ownedTool ? 'Read tool source' : 'Visit upstream'} <span aria-hidden="true">↗</span></a></div>{memberships.length>0 && <nav class="detail-memberships" aria-label="Skill bundles"><strong>Included in bundles</strong><ul class="membership-links">{memberships.map(b=><li><a href={withBase(`bundles/${b.id}/`)}>{b.title}</a></li>)}</ul></nav>}<div class="sidebar-note"><strong>Expected output</strong><p>{entry.outcome}</p>{entry.requires.length > 0 && <><strong>Prerequisites</strong><p>{entry.requires.join(' · ')}</p></>}<p>Format checks do not prove behavior. Inspect first, then evaluate.</p></div></aside></div>
+    </article><aside class="detail-sidebar"><div class="source-panel"><h2>At a glance</h2><dl><dt>Origin</dt><dd>{entry.origin}</dd><dt>Category</dt><dd>{entry.category}</dd><dt>Author</dt><dd>{entry.author}</dd><dt>Tested agent hosts</dt><dd>{entry.testedHosts.length ? entry.testedHosts.join(', ') : 'Not evaluated'}</dd></dl><a class="button primary" href={entry.source}>{local ? 'Read SKILL.md' : ownedTool ? 'Read tool source' : 'Visit upstream'} <span aria-hidden="true">↗</span></a></div>{memberships.length>0 && <nav class="detail-memberships" aria-label="Skill bundles"><strong>Included in bundles</strong><ul class="membership-links">{memberships.map(b=><li><a href={withBase(`bundles/${b.id}/`)}>{b.title}</a></li>)}</ul></nav>}{roleMemberships.length>0 && <nav class="detail-memberships" aria-label="Skill roles"><strong>Used by roles</strong><ul class="membership-links">{roleMemberships.map(r=><li><a href={withBase(`roles/${r.id}/`)}>{r.title}</a></li>)}</ul></nav>}<div class="sidebar-note"><strong>Expected output</strong><p>{entry.outcome}</p>{entry.requires.length > 0 && <><strong>Prerequisites</strong><p>{entry.requires.join(' · ')}</p></>}<p>Format checks do not prove behavior. Inspect first, then evaluate.</p></div></aside></div>
   </div>
 </Base>
 

@@ -98,16 +98,21 @@
     {
       "id": "media-integrations",
       "title": "Media and Provider Pipelines",
-      "description": "Capability-aware integrations, asynchronous state, retry-safe metering, and asset derivation without product-specific assumptions.",
+      "description": "Ground reference footage, assemble approved assets, review continuity and verify delivery with capability-aware provider and identity boundaries.",
       "skills": [
         "provider-adapter-contracts",
         "async-job-state-machines",
         "asset-lineage-provenance",
         "usage-metering-idempotency",
         "temporal-activity-idempotency",
-        "tenant-authorization-boundaries"
+        "tenant-authorization-boundaries",
+        "reference-video-analysis",
+        "media-timeline-assembly",
+        "shot-continuity-review",
+        "product-video-storyboarding",
+        "media-transform-verification"
       ],
-      "version": "0.1.0",
+      "version": "0.2.0",
       "stage": "experimental"
     },
     {
@@ -130,7 +135,7 @@
       "id": "agent-orchestration",
       "title": "Agent Orchestration",
       "description": "Bounded goals, capability-aware routing, coordinated dispatch, recoverable attempts, and reviewed integration.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "stage": "experimental",
       "skills": [
         "goal-decomposition",
@@ -146,7 +151,8 @@
         "resource-aware-agent-scheduling",
         "work-packet-planner",
         "worktree-handoff",
-        "bounded-context-assembly"
+        "bounded-context-assembly",
+        "specialist-role-composition"
       ]
     },
     {
@@ -290,6 +296,35 @@
         "frontend-accessibility",
         "visual-regression-verification"
       ]
+    },
+    {
+      "id": "code-intelligence",
+      "title": "Code Intelligence and Orientation",
+      "description": "Build source-backed maps and qualify derived indexes against current worktrees, coverage and known answers.",
+      "skills": [
+        "codebase-orientation",
+        "code-index-qualification",
+        "bounded-context-assembly",
+        "nx-graph-and-boundaries",
+        "context-checkpointing",
+        "execution-profile-audit"
+      ],
+      "version": "0.1.0",
+      "stage": "experimental"
+    },
+    {
+      "id": "engineering-methods",
+      "title": "Engineering Experiments and Data",
+      "description": "Inspect evaluation datasets and analyze complete paired workloads without hiding failures, unknown usage or sampling limits.",
+      "skills": [
+        "dataset-readiness-review",
+        "engineering-experiment-analysis",
+        "bounded-harness-canary",
+        "delegation-evaluation",
+        "agent-event-reconciliation"
+      ],
+      "version": "0.1.0",
+      "stage": "experimental"
     }
   ]
 }

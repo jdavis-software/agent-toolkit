@@ -2,7 +2,7 @@
 name: usage-metering-idempotency
 description: "Account for usage through stable event identities, explicit precision and settlement policy, duplicate protection, adjustments, and replayable reconciliation."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Usage Metering Idempotency
@@ -65,3 +65,7 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [Provider idempotency example](https://docs.stripe.com/api/idempotent_requests)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Distinguish advisory budgets from admission control
+
+Report whether the actual executing adapter observes, warns or rejects excess reservations. A local warning flag does not cap provider billing. Keep charges from failed and ambiguous operations visible and serialize authoritative concurrent reservations. Releasing a reservation is not evidence that a remote operation was refunded.

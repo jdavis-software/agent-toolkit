@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "engine": {
+    "id": "synthetic-receipt",
+    "version": "fixture-1"
+  },
+  "expectedRoot": "fixture-main",
+  "observedRoot": "fixture-main",
+  "freshness": "fresh",
+  "coverage": "complete-for-probes",
+  "files": [
+    {
+      "id": "worker",
+      "path": "worker.go",
+      "sha256": "890e826b0acf4a1bd58ab4b7f6fe87d699e72b493b1466020b44f028713a2cf9"
+    },
+    {
+      "id": "request",
+      "path": "request.ts",
+      "sha256": "821a03ef9082f24073878bd782380810c38f762009865f5c1a7e737d27908380"
+    }
+  ],
+  "probes": [
+    {
+      "id": "known-worker",
+      "sourceIds": [
+        "worker"
+      ],
+      "expected": [
+        "Run"
+      ],
+      "actual": [
+        "Run"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "known-request",
+      "sourceIds": [
+        "request"
+      ],
+      "expected": [
+        "requestLabel"
+      ],
+      "actual": [
+        "requestLabel"
+      ],
+      "status": "completed"
+    },
+    {
+      "id": "negative-fixture",
+      "sourceIds": [
+        "worker"
+      ],
+      "expected": [],
+      "actual": [],
+      "status": "completed"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "roles": [
+    {
+      "id": "frontend-engineer",
+      "title": "Frontend Engineer",
+      "kind": "implementation",
+      "description": "Build usable interfaces with deliberate state ownership, accessible controls and observable failure handling.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "task-bound",
+      "skills": [
+        "react-component-architecture",
+        "react-state-ownership",
+        "tanstack-query-engineering",
+        "react-forms-validation",
+        "tailwind-css-engineering",
+        "frontend-accessibility",
+        "frontend-testing-strategy",
+        "icon-system-integration"
+      ],
+      "deliverables": [
+        "A scoped implementation and list of changed paths",
+        "Behavior and interaction checks with unresolved states"
+      ],
+      "context": [
+        "Accepted user journey and existing design tokens",
+        "Actual API contracts and project commands"
+      ],
+      "nonGoals": [
+        "Do not replace the design system without approval",
+        "Do not treat query partitioning as authorization"
+      ]
+    },
+    {
+      "id": "go-backend-engineer",
+      "title": "Go Backend Engineer",
+      "kind": "implementation",
+      "description": "Implement bounded Go services and retry-safe effects with explicit data and cancellation ownership.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "task-bound",
+      "skills": [
+        "go-service-boundaries",
+        "go-concurrency-cancellation",
+        "go-testing-determinism",
+        "postgres-transaction-boundaries",
+        "openapi-contract-evolution",
+        "temporal-activity-idempotency"
+      ],
+      "deliverables": [
+        "Use-case implementation with transaction and cancellation contracts",
+        "Package/integration check evidence and handoff"
+      ],
+      "context": [
+        "Accepted service contracts and owned packages",
+        "Disposable persistence fixtures and approved tools"
+      ],
+      "nonGoals": [
+        "Do not change shared schemas without ownership",
+        "Do not start production workers"
+      ]
+    },
+    {
+      "id": "architecture-reviewer",
+      "title": "Architecture Reviewer",
+      "kind": "review",
+      "description": "Trace a proposed change through real ownership, contracts and dependency boundaries before recommending edits.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "read-only",
+      "skills": [
+        "codebase-orientation",
+        "code-index-qualification",
+        "nx-graph-and-boundaries",
+        "openapi-contract-evolution",
+        "technical-debt-triage",
+        "evidence-backed-visual-explanation"
+      ],
+      "deliverables": [
+        "Source-linked findings classified as observed or inferred",
+        "Bounded repair recommendations and unresolved impact"
+      ],
+      "context": [
+        "Proposed change and accepted source revision",
+        "Project graphs, key contracts and constraints"
+      ],
+      "nonGoals": [
+        "Do not rewrite architecture during a review",
+        "Do not equate missing graph edges with no impact"
+      ]
+    },
+    {
+      "id": "qa-accessibility-reviewer",
+      "title": "QA & Accessibility Reviewer",
+      "kind": "review",
+      "description": "Verify behavior, keyboard journeys and interface failures using reproducible evidence rather than appearance alone.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "read-only",
+      "skills": [
+        "behavior-test-design",
+        "interface-quality-review",
+        "frontend-accessibility",
+        "visual-regression-verification",
+        "frontend-testing-strategy",
+        "affected-verification"
+      ],
+      "deliverables": [
+        "Reproduction steps and requirement-linked findings",
+        "Test coverage, viewport scope and uninspected behavior"
+      ],
+      "context": [
+        "Target user journeys and candidate build",
+        "Approved browser and test fixtures"
+      ],
+      "nonGoals": [
+        "Do not claim full accessibility certification from automation",
+        "Do not change source during read-only review"
+      ]
+    },
+    {
+      "id": "security-reviewer",
+      "title": "Security Reviewer",
+      "kind": "review",
+      "description": "Review trust, tenant and execution boundaries using concrete data flows and authorized negative tests.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "read-only",
+      "skills": [
+        "tenant-authorization-boundaries",
+        "frontend-security-boundaries",
+        "mcp-server-qualification",
+        "agent-permission-delegation",
+        "build-cache-trust"
+      ],
+      "deliverables": [
+        "Evidence-linked trust-boundary findings",
+        "Scoped remediation options and remaining uncertainty"
+      ],
+      "context": [
+        "Threat assumptions, identities and tool effects",
+        "Authorized disposable negative-test environment"
+      ],
+      "nonGoals": [
+        "Do not attack unapproved systems or expose secrets",
+        "Do not equate a checklist with security certification"
+      ]
+    },
+    {
+      "id": "research-analyst",
+      "title": "Research Analyst",
+      "kind": "analysis",
+      "description": "Turn inspected sources and complete datasets into qualified claims and design-appropriate comparisons.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "read-only",
+      "skills": [
+        "multi-source-research",
+        "time-windowed-research",
+        "source-access-routing",
+        "dataset-readiness-review",
+        "engineering-experiment-analysis",
+        "bounded-harness-canary"
+      ],
+      "deliverables": [
+        "Claim/evidence record or dataset readiness report",
+        "Comparison with uncertainty, failed observations and limitations"
+      ],
+      "context": [
+        "Explicit question or frozen comparison protocol",
+        "Approved source access and data dictionary"
+      ],
+      "nonGoals": [
+        "Do not silently exclude failed trials",
+        "Do not infer causal benefit from uncontrolled logs"
+      ]
+    },
+    {
+      "id": "video-producer",
+      "title": "Video Producer",
+      "kind": "production",
+      "description": "Ground a video brief, assemble approved assets and check the resulting story without silently changing provider or identity.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "task-bound",
+      "skills": [
+        "reference-video-analysis",
+        "product-video-storyboarding",
+        "media-timeline-assembly",
+        "shot-continuity-review",
+        "asset-lineage-provenance",
+        "media-transform-verification",
+        "provider-adapter-contracts"
+      ],
+      "deliverables": [
+        "Timecoded brief, asset requirements and renderer handoff",
+        "Continuity/delivery findings tied to candidate identities"
+      ],
+      "context": [
+        "Approved audience, script, assets and rights review",
+        "Actual compositor, provider and budget approvals"
+      ],
+      "nonGoals": [
+        "Do not use unapproved identities, music or product claims",
+        "Do not make paid generation or publication implicit"
+      ]
+    },
+    {
+      "id": "release-verifier",
+      "title": "Release Verifier",
+      "kind": "review",
+      "description": "Determine whether the actual candidate and deployment evidence satisfy the accepted release gates.",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "requestedMode": "read-only",
+      "skills": [
+        "affected-verification",
+        "integration-artifact-promotion",
+        "worktree-handoff",
+        "execution-profile-audit",
+        "context-checkpointing",
+        "search-discoverability-audit"
+      ],
+      "deliverables": [
+        "Candidate-specific gate results and deployment observations",
+        "Explicit release recommendation with unknowns retained"
+      ],
+      "context": [
+        "Accepted release criteria and exact candidate identity",
+        "Allowed environments and existing check receipts"
+      ],
+      "nonGoals": [
+        "Do not deploy merely because verification passed",
+        "Do not reuse evidence from a different candidate"
+      ]
+    }
+  ]
+}

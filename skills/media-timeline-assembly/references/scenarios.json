@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "media-timeline-assembly",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "media-timeline-assembly-trigger",
+      "kind": "trigger",
+      "input": "Two synthetic SVG cards form a 60-frame, 30-fps cut timeline. The checker confirms complete coverage and byte identities. Editing the linked narration file invalidates the handoff without rendering or contacting a model provider.",
+      "expected": "Apply the named procedure to actual authorized inputs, preserve evidence scope and return the specified output without inventing completed operations."
+    },
+    {
+      "id": "media-timeline-assembly-boundary",
+      "kind": "boundary",
+      "input": "The storyboard specifies 30 fps but a clip carries unconverted 24-fps frame positions. Reject the ambiguous time mapping; do not stretch the file silently to make the numbers fit.",
+      "expected": "Expose the boundary as incomplete, invalid or blocked evidence; preserve work and do not manufacture a passing result."
+    },
+    {
+      "id": "media-timeline-assembly-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated documentation paragraph.",
+      "expected": "Make the small authorized edit without enabling this workflow, installing services, reading private data or changing permissions."
+    }
+  ]
+}

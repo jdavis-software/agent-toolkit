@@ -10,6 +10,7 @@ test('publication metadata exposes only the revision and matching catalog counts
   expect(info.schemaVersion).toBe(1);
   expect(info.sourceRevision === null || /^[0-9a-f]{40}$/.test(info.sourceRevision)).toBeTruthy();
   expect(info.counts).toEqual({
+    roles: (await (await request.get(base+'roles.json')).json()).roles.length,
     entries: entries.length,
     skills: entries.filter((e: { kind: string }) => e.kind === 'skill').length,
     tools: entries.filter((e: { kind: string }) => e.kind === 'tool').length,

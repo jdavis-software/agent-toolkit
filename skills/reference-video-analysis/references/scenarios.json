@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "reference-video-analysis",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "reference-video-analysis-trigger",
+      "kind": "trigger",
+      "input": "A supplied 24-second demonstration uses a rapid problem statement, three feature beats and a quiet closing card. The analyst verifies those visual beats in the file and proposes a 15-second original explainer using synthetic shapes, not a copy of the script or footage.",
+      "expected": "Apply the named procedure to actual authorized inputs, preserve evidence scope and return the specified output without inventing completed operations."
+    },
+    {
+      "id": "reference-video-analysis-boundary",
+      "kind": "boundary",
+      "input": "Only captions are available. Produce an audio/text structure analysis and mark visual pacing, framing and continuity unevaluated instead of inventing what the video shows.",
+      "expected": "Expose the boundary as incomplete, invalid or blocked evidence; preserve work and do not manufacture a passing result."
+    },
+    {
+      "id": "reference-video-analysis-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated documentation paragraph.",
+      "expected": "Make the small authorized edit without enabling this workflow, installing services, reading private data or changing permissions."
+    }
+  ]
+}

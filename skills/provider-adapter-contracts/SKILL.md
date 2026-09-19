@@ -2,7 +2,7 @@
 name: provider-adapter-contracts
 description: "Integrate providers through capability-aware contracts, normalized outcomes, bounded retries, authenticated callbacks, and explicit reconciliation/cancellation differences."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Provider Adapter Contracts
@@ -65,3 +65,7 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [Webhook behavior example](https://docs.stripe.com/webhooks)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Capability menus do not approve substitutions
+
+Keep available, installed, authenticated, permitted and operation-tested states distinct. Discovering a Python tool may import executable code; inspect setup effects separately. A fallback with matching parameters may change cost, identity or visual treatment. Require the existing approval boundary before using a materially different provider or renderer.

@@ -4,6 +4,20 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 [Explore the website](https://jdavis-software.github.io/agent-toolkit/) · [Browse categories](https://jdavis-software.github.io/agent-toolkit/categories/) · [Browse the skills](skills/) · [Follow the workflow](https://jdavis-software.github.io/agent-toolkit/workflows/) · [Read the engineering article](https://jdavis-software.github.io/content/articles/parallel-agent-engineering/)
 
+## Specialist roles and production workflows
+
+[Explore Roles](https://jdavis-software.github.io/agent-toolkit/roles/) to select a responsibility, expected handoff and relevant canonical skills. Eight presets cover frontend, Go, architecture, QA/accessibility, security, research, video and release verification. They are not additional agents or permission grants.
+
+Eight new original skills cover codebase orientation, code-index qualification, reference-video analysis, media timeline assembly, continuity review, role composition, dataset readiness and engineering experiment analysis. [Code Intelligence](https://jdavis-software.github.io/agent-toolkit/bundles/code-intelligence/), [Engineering Experiments](https://jdavis-software.github.io/agent-toolkit/bundles/engineering-methods/) and the expanded media bundle connect them to existing procedures.
+
+```bash
+node tools/bundle.mjs roles
+node tools/bundle.mjs role frontend-engineer
+python3 examples/specialist-collection/demo.py
+```
+
+Role resolution is read-only. The synthetic demonstration checks actual local source/narration changes and describes a fixed workload without hiding failed tasks. No upstream indexer, renderer, persona library or scientific stack is installed. [Contracts and limitations](docs/SPECIALIST_COLLECTION.md) · [Role binding](docs/ROLES.md).
+
 ## Frontend engineering and design
 
 Explore [Frontend Engineering](https://jdavis-software.github.io/agent-toolkit/categories/frontend-engineering/), [Modern React Applications](https://jdavis-software.github.io/agent-toolkit/bundles/modern-react/), [Frontend Performance and Reliability](https://jdavis-software.github.io/agent-toolkit/bundles/frontend-performance/) and [Interface Design Systems](https://jdavis-software.github.io/agent-toolkit/bundles/interface-design/). The [worked guide](https://jdavis-software.github.io/agent-toolkit/examples/frontend-engineering/) connects state ownership, data failures and accessible icons.
@@ -12,7 +26,7 @@ Twenty-five original skills cover React/Next.js, TanStack Query, Tailwind, forms
 
 ## The expanded skill collection
 
-**104 original skills · 15 primary categories · 16 overlapping bundles · 6 original utilities · 3 selected external tools.**
+**112 original skills · 8 specialist roles · 15 primary categories · 18 overlapping bundles · 6 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -28,7 +42,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 98 domain, orchestration, source-access, qualification, delivery and frontend additions contain 294 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 106 domain, orchestration, source-access, qualification, delivery and frontend additions contain 318 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -138,6 +152,14 @@ The 98 domain, orchestration, source-access, qualification, delivery and fronten
 | [Icon System Integration — React Icons](skills/icon-system-integration/SKILL.md) | Icons |
 | [Interface Design Brief](skills/interface-design-brief/SKILL.md) | Design systems |
 | [Headless Components and shadcn/ui](skills/headless-component-integration/SKILL.md) | Design systems |
+| [Codebase Orientation](skills/codebase-orientation/SKILL.md) | Code intelligence |
+| [Code Index Qualification](skills/code-index-qualification/SKILL.md) | Code intelligence |
+| [Reference Video Analysis](skills/reference-video-analysis/SKILL.md) | Media research |
+| [Media Timeline Assembly](skills/media-timeline-assembly/SKILL.md) | Composition |
+| [Shot Continuity Review](skills/shot-continuity-review/SKILL.md) | Media review |
+| [Specialist Role Composition](skills/specialist-role-composition/SKILL.md) | Role composition |
+| [Engineering Experiment Analysis](skills/engineering-experiment-analysis/SKILL.md) | Engineering methods |
+| [Dataset Readiness Review](skills/dataset-readiness-review/SKILL.md) | Data review |
 
 <!-- skill-index:end -->
 

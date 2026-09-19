@@ -50,3 +50,8 @@ Publicationcheck (`tools/publicationcheck.mjs`, `tools/publicationcheck.py`, `to
 
 ## Frontend examples
 The 25 frontend skills remain original procedures with not-run host scenarios. `evals/frontend/` is a separate optional npm-locked React fixture; root dependencies remain pinned by pnpm. Do not install the fixture merely to browse or resolve a bundle. `evals/frontend/sources.json` lists distributable sources explicitly; never collect node_modules, `.build` or `.evidence` into bundle manifests. Keep that list and the actual files aligned. Use its own TypeScript and Playwright configuration for real-library qualification; the static Astro guide is not the React runtime. Preserve third-party notices for actual libraries and icon glyphs.
+
+## Specialist role selection and record checks
+`catalog/roles.json` owns role definitions; `tools/lib/roles.mjs` validates them and shares bundle file resolution. `bundle.mjs roles` and `bundle.mjs role ROLE` are read-only. Role counts are separate from catalog entries. Keep private authority, accounts and command bindings out of presets. Register role routes in the sitemap and verify mobile navigation and metadata. Run `node --test tests/roles.test.mjs`.
+
+Publicationcheck's index, timeline, dataset and experiment commands have bounded local contracts in `docs/SPECIALIST_COLLECTION.md`. They check selected bytes and supplied metadata, never run upstream graph/media engines or establish semantic truth. Dataset comparisons are descriptive, not inference or adoption. Preserve null metrics, failed tasks and the fixed workload. Tests are in `tests/test_publication_specialists.py`; examples must stay synthetic.

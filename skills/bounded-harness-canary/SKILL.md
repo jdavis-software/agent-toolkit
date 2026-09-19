@@ -2,7 +2,7 @@
 name: bounded-harness-canary
 description: "Evaluate one harness change with a fixed workload, explicit limits, all-attempt accounting, independent integration evidence, and a review decision that preserves unfinished work."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Bounded Harness Canary
@@ -62,3 +62,7 @@ A synthetic two-task run ends after 20 seconds. Both tasks are accepted at 12 an
 ## Companion tooling and evaluation
 
 [Checkpoint and canary contracts](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/HARNESS_EVIDENCE.md) define the actual helper scope. Run `node examples/harnesskit/evidence-demo.mjs` for original, synthetic acceptance checks. These tests do not establish agent effectiveness or real controller adoption. `references/scenarios.json` contains not-run host-evaluation inputs.
+
+## Preserve units and experiment structure
+
+Freeze the independent task unit, repeated-attempt grouping, condition order and warm/cold policy before collection. A fixed workload is not automatically a randomized experiment. Dataset Readiness Review checks the observations; Engineering Experiment Analysis interprets them with design-appropriate uncertainty. Do not turn a report over a few fixture tasks into a universal speedup claim.

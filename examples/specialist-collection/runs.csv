@@ -1,0 +1,8 @@
+task,condition,attempt,outcome,duration_ms,input_tokens,output_tokens
+a,baseline,1,accepted,10,20,5
+a,candidate,1,accepted,6,18,4
+b,baseline,1,failed,5,5,1
+b,baseline,2,accepted,15,22,6
+b,candidate,1,accepted,8,15,4
+c,baseline,1,accepted,30,20,6
+c,candidate,1,timeout,40,25,
