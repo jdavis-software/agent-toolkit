@@ -23,7 +23,7 @@ test('search, reset, category and origin filters work',async({page})=>{
   await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
   await page.getByRole('button',{name:'Reset filters'}).click();
   await page.getByLabel('Filter by origin').selectOption('original');
-  await expect(page.locator('[data-entry]:visible')).toHaveCount(85);
+  await expect(page.locator('[data-entry]:visible')).toHaveCount(110);
   await page.getByLabel('Filter by origin').selectOption('adapted');
   await expect(page.locator('#empty-state')).toBeVisible();
 });
@@ -51,7 +51,7 @@ test('catalog export and all local navigation targets resolve',async({page,reque
   const catalog = await request.get(base+'catalog.json');expect(catalog.status()).toBe(200);
   const entries = (await catalog.json()).entries;
   expect(entries).toHaveLength(113);
-  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(85);
+  expect(entries.filter((entry:{origin:string})=>entry.origin==='original')).toHaveLength(110);
   await page.goto(base);
   const links = await page.locator('a[href^="/agent-toolkit/"]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.getAttribute('href')!))]);
   for (const href of links) expect((await request.get(href)).status(),href).toBe(200);
@@ -119,7 +119,7 @@ test('bundle navigation links to canonical skills and a read-only command',async
  const hrefs=await page.locator('.bundle-skill-grid a').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('href')!));
  for(const href of hrefs)expect((await request.get(href)).status(),href).toBe(200);
  const data=await request.get(base+'bundles.json');expect(data.status()).toBe(200);
- const bundles=(await data.json()).bundles;expect(bundles).toHaveLength(13);
+ const bundles=(await data.json()).bundles;expect(bundles).toHaveLength(16);
  expect(new Set(bundles.flatMap((b:{skills:string[]})=>b.skills)).size).toBe(104);
 });
 

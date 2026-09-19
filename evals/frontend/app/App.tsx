@@ -74,7 +74,7 @@ export function App() {
       <div><label htmlFor="workspace" className="mb-2 block text-sm font-semibold">Workspace</label><select id="workspace" className={field} value={filters.workspace} onChange={event => setFilters({ workspace: event.target.value === 'docs' ? 'docs' : 'studio', q: '' }, 'push')}><option value="studio">Studio</option><option value="docs">Docs</option></select></div>
       <div><label htmlFor="search" className="mb-2 block text-sm font-semibold">Search items</label><div className="relative"><BsSearch aria-hidden="true" focusable="false" className="pointer-events-none absolute left-3 top-3.5 text-muted" /><input id="search" type="search" maxLength={80} className={`${field} pl-10`} value={filters.q} onChange={event => setFilters({ q: event.target.value })} /></div></div>
     </section>
-    <div className="mt-6 grid items-start gap-6 md:grid-cols-[1.4fr_1fr]"><ItemList key={filters.workspace} filters={filters} /><CreateForm key={filters.workspace} workspace={filters.workspace} /></div>
+    <div className="mt-6 grid items-start gap-6 md:grid-cols-[1.4fr_1fr]"><ItemList key={`items:${filters.workspace}`} filters={filters} /><CreateForm key={`form:${filters.workspace}`} workspace={filters.workspace} /></div>
     <footer className="mt-8 border-t border-line pt-5 text-xs leading-6 text-muted">Query results belong to their workspace and filter. Drafts belong to a form. Navigation belongs to the URL. Favorite mutations are serialized in this small fixture. Icon glyphs are Bootstrap Icons through React Icons; see the included notices.</footer>
   </main>;
 }
