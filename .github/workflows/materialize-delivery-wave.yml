@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-      - name: Verify and materialize the authored source patch
+      - name: Verify and materialize source only
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -25,12 +25,13 @@ jobs:
           assert decoder.eof and not decoder.unused_data and len(patch)==166995
           (pathlib.Path(os.environ['RUNNER_TEMP'])/'delivery.patch').write_bytes(patch)
           PY
-          git apply --check "$RUNNER_TEMP/delivery.patch"
-          git apply --index "$RUNNER_TEMP/delivery.patch"
-          git rm .github/delivery-part-*.bin .github/workflows/materialize-delivery-wave.yml .github/workflows/review-wave-source.yml
+          # This job does not have workflows permission. The authorized connector
+          # will separately apply reviewed workflow changes and remove staging.
+          git apply --check --exclude='.github/workflows/*' "$RUNNER_TEMP/delivery.patch"
+          git apply --index --exclude='.github/workflows/*' "$RUNNER_TEMP/delivery.patch"
+          git rm .github/delivery-part-*.bin
           git diff --cached --check
-          test "$(git write-tree)" = edc359428c42f4bb68c2aa9b95b41af9f7a4600f
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'feat: add original research, communication and delivery skills with executable fixtures'
+          git commit -m 'feat: add original research, communication and delivery source and fixtures'
           git push origin HEAD:feat/research-communication-delivery
