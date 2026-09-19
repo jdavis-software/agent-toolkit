@@ -1,5 +1,5 @@
 // Explicit upstream-tool smoke. Uses disposable local fixtures, no model/account calls.
-import { mkdtemp,writeFile,mkdir,rm,symlink } from 'node:fs/promises';
+import { mkdtemp,writeFile,readFile,mkdir,rm,symlink } from 'node:fs/promises';
 import { execFileSync,spawnSync } from 'node:child_process';
 import { join,resolve } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -25,7 +25,10 @@ try {
  await writeFile(join(nxroot,'package.json'),JSON.stringify({name:'toolkit-canary',private:true,devDependencies:{nx:'23.2.1'}}));
  await writeFile(join(nxroot,'nx.json'),JSON.stringify({defaultBase:'main',plugins:[]}));
  for(const name of ['alpha','beta']){await mkdir(join(nxroot,name));await writeFile(join(nxroot,name,'project.json'),JSON.stringify({name,root:name,implicitDependencies:name==='beta'?['alpha']:[],targets:{}}));}
- const nx=resolve(v['nx-package'],'node_modules/nx/bin/nx.js');
+ const nxPackage=resolve(v['nx-package'],'node_modules/nx');
+ const nxMetadata=JSON.parse(await readFile(join(nxPackage,'package.json'),'utf8'));assert.equal(nxMetadata.version,'23.2.1');
+ const nxEntry=typeof nxMetadata.bin==='string'?nxMetadata.bin:nxMetadata.bin?.nx;assert.equal(typeof nxEntry,'string');
+ const nx=resolve(nxPackage,nxEntry);
  const projects=JSON.parse(run(process.execPath,[nx,'show','projects','--json'],nxroot));assert.deepEqual(projects.sort(),['alpha','beta']);
  const beta=JSON.parse(run(process.execPath,[nx,'show','project','beta','--json'],nxroot));assert(beta.implicitDependencies.includes('alpha'));
  report.checks.push({tool:'nx',version:'23.2.1',projectDiscovery:'passed',dependency:'passed',mcpHostBinding:'not-run'});
