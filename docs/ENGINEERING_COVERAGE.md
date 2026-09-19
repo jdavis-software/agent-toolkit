@@ -1,6 +1,12 @@
 # Engineering coverage and evidence
 
-The collection contains 62 original skills: six core procedures, 30 domain skills, 18 orchestration/runtime/context additions, and eight source-access skills. Four original utilities and three separately identified external tools make 69 catalog entries. Thirteen primary categories partition those entries without duplicate counts. Eleven overlapping bundles select canonical packages rather than copy their instructions.
+<!-- inventory:start -->
+
+**72 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools · 4 optional role profiles.**
+
+198 synthetic scenario inputs are authored examples, not completed agent-host evaluations. Counts are generated from the catalog.
+
+<!-- inventory:end -->
 
 ## Inputs to the design
 
@@ -25,7 +31,7 @@ Those sources mix architectural direction, proposed experiments, illustrative mo
 | Runtime and evaluation | Permission delegation, approval boundaries, budgets, loop detection, delegation evaluation |
 | Context and memory | Context budgeting and recoverable checkpoints |
 
-The six core skills retain their executable Skillcheck support. Domain and orchestration instructions include 168 synthetic scenario inputs in JSON; these are not 168 completed host evaluations. Earlier core scenario notes remain available separately. New skills describe procedures and actual boundaries, not newly implemented compilers, provider services, or autonomous workers.
+The six core skills retain their executable Skillcheck support. Domain and orchestration instructions include the catalogued synthetic scenario inputs in JSON; these are not completed host evaluations. Earlier core scenario notes remain available separately. New skills describe procedures and actual boundaries, not newly implemented compilers, provider services, or autonomous workers.
 
 ## Executable coordination
 

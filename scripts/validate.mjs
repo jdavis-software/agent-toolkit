@@ -1,3 +1,4 @@
+import { syncInventory } from './inventory.mjs';
 import { loadCategories } from './categories.mjs';
 import { syncReadme } from './readme.mjs';
 import { loadCatalog } from './catalog.mjs';
@@ -7,6 +8,7 @@ try {
   const expansion = await validateExpansion();
   const categories=await loadCategories();
   await syncReadme();
+  await syncInventory();
   console.log(`Category registry valid: ${categories.length} primary categories.`);
   console.log(`Catalog valid: ${entries.length} entries; ${entries.filter(e => e.kind === 'skill').length} original skills; ${expansion.bundles} bundles; ${expansion.scenarioInputs} new scenario inputs.`);
   console.log('Package, bundle, and source validation only. Agent-host behavior remains unevaluated.');

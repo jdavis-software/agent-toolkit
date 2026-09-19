@@ -1,5 +1,7 @@
 name: Qualify harness fixtures and structural recipe
 on:
+  push:
+    branches: [codex/toolkit-practical-integration]
   pull_request:
     paths:
       - tools/harnesskit.mjs

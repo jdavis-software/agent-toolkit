@@ -2,9 +2,15 @@
 
 ## Reusable engineering expansion
 
-Implemented: 36 original skills, 8 overlapping bundles, and 5 catalogued tools (2 original, 3 external). The read-only resolver, source-linked bundle pages, JSON discovery endpoint, generated README index, and private-adapter boundary are documented and tested separately from agent-host effectiveness.
+<!-- inventory:start -->
 
-No private product MCP or configuration is installed by this change. The 30 domain packages add 90 not-run scenario inputs. Current execution/build/deployment evidence belongs in Actions, not invented historical success claims in this roadmap.
+**72 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools · 4 optional role profiles.**
+
+198 synthetic scenario inputs are authored examples, not completed agent-host evaluations. Counts are generated from the catalog.
+
+<!-- inventory:end -->
+
+The read-only resolver, original helpers, source-linked pages and private-adapter boundary are separate from agent-host effectiveness. Current execution evidence belongs in Actions; new role staging and local probing do not establish live worker qualification.
 
 Next: evaluate selected packages in actual hosts, choose the original-content license, and implement private project bindings under separate approval. See [coverage](ENGINEERING_COVERAGE.md), [bundles](BUNDLES.md), and [private adapters](PRIVATE_ADAPTERS.md).
 

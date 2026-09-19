@@ -83,17 +83,25 @@ function gitObservation(root) {
     return {revision,dirty,verification:'git-observed'};
   } catch {return {revision:null,dirty:null,verification:'content-only'};}
 }
-export async function resolveBundle(root,id,{requireClean=false,expectedRevision}={}) {
-  root=await realpath(root);
-  if(typeof id!=='string' || !slug.test(id)) throw new Error('Invalid bundle id');
-  if(typeof requireClean!=='boolean') throw new Error('Invalid clean-check option');
-  if(expectedRevision!==undefined && (typeof expectedRevision!=='string'||!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(expectedRevision))) throw new Error('Invalid expected revision');
+export async function resolveBundle(root,id,options={}) {
   const bundles=await loadBundles(root), b=bundles.find(b=>b.id===id);
   if(!b) throw new Error(`Unknown bundle: ${id}`);
+  return resolveSelection(root,b,options);
+}
+// Reuse the same dependency-closure implementation for named role selections.
+// This remains read-only; staging is an explicit operation in rolekit.
+export async function resolveSelection(root,b,{requireClean=false,expectedRevision,registryPaths=[]}={}) {
+  root=await realpath(root);
+  if(typeof requireClean!=='boolean') throw new Error('Invalid clean-check option');
+  if(expectedRevision!==undefined && (typeof expectedRevision!=='string'||!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(expectedRevision))) throw new Error('Invalid expected revision');
+  const entries=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
+  validateBundleDefinitions({schemaVersion:1,bundles:[b]},entries);
+  if(!Array.isArray(registryPaths)||registryPaths.length>10) throw new Error('Invalid registry paths');
+  registryPaths.forEach(safeBundlePath);
   const before=gitObservation(root);
   if((requireClean || expectedRevision!==undefined) && (before.dirty!==false || !before.revision)) throw new Error('A clean verified Git checkout is required');
   if(expectedRevision!==undefined && before.revision!==expectedRevision) throw new Error('Revision mismatch');
-  const paths=['catalog/bundles.json','catalog/entries.json'];
+  const paths=['catalog/bundles.json','catalog/entries.json',...registryPaths];
   const catalog=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('agentflow'))) paths.push('tools/agentflow.mjs','tools/lib/agentflow.mjs','tools/lib/contracts.mjs','docs/AGENTFLOW.md');
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('sourcekit'))) paths.push('tools/sourcekit.mjs','tools/sourcekit.py','docs/SOURCEKIT.md',...await filesBelow(root,'tools/sourcekit_lib'));
