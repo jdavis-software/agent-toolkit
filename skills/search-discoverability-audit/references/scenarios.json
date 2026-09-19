@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "search-discoverability-audit",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "search-discoverability-audit-trigger",
+      "kind": "trigger",
+      "input": "Audit a static publication for canonical URL, metadata, sitemap, internal-link and indexing-directive mistakes while separating technical findings from search ranking claims.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "search-discoverability-audit-boundary",
+      "kind": "boundary",
+      "input": "A local build uses /skills/ where /agent-toolkit/skills/ is required, or points canonicals at a staging origin. Correct the public-path contract; do not merely suppress the finding to make CI green.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "search-discoverability-audit-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

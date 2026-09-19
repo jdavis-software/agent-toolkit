@@ -6,8 +6,8 @@ test('category directory renders counted cards and usable keyboard focus',async(
  await page.goto(base+'categories/');
  await expect(page).toHaveTitle(/Categories/);await expect(page.getByRole('heading',{level:1})).toContainText('Explore by category');
  const categories:Category[]=(await(await request.get(base+'categories.json')).json()).categories;
- await expect(page.locator('[data-category-card]')).toHaveCount(13);
- expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(81);
+ await expect(page.locator('[data-category-card]')).toHaveCount(14);
+ expect(categories.reduce((n,c)=>n+c.counts.entries,0)).toBe(88);
  for(const c of categories){const card=page.locator(`[data-category-card="${c.id}"]`);await expect(card).toContainText(c.title);await expect(card).toContainText(`${c.counts.entries} ${c.counts.entries===1?'entry':'entries'}`);await expect(card).toHaveAttribute('href',base+`categories/${c.id}/`);}
  const first=page.locator('[data-category-card]').first();await first.focus();await expect(first).toBeFocused();
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();expect(errors).toEqual([]);
@@ -48,7 +48,7 @@ test('web research category, canonical skill, bundle and Sourcekit detail work',
  await page.locator('[data-category-card="web-research"]').click();
  await expect(page).toHaveURL(/categories\/web-research\/$/);
  await expect(page.getByRole('heading',{level:1})).toHaveText('Web & Research');
- await expect(page.locator('[data-entry]:visible')).toHaveCount(12);
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(14);
  await page.getByRole('searchbox').fill('feed-change-tracking');
  await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
  await page.getByRole('link',{name:'Feed Change Tracking',exact:false}).first().click();
@@ -127,8 +127,8 @@ test('harness skills are searchable without adding a second controller category'
  await page.goto(base+'?q=tracker-readiness-reconciliation');
  await expect(page.locator('[data-entry]:visible')).toHaveCount(1);
  await page.getByRole('button',{name:'Reset filters'}).click();
- await expect(page.locator('[data-entry]:visible')).toHaveCount(81);
- await page.goto(base+'categories/');await expect(page.locator('.category-card')).toHaveCount(13);
+ await expect(page.locator('[data-entry]:visible')).toHaveCount(88);
+ await page.goto(base+'categories/');await expect(page.locator('.category-card')).toHaveCount(14);
 });
 
 

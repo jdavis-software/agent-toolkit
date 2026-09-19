@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "media-transform-verification",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "media-transform-verification-trigger",
+      "kind": "trigger",
+      "input": "Qualify a bounded media transformation using input identity, installed capabilities, independent output properties and decode evidence without treating process exit as delivery acceptance.",
+      "expected": "Resolve real inputs and authority; follow the procedure and preserve evidence limits."
+    },
+    {
+      "id": "media-transform-verification-boundary",
+      "kind": "boundary",
+      "input": "A two-second export is expected with audio, but an encoder returns a silent video-only container. Successful encoding is insufficient: reject the missing audio stream and preserve the input.",
+      "expected": "Reject the misleading conclusion or unsafe operation and retain useful diagnostics."
+    },
+    {
+      "id": "media-transform-verification-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix spelling in an unrelated comment.",
+      "expected": "Make the narrow authorized edit without starting a research/render/audit pipeline."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "fps": 30,
+  "totalFrames": 450,
+  "aspectRatio": "16:9",
+  "evidence": [
+    {
+      "id": "observed",
+      "path": "examples/publicationcheck/evidence/observations.txt",
+      "sha256": "661b9d25a33235932a236bff20924603e8421ced5e7c20e4f93f47a3c8c7896a"
+    },
+    {
+      "id": "screen",
+      "path": "examples/publicationcheck/evidence/screen.txt",
+      "sha256": "996574afec656f833950c786f070569335d9a373fb12a5bb5425bc5f433b4327"
+    }
+  ],
+  "assets": [
+    {
+      "id": "catalog-capture",
+      "evidenceId": "screen",
+      "usage": "approved",
+      "rightsReference": "synthetic-owned-fixture"
+    }
+  ],
+  "claims": [
+    {
+      "id": "search",
+      "text": "Search the collection",
+      "status": "implemented",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "The offline catalog can be searched."
+        }
+      ]
+    },
+    {
+      "id": "remote",
+      "text": "Future remote execution",
+      "status": "planned",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "Remote agent execution is planned, not implemented."
+        }
+      ]
+    }
+  ],
+  "shots": [
+    {
+      "id": "problem",
+      "startFrame": 0,
+      "endFrame": 150,
+      "assetIds": [
+        "catalog-capture"
+      ],
+      "claimIds": [
+        "search"
+      ],
+      "presentedAs": "available",
+      "purpose": "Show the problem the collection solves."
+    },
+    {
+      "id": "proof",
+      "startFrame": 150,
+      "endFrame": 300,
+      "assetIds": [
+        "catalog-capture"
+      ],
+      "claimIds": [
+        "search"
+      ],
+      "presentedAs": "available",
+      "purpose": "Demonstrate search in the synthetic plan."
+    },
+    {
+      "id": "roadmap",
+      "startFrame": 300,
+      "endFrame": 450,
+      "assetIds": [
+        "catalog-capture"
+      ],
+      "claimIds": [
+        "remote"
+      ],
+      "presentedAs": "planned",
+      "purpose": "Clearly label the future capability as planned."
+    }
+  ],
+  "captions": [
+    {
+      "startFrame": 0,
+      "endFrame": 150,
+      "text": "Find one focused skill."
+    },
+    {
+      "startFrame": 150,
+      "endFrame": 300,
+      "text": "Read the procedure and its evidence."
+    },
+    {
+      "startFrame": 300,
+      "endFrame": 450,
+      "text": "Remote execution is a future concept."
+    }
+  ]
+}

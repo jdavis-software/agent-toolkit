@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "title": "From evidence to a readable result",
+  "description": "A synthetic three-stage fixture. It illustrates source-linked explanation; it is not a diagram of an independently audited production system.",
+  "evidence": [
+    {
+      "id": "observed",
+      "path": "examples/publicationcheck/evidence/observations.txt",
+      "sha256": "661b9d25a33235932a236bff20924603e8421ced5e7c20e4f93f47a3c8c7896a"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "label": "Approved input",
+      "description": "Start from an inspected and authorized input."
+    },
+    {
+      "id": "catalog",
+      "label": "Build the catalog",
+      "description": "Transform the source into a discoverable representation."
+    },
+    {
+      "id": "pages",
+      "label": "Render pages",
+      "description": "Make the result readable without changing its claims."
+    }
+  ],
+  "edges": [
+    {
+      "id": "read",
+      "from": "input",
+      "to": "catalog",
+      "meaning": "The fixture reads input before building the catalog.",
+      "status": "source-supported",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "The fixture pipeline reads approved input, builds a catalog, then renders pages."
+        }
+      ]
+    },
+    {
+      "id": "render",
+      "from": "catalog",
+      "to": "pages",
+      "meaning": "The fixture renders the catalog into pages.",
+      "status": "source-supported",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "The fixture pipeline reads approved input, builds a catalog, then renders pages."
+        }
+      ]
+    }
+  ]
+}

@@ -62,3 +62,7 @@ Use the full toolkit checkout. [Sourcekit commands](https://github.com/jdavis-so
 
 - [W3C provenance overview](https://www.w3.org/TR/prov-overview/)
 - [GitHub repository contents API](https://docs.github.com/en/rest/repos/contents)
+
+## Claim evidence and stopping criteria
+
+Persist a claim ledger with exact excerpts, capture hashes and separate source-exists, source-inspected and meaning-supported states. A DOI or HTTP success cannot set claim-supported. Keep contradicted claims and source gaps. Stop when decisive questions are supported or the agreed budget is exhausted, not after hitting an arbitrary word/citation quota.

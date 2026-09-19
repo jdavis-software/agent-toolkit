@@ -24,6 +24,29 @@ jobs:
       - run: pnpm test
       - run: pnpm check
       - run: pnpm build
+      - name: Provision the media-fixture prerequisites on the disposable runner
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
+          ffmpeg -version
+          ffprobe -version
+      - name: Check local publication artifacts and synthetic media
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/publication-evidence"
+          python3 examples/publicationcheck/demo.py > "$RUNNER_TEMP/publication-evidence/records.json"
+          python3 tools/publicationcheck.py site --root dist --base https://jdavis-software.github.io/agent-toolkit/ > "$RUNNER_TEMP/publication-evidence/site.json"
+          python3 examples/publicationcheck/media-smoke.py > "$RUNNER_TEMP/publication-evidence/media.json"
+      - name: Preserve publication checks
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: publication-evidence
+          path: ${{ runner.temp }}/publication-evidence/
+          retention-days: 7
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:site
       - name: Qualify direct public HTTPS reading against the existing public site

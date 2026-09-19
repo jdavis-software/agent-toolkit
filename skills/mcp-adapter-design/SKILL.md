@@ -65,3 +65,7 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [MCP security](https://modelcontextprotocol.io/docs/2025-11-25/tutorials/security/security_best_practices)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Discovery and invocation are different controls
+
+Generate CLI/MCP schemas and argument translation from one reviewed operation contract where possible. A smaller tools/list payload is not an authorization allowlist: reject denied operations at tools/call even when the caller knows an unadvertised name. Test structured failures, exact tool limits and the actual versioned transport independently of a matching mock.

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "window": {
+    "start": "2026-08-01T00:00:00Z",
+    "end": "2026-09-01T00:00:00Z"
+  },
+  "asOf": "2026-09-02T00:00:00Z",
+  "evidence": [
+    {
+      "id": "observed",
+      "path": "examples/publicationcheck/evidence/observations.txt",
+      "sha256": "661b9d25a33235932a236bff20924603e8421ced5e7c20e4f93f47a3c8c7896a"
+    }
+  ],
+  "sources": [
+    {
+      "id": "observed",
+      "publishedAt": "2026-08-26T00:00:00Z",
+      "observedAt": "2026-09-02T00:00:00Z",
+      "independenceGroup": "one-publisher"
+    }
+  ],
+  "coverage": [
+    {
+      "id": "official-source",
+      "status": "inspected"
+    }
+  ],
+  "claims": [
+    {
+      "id": "repost",
+      "text": "The old announcement was republished in August.",
+      "eventId": "original-release",
+      "eventAt": "2026-01-15T00:00:00Z",
+      "assessment": "supported",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "A release was announced on 2026-01-15 and republished on 2026-08-20."
+        }
+      ]
+    },
+    {
+      "id": "new-item",
+      "text": "A connector was announced in August.",
+      "eventId": "connector",
+      "eventAt": "2026-08-25T00:00:00Z",
+      "assessment": "supported",
+      "citations": [
+        {
+          "sourceId": "observed",
+          "quote": "A new connector was announced on 2026-08-25."
+        }
+      ]
+    }
+  ]
+}

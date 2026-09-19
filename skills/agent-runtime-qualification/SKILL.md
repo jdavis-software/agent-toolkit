@@ -69,3 +69,7 @@ This is a synthetic scenario. The companion tests do not establish that an insta
 - [Codex app-server](https://developers.openai.com/codex/app-server/)
 
 Check the installed version. These are technical references, not imported skill bodies or a controller adoption decision.
+
+## Test an independent protocol boundary
+
+A client and its fake can share the same framing or lifecycle error. Add a separately implemented reference fixture or a bounded real scratch-interface check for the exact supported transport/version. Mock agreement alone does not qualify a runtime. Keep auth, billing mode and actual live canaries explicitly untested until observed.

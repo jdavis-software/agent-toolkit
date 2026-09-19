@@ -6,7 +6,7 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 ## The expanded skill collection
 
-**73 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools.**
+**79 original skills · 14 primary categories · 13 overlapping bundles · 6 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +22,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 67 domain, orchestration, source-access and qualification additions contain 201 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 73 domain, orchestration, source-access, qualification and delivery additions contain 219 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -101,6 +101,12 @@ The 67 domain, orchestration, source-access and qualification additions contain 
 | [Bounded Crawl Planning](skills/bounded-crawl-planning/SKILL.md) | Web and research |
 | [MCP Server Qualification](skills/mcp-server-qualification/SKILL.md) | MCP and bundles |
 | [Bounded Harness Canary](skills/bounded-harness-canary/SKILL.md) | Harness engineering |
+| [Time-windowed Research](skills/time-windowed-research/SKILL.md) | Web and research |
+| [Technical Debt Triage](skills/technical-debt-triage/SKILL.md) | Engineering review |
+| [Evidence-backed Visual Explanation](skills/evidence-backed-visual-explanation/SKILL.md) | Design and communication |
+| [Product Video Storyboarding](skills/product-video-storyboarding/SKILL.md) | Design and communication |
+| [Media Transform Verification](skills/media-transform-verification/SKILL.md) | Media pipelines |
+| [Search Discoverability Audit](skills/search-discoverability-audit/SKILL.md) | Web and research |
 
 <!-- skill-index:end -->
 
@@ -217,3 +223,9 @@ node tools/harnesskit.mjs canary examples/harnesskit/canary.json
 ```
 
 The example numbers are synthetic, not measured engineering performance. These additions do not start workers or replace a controller.
+
+## Research to Delivery
+
+Six original skills cover date-windowed investigation, debt triage, evidence-backed visual explanations, product storyboards, media output verification and search discoverability. [Browse the bundle](https://jdavis-software.github.io/agent-toolkit/bundles/research-to-delivery/) or [inspect the synthetic worked example](https://jdavis-software.github.io/agent-toolkit/examples/research-to-delivery/).
+
+[Publicationcheck](docs/PUBLICATIONCHECK.md) checks local evidence records and static HTML, and optionally probes/decodes short local media. It does not search, render, install packages, launch agents or publish. Semantic support, rights, runtime adoption and search ranking are not inferred from mechanical checks.
