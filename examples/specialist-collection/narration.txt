@@ -1,0 +1,1 @@
+Synthetic cards demonstrate a source-bound handoff.

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "revision": "synthetic-v1",
+  "fps": {
+    "numerator": 30,
+    "denominator": 1
+  },
+  "totalFrames": 60,
+  "assets": [
+    {
+      "id": "first",
+      "path": "first.svg",
+      "sha256": "3d302e2ba0b78b8bbbe38b9e3c965f08a632b417ce96667ae94889d964ec33ef",
+      "kind": "image",
+      "frames": null
+    },
+    {
+      "id": "second",
+      "path": "second.svg",
+      "sha256": "51fb48b2c763cc6c7be66e85bf915944c64e3c5540a1dc9072ee739a9364ac63",
+      "kind": "image",
+      "frames": null
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "narration",
+      "path": "narration.txt",
+      "sha256": "98387d5e1cd10fd94a93335ae81481aa7f6eb3f6f66dc64b792a72fe42c8eb48"
+    }
+  ],
+  "clips": [
+    {
+      "id": "opening",
+      "assetId": "first",
+      "track": "visual",
+      "start": 0,
+      "end": 30,
+      "sourceStart": 0
+    },
+    {
+      "id": "closing",
+      "assetId": "second",
+      "track": "visual",
+      "start": 30,
+      "end": 60,
+      "sourceStart": 0
+    }
+  ]
+}

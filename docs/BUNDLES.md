@@ -62,3 +62,6 @@ Each new domain skill includes three synthetic cases at `references/scenarios.js
 ## Source-access companion
 
 The `web-research` bundle selects eight canonical skills and includes the Sourcekit Node wrapper, Python implementation/modules, and command documentation. Python 3.10+ is required to run that optional tool; resolving the bundle itself remains a read-only Node operation. No connector, interpreter, or package is installed automatically.
+
+## Role selections
+`node tools/bundle.mjs roles` lists the canonical responsibility presets. `node tools/bundle.mjs role ROLE` resolves their skill/support files through the same hash and source checks. Roles are not additional skill counts or worker launches. See [ROLES.md](ROLES.md).

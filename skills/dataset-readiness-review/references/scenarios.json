@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "dataset-readiness-review",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "dataset-readiness-review-trigger",
+      "kind": "trigger",
+      "input": "The included local CSV has an empty output_tokens field and a failed attempt. Dataset review keeps both, reports the unknown usage, and preserves all task-condition cells. A duplicate task/condition/attempt tuple becomes a finding rather than being silently deduplicated.",
+      "expected": "Apply the named procedure to actual authorized inputs, preserve evidence scope and return the specified output without inventing completed operations."
+    },
+    {
+      "id": "dataset-readiness-review-boundary",
+      "kind": "boundary",
+      "input": "A duration column contains seconds while its header says duration_ms. Require corrected provenance or an explicitly documented conversion; a shape validator cannot infer that semantic error on its own.",
+      "expected": "Expose the boundary as incomplete, invalid or blocked evidence; preserve work and do not manufacture a passing result."
+    },
+    {
+      "id": "dataset-readiness-review-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated documentation paragraph.",
+      "expected": "Make the small authorized edit without enabling this workflow, installing services, reading private data or changing permissions."
+    }
+  ]
+}

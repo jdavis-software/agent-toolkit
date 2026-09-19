@@ -2,7 +2,7 @@
 name: bounded-context-assembly
 description: "Assemble task-sized context from current canonical source, accepted contracts, graphs, and semantic tools while tracking freshness and missing information."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
   collection: "jordans-agent-toolkit"
 ---
 # Bounded Context Assembly
@@ -76,3 +76,7 @@ Reuse the existing bootstrap and graph/language services. Do not add a second to
 ## Choose retrieval by the actual question
 
 Use exact files, graphs and language services for known source questions. Optional local document retrieval must have approved collection scope, a pinned engine, indexing/removal tests and visible freshness. Qualify lexical, semantic and reranked paths separately, including warm/cold resource cost. A skill wrapper may lag its engine; do not create a second mandatory knowledge store.
+
+## Treat derived maps as scoped evidence
+
+Before accepting a graph-derived packet, record the backend, indexed view and coverage. A successful query can still be served from an old index. Use Codebase Orientation for a source-backed map and Code Index Qualification for freshness/known-answer checks. Keep generated maps derived from code, not a second manually edited company knowledge base.

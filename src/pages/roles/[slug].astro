@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Card from '../../components/Card.astro';
+import { loadRoles, type RoleDefinition } from '../../../tools/lib/roles.mjs';
+import { loadCatalog } from '../../../scripts/catalog.mjs';
+import { withBase, repository } from '../../lib/paths';
+interface Props { role: RoleDefinition; }
+export async function getStaticPaths(){return(await loadRoles()).map(role=>({params:{slug:role.id},props:{role}}));}
+const {role}=Astro.props;const catalog=await loadCatalog();
+const entries=role.skills.map(id=>{const entry=catalog.find(e=>e.id===id);if(!entry)throw new Error('Missing role skill');return entry;});
+---
+<Base title={role.title} active="roles" description={role.description}>
+ <div class="container bundle-detail">
+  <a class="back-link" href={withBase('roles/')}>← All roles</a>
+  <div class="detail-heading"><p class="eyebrow">SPECIALIST PRESET · {role.kind.toUpperCase()} · V{role.version}</p><h1>{role.title}</h1><p>{role.description}</p></div>
+  <div class="notice"><strong>Guidance, not a worker.</strong> This experimental preset selects skills. It does not launch an agent, establish expertise or grant permissions. Requested mode: <strong>{role.requestedMode}</strong>; the host must enforce the actual policy.</div>
+  <section class="bundle-command" aria-label="Read-only role command"><div><strong>Inspect the role selection</strong><p>From a full checkout. JSON includes file hashes, not an installation or an execution.</p><code>node tools/bundle.mjs role {role.id}</code></div><a class="text-link" href={`${repository}/blob/main/catalog/roles.json`}>Read role registry ↗</a></section>
+  <section class="role-contract" aria-label="Role handoff contract">
+   <div><h2>Expected handoff</h2><ul>{role.deliverables.map(x=><li>{x}</li>)}</ul></div>
+   <div><h2>Bring this context</h2><ul>{role.context.map(x=><li>{x}</li>)}</ul></div>
+   <div><h2>Keep out of scope</h2><ul>{role.nonGoals.map(x=><li>{x}</li>)}</ul></div>
+  </section>
+  <h2 class="role-section-title">Choose the procedure the task needs.</h2><p>These {entries.length} skills are references, not instructions to load everything at once.</p>
+  <div class="card-grid bundle-skill-grid" aria-label="Role skill selection">{entries.map(entry=><Card entry={entry}/>)}</div>
+  <section class="bundle-explainer"><h2>A private binding, not a fork.</h2><p>The execution environment supplies real roots, contracts, account context, budgets, tool access and independent acceptance. Keep those private. Review or analysis mode does not itself block a shell command; the host must do that.</p><a class="text-link" href={withBase('skills/specialist-role-composition/')}>Explore Specialist Role Composition →</a></section>
+ </div>
+</Base>

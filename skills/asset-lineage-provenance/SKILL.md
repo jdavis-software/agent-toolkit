@@ -2,7 +2,7 @@
 name: asset-lineage-provenance
 description: "Track immutable asset identities and derivation operations with versioned metadata, integrity checks, and explicit access, privacy, and retention boundaries."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Asset Lineage and Provenance
@@ -64,3 +64,7 @@ Use `references/scenarios.json` for intended, boundary, and non-trigger evaluati
 - [W3C provenance](https://www.w3.org/TR/prov-overview/)
 
 Consult documentation for the installed versions before using version-sensitive APIs. These are underlying-technology references, not copied upstream skill bodies.
+
+## Bind composition to current dependencies
+
+Include the accepted storyboard/narration/caption identities in a render handoff, not only the media filenames. A scene replacement creates a new candidate and invalidates affected continuity checks. Preserve old accepted output while the replacement is being qualified; possession of an asset hash is not proof of usage rights.

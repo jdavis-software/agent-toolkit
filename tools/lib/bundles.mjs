@@ -26,7 +26,7 @@ async function confined(root, path) {
   if (!target.startsWith(canonical+sep)) throw new Error('Bundle input escapes root');
   return target;
 }
-async function bytesAt(root,path) {
+export async function readSelectionBytes(root,path) {
   const target=await confined(root,path), stat=await lstat(target);
   if(!stat.isFile() || stat.size>MAX_FILE) throw new Error(`Invalid or oversized bundle file: ${path}`);
   const bytes=await readFile(target);
@@ -51,8 +51,8 @@ export function validateBundleDefinitions(document, entries) {
   return document.bundles;
 }
 export async function loadBundles(root=process.cwd()) {
-  const document=JSON.parse((await bytesAt(root,'catalog/bundles.json')).toString('utf8'));
-  const entries=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
+  const document=JSON.parse((await readSelectionBytes(root,'catalog/bundles.json')).toString('utf8'));
+  const entries=JSON.parse((await readSelectionBytes(root,'catalog/entries.json')).toString('utf8'));
   return validateBundleDefinitions(document,entries);
 }
 async function filesBelow(root,path) {
@@ -83,24 +83,31 @@ function gitObservation(root) {
     return {revision,dirty,verification:'git-observed'};
   } catch {return {revision:null,dirty:null,verification:'content-only'};}
 }
-export async function resolveBundle(root,id,{requireClean=false,expectedRevision}={}) {
-  root=await realpath(root);
+export async function resolveBundle(root,id,options={}) {
   if(typeof id!=='string' || !slug.test(id)) throw new Error('Invalid bundle id');
-  if(typeof requireClean!=='boolean') throw new Error('Invalid clean-check option');
-  if(expectedRevision!==undefined && (typeof expectedRevision!=='string'||!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(expectedRevision))) throw new Error('Invalid expected revision');
   const bundles=await loadBundles(root), b=bundles.find(b=>b.id===id);
   if(!b) throw new Error(`Unknown bundle: ${id}`);
+  return resolveSkillSelection(root,b,options);
+}
+// Shared file-resolution mechanics. Roles select the same canonical packages.
+export async function resolveSkillSelection(root,b,{requireClean=false,expectedRevision,registryPaths=[]}={}) {
+  root=await realpath(root);
+  if(typeof requireClean!=='boolean') throw new Error('Invalid clean-check option');
+  if(expectedRevision!==undefined && (typeof expectedRevision!=='string'||!/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/.test(expectedRevision))) throw new Error('Invalid expected revision');
+  if(!Array.isArray(registryPaths)||registryPaths.some(p=>p!=='catalog/roles.json'))throw new Error('Unexpected selection registry');
+  const declared=JSON.parse((await readSelectionBytes(root,'catalog/entries.json')).toString('utf8'));
+  validateBundleDefinitions({schemaVersion:1,bundles:[b]},declared);
   const before=gitObservation(root);
   if((requireClean || expectedRevision!==undefined) && (before.dirty!==false || !before.revision)) throw new Error('A clean verified Git checkout is required');
   if(expectedRevision!==undefined && before.revision!==expectedRevision) throw new Error('Revision mismatch');
-  const paths=['catalog/bundles.json','catalog/entries.json'];
-  const catalog=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
+  const paths=['catalog/bundles.json','catalog/entries.json',...registryPaths];
+  const catalog=JSON.parse((await readSelectionBytes(root,'catalog/entries.json')).toString('utf8'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('agentflow'))) paths.push('tools/agentflow.mjs','tools/lib/agentflow.mjs','tools/lib/contracts.mjs','docs/AGENTFLOW.md');
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('sourcekit'))) paths.push('tools/sourcekit.mjs','tools/sourcekit.py','docs/SOURCEKIT.md',...await filesBelow(root,'tools/sourcekit_lib'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('publicationcheck'))) paths.push('tools/publicationcheck.mjs','tools/publicationcheck.py','docs/PUBLICATIONCHECK.md',...await filesBelow(root,'tools/publication_lib'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.companionTools?.includes('harnesskit'))) paths.push('tools/harnesskit.mjs','docs/HARNESSKIT.md','docs/HARNESS_EVIDENCE.md','tools/lib/worktree.mjs','tools/lib/contracts.mjs',...await filesBelow(root,'tools/lib/harness'));
   if(b.skills.some(id=>catalog.find(e=>e.id===id)?.tags?.includes('frontend'))) {
-    const manifest=JSON.parse((await bytesAt(root,'evals/frontend/sources.json')).toString('utf8'));
+    const manifest=JSON.parse((await readSelectionBytes(root,'evals/frontend/sources.json')).toString('utf8'));
     if(manifest?.schemaVersion!==1 || !Array.isArray(manifest.files) || manifest.files.length<1 || manifest.files.length>100 || new Set(manifest.files).size!==manifest.files.length) throw new Error('Invalid frontend companion manifest');
     for(const path of manifest.files) {
       safeBundlePath(path);
@@ -113,14 +120,16 @@ export async function resolveBundle(root,id,{requireClean=false,expectedRevision
     if(!selected.includes(`skills/${id}/SKILL.md`)) throw new Error(`Missing skill document: ${id}`);
     paths.push(...selected);
   }
+  if(b.skills.includes('specialist-role-composition')) paths.push('catalog/roles.json','tools/bundle.mjs','tools/lib/bundles.mjs','tools/lib/roles.mjs','docs/ROLES.md');
+  if(b.skills.some(id=>declared.find(e=>e.id===id)?.tags?.includes('specialist-collection'))) paths.push('docs/SPECIALIST_COLLECTION.md');
   if(b.skills.some(id=>companionSkills.has(id))) paths.push(...companions,'docs/SKILL_TOOLS.md');
   const files=[];let total=0;
   for(const path of [...new Set(paths)].sort()) {
-    const bytes=await bytesAt(root,path); total+=bytes.length;
+    const bytes=await readSelectionBytes(root,path); total+=bytes.length;
     if(total>MAX_TOTAL) throw new Error('Bundle exceeds 10 MiB');
     files.push({path,bytes:bytes.length,sha256:digest(bytes)});
   }
-  for(const f of files) if(digest(await bytesAt(root,f.path))!==f.sha256) throw new Error('Bundle changed while resolving');
+  for(const f of files) if(digest(await readSelectionBytes(root,f.path))!==f.sha256) throw new Error('Bundle changed while resolving');
   const after=gitObservation(root);
   if(JSON.stringify(before)!==JSON.stringify(after)) throw new Error('Git state changed while resolving');
   const core={schemaVersion:1,bundleId:b.id,bundleVersion:b.version,skills:[...b.skills].sort(),files};
@@ -128,13 +137,13 @@ export async function resolveBundle(root,id,{requireClean=false,expectedRevision
 }
 export async function validateExpansion(root=process.cwd()) {
   const bundles=await loadBundles(root), covered=new Set(bundles.flatMap(b=>b.skills));
-  const entries=JSON.parse((await bytesAt(root,'catalog/entries.json')).toString('utf8'));
+  const entries=JSON.parse((await readSelectionBytes(root,'catalog/entries.json')).toString('utf8'));
   let cases=0;
   for(const e of entries.filter(e=>e.kind==='skill'&&e.origin==='original')) {
     if(!covered.has(e.id)) throw new Error(`Unbundled skill: ${e.id}`);
     if(!e.scenarioPath) continue;
     if(e.scenarioPath!==`skills/${e.id}/references/scenarios.json`) throw new Error('Unsafe scenario path');
-    const d=JSON.parse((await bytesAt(root,e.scenarioPath)).toString('utf8'));
+    const d=JSON.parse((await readSelectionBytes(root,e.scenarioPath)).toString('utf8'));
     if(d.schemaVersion!==1 || d.skill!==e.id || d.status!=='not-run' || !Array.isArray(d.cases) || d.cases.length!==3) throw new Error(`Invalid scenarios: ${e.id}`);
     if(new Set(d.cases.map(c=>c?.id)).size!==3 || ['trigger','boundary','non-trigger'].some(k=>d.cases.filter(c=>c?.kind===k).length!==1)) throw new Error(`Incomplete scenarios: ${e.id}`);
     for(const c of d.cases) for(const key of ['id','input','expected']) if(typeof c[key]!=='string'||!c[key].trim())throw new Error(`Empty scenario ${key}: ${e.id}`);

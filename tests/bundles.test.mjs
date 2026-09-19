@@ -24,7 +24,7 @@ async function fixture(t,{git=false}={}) {
  return dir;
 }
 const check=(d,entries=[entry])=>validateBundleDefinitions(d,entries);
-test('sixteen bundles cover all 104 original skills and 294 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:16,skills:104,scenarioInputs:294}));
+test('eighteen bundles cover all 112 original skills and 318 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:18,skills:112,scenarioInputs:318}));
 test('bundle registry requires its version and nonempty list',()=>{for(const d of [null,{},[],{schemaVersion:2,bundles:[]},{schemaVersion:1,bundles:[]}])assert.throws(()=>check(d));});
 test('unknown skill IDs fail rather than selecting a similar name',()=>{const d=registry();d.bundles[0].skills=['example-skil'];assert.throws(()=>check(d),/Unknown/);});
 test('curated links cannot masquerade as local skill packages',()=>assert.throws(()=>check(registry(),[{...entry,origin:'curated'}]),/nonlocal/));
@@ -53,7 +53,7 @@ test('expected revision syntax is checked',async t=>{const dir=await fixture(t);
 test('resolver output omits machine paths',async t=>{const dir=await fixture(t,{git:true});assert.equal(JSON.stringify(await resolveBundle(dir,'example')).includes(dir),false);});
 test('core-skill bundles include all Skillcheck companion modules',async()=>{const r=await resolveBundle(root,'parallel-engineering');for(const p of ['tools/skillcheck.mjs','tools/lib/contracts.mjs','tools/lib/runner.mjs','tools/lib/worktree.mjs'])assert.ok(r.files.some(f=>f.path===p),p);});
 test('scenario status remains not-run rather than invented execution evidence',async()=>{const entries=JSON.parse(await readFile(join(root,'catalog/entries.json'),'utf8'));for(const e of entries.filter(e=>e.scenarioPath)){const d=JSON.parse(await readFile(join(root,e.scenarioPath),'utf8'));assert.equal(d.status,'not-run');assert.deepEqual(e.evidence,[]);}});
-test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,16);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
+test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,18);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
 
 test('web research includes the actual Python implementation and wrapper',async()=>{
  const result=await resolveBundle(root,'web-research');const files=new Set(result.files.map(f=>f.path));

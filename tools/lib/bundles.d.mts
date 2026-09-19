@@ -24,3 +24,6 @@ export function validateBundleDefinitions(document: unknown, entries: unknown): 
 export function loadBundles(root?: string): Promise<BundleDefinition[]>;
 export function resolveBundle(root: string, id: string, options?: BundleResolveOptions): Promise<BundleManifest>;
 export function validateExpansion(root?: string): Promise<{ bundles: number; skills: number; scenarioInputs: number }>;
+
+export function readSelectionBytes(root: string, path: string): Promise<Buffer>;
+export function resolveSkillSelection(root: string, selection: BundleDefinition, options?: BundleResolveOptions & { registryPaths?: string[] }): Promise<BundleManifest>;

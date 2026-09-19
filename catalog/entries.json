@@ -652,7 +652,7 @@
     "stage": "experimental",
     "category": "Parallel engineering",
     "sourcePath": "skills/bounded-context-assembly/SKILL.md",
-    "packageVersion": "0.1.1",
+    "packageVersion": "0.1.2",
     "tags": [
       "context",
       "graphs",
@@ -792,7 +792,7 @@
     "stage": "experimental",
     "category": "Integrations",
     "sourcePath": "skills/provider-adapter-contracts/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "providers",
       "adapters",
@@ -848,7 +848,7 @@
     "stage": "experimental",
     "category": "Security and state",
     "sourcePath": "skills/usage-metering-idempotency/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "metering",
       "usage",
@@ -904,7 +904,7 @@
     "stage": "experimental",
     "category": "Media pipelines",
     "sourcePath": "skills/asset-lineage-provenance/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "assets",
       "lineage",
@@ -977,7 +977,7 @@
   {
     "id": "bundle-resolver",
     "title": "Bundle Resolver",
-    "description": "Read-only skill selection and content fingerprints for reproducible bundle review and future private adapters.",
+    "description": "Resolve canonical skill bundles and specialist role selections into read-only file manifests with explicit source identity.",
     "kind": "tool",
     "origin": "original",
     "stage": "experimental",
@@ -988,7 +988,7 @@
       "Node >=22.12",
       "Full toolkit checkout"
     ],
-    "outcome": "A deterministic file manifest with content hashes and separately reported Git provenance; no installation or execution.",
+    "outcome": "A deterministic selection manifest with role or bundle metadata, current file hashes and explicit execution boundaries.",
     "testedHosts": [],
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
@@ -2207,7 +2207,7 @@
     "category": "Harness engineering",
     "categoryId": "testing-quality",
     "sourcePath": "skills/bounded-harness-canary/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "harness",
       "canary",
@@ -2326,7 +2326,7 @@
     "category": "Design and communication",
     "categoryId": "design-communication",
     "sourcePath": "skills/product-video-storyboarding/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "product",
       "video",
@@ -3096,5 +3096,209 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Original frontend procedure and worked recipe. Synthetic scenarios remain not-run; fixture coverage is documented separately and does not certify all agent hosts or application stacks."
+  },
+  {
+    "id": "codebase-orientation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Code intelligence",
+    "categoryId": "context-memory",
+    "sourcePath": "skills/codebase-orientation/SKILL.md",
+    "scenarioPath": "skills/codebase-orientation/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "code intelligence"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Map the owners, entry points, contracts and verification paths relevant to a change, with source-backed relationships and explicit unknown coverage.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated."
+  },
+  {
+    "id": "code-index-qualification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Code intelligence",
+    "categoryId": "context-memory",
+    "sourcePath": "skills/code-index-qualification/SKILL.md",
+    "scenarioPath": "skills/code-index-qualification/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "code intelligence"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Qualify one derived code index against the intended checkout, source bytes, coverage and known query answers before using it for impact decisions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "reference-video-analysis",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Media research",
+    "categoryId": "media-pipelines",
+    "sourcePath": "skills/reference-video-analysis/SKILL.md",
+    "scenarioPath": "skills/reference-video-analysis/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "media research"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Inspect authorized reference footage with timecoded visual and audio evidence, then turn its structure into a distinct adaptation brief rather than guessing from a transcript.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated."
+  },
+  {
+    "id": "media-timeline-assembly",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Composition",
+    "categoryId": "media-pipelines",
+    "sourcePath": "skills/media-timeline-assembly/SKILL.md",
+    "scenarioPath": "skills/media-timeline-assembly/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "composition"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Assemble approved media into an explicit frame timeline and renderer handoff, validating asset identities and invalidating dependent timing after source revisions.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "shot-continuity-review",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Media review",
+    "categoryId": "media-pipelines",
+    "sourcePath": "skills/shot-continuity-review/SKILL.md",
+    "scenarioPath": "skills/shot-continuity-review/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "media review"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Review actual adjacent shots for visual, identity, product, caption and audio continuity while separating machine checks from subjective acceptance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated."
+  },
+  {
+    "id": "specialist-role-composition",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Role composition",
+    "categoryId": "agent-orchestration",
+    "sourcePath": "skills/specialist-role-composition/SKILL.md",
+    "scenarioPath": "skills/specialist-role-composition/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "role composition"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Compose a small task-relevant specialist preset from canonical skills, with explicit outputs and non-goals while leaving permissions and execution to the host.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated."
+  },
+  {
+    "id": "engineering-experiment-analysis",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Engineering methods",
+    "categoryId": "testing-quality",
+    "sourcePath": "skills/engineering-experiment-analysis/SKILL.md",
+    "scenarioPath": "skills/engineering-experiment-analysis/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "engineering methods"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Analyze predeclared engineering comparisons with complete task and attempt records, correct pairing and explicit uncertainty instead of equating fewer tokens with better results.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated.",
+    "companionTools": [
+      "publicationcheck"
+    ]
+  },
+  {
+    "id": "dataset-readiness-review",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Data review",
+    "categoryId": "testing-quality",
+    "sourcePath": "skills/dataset-readiness-review/SKILL.md",
+    "scenarioPath": "skills/dataset-readiness-review/references/scenarios.json",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "specialist-collection",
+      "data review"
+    ],
+    "requires": [
+      "Accepted task and source/artifact identity",
+      "Authorized inputs and actual project tool bindings"
+    ],
+    "outcome": "Inspect authorized local evaluation data for units, missingness, duplicate attempts, task coverage and grouping before calculating engineering comparisons.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original procedure and synthetic evaluation inputs. Helpers validate their documented scope; agent-host effectiveness remains unevaluated.",
+    "companionTools": [
+      "publicationcheck"
+    ]
   }
 ]

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "shot-continuity-review",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "shot-continuity-review-trigger",
+      "kind": "trigger",
+      "input": "A synthetic two-card sequence changes the same product's declared capacity from 20 units to 200. The reviewer points to the exact cut and approved claim, labels it a factual continuity defect, and asks for the second card to be repaired rather than rating the animation aesthetically.",
+      "expected": "Apply the named procedure to actual authorized inputs, preserve evidence scope and return the specified output without inventing completed operations."
+    },
+    {
+      "id": "shot-continuity-review-boundary",
+      "kind": "boundary",
+      "input": "The report has only a transcript and cannot view the render. Mark visual continuity uninspected; do not turn a structurally valid shot list into a visual pass.",
+      "expected": "Expose the boundary as incomplete, invalid or blocked evidence; preserve work and do not manufacture a passing result."
+    },
+    {
+      "id": "shot-continuity-review-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated documentation paragraph.",
+      "expected": "Make the small authorized edit without enabling this workflow, installing services, reading private data or changing permissions."
+    }
+  ]
+}
