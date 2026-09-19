@@ -55,7 +55,7 @@ test('web research category, canonical skill, bundle and Sourcekit detail work',
  await expect(page.getByRole('heading',{level:1})).toHaveText('Feed Change Tracking');
  await expect(page.getByRole('link',{name:'Read SKILL.md'})).toHaveAttribute('href',/skills\/feed-change-tracking\/SKILL.md$/);
  await page.goto(base+'bundles/web-research/');
- await expect(page.locator('[data-entry]')).toHaveCount(12);
+ await expect(page.locator('[data-entry]')).toHaveCount(11);
  await page.goto(base+'tools/sourcekit/');
  await expect(page.getByRole('heading',{level:1})).toHaveText('Sourcekit');
  await expect(page.getByRole('link',{name:'Read tool source'})).toHaveAttribute('href',/tools\/sourcekit.mjs$/);
@@ -144,7 +144,9 @@ test('bounded canary discovery, source, bundle and context evidence links work',
  await expect(page.getByRole('link',{name:'Checkpoint and canary contracts'})).toHaveAttribute('href',/docs\/HARNESS_EVIDENCE.md$/);
  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBeTruthy();
  await page.screenshot({path:`test-results/${testInfo.project.name}-bounded-canary.png`,fullPage:true});
- await page.locator('a[href="'+base+'bundles/harness-engineering/"]').first().click();
+ const bundleLink=page.getByRole('navigation',{name:'Skill bundles'}).getByRole('link',{name:'Harness Engineering and Qualification',exact:true});
+ await expect(bundleLink).toBeVisible();
+ await bundleLink.click();
  await expect(page.getByRole('heading',{level:1})).toHaveText('Harness Engineering and Qualification');
  await expect(page.locator('[data-entry]')).toHaveCount(12);
  await page.getByRole('link',{name:'Context Checkpointing',exact:true}).click();
