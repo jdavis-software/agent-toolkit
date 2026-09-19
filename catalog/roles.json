@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "roles": [
+    {
+      "id": "coordinator",
+      "title": "Coordinator",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "description": "Task-scoped skill selection for the coordinator role; not a running agent or an authorization grant.",
+      "skills": [
+        "execution-profile-audit",
+        "tracker-readiness-reconciliation",
+        "work-packet-planner",
+        "subagent-execution-contract",
+        "parallel-dispatch-planning",
+        "resource-aware-agent-scheduling",
+        "bounded-context-assembly"
+      ],
+      "suggestedCapabilities": [
+        "GitHub reads",
+        "Nx graph"
+      ]
+    },
+    {
+      "id": "go-worker",
+      "title": "Go implementer",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "description": "Task-scoped skill selection for the go implementer role; not a running agent or an authorization grant.",
+      "skills": [
+        "bounded-context-assembly",
+        "worktree-resource-isolation",
+        "go-service-boundaries",
+        "go-concurrency-cancellation",
+        "go-testing-determinism",
+        "affected-verification",
+        "worktree-handoff"
+      ],
+      "suggestedCapabilities": [
+        "gopls",
+        "Nx",
+        "project Go checks"
+      ]
+    },
+    {
+      "id": "typescript-worker",
+      "title": "TypeScript implementer",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "description": "Task-scoped skill selection for the typescript implementer role; not a running agent or an authorization grant.",
+      "skills": [
+        "bounded-context-assembly",
+        "worktree-resource-isolation",
+        "typescript-type-design",
+        "typescript-esm-packages",
+        "typescript-native-quality",
+        "affected-verification",
+        "worktree-handoff"
+      ],
+      "suggestedCapabilities": [
+        "TypeScript navigation",
+        "Nx",
+        "project TypeScript checks"
+      ]
+    },
+    {
+      "id": "reviewer",
+      "title": "Independent reviewer",
+      "version": "0.1.0",
+      "stage": "experimental",
+      "description": "Task-scoped skill selection for the independent reviewer role; not a running agent or an authorization grant.",
+      "skills": [
+        "behavior-test-design",
+        "affected-verification",
+        "agent-result-integration",
+        "integration-artifact-promotion",
+        "worktree-handoff"
+      ],
+      "suggestedCapabilities": [
+        "GitHub reads",
+        "project-owned acceptance checks"
+      ]
+    }
+  ]
+}

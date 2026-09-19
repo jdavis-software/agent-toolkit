@@ -2,18 +2,32 @@
 
 A bundle selects canonical skill packages for a class of work. It does not create a new agent runtime, install skills, load all instructions into every task, or grant permission to execute tools. The supported starting point is a full checkout of this repository.
 
-The collection contains 62 original skills selected into eleven overlapping bundles. The website and bundle resolver read `catalog/bundles.json`; there is no separately maintained copy of the selection in the UI.
+<!-- inventory:start -->
+
+**72 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools · 4 optional role profiles.**
+
+198 synthetic scenario inputs are authored examples, not completed agent-host evaluations. Counts are generated from the catalog.
+
+<!-- inventory:end -->
+
+<!-- bundle-table:start -->
 
 | Bundle ID | Focus |
 | --- | --- |
-| `typescript` | TypeScript 7 qualification, type boundaries, ESM, native quality checks, generated consumers, interface review |
-| `go-backend` | Go packages, cancellation, deterministic tests, profiling, transactions, debugging |
-| `contracts-data` | OpenAPI compatibility, generated clients, PostgreSQL transactions and migrations, tenant boundaries |
-| `durable-workflows` | Temporal determinism, activities, worker rollout, job state, providers, usage |
-| `parallel-engineering` | Work packets, bounded context, Nx graphs, lane resources, invalidation, handoff, integration |
-| `infrastructure` | Toolchain identity, Docker iteration, producer trust, invalidation, migration and promotion |
-| `media-integrations` | Provider capabilities, job reconciliation, lineage, metering, retry-safe effects, tenant access |
-| `mcp-tooling` | Thin adapters, canonical skill composition, private bindings, identity and tool qualification |
+| `typescript` | Native TypeScript 7 qualification, domain types, ESM packages, and a correctly separated quality pipeline. |
+| `go-backend` | Cohesive services, bounded concurrency, deterministic tests, measured performance, and transaction ownership. |
+| `contracts-data` | Accepted API baselines, reproducible generated consumers, safe schema changes, and authoritative data invariants. |
+| `durable-workflows` | Deterministic orchestration, retry-safe effects, version-aware worker rollouts, and job reconciliation. |
+| `parallel-engineering` | Bounded tasks, current context, graph-aware work, precise cache reuse, isolated resources, and verified handoffs. |
+| `infrastructure` | Reproducible tools, safe container iteration, trusted build caches, schema transitions, and artifact promotion. |
+| `media-integrations` | Capability-aware integrations, asynchronous state, retry-safe metering, and asset derivation without product-specific assumptions. |
+| `mcp-tooling` | Canonical public skills plus private context bindings, thin authenticated adapters, and bounded execution contracts. |
+| `agent-orchestration` | Bounded goals, capability-aware routing, coordinated dispatch, recoverable attempts, and reviewed integration. |
+| `agent-runtime` | Least-privilege delegation, exact approvals, budgets, context recovery, loop detection, and independent evaluation. |
+| `web-research` | Route sources, qualify connector access, read bounded public content, compare feeds, and produce timestamped research evidence. |
+| `harness-engineering` | Audit effective execution, reconcile task readiness and events, qualify controller failures, and apply tested structural changes without another scheduler. |
+
+<!-- bundle-table:end -->
 
 ## Read-only commands
 
@@ -47,6 +61,10 @@ Without Git provenance, resolution is allowed in `content-only` mode and reports
 
 The resolver rejects unknown or duplicate selections, malformed IDs, missing inputs, unsafe paths, symlinks, unsupported file types, and excessive file sizes. It reads selected files twice to detect observed changes and compares Git observations before/after. It is not an atomic filesystem snapshot or an adversarial sandbox; concurrent changes can still race observations. Use an isolated immutable checkout for reproducible consumption.
 
+## Role packaging
+
+[Four small role profiles](ROLE_PROFILES.md) reuse these canonical files and companion dependencies. `rolekit stage` writes a new immutable package from a reviewed clean checkout; it never installs globally or overwrites a consuming project. [The explicit local probe](LOCAL_ADAPTER.md) can verify Codex discovery without starting a model turn.
+
 ## Private adapter boundary
 
 Keep one public implementation of each skill. Bind private repository roots, accepted contract paths, command IDs/argument arrays, host/tool versions, credentials references, approvals, and policies outside this repository. See [Private adapters](PRIVATE_ADAPTERS.md).
@@ -55,10 +73,10 @@ Public bundles deliberately contain no company-specific overrides. They are a fo
 
 ## Evidence levels
 
-Package/frontmatter and scenario checks validate structure. Bundle tests validate selection, file boundaries, fingerprints, and strict Git behavior. Skillcheck tests exercise its mechanical checks. Website tests validate browsing and rendering. None of these establishes the effectiveness of all 62 instructions inside an agent host.
+Package/frontmatter and scenario checks validate structure. Bundle tests validate selection, file boundaries, fingerprints, and strict Git behavior. Skillcheck tests exercise its mechanical checks. Website tests validate browsing and rendering. None of these establishes the effectiveness of all catalogued instructions inside an agent host.
 
 Each new domain skill includes three synthetic cases at `references/scenarios.json`: intended activation, a difficult boundary, and a non-trigger. Their status remains `not-run` until a real host evaluation is recorded separately. Do not change a source scenario into a fabricated successful transcript.
 
 ## Source-access companion
 
-The `web-research` bundle selects eight canonical skills and includes the Sourcekit Node wrapper, Python implementation/modules, and command documentation. Python 3.10+ is required to run that optional tool; resolving the bundle itself remains a read-only Node operation. No connector, interpreter, or package is installed automatically.
+The `web-research` bundle selects the canonical source-access skills listed in `catalog/bundles.json` and includes the Sourcekit Node wrapper, Python implementation/modules, and command documentation. Python 3.10+ is required to run that optional tool; resolving the bundle itself remains a read-only Node operation. No connector, interpreter, or package is installed automatically.
