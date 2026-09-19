@@ -65,8 +65,10 @@ jobs:
           GOBIN="$RUNNER_TEMP/toolkit-bin" go install github.com/oasdiff/oasdiff@v1.32.1
           npm install --global pnpm@12.4.2
           printf '{"private":true}' > "$RUNNER_TEMP/nx-fixture/package.json"
-          pnpm --dir "$RUNNER_TEMP/nx-fixture" add --save-exact nx@23.2.1
+          printf 'allowBuilds:\n  nx: true\n' > "$RUNNER_TEMP/nx-fixture/pnpm-workspace.yaml"
+          NX_DAEMON=false NX_NO_CLOUD=true NX_INTERACTIVE=false pnpm --dir "$RUNNER_TEMP/nx-fixture" add --save-exact nx@23.2.1
           cp "$RUNNER_TEMP/nx-fixture/pnpm-lock.yaml" "$RUNNER_TEMP/tool-evidence/nx-fixture-lock.yaml"
+          cp "$RUNNER_TEMP/nx-fixture/pnpm-workspace.yaml" "$RUNNER_TEMP/tool-evidence/nx-fixture-workspace.yaml"
       - name: Exercise actual upstream tools on disposable fixtures
         run: node evals/practical-tooling/qualify.mjs --gopls "$RUNNER_TEMP/toolkit-bin/gopls" --oasdiff "$RUNNER_TEMP/toolkit-bin/oasdiff" --nx-package "$RUNNER_TEMP/nx-fixture" > "$RUNNER_TEMP/tool-evidence/result.json"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

@@ -13,7 +13,7 @@ import { reconcileReadiness } from '../tools/lib/harness/readiness.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const sha='a'.repeat(64),revision='b'.repeat(40);
 async function scratch(t){const d=await mkdtemp(join(tmpdir(),'toolkit-practical-'));t.after(()=>rm(d,{recursive:true,force:true}));return d;}
-const git=(r,...a)=>execFileSync('git',['-c','user.name=Fixture','-c','user.email=fixture@localhost','-C',r,...a],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
+const git=(r,...a)=>execFileSync('git',['-c','gc.auto=0','-c','maintenance.auto=false','-c','gc.autoDetach=false','-c','user.name=Fixture','-c','user.email=fixture@localhost','-C',r,...a],{encoding:'utf8',stdio:['ignore','pipe','pipe']}).trim();
 async function checkout(t){const d=await scratch(t),r=join(d,'source');await cp(root,r,{recursive:true,filter:p=>!p.split('/').some(s=>['.git','node_modules','dist'].includes(s))});git(r,'init');git(r,'add','.');git(r,'commit','-m','fixture');return{d,r,rev:git(r,'rev-parse','HEAD')};}
 
 test('four small roles resolve canonical skills and complete companions',async()=>{
