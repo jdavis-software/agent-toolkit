@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "skill": "execution-profile-audit",
+  "status": "not-run",
+  "cases": [
+    {
+      "id": "execution-profile-audit-trigger",
+      "kind": "trigger",
+      "input": "The parent requested subscription authentication, but a worker observation reports a different effective mode. Preserve the work and pause rather than guessing the billing path from a model name.",
+      "expected": "Resolve the actual task and versioned inputs, apply the documented procedure, and report scoped evidence without claiming unexecuted qualification."
+    },
+    {
+      "id": "execution-profile-audit-boundary",
+      "kind": "boundary",
+      "input": "An MCP observation is rooted in main while the worker owns a feature worktree. Block the required binding and reconnect through the approved adapter; do not merely edit the expected fingerprint.",
+      "expected": "Apply the stated failure response. Preserve source/evidence and do not treat unknown or unsupported behavior as success."
+    },
+    {
+      "id": "execution-profile-audit-non-trigger",
+      "kind": "non-trigger",
+      "input": "Fix a spelling error in an unrelated README.",
+      "expected": "Perform only the small authorized edit without adding a controller, running model calls, or changing the environment."
+    }
+  ]
+}

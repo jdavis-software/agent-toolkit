@@ -1,0 +1,70 @@
+name: Qualify harness fixtures and structural recipe
+on:
+  pull_request:
+    paths:
+      - tools/harnesskit.mjs
+      - tools/lib/harness/**
+      - examples/harnesskit/**
+      - evals/structural-refactoring/**
+      - tests/harnesskit.test.mjs
+      - .github/workflows/qualify-harness.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - run: npm install --global pnpm@12.4.2
+      - run: pnpm install --frozen-lockfile
+      - name: Exercise original helpers and synthetic controller failures
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/harness-evidence"
+          node --test tests/harnesskit.test.mjs > "$RUNNER_TEMP/harness-evidence/helpers.tap"
+          node examples/harnesskit/profile-demo.mjs > "$RUNNER_TEMP/harness-evidence/profile.json"
+          node examples/harnesskit/controller-demo.mjs > "$RUNNER_TEMP/harness-evidence/controllers.json"
+          node tools/harnesskit.mjs events examples/harnesskit/exec.jsonl --format codex-exec --binding examples/harnesskit/binding.json > "$RUNNER_TEMP/harness-evidence/events.json"
+      - name: Fetch an explicit temporary ast-grep binary and verify its reviewed archive digest
+        run: |
+          python3 - <<'PY'
+          import hashlib, io, json, os, pathlib, urllib.request, zipfile
+          url='https://github.com/ast-grep/ast-grep/releases/download/0.45.3/app-x86_64-unknown-linux-gnu.zip'
+          with urllib.request.urlopen(url,timeout=30) as response:
+              data=response.read(10000001)
+          assert len(data)<=10000000
+          digest=hashlib.sha256(data).hexdigest()
+          assert digest=='f8ac830881339d1edee6b2652f54798c0f4da5a827f2db38a08ee31117783ce8'
+          root=pathlib.Path(os.environ['RUNNER_TEMP'])/'harness-bin';root.mkdir()
+          with zipfile.ZipFile(io.BytesIO(data)) as archive:
+              names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='ast-grep']
+              if not names:
+                  names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='sg']
+              assert len(names)==1, 'Expected one release executable: '+repr(archive.namelist())
+              info=archive.getinfo(names[0])
+              # Native binary size is distinct from its 8 MB compressed release archive.
+              assert 0<info.file_size<=134217728, f'Unexpected executable size: {info.file_size}'
+              with archive.open(info) as member:
+                  content=member.read(134217729)
+              assert len(content)==info.file_size and content.startswith(b'\x7fELF')
+          binary=root/'ast-grep';binary.write_bytes(content);binary.chmod(0o700)
+          evidence={'archiveSha256':digest,'archiveMember':names[0],'binaryBytes':len(content),'binarySha256':hashlib.sha256(content).hexdigest()}
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'harness-evidence/binary.json').write_text(json.dumps(evidence))
+          PY
+      - name: Qualify actual rule detection, rewrite, repeatability, typechecking and seeded failure
+        run: python3 evals/structural-refactoring/qualify.py --ast-grep "$RUNNER_TEMP/harness-bin/ast-grep" > "$RUNNER_TEMP/harness-evidence/structural.json"
+      - name: Preserve scoped evidence without accounts or model calls
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: harness-qualification
+          path: ${{ runner.temp }}/harness-evidence/
+          retention-days: 7

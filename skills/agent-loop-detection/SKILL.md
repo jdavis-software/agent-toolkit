@@ -2,7 +2,7 @@
 name: agent-loop-detection
 description: "Detect repeated no-progress tool calls, equivalent patches, and unchanged failures using bounded evidence windows and explicit stop/escalation criteria."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Agent Loop Detection
@@ -50,3 +50,9 @@ A worker alternates two import fixes while the same type error persists. Capture
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## Conditional intervention, not permanent supervision
+
+Classify process, service, credentials, quota, human waits and legitimate compilation deterministically first. Only invoke a model reviewer under a predeclared progress rule and a shared global budget.
+
+A reviewer must propose one discriminating experiment, identify a missing decision, narrow the task, or escalate. Bound repeated interventions and recursive reviewers. Record false interventions and the reviewer usage instead of assuming supervision is free.

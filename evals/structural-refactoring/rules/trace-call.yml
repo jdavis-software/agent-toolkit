@@ -1,0 +1,7 @@
+id: trace-call
+language: TypeScript
+message: Migrate the approved one-argument trace call in the synthetic fixture.
+severity: warning
+rule:
+  pattern: debug.trace($MSG)
+fix: logger.debug($MSG)

@@ -1,0 +1,10 @@
+id: trace-call
+valid:
+  - 'logger.debug("already");'
+  - 'debug["trace"]("computed");'
+  - 'debug.trace("first", "second");'
+  - 'const example = "debug.trace(value)";'
+  - '// debug.trace(value)'
+invalid:
+  - 'debug.trace("message");'
+  - 'debug.trace(value);'

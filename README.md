@@ -6,7 +6,7 @@ A personal collection of original agent skills, engineering workflows, and selec
 
 ## The expanded skill collection
 
-**66 original skills · 13 primary categories · 11 overlapping bundles · 4 original utilities · 3 selected external tools.**
+**72 original skills · 13 primary categories · 12 overlapping bundles · 5 original utilities · 3 selected external tools.**
 
 Browse the [category directory](https://jdavis-software.github.io/agent-toolkit/categories/) by the problem you need to solve. Each entry has one primary category, so category totals do not double-count it. Bundles deliberately overlap because the same skill can be useful in several engineering workflows.
 
@@ -22,7 +22,7 @@ node tools/bundle.mjs resolve agent-orchestration --require-clean
 
 The resolver uses Node built-ins and prints selection/file hashes, including required companion modules. It does not install skills, call models, run selected tools, or start an MCP server. See [bundle contracts](docs/BUNDLES.md), [private adapter design](docs/PRIVATE_ADAPTERS.md), [category contracts](docs/CATEGORIES.md), and [coverage and evidence](docs/ENGINEERING_COVERAGE.md).
 
-The 60 domain, orchestration, source-access and qualification additions contain 180 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
+The 66 domain, orchestration, source-access and qualification additions contain 198 synthetic trigger, boundary, and non-trigger scenario inputs. Those inputs are not completed agent-host runs; instruction effectiveness remains experimental.
 
 <!-- skill-index:start -->
 
@@ -91,6 +91,12 @@ The 60 domain, orchestration, source-access and qualification additions contain 
 | [Multi-source Research](skills/multi-source-research/SKILL.md) | Web and research |
 | [Connector Setup Review](skills/connector-setup-review/SKILL.md) | Web and research |
 | [Browser Session Isolation](skills/browser-session-isolation/SKILL.md) | Web and research |
+| [Execution Profile Audit](skills/execution-profile-audit/SKILL.md) | Harness engineering |
+| [Agent Runtime Adapter Qualification](skills/agent-runtime-qualification/SKILL.md) | Harness engineering |
+| [Tracker Readiness Reconciliation](skills/tracker-readiness-reconciliation/SKILL.md) | Harness engineering |
+| [Controller Conformance Testing](skills/controller-conformance-testing/SKILL.md) | Harness engineering |
+| [Agent Event and Usage Reconciliation](skills/agent-event-reconciliation/SKILL.md) | Harness engineering |
+| [Tested Structural Refactoring](skills/tested-structural-refactoring/SKILL.md) | Structural editing |
 | [Structured Web Extraction](skills/structured-web-extraction/SKILL.md) | Web and research |
 | [Bounded Crawl Planning](skills/bounded-crawl-planning/SKILL.md) | Web and research |
 | [MCP Server Qualification](skills/mcp-server-qualification/SKILL.md) | MCP and bundles |
@@ -186,3 +192,16 @@ The original [Sourcekit](docs/SOURCEKIT.md) companion adds bounded public HTTPS 
 Sourcekit 0.2 separates capture success from a conservative content assessment. Explicit `--require-content` checks declared literal expectations without claiming semantic truth. Optional link references never trigger a crawl. Four original skills cover browser-session isolation, structured extraction, bounded crawl planning and MCP server qualification.
 
 [Implementation and limits](docs/WEB_QUALIFICATION.md) · [Optional pinned Scrapling parser evaluation](evals/scrapling/README.md). The optional parser environment is separate from the website and default tools; it adds no browser or MCP service.
+
+## Harness engineering and qualification
+
+The [Harness Engineering bundle](https://jdavis-software.github.io/agent-toolkit/bundles/harness-engineering/) combines six original qualification skills with existing context, lifecycle, recovery and evaluation procedures. [Harnesskit](docs/HARNESSKIT.md) provides actual Git observations, supplied-profile/readiness comparisons, saved Codex exec event imports, and a programmatic controller test interface. It is not another controller or a live agent launcher.
+
+```bash
+node tools/harnesskit.mjs --help
+node tools/harnesskit.mjs observe --root .
+node tools/harnesskit.mjs events examples/harnesskit/exec.jsonl --format codex-exec --binding examples/harnesskit/binding.json
+node examples/harnesskit/controller-demo.mjs
+```
+
+The controller demonstration tests an original synthetic fixture and seven deliberate faults, not Symphony or Contrabass. The optional ast-grep recipe is isolated under `evals/structural-refactoring/`. No default helper installs software or invokes paid inference.

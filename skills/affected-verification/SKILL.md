@@ -44,3 +44,9 @@ The command prints `PASS` and exits 7. The runner emits status failed and exits 
 ## Companion tools
 
 [Runnable helpers and input formats](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/SKILL_TOOLS.md) · [Evaluation method and limitations](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/EVALUATION.md). Commands above run from a full toolkit checkout; they are not standalone host-installation instructions.
+
+## Check the gate itself
+
+Include one controlled defect and confirm the intended assertion or compatibility rule fails, then confirm the corrected case passes. Tool failure, missing dependencies and invalid input are not the desired regression signal.
+
+Bind receipts to the accepted source and configuration. Do not drop failed/unfinished attempts from canary reports or equate independent green branches with a validated integrated result.

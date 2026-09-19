@@ -24,7 +24,7 @@ async function fixture(t,{git=false}={}) {
  return dir;
 }
 const check=(d,entries=[entry])=>validateBundleDefinitions(d,entries);
-test('eleven bundles cover all 66 original skills and 180 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:11,skills:66,scenarioInputs:180}));
+test('twelve bundles cover all 72 original skills and 198 new scenario inputs',async()=>assert.deepEqual(await validateExpansion(root),{bundles:12,skills:72,scenarioInputs:198}));
 test('bundle registry requires its version and nonempty list',()=>{for(const d of [null,{},[],{schemaVersion:2,bundles:[]},{schemaVersion:1,bundles:[]}])assert.throws(()=>check(d));});
 test('unknown skill IDs fail rather than selecting a similar name',()=>{const d=registry();d.bundles[0].skills=['example-skil'];assert.throws(()=>check(d),/Unknown/);});
 test('curated links cannot masquerade as local skill packages',()=>assert.throws(()=>check(registry(),[{...entry,origin:'curated'}]),/nonlocal/));
@@ -53,10 +53,17 @@ test('expected revision syntax is checked',async t=>{const dir=await fixture(t);
 test('resolver output omits machine paths',async t=>{const dir=await fixture(t,{git:true});assert.equal(JSON.stringify(await resolveBundle(dir,'example')).includes(dir),false);});
 test('core-skill bundles include all Skillcheck companion modules',async()=>{const r=await resolveBundle(root,'parallel-engineering');for(const p of ['tools/skillcheck.mjs','tools/lib/contracts.mjs','tools/lib/runner.mjs','tools/lib/worktree.mjs'])assert.ok(r.files.some(f=>f.path===p),p);});
 test('scenario status remains not-run rather than invented execution evidence',async()=>{const entries=JSON.parse(await readFile(join(root,'catalog/entries.json'),'utf8'));for(const e of entries.filter(e=>e.scenarioPath)){const d=JSON.parse(await readFile(join(root,e.scenarioPath),'utf8'));assert.equal(d.status,'not-run');assert.deepEqual(e.evidence,[]);}});
-test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,11);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
+test('CLI discovery succeeds and unknown operations fail',()=>{const cli=join(root,'tools/bundle.mjs');const good=spawnSync(process.execPath,[cli,'list','--root',root],{encoding:'utf8'});assert.equal(good.status,0);assert.equal(JSON.parse(good.stdout).bundles.length,12);for(const args of [['install'],['resolve','missing','--root',root],['list','--require-clean'],['list','--root',root,'--root',root]])assert.equal(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,2);});
 
 test('web research includes the actual Python implementation and wrapper',async()=>{
  const result=await resolveBundle(root,'web-research');const files=new Set(result.files.map(f=>f.path));
  for(const path of ['tools/sourcekit.mjs','tools/sourcekit.py','tools/sourcekit_lib/common.py','tools/sourcekit_lib/transport.py','tools/sourcekit_lib/formats.py','tools/sourcekit_lib/routing.py','tools/sourcekit_lib/assessment.py','docs/SOURCEKIT.md'])assert.ok(files.has(path),path);
  assert.ok(![...files].some(p=>p.includes('__pycache__')));
+});
+
+
+test('harness bundle includes every original helper dependency and no executable adapter installation',async()=>{
+ const r=await resolveBundle(root,'harness-engineering');const paths=new Set(r.files.map(f=>f.path));
+ for(const p of ['tools/harnesskit.mjs','tools/lib/harness/common.mjs','tools/lib/harness/profile.mjs','tools/lib/harness/events.mjs','tools/lib/harness/readiness.mjs','tools/lib/harness/conformance.mjs','tools/lib/worktree.mjs','tools/lib/contracts.mjs','docs/HARNESSKIT.md'])assert.ok(paths.has(p),p);
+ assert.equal(paths.has('evals/structural-refactoring/qualify.py'),false);
 });

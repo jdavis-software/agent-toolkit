@@ -1,0 +1,6 @@
+{"type":"thread.started","thread_id":"synthetic-thread"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"i1","type":"command_execution","status":"completed","exit_code":0,"command":"synthetic command; never executed"}}
+{"type":"turn.completed","usage":{"input_tokens":1200,"cached_input_tokens":800,"output_tokens":100,"reasoning_output_tokens":20}}
+{"type":"turn.started"}
+{"type":"turn.completed","usage":{"input_tokens":1200,"cached_input_tokens":800,"output_tokens":100,"reasoning_output_tokens":20}}

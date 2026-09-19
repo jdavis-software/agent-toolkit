@@ -52,7 +52,7 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Written for this collection. Agent-host evaluation and prior personal usage have not been established.",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "categoryId": "testing-quality"
   },
   {
@@ -343,7 +343,7 @@
     "stage": "experimental",
     "category": "Contracts",
     "sourcePath": "skills/openapi-contract-evolution/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "openapi",
       "api",
@@ -428,7 +428,7 @@
     "stage": "experimental",
     "category": "Data",
     "sourcePath": "skills/postgres-migration-safety/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "postgresql",
       "migrations",
@@ -652,7 +652,7 @@
     "stage": "experimental",
     "category": "Parallel engineering",
     "sourcePath": "skills/bounded-context-assembly/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "context",
       "graphs",
@@ -1193,7 +1193,7 @@
     "stage": "experimental",
     "category": "Agent orchestration",
     "sourcePath": "skills/subagent-lifecycle/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1221,7 +1221,7 @@
     "stage": "experimental",
     "category": "Agent orchestration",
     "sourcePath": "skills/orchestration-resume/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1305,7 +1305,7 @@
     "stage": "experimental",
     "category": "Agent orchestration",
     "sourcePath": "skills/orchestration-observability/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1445,7 +1445,7 @@
     "stage": "experimental",
     "category": "Agent runtime",
     "sourcePath": "skills/agent-loop-detection/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1473,7 +1473,7 @@
     "stage": "experimental",
     "category": "Testing",
     "sourcePath": "skills/delegation-evaluation/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1529,7 +1529,7 @@
     "stage": "experimental",
     "category": "Context and memory",
     "sourcePath": "skills/context-checkpointing/SKILL.md",
-    "packageVersion": "0.1.0",
+    "packageVersion": "0.1.1",
     "tags": [
       "agents",
       "orchestration",
@@ -1893,6 +1893,221 @@
     "evidence": [],
     "author": "Jordan's Agent Toolkit · AI-assisted",
     "note": "Original procedure with independent synthetic examples. Host scenarios remain not-run; tool/fixture tests are separately documented."
+  },
+  {
+    "id": "execution-profile-audit",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "runtime-governance",
+    "sourcePath": "skills/execution-profile-audit/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "execution",
+      "profile",
+      "audit"
+    ],
+    "scenarioPath": "skills/execution-profile-audit/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Compare an intended agent execution profile with current worktree-bound observations, separating requested settings, resolved configuration, and actual runtime behavior.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "agent-runtime-qualification",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "runtime-governance",
+    "sourcePath": "skills/agent-runtime-qualification/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "agent",
+      "runtime",
+      "qualification"
+    ],
+    "scenarioPath": "skills/agent-runtime-qualification/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Qualify one controller-to-agent execution interface for lifecycle, event identity, cancellation, authentication, and uncertain outcomes before admitting real tasks.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "tracker-readiness-reconciliation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "agent-orchestration",
+    "sourcePath": "skills/tracker-readiness-reconciliation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "tracker",
+      "readiness",
+      "reconciliation"
+    ],
+    "scenarioPath": "skills/tracker-readiness-reconciliation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Reconcile full task identity, accepted prerequisites, source contracts, and ownership immediately before dispatch without treating labels or filtered queries as acceptance.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "controller-conformance-testing",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "testing-quality",
+    "sourcePath": "skills/controller-conformance-testing/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "controller",
+      "conformance",
+      "testing"
+    ],
+    "scenarioPath": "skills/controller-conformance-testing/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Test a selected controller against deterministic readiness, restart, cancellation, retention, stale-attempt, and independent-acceptance scenarios before deployment.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "agent-event-reconciliation",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "agent-orchestration",
+    "sourcePath": "skills/agent-event-reconciliation/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "agent",
+      "event",
+      "reconciliation"
+    ],
+    "scenarioPath": "skills/agent-event-reconciliation/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Normalize runtime event captures with explicit identity, usage basis, duplicate handling, missing coverage and independent acceptance boundaries.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "tested-structural-refactoring",
+    "kind": "skill",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Structural editing",
+    "categoryId": "devops-delivery",
+    "sourcePath": "skills/tested-structural-refactoring/SKILL.md",
+    "packageVersion": "0.1.0",
+    "tags": [
+      "harness",
+      "qualification",
+      "tested",
+      "structural",
+      "refactoring"
+    ],
+    "scenarioPath": "skills/tested-structural-refactoring/references/scenarios.json",
+    "requires": [
+      "Accepted task and source baseline",
+      "Owned scratch environment",
+      "Qualified execution adapter for live observations"
+    ],
+    "outcome": "Author and qualify scoped structural transformations with positive and negative examples, reviewed diffs, repeat-application checks, and independent runtime/type validation.",
+    "testedHosts": [],
+    "evidence": [],
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "Original guidance with executable fixture support and explicit live-runtime limits. Host evaluation inputs remain not-run.",
+    "companionTools": [
+      "harnesskit"
+    ]
+  },
+  {
+    "id": "harnesskit",
+    "kind": "tool",
+    "origin": "original",
+    "stage": "experimental",
+    "category": "Harness engineering",
+    "categoryId": "mcp-tooling",
+    "title": "Harnesskit",
+    "description": "Read-only Git/profile preflight, tracker snapshot readiness, saved runtime event reconciliation, and a controller conformance interface.",
+    "sourcePath": "tools/harnesskit.mjs",
+    "docsPath": "docs/HARNESSKIT.md",
+    "author": "Jordan's Agent Toolkit · AI-assisted",
+    "note": "No live worker/controller adapter or credential inspection. Runtime fields and tracker acceptance remain supplied observations; fixtures are not production certification.",
+    "outcome": "Inspect version-bound evidence without installing another scheduler.",
+    "requires": [
+      "Node 22.12+",
+      "Git for observe/profile",
+      "Full toolkit checkout"
+    ],
+    "testedHosts": [],
+    "evidence": [],
+    "tags": [
+      "harness",
+      "preflight",
+      "events",
+      "controller",
+      "readiness"
+    ]
   },
   {
     "id": "structured-web-extraction",

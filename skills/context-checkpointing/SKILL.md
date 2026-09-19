@@ -2,7 +2,7 @@
 name: context-checkpointing
 description: "Preserve task state across compaction or handoff with source-backed decisions, unresolved failures, current artifacts, and explicit freshness checks."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
   collection: "jordans-agent-toolkit"
 ---
 # Context Checkpointing
@@ -50,3 +50,9 @@ Before compaction, the worker records that a provider call may have succeeded an
 ## Companion tooling and evaluation
 
 [Agentflow commands and boundaries](https://github.com/jdavis-software/agent-toolkit/blob/main/docs/AGENTFLOW.md) document the optional offline coordination helper. It performs only its documented checks; the full procedure still needs a qualified host and private adapter. Use `references/scenarios.json` for trigger, boundary, and non-trigger evaluation inputs. Their `not-run` status is not a test result.
+
+## Revision-bound checkpoints
+
+Record task/attempt/epoch, accepted contracts, Git-visible fingerprint, required generated-input hashes, completed checks, rejected approaches, unresolved questions and next discriminating experiment. For each rejected approach, name what changed evidence would justify retrying it. Never carry benchmark answers between independent runs.
+
+Revalidate referenced files and access on resume; stale or inaccessible sources remain explicit. Harnesskit observe supplies a Git-visible fingerprint, not ignored artifacts, unsaved editor buffers, credential state or atomic snapshots.
