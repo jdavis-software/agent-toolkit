@@ -1,0 +1,33 @@
+name: Export frontend baseline
+on:
+  push:
+    branches: [feat/frontend-engineering]
+    paths: [.github/workflows/frontend-baseline.yml]
+permissions:
+  contents: read
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: 14e143d113bc9f3288b9987bc3a5239d419b8c58
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Export canonical source and generate optional fixture lock without executing dependencies
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/frontend-baseline/fixture"
+          git archive --format=tar HEAD > "$RUNNER_TEMP/frontend-baseline/source.tar"
+          cd "$RUNNER_TEMP/frontend-baseline/fixture"
+          printf '%s\n' '{"name":"toolkit-frontend-fixture","version":"0.1.0","private":true,"type":"module"}' > package.json
+          npm install --package-lock-only --ignore-scripts --save-exact react@19 react-dom@19 @tanstack/react-query@5 react-hook-form@7 react-icons@5 tailwindcss@4 @tailwindcss/cli@4 esbuild@0.28 typescript@6 @types/react@19 @types/react-dom@19
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: frontend-baseline
+          path: ${{ runner.temp }}/frontend-baseline/
+          retention-days: 1
