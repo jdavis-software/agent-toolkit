@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '24'
           package-manager-cache: false
-      - name: Verify and apply the original source patch
+      - name: Verify and apply only non-workflow source
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -29,13 +29,12 @@ jobs:
           assert decoder.eof and not decoder.unused_data and len(patch)==409047
           (pathlib.Path(os.environ['RUNNER_TEMP'])/'frontend.patch').write_bytes(patch)
           PY
-          git apply --check "$RUNNER_TEMP/frontend.patch"
-          git apply --index "$RUNNER_TEMP/frontend.patch"
+          git apply --exclude='.github/workflows/*' --check "$RUNNER_TEMP/frontend.patch"
+          git apply --exclude='.github/workflows/*' --index "$RUNNER_TEMP/frontend.patch"
           git rm .github/frontend-part-*.bin
-          git rm .github/workflows/frontend-baseline.yml .github/workflows/materialize-frontend.yml
           git diff --cached --check
-          test "$(git write-tree)" = '31662b44f9b51133b7165545c8c29695dd403054'
+          test -z "$(git diff --cached --name-only -- .github/workflows/)"
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'feat: add original frontend skills and isolated React qualification'
+          git commit -m 'feat: add original frontend skills and isolated React fixture source'
           git push origin HEAD:feat/frontend-engineering
