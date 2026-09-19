@@ -24,6 +24,8 @@ with tempfile.TemporaryDirectory(prefix='structural-fixture-') as temp:
     run(['node','--experimental-strip-types',str(target)],root)
     run(typecheck,recipe)
     rule=recipe/'rules/trace-call.yml';rule.write_text(rule.read_text().replace('debug.trace($MSG)','missing.trace($MSG)'))
-    negative=run([binary,'test','--skip-snapshot-tests'],recipe,(0,1))
-    assert negative.returncode!=0 and ('Missing' in negative.stdout or 'Missing' in negative.stderr), 'Broken rule did not fail its match assertion'
-    print(json.dumps({'tool':version,'ruleInputs':7,'matchingCandidates':1,'rewriteMatchesIndependentExpected':True,'idempotent':True,'runtimeBeforeAfter':True,'typecheckBeforeAfter':True,'brokenRuleDetected':True,'transformedSha256':hashlib.sha256(expected).hexdigest(),'scope':'Synthetic TypeScript fixture; no symbol-resolution or production migration claim'},indent=2))
+    # A deliberately wrong rule must fail its two match assertions, not merely exit nonzero.
+    negative=subprocess.run([binary,'test','--skip-snapshot-tests'],cwd=recipe,capture_output=True,text=True,timeout=30,env={**os.environ,'NO_COLOR':'1'})
+    diagnostics=negative.stdout+'\n'+negative.stderr
+    assert negative.returncode>0 and diagnostics.count('[Missing]')==2 and 'FAIL trace-call' in diagnostics and 'test failed. 0 passed; 1 failed;' in diagnostics, 'Broken rule did not fail its expected match assertions: '+diagnostics
+    print(json.dumps({'tool':version,'ruleInputs':7,'matchingCandidates':1,'rewriteMatchesIndependentExpected':True,'idempotent':True,'runtimeBeforeAfter':True,'typecheckBeforeAfter':True,'brokenRuleDetected':True,'brokenRuleExitCode':negative.returncode,'missingMatchAssertions':2,'transformedSha256':hashlib.sha256(expected).hexdigest(),'scope':'Synthetic TypeScript fixture; no symbol-resolution or production migration claim'},indent=2))
