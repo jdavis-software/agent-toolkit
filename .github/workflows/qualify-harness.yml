@@ -36,18 +36,24 @@ jobs:
       - name: Fetch an explicit temporary ast-grep binary and verify its reviewed archive digest
         run: |
           python3 - <<'PY'
-          import hashlib, io, os, pathlib, urllib.request, zipfile
+          import hashlib, io, json, os, pathlib, urllib.request, zipfile
           url='https://github.com/ast-grep/ast-grep/releases/download/0.45.3/app-x86_64-unknown-linux-gnu.zip'
           with urllib.request.urlopen(url,timeout=30) as response:
               data=response.read(10000001)
           assert len(data)<=10000000
-          assert hashlib.sha256(data).hexdigest()=='f8ac830881339d1edee6b2652f54798c0f4da5a827f2db38a08ee31117783ce8'
+          digest=hashlib.sha256(data).hexdigest()
+          assert digest=='f8ac830881339d1edee6b2652f54798c0f4da5a827f2db38a08ee31117783ce8'
           root=pathlib.Path(os.environ['RUNNER_TEMP'])/'harness-bin';root.mkdir()
           with zipfile.ZipFile(io.BytesIO(data)) as archive:
               names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='ast-grep']
-              assert len(names)==1
-              content=archive.read(names[0]);assert len(content)<50000000
+              if not names:
+                  names=[n for n in archive.namelist() if pathlib.PurePosixPath(n).name=='sg']
+              assert len(names)==1, 'Expected one ast-grep release executable; archive members: '+repr(archive.namelist())
+              assert archive.getinfo(names[0]).file_size<50000000
+              content=archive.read(names[0])
           binary=root/'ast-grep';binary.write_bytes(content);binary.chmod(0o700)
+          evidence={'archiveSha256':digest,'archiveMember':names[0],'binarySha256':hashlib.sha256(content).hexdigest()}
+          (pathlib.Path(os.environ['RUNNER_TEMP'])/'harness-evidence/binary.json').write_text(json.dumps(evidence))
           PY
       - name: Qualify actual rule detection, rewrite, repeatability, typechecking and seeded failure
         run: python3 evals/structural-refactoring/qualify.py --ast-grep "$RUNNER_TEMP/harness-bin/ast-grep" > "$RUNNER_TEMP/harness-evidence/structural.json"
